@@ -18,7 +18,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
+name|Comparator
 import|;
 end_import
 
@@ -28,7 +28,27 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|SortedSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeSet
 import|;
 end_import
 
@@ -122,7 +142,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|EntryType
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -137,22 +159,22 @@ block|{
 DECL|field|fields
 specifier|private
 specifier|final
-name|List
+name|SortedSet
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|fields
 decl_stmt|;
-DECL|method|UserDefinedFieldsTab (String name, List<String> fields, BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager, DialogService dialogService)
+DECL|method|UserDefinedFieldsTab (String name, Set<Field> fields, BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager, DialogService dialogService)
 specifier|public
 name|UserDefinedFieldsTab
 parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|List
+name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|fields
 parameter_list|,
@@ -186,7 +208,28 @@ name|this
 operator|.
 name|fields
 operator|=
+operator|new
+name|TreeSet
+argument_list|<>
+argument_list|(
+name|Comparator
+operator|.
+name|comparing
+argument_list|(
+name|Field
+operator|::
+name|getName
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
 name|fields
+operator|.
+name|addAll
+argument_list|(
+name|fields
+argument_list|)
 expr_stmt|;
 name|setText
 argument_list|(
@@ -208,19 +251,16 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|determineFieldsToShow (BibEntry entry, EntryType entryType)
+DECL|method|determineFieldsToShow (BibEntry entry)
 specifier|protected
-name|Collection
+name|SortedSet
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|determineFieldsToShow
 parameter_list|(
 name|BibEntry
 name|entry
-parameter_list|,
-name|EntryType
-name|entryType
 parameter_list|)
 block|{
 return|return

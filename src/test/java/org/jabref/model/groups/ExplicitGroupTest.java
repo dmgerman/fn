@@ -46,7 +46,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|InternalField
 import|;
 end_import
 
@@ -218,7 +220,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|)
@@ -237,7 +239,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|,
@@ -264,7 +266,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|)
@@ -306,7 +308,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|)
@@ -327,7 +329,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|,
@@ -354,7 +356,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|)
@@ -376,7 +378,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|,
@@ -403,7 +405,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|)
@@ -425,7 +427,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|,
@@ -452,7 +454,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|)
@@ -474,7 +476,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|,
@@ -507,7 +509,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|,
@@ -540,7 +542,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|,

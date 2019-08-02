@@ -404,7 +404,37 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -1138,7 +1168,7 @@ name|entry
 operator|.
 name|getFieldOrAliasLatexFree
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|)
@@ -1169,7 +1199,7 @@ name|entry
 operator|.
 name|getFieldOrAliasLatexFree
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|)
@@ -1200,7 +1230,7 @@ name|entry
 operator|.
 name|getFieldOrAliasLatexFree
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|)
@@ -1231,7 +1261,7 @@ name|entry
 operator|.
 name|getFieldOrAliasLatexFree
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNAL
 argument_list|)
@@ -1285,7 +1315,7 @@ name|entry
 operator|.
 name|getFieldOrAliasLatexFree
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|)
@@ -1348,28 +1378,29 @@ block|}
 end_function
 
 begin_function
-DECL|method|getIcon (String type)
+DECL|method|getIcon (EntryType type)
 specifier|private
 name|IconTheme
 operator|.
 name|JabRefIcons
 name|getIcon
 parameter_list|(
-name|String
+name|EntryType
 name|type
 parameter_list|)
 block|{
-switch|switch
+if|if
 condition|(
-name|type
+name|StandardEntryType
 operator|.
-name|toLowerCase
-argument_list|()
+name|Book
+operator|.
+name|equals
+argument_list|(
+name|type
+argument_list|)
 condition|)
 block|{
-case|case
-literal|"book"
-case|:
 return|return
 name|IconTheme
 operator|.
@@ -1377,7 +1408,7 @@ name|JabRefIcons
 operator|.
 name|BOOK
 return|;
-default|default:
+block|}
 return|return
 name|IconTheme
 operator|.
@@ -1385,7 +1416,6 @@ name|JabRefIcons
 operator|.
 name|ARTICLE
 return|;
-block|}
 block|}
 end_function
 

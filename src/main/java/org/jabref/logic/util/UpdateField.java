@@ -90,7 +90,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|InternalField
 import|;
 end_import
 
@@ -106,7 +124,7 @@ name|UpdateField
 parameter_list|()
 block|{     }
 comment|/**      * Updating a field will result in the entry being reformatted on save      *      * @param be         BibEntry      * @param field      Field name      * @param newValue   New field value      */
-DECL|method|updateField (BibEntry be, String field, String newValue)
+DECL|method|updateField (BibEntry be, Field field, String newValue)
 specifier|public
 specifier|static
 name|Optional
@@ -118,7 +136,7 @@ parameter_list|(
 name|BibEntry
 name|be
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|,
 name|String
@@ -139,7 +157,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Updating a non-displayable field does not result in the entry being reformatted on save      *      * @param be         BibEntry      * @param field      Field name      * @param newValue   New field value      */
-DECL|method|updateNonDisplayableField (BibEntry be, String field, String newValue)
+DECL|method|updateNonDisplayableField (BibEntry be, Field field, String newValue)
 specifier|public
 specifier|static
 name|Optional
@@ -151,7 +169,7 @@ parameter_list|(
 name|BibEntry
 name|be
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|,
 name|String
@@ -195,7 +213,7 @@ name|fieldChange
 return|;
 block|}
 comment|/**      * Undoable change of field value      *      * @param be                          BibEntry      * @param field                       Field name      * @param newValue                    New field value      * @param nullFieldIfValueIsTheSame   If true the field value is removed when the current value is equals to newValue      */
-DECL|method|updateField (BibEntry be, String field, String newValue, Boolean nullFieldIfValueIsTheSame)
+DECL|method|updateField (BibEntry be, Field field, String newValue, Boolean nullFieldIfValueIsTheSame)
 specifier|public
 specifier|static
 name|Optional
@@ -207,7 +225,7 @@ parameter_list|(
 name|BibEntry
 name|be
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|,
 name|String
@@ -421,7 +439,7 @@ name|now
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|String
+name|Field
 name|timeStampField
 init|=
 name|prefs
@@ -446,7 +464,7 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|OWNER
 argument_list|)
@@ -524,7 +542,7 @@ name|prefs
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setAutomaticFields (BibEntry entry, boolean setOwner, String owner, boolean setTimeStamp, String timeStampField, String timeStamp)
+DECL|method|setAutomaticFields (BibEntry entry, boolean setOwner, String owner, boolean setTimeStamp, Field timeStampField, String timeStamp)
 specifier|private
 specifier|static
 name|void
@@ -542,7 +560,7 @@ parameter_list|,
 name|boolean
 name|setTimeStamp
 parameter_list|,
-name|String
+name|Field
 name|timeStampField
 parameter_list|,
 name|String
@@ -560,7 +578,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|OWNER
 argument_list|,
@@ -636,7 +654,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|String
+name|Field
 name|timeStampField
 init|=
 name|prefs
@@ -696,7 +714,7 @@ name|curEntry
 operator|.
 name|hasField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|OWNER
 argument_list|)

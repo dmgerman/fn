@@ -94,6 +94,20 @@ name|Collectors
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
 begin_comment
 comment|/**  * A small table, where an entry type is associated with a Bibtex key pattern (an  *<code>ArrayList</code>). A parent BibtexKeyPattern can be set.  */
 end_comment
@@ -122,7 +136,7 @@ DECL|field|data
 specifier|protected
 name|Map
 argument_list|<
-name|String
+name|EntryType
 argument_list|,
 name|List
 argument_list|<
@@ -136,12 +150,12 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|addBibtexKeyPattern (String type, String pattern)
+DECL|method|addBibtexKeyPattern (EntryType type, String pattern)
 specifier|public
 name|void
 name|addBibtexKeyPattern
 parameter_list|(
-name|String
+name|EntryType
 name|type
 parameter_list|,
 name|String
@@ -325,16 +339,6 @@ name|String
 name|type
 parameter_list|)
 block|{
-if|if
-condition|(
-name|data
-operator|.
-name|containsKey
-argument_list|(
-name|type
-argument_list|)
-condition|)
-block|{
 name|data
 operator|.
 name|remove
@@ -343,9 +347,8 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-comment|/**      * Gets an object for a desired key from this BibtexKeyPattern or one of it's      * parents (in the case of DatabaseBibtexKeyPattern). This method first tries to obtain the object from this      * BibtexKeyPattern via the<code>get</code> method of<code>Hashtable</code>.      * If this fails, we try the default.<br />      * If that fails, we try the parent.<br />      * If that fails, we return the DEFAULT_LABELPATTERN<br />      *      * @param key a<code>String</code>      * @return the list of Strings for the given key. First entry: the complete key      */
-DECL|method|getValue (String key)
+comment|/**      * Gets an object for a desired key from this BibtexKeyPattern or one of it's      * parents (in the case of DatabaseBibtexKeyPattern). This method first tries to obtain the object from this      * BibtexKeyPattern via the<code>get</code> method of<code>Hashtable</code>.      * If this fails, we try the default.<br />      * If that fails, we try the parent.<br />      * If that fails, we return the DEFAULT_LABELPATTERN<br />      *      * @param entryType a<code>String</code>      * @return the list of Strings for the given key. First entry: the complete key      */
+DECL|method|getValue (EntryType entryType)
 specifier|public
 name|List
 argument_list|<
@@ -353,8 +356,8 @@ name|String
 argument_list|>
 name|getValue
 parameter_list|(
-name|String
-name|key
+name|EntryType
+name|entryType
 parameter_list|)
 block|{
 name|List
@@ -367,7 +370,7 @@ name|data
 operator|.
 name|get
 argument_list|(
-name|key
+name|entryType
 argument_list|)
 decl_stmt|;
 comment|//  Test to see if we found anything
@@ -401,7 +404,7 @@ comment|// we don't have anything left
 return|return
 name|getLastLevelBibtexKeyPattern
 argument_list|(
-name|key
+name|entryType
 argument_list|)
 return|;
 block|}
@@ -481,14 +484,14 @@ name|fieldList
 return|;
 block|}
 comment|/**      * Checks whether this pattern is customized or the default value.      */
-DECL|method|isDefaultValue (String key)
+DECL|method|isDefaultValue (EntryType entryType)
 specifier|public
 specifier|final
 name|boolean
 name|isDefaultValue
 parameter_list|(
-name|String
-name|key
+name|EntryType
+name|entryType
 parameter_list|)
 block|{
 return|return
@@ -496,7 +499,7 @@ name|data
 operator|.
 name|get
 argument_list|(
-name|key
+name|entryType
 argument_list|)
 operator|==
 literal|null
@@ -551,7 +554,7 @@ DECL|method|getAllKeys ()
 specifier|public
 name|Set
 argument_list|<
-name|String
+name|EntryType
 argument_list|>
 name|getAllKeys
 parameter_list|()
@@ -567,7 +570,7 @@ DECL|method|getPatterns ()
 specifier|public
 name|Map
 argument_list|<
-name|String
+name|EntryType
 argument_list|,
 name|List
 argument_list|<
@@ -607,7 +610,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|getLastLevelBibtexKeyPattern (String key)
+DECL|method|getLastLevelBibtexKeyPattern (EntryType key)
 specifier|public
 specifier|abstract
 name|List
@@ -616,7 +619,7 @@ name|String
 argument_list|>
 name|getLastLevelBibtexKeyPattern
 parameter_list|(
-name|String
+name|EntryType
 name|key
 parameter_list|)
 function_decl|;

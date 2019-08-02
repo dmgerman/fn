@@ -294,7 +294,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -308,9 +310,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|specialfields
+name|field
 operator|.
 name|SpecialField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -1094,7 +1112,7 @@ name|setExecutable
 argument_list|(
 name|isFieldSetForSelectedEntry
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 argument_list|,
@@ -1103,7 +1121,7 @@ argument_list|)
 operator|||
 name|isFieldSetForSelectedEntry
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|,
@@ -1144,7 +1162,7 @@ name|setExecutable
 argument_list|(
 name|isFieldSetForSelectedEntry
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 argument_list|,
@@ -1185,7 +1203,7 @@ name|setExecutable
 argument_list|(
 name|isFieldSetForSelectedEntry
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 argument_list|,
@@ -1603,13 +1621,13 @@ return|return
 name|copySpecialMenu
 return|;
 block|}
-DECL|method|isFieldSetForSelectedEntry (String field, BasePanel panel)
+DECL|method|isFieldSetForSelectedEntry (Field field, BasePanel panel)
 specifier|private
 specifier|static
 name|boolean
 name|isFieldSetForSelectedEntry
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|,
 name|BasePanel
@@ -1630,7 +1648,7 @@ name|panel
 argument_list|)
 return|;
 block|}
-DECL|method|isAnyFieldSetForSelectedEntry (List<String> fields, BasePanel panel)
+DECL|method|isAnyFieldSetForSelectedEntry (List<Field> fields, BasePanel panel)
 specifier|private
 specifier|static
 name|boolean
@@ -1638,7 +1656,7 @@ name|isAnyFieldSetForSelectedEntry
 parameter_list|(
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|fields
 parameter_list|,
@@ -1688,7 +1706,7 @@ name|fields
 argument_list|,
 name|entry
 operator|.
-name|getFieldNames
+name|getFields
 argument_list|()
 argument_list|)
 return|;

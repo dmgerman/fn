@@ -150,6 +150,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|jupiter
@@ -243,7 +259,6 @@ operator|new
 name|BibDatabaseContext
 argument_list|()
 decl_stmt|;
-empty_stmt|;
 DECL|field|charset
 specifier|public
 name|Charset
@@ -376,7 +391,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Peptidomics of the larval {\\protect{{D}rosophila melanogaster}} central nervous system."
 argument_list|)
@@ -479,7 +496,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Insect neuropeptide bursicon homodimers induce innate immune and stress genes during molting by activating the {NF}-$\\kappa$B transcription factor Relish."
 argument_list|)

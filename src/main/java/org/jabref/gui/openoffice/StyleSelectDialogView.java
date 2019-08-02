@@ -951,10 +951,8 @@ operator|.
 name|getStyle
 argument_list|()
 operator|.
-name|getReferenceFormat
-argument_list|(
-literal|"default"
-argument_list|)
+name|getDefaultBibLayout
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -970,10 +968,8 @@ operator|.
 name|getStyle
 argument_list|()
 operator|.
-name|getReferenceFormat
-argument_list|(
-literal|"default"
-argument_list|)
+name|getDefaultBibLayout
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -102,7 +102,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|Month
 import|;
 end_import
 
@@ -116,7 +116,39 @@ name|model
 operator|.
 name|entry
 operator|.
-name|Month
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|InternalField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -270,13 +302,10 @@ name|olly2018
 operator|=
 operator|new
 name|BibEntry
-argument_list|()
-expr_stmt|;
-name|olly2018
-operator|.
-name|setType
 argument_list|(
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|)
 expr_stmt|;
 name|olly2018
@@ -290,7 +319,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Olly and Johannes"
 argument_list|)
@@ -299,7 +330,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Stefan's palace"
 argument_list|)
@@ -308,7 +341,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"Test Journal"
 argument_list|)
@@ -317,7 +352,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"1"
 argument_list|)
@@ -326,7 +363,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"number"
+name|StandardField
+operator|.
+name|NUMBER
 argument_list|,
 literal|"1"
 argument_list|)
@@ -335,7 +374,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"1-2"
 argument_list|)
@@ -353,7 +394,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"978-123-123"
 argument_list|)
@@ -362,7 +405,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"note"
+name|StandardField
+operator|.
+name|NOTE
 argument_list|,
 literal|"NOTE"
 argument_list|)
@@ -371,7 +416,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|StandardField
+operator|.
+name|ABSTRACT
 argument_list|,
 literal|"ABSTRACT"
 argument_list|)
@@ -380,7 +427,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"comment"
+name|StandardField
+operator|.
+name|COMMENT
 argument_list|,
 literal|"COMMENT"
 argument_list|)
@@ -389,7 +438,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10/3212.3123"
 argument_list|)
@@ -398,7 +449,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|,
 literal|":article_dublinCore.pdf:PDF"
 argument_list|)
@@ -407,7 +460,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"groups"
+name|InternalField
+operator|.
+name|GROUPS
 argument_list|,
 literal|"NO"
 argument_list|)
@@ -416,7 +471,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"howpublished"
+name|StandardField
+operator|.
+name|HOWPUBLISHED
 argument_list|,
 literal|"online"
 argument_list|)
@@ -425,7 +482,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"k1, k2"
 argument_list|)
@@ -434,7 +493,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"owner"
+name|InternalField
+operator|.
+name|OWNER
 argument_list|,
 literal|"me"
 argument_list|)
@@ -443,7 +504,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"review"
+name|StandardField
+operator|.
+name|REVIEW
 argument_list|,
 literal|"review"
 argument_list|)
@@ -452,7 +515,9 @@ name|olly2018
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"https://www.olly2018.edu"
 argument_list|)
@@ -461,20 +526,19 @@ name|toral2006
 operator|=
 operator|new
 name|BibEntry
-argument_list|()
-expr_stmt|;
-name|toral2006
-operator|.
-name|setType
 argument_list|(
-literal|"InProceedings"
+name|StandardEntryType
+operator|.
+name|InProceedings
 argument_list|)
 expr_stmt|;
 name|toral2006
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Toral, Antonio and Munoz, Rafael"
 argument_list|)
@@ -483,7 +547,9 @@ name|toral2006
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"A proposal to automatically build and maintain gazetteers for Named Entity Recognition by using Wikipedia"
 argument_list|)
@@ -492,7 +558,9 @@ name|toral2006
 operator|.
 name|setField
 argument_list|(
-literal|"booktitle"
+name|StandardField
+operator|.
+name|BOOKTITLE
 argument_list|,
 literal|"Proceedings of EACL"
 argument_list|)
@@ -501,7 +569,9 @@ name|toral2006
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"56--61"
 argument_list|)
@@ -510,7 +580,9 @@ name|toral2006
 operator|.
 name|setField
 argument_list|(
-literal|"eprinttype"
+name|StandardField
+operator|.
+name|EPRINTTYPE
 argument_list|,
 literal|"asdf"
 argument_list|)
@@ -519,7 +591,9 @@ name|toral2006
 operator|.
 name|setField
 argument_list|(
-literal|"owner"
+name|InternalField
+operator|.
+name|OWNER
 argument_list|,
 literal|"Ich"
 argument_list|)
@@ -528,7 +602,9 @@ name|toral2006
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"www.url.de"
 argument_list|)
@@ -537,13 +613,10 @@ name|vapnik2000
 operator|=
 operator|new
 name|BibEntry
-argument_list|()
-expr_stmt|;
-name|vapnik2000
-operator|.
-name|setType
 argument_list|(
-literal|"Book"
+name|StandardEntryType
+operator|.
+name|Book
 argument_list|)
 expr_stmt|;
 name|vapnik2000
@@ -557,7 +630,9 @@ name|vapnik2000
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"The Nature of Statistical Learning Theory"
 argument_list|)
@@ -566,7 +641,9 @@ name|vapnik2000
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"Springer Science + Business Media"
 argument_list|)
@@ -575,7 +652,9 @@ name|vapnik2000
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Vladimir N. Vapnik"
 argument_list|)
@@ -584,7 +663,9 @@ name|vapnik2000
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1007/978-1-4757-3264-1"
 argument_list|)
@@ -593,7 +674,9 @@ name|vapnik2000
 operator|.
 name|setField
 argument_list|(
-literal|"owner"
+name|InternalField
+operator|.
+name|OWNER
 argument_list|,
 literal|"Ich"
 argument_list|)
@@ -754,7 +837,7 @@ name|entryWritten
 operator|.
 name|clearField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 argument_list|)

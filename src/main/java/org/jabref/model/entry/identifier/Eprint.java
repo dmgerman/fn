@@ -88,7 +88,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -528,12 +546,12 @@ annotation|@
 name|Override
 DECL|method|getDefaultField ()
 specifier|public
-name|String
+name|Field
 name|getDefaultField
 parameter_list|()
 block|{
 return|return
-name|FieldName
+name|StandardField
 operator|.
 name|EPRINT
 return|;

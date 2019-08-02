@@ -40,6 +40,38 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|jupiter
@@ -168,11 +200,6 @@ throws|throws
 name|Exception
 block|{
 name|String
-name|fieldName
-init|=
-literal|"abstract"
-decl_stmt|;
-name|String
 name|text
 init|=
 literal|"lorem"
@@ -183,7 +210,6 @@ name|NEWLINE
 operator|+
 literal|" ipsum lorem ipsum\nlorem ipsum \rlorem ipsum\r\ntest"
 decl_stmt|;
-comment|// The newlines are normalized according to the globally configured newline setting in the formatter
 name|String
 name|expected
 init|=
@@ -226,8 +252,66 @@ name|format
 argument_list|(
 name|text
 argument_list|,
-name|fieldName
+name|StandardField
+operator|.
+name|ABSTRACT
 argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|result
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|newlineAtEndOfAbstractFieldIsDeleted ()
+specifier|public
+name|void
+name|newlineAtEndOfAbstractFieldIsDeleted
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|text
+init|=
+literal|"lorem ipsum lorem ipsum"
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+operator|+
+literal|"lorem ipsum lorem ipsum"
+decl_stmt|;
+name|String
+name|result
+init|=
+name|formatter
+operator|.
+name|format
+argument_list|(
+name|text
+operator|+
+name|OS
+operator|.
+name|NEWLINE
+argument_list|,
+name|StandardField
+operator|.
+name|ABSTRACT
+argument_list|)
+decl_stmt|;
+name|String
+name|expected
+init|=
+literal|"{"
+operator|+
+name|text
+operator|+
+literal|"}"
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -248,12 +332,6 @@ throws|throws
 name|Exception
 block|{
 name|String
-name|fieldName
-init|=
-literal|"abstract"
-decl_stmt|;
-comment|// The newlines are normalized according to the globally configured newline setting in the formatter
-name|String
 name|text
 init|=
 literal|"lorem ipsum lorem ipsum"
@@ -263,10 +341,6 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"lorem ipsum lorem ipsum"
-operator|+
-name|OS
-operator|.
-name|NEWLINE
 decl_stmt|;
 name|String
 name|result
@@ -277,7 +351,9 @@ name|format
 argument_list|(
 name|text
 argument_list|,
-name|fieldName
+name|StandardField
+operator|.
+name|ABSTRACT
 argument_list|)
 decl_stmt|;
 name|String
@@ -308,12 +384,6 @@ throws|throws
 name|Exception
 block|{
 name|String
-name|fieldName
-init|=
-literal|"abstract"
-decl_stmt|;
-comment|// The newlines are normalized according to the globally configured newline setting in the formatter
-name|String
 name|text
 init|=
 literal|"lorem ipsum lorem ipsum"
@@ -327,10 +397,6 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"lorem ipsum lorem ipsum"
-operator|+
-name|OS
-operator|.
-name|NEWLINE
 decl_stmt|;
 name|String
 name|result
@@ -341,7 +407,9 @@ name|format
 argument_list|(
 name|text
 argument_list|,
-name|fieldName
+name|StandardField
+operator|.
+name|ABSTRACT
 argument_list|)
 decl_stmt|;
 name|String
@@ -372,12 +440,6 @@ throws|throws
 name|Exception
 block|{
 name|String
-name|fieldName
-init|=
-literal|"review"
-decl_stmt|;
-comment|// The newlines are normalized according to the globally configured newline setting in the formatter
-name|String
 name|text
 init|=
 literal|"lorem ipsum lorem ipsum"
@@ -387,10 +449,6 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"lorem ipsum lorem ipsum"
-operator|+
-name|OS
-operator|.
-name|NEWLINE
 decl_stmt|;
 name|String
 name|result
@@ -401,7 +459,9 @@ name|format
 argument_list|(
 name|text
 argument_list|,
-name|fieldName
+name|StandardField
+operator|.
+name|REVIEW
 argument_list|)
 decl_stmt|;
 name|String
@@ -450,7 +510,9 @@ name|format
 argument_list|(
 name|original
 argument_list|,
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|)
 decl_stmt|;
 name|String
@@ -462,7 +524,11 @@ name|format
 argument_list|(
 name|original
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"anyotherfield"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -480,6 +546,8 @@ name|any
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|reportUnbalancedBracing ()
 specifier|public
 name|void
@@ -507,11 +575,17 @@ name|format
 argument_list|(
 name|unbalanced
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"anyfield"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|reportUnbalancedBracingWithEscapedBraces ()
 specifier|public
 name|void
@@ -539,7 +613,11 @@ name|format
 argument_list|(
 name|unbalanced
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"anyfield"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -573,7 +651,11 @@ name|format
 argument_list|(
 name|text
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"anyfield"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -607,7 +689,11 @@ name|format
 argument_list|(
 name|text
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"anyfield"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -637,7 +723,9 @@ name|format
 argument_list|(
 name|text
 argument_list|,
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -694,7 +782,9 @@ name|format
 argument_list|(
 name|text
 argument_list|,
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|)
 argument_list|)
 expr_stmt|;

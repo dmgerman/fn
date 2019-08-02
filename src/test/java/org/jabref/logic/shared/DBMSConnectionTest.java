@@ -76,20 +76,6 @@ name|junit
 operator|.
 name|jupiter
 operator|.
-name|api
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|jupiter
-operator|.
 name|params
 operator|.
 name|ParameterizedTest
@@ -198,7 +184,14 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Test
+name|ParameterizedTest
+annotation|@
+name|EnumSource
+argument_list|(
+name|DBMSType
+operator|.
+name|class
+argument_list|)
 DECL|method|testGetConnectionFail (DBMSType dbmsType)
 specifier|public
 name|void

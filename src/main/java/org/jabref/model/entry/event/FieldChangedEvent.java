@@ -40,6 +40,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_comment
 comment|/**  *<code>FieldChangedEvent</code> is fired when a field of<code>BibEntry</code> has been modified, removed or added.  */
 end_comment
@@ -52,11 +68,11 @@ name|FieldChangedEvent
 extends|extends
 name|EntryChangedEvent
 block|{
-DECL|field|fieldName
+DECL|field|field
 specifier|private
 specifier|final
-name|String
-name|fieldName
+name|Field
+name|field
 decl_stmt|;
 DECL|field|newValue
 specifier|private
@@ -77,16 +93,16 @@ name|delta
 init|=
 literal|0
 decl_stmt|;
-comment|/**      * @param bibEntry  Affected BibEntry object      * @param fieldName Name of field which has been changed      * @param newValue  new field value      * @param newValue  old field value      * @param location  location Location affected by this event      */
-DECL|method|FieldChangedEvent (BibEntry bibEntry, String fieldName, String newValue, String oldValue, EntryEventSource location)
+comment|/**      * @param bibEntry  Affected BibEntry object      * @param field Name of field which has been changed      * @param newValue  new field value      * @param newValue  old field value      * @param location  location Location affected by this event      */
+DECL|method|FieldChangedEvent (BibEntry bibEntry, Field field, String newValue, String oldValue, EntryEventSource location)
 specifier|public
 name|FieldChangedEvent
 parameter_list|(
 name|BibEntry
 name|bibEntry
 parameter_list|,
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|String
 name|newValue
@@ -107,9 +123,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|fieldName
+name|field
 operator|=
-name|fieldName
+name|field
 expr_stmt|;
 name|this
 operator|.
@@ -133,16 +149,16 @@ name|newValue
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param bibEntry  Affected BibEntry object      * @param fieldName Name of field which has been changed      * @param newValue  new field value      */
-DECL|method|FieldChangedEvent (BibEntry bibEntry, String fieldName, String newValue, String oldValue)
+comment|/**      * @param bibEntry  Affected BibEntry object      * @param field Name of field which has been changed      * @param newValue  new field value      */
+DECL|method|FieldChangedEvent (BibEntry bibEntry, Field field, String newValue, String oldValue)
 specifier|public
 name|FieldChangedEvent
 parameter_list|(
 name|BibEntry
 name|bibEntry
 parameter_list|,
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|String
 name|newValue
@@ -158,9 +174,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|fieldName
+name|field
 operator|=
-name|fieldName
+name|field
 expr_stmt|;
 name|this
 operator|.
@@ -208,7 +224,7 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|fieldName
+name|field
 operator|=
 name|fieldChange
 operator|.
@@ -342,14 +358,14 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|getFieldName ()
+DECL|method|getField ()
 specifier|public
-name|String
-name|getFieldName
+name|Field
+name|getField
 parameter_list|()
 block|{
 return|return
-name|fieldName
+name|field
 return|;
 block|}
 DECL|method|getNewValue ()

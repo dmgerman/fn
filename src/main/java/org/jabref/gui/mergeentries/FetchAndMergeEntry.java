@@ -270,7 +270,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|EntryType
 import|;
 end_import
 
@@ -284,7 +284,41 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|FieldFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -324,7 +358,7 @@ specifier|public
 specifier|static
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|SUPPORTED_FIELDS
 init|=
@@ -332,15 +366,15 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|EPRINT
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|ISBN
 argument_list|)
@@ -432,7 +466,7 @@ name|SUPPORTED_FIELDS
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fetchAndMerge (BibEntry entry, String field)
+DECL|method|fetchAndMerge (BibEntry entry, Field field)
 specifier|public
 name|void
 name|fetchAndMerge
@@ -440,7 +474,7 @@ parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|)
 block|{
@@ -457,7 +491,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fetchAndMerge (BibEntry entry, List<String> fields)
+DECL|method|fetchAndMerge (BibEntry entry, List<Field> fields)
 specifier|public
 name|void
 name|fetchAndMerge
@@ -467,14 +501,14 @@ name|entry
 parameter_list|,
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|fields
 parameter_list|)
 block|{
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
 name|fields
@@ -557,12 +591,10 @@ block|{
 name|String
 name|type
 operator|=
-name|FieldName
+name|field
 operator|.
 name|getDisplayName
-argument_list|(
-name|field
-argument_list|)
+argument_list|()
 argument_list|;
 if|if
 condition|(
@@ -658,12 +690,10 @@ name|lang
 argument_list|(
 literal|"No %0 found"
 argument_list|,
-name|FieldName
+name|field
 operator|.
 name|getDisplayName
-argument_list|(
-name|field
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -793,7 +823,7 @@ decl_stmt|;
 comment|// Updated the original entry with the new fields
 name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|jointFields
 init|=
@@ -806,13 +836,13 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getFieldNames
+name|getFields
 argument_list|()
 argument_list|)
 decl_stmt|;
 name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|originalFields
 init|=
@@ -822,7 +852,7 @@ argument_list|<>
 argument_list|(
 name|originalEntry
 operator|.
-name|getFieldNames
+name|getFields
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -832,7 +862,7 @@ init|=
 literal|false
 decl_stmt|;
 comment|// entry type
-name|String
+name|EntryType
 name|oldType
 init|=
 name|originalEntry
@@ -840,7 +870,7 @@ operator|.
 name|getType
 argument_list|()
 decl_stmt|;
-name|String
+name|EntryType
 name|newType
 init|=
 name|mergedEntry
@@ -856,7 +886,7 @@ condition|(
 operator|!
 name|oldType
 operator|.
-name|equalsIgnoreCase
+name|equals
 argument_list|(
 name|newType
 argument_list|)
@@ -892,7 +922,7 @@ block|}
 comment|// fields
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
 name|jointFields
@@ -991,7 +1021,7 @@ block|}
 comment|// Remove fields which are not in the merged entry, unless they are internal fields
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
 name|originalFields
@@ -1008,7 +1038,7 @@ name|field
 argument_list|)
 operator|&&
 operator|!
-name|InternalBibtexFields
+name|FieldFactory
 operator|.
 name|isInternalField
 argument_list|(

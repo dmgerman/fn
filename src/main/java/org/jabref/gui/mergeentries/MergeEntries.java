@@ -346,22 +346,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|formatter
-operator|.
-name|casechanger
-operator|.
-name|SentenceCaseFormatter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|l10n
 operator|.
 name|Localization
@@ -406,7 +390,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|FieldFactory
 import|;
 end_import
 
@@ -518,7 +520,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|identicalFields
 init|=
@@ -532,7 +534,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|differentFields
 init|=
@@ -568,7 +570,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|TextFlow
 argument_list|>
@@ -584,7 +586,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|allFields
 init|=
@@ -598,7 +600,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|TextFlow
 argument_list|>
@@ -614,7 +616,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|List
 argument_list|<
@@ -1029,7 +1031,7 @@ literal|2
 decl_stmt|;
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
 name|allFields
@@ -1041,14 +1043,10 @@ init|=
 operator|new
 name|Label
 argument_list|(
-operator|new
-name|SentenceCaseFormatter
-argument_list|()
-operator|.
-name|format
-argument_list|(
 name|field
-argument_list|)
+operator|.
+name|getDisplayName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|mergePanel
@@ -1448,6 +1446,9 @@ name|leftEntry
 operator|.
 name|getType
 argument_list|()
+operator|.
+name|getDisplayName
+argument_list|()
 argument_list|)
 argument_list|,
 literal|1
@@ -1466,6 +1467,9 @@ argument_list|(
 name|rightEntry
 operator|.
 name|getType
+argument_list|()
+operator|.
+name|getDisplayName
 argument_list|()
 argument_list|)
 argument_list|,
@@ -1493,6 +1497,9 @@ name|leftEntry
 operator|.
 name|getType
 argument_list|()
+operator|.
+name|getDisplayName
+argument_list|()
 argument_list|)
 argument_list|,
 literal|1
@@ -1511,6 +1518,9 @@ argument_list|(
 name|rightEntry
 operator|.
 name|getType
+argument_list|()
+operator|.
+name|getDisplayName
 argument_list|()
 argument_list|)
 argument_list|,
@@ -1845,7 +1855,7 @@ name|addAll
 argument_list|(
 name|leftEntry
 operator|.
-name|getFieldNames
+name|getFields
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1855,14 +1865,14 @@ name|addAll
 argument_list|(
 name|rightEntry
 operator|.
-name|getFieldNames
+name|getFields
 argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Do not show internal fields
 name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|internalFields
 init|=
@@ -1873,7 +1883,7 @@ argument_list|()
 operator|.
 name|filter
 argument_list|(
-name|InternalBibtexFields
+name|FieldFactory
 operator|::
 name|isInternalField
 argument_list|)
@@ -1894,21 +1904,21 @@ name|internalFields
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateFieldValues (Collection<String> fields)
+DECL|method|updateFieldValues (Collection<Field> fields)
 specifier|private
 name|void
 name|updateFieldValues
 parameter_list|(
 name|Collection
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|fields
 parameter_list|)
 block|{
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
 name|fields
@@ -2254,7 +2264,7 @@ block|}
 comment|// Check the potentially different fields
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
 name|differentFields

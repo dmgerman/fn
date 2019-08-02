@@ -90,6 +90,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|LinkedList
 import|;
 end_import
@@ -140,7 +150,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|TreeMap
+name|Set
 import|;
 end_import
 
@@ -282,18 +292,6 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|EntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|FieldChange
 import|;
 end_import
@@ -392,6 +390,34 @@ name|model
 operator|.
 name|entry
 operator|.
+name|BibEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntryTypesManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexString
 import|;
 end_import
@@ -406,21 +432,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|CustomEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|field
 operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryType
+name|InternalField
 import|;
 end_import
 
@@ -514,7 +528,13 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|BibDatabaseWriter (Writer writer, SavePreferences preferences)
+DECL|field|entryTypesManager
+specifier|protected
+specifier|final
+name|BibEntryTypesManager
+name|entryTypesManager
+decl_stmt|;
+DECL|method|BibDatabaseWriter (Writer writer, SavePreferences preferences, BibEntryTypesManager entryTypesManager)
 specifier|public
 name|BibDatabaseWriter
 parameter_list|(
@@ -523,6 +543,9 @@ name|writer
 parameter_list|,
 name|SavePreferences
 name|preferences
+parameter_list|,
+name|BibEntryTypesManager
+name|entryTypesManager
 parameter_list|)
 block|{
 name|this
@@ -541,6 +564,12 @@ operator|.
 name|preferences
 operator|=
 name|preferences
+expr_stmt|;
+name|this
+operator|.
+name|entryTypesManager
+operator|=
+name|entryTypesManager
 expr_stmt|;
 block|}
 DECL|method|applySaveActions (List<BibEntry> toChange, MetaData metaData)
@@ -776,7 +805,7 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|BibEntry
+name|InternalField
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -1053,16 +1082,14 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Map to collect entry type definitions that we must save along with entries using them.
-name|Map
+name|Set
 argument_list|<
-name|String
-argument_list|,
-name|EntryType
+name|BibEntryType
 argument_list|>
 name|typesToWrite
 init|=
 operator|new
-name|TreeMap
+name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -1199,10 +1226,9 @@ comment|// entry, as well. Our criterion is that all non-standard
 comment|// types (*not* all customized standard types) must be written.
 if|if
 condition|(
-operator|!
-name|EntryTypes
+name|entryTypesManager
 operator|.
-name|getStandardType
+name|isCustomType
 argument_list|(
 name|entry
 operator|.
@@ -1214,16 +1240,13 @@ operator|.
 name|getMode
 argument_list|()
 argument_list|)
-operator|.
-name|isPresent
-argument_list|()
 condition|)
 block|{
 comment|// If user-defined entry type, then add it
-comment|// Otherwise (getType returns empty optional) it is a completely unknown entry type, so ignore it
-name|EntryTypes
+comment|// Otherwise (enrich returns empty optional) it is a completely unknown entry type, so ignore it
+name|entryTypesManager
 operator|.
-name|getType
+name|enrich
 argument_list|(
 name|entry
 operator|.
@@ -1238,19 +1261,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|entryType
-lambda|->
 name|typesToWrite
-operator|.
-name|put
-argument_list|(
-name|entryType
-operator|.
-name|getName
-argument_list|()
-argument_list|,
-name|entryType
-argument_list|)
+operator|::
+name|add
 argument_list|)
 expr_stmt|;
 block|}
@@ -1823,16 +1836,14 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|writeEntryTypeDefinitions (Map<String, EntryType> types)
+DECL|method|writeEntryTypeDefinitions (Set<BibEntryType> types)
 specifier|protected
 name|void
 name|writeEntryTypeDefinitions
 parameter_list|(
-name|Map
+name|Set
 argument_list|<
-name|String
-argument_list|,
-name|EntryType
+name|BibEntryType
 argument_list|>
 name|types
 parameter_list|)
@@ -1841,40 +1852,26 @@ name|IOException
 block|{
 for|for
 control|(
-name|EntryType
+name|BibEntryType
 name|type
 range|:
 name|types
-operator|.
-name|values
-argument_list|()
 control|)
-block|{
-if|if
-condition|(
-name|type
-operator|instanceof
-name|CustomEntryType
-condition|)
 block|{
 name|writeEntryTypeDefinition
 argument_list|(
-operator|(
-name|CustomEntryType
-operator|)
 name|type
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-DECL|method|writeEntryTypeDefinition (CustomEntryType customType)
+DECL|method|writeEntryTypeDefinition (BibEntryType customType)
 specifier|protected
 specifier|abstract
 name|void
 name|writeEntryTypeDefinition
 parameter_list|(
-name|CustomEntryType
+name|BibEntryType
 name|customType
 parameter_list|)
 throws|throws

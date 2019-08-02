@@ -568,7 +568,9 @@ name|getLatexFieldFormatterPreferences
 argument_list|()
 argument_list|)
 argument_list|,
-literal|false
+name|Globals
+operator|.
+name|entryTypesManager
 argument_list|)
 decl_stmt|;
 name|String

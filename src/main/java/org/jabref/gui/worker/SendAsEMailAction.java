@@ -490,7 +490,9 @@ name|getLatexFieldFormatterPreferences
 argument_list|()
 argument_list|)
 argument_list|,
-literal|true
+name|Globals
+operator|.
+name|entryTypesManager
 argument_list|)
 decl_stmt|;
 for|for

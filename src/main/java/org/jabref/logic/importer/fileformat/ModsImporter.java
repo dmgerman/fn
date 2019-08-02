@@ -838,7 +838,71 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|EntryTypeFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|FieldFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -1255,7 +1319,7 @@ argument_list|()
 decl_stmt|;
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -1325,14 +1389,14 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseModsGroup (Map<String, String> fields, List<Object> modsGroup, BibEntry entry)
+DECL|method|parseModsGroup (Map<Field, String> fields, List<Object> modsGroup, BibEntry entry)
 specifier|private
 name|void
 name|parseModsGroup
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -1581,7 +1645,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|,
@@ -1602,10 +1666,15 @@ name|entry
 operator|.
 name|setType
 argument_list|(
+name|EntryTypeFactory
+operator|.
+name|parse
+argument_list|(
 name|genre
 operator|.
 name|getValue
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1638,7 +1707,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|LANGUAGE
 argument_list|,
@@ -1823,7 +1892,7 @@ name|fields
 argument_list|,
 name|keywords
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|,
@@ -1839,7 +1908,7 @@ name|fields
 argument_list|,
 name|authors
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -1852,7 +1921,7 @@ name|fields
 argument_list|,
 name|notes
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|NOTE
 argument_list|,
@@ -1860,14 +1929,14 @@ literal|", "
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseTitle (Map<String, String> fields, List<Object> titleOrSubTitleOrPartNumber)
+DECL|method|parseTitle (Map<Field, String> fields, List<Object> titleOrSubTitleOrPartNumber)
 specifier|private
 name|void
 name|parseTitle
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -1942,7 +2011,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -1956,14 +2025,14 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|parseIdentifier (Map<String, String> fields, IdentifierDefinition identifier, BibEntry entry)
+DECL|method|parseIdentifier (Map<Field, String> fields, IdentifierDefinition identifier, BibEntry entry)
 specifier|private
 name|void
 name|parseIdentifier
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -2039,10 +2108,15 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|identifier
 operator|.
 name|getType
 argument_list|()
+argument_list|)
 argument_list|,
 name|identifier
 operator|.
@@ -2052,14 +2126,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|parseTopic (Map<String, String> fields, List<JAXBElement<?>> topicOrGeographicOrTemporal, List<String> keywords)
+DECL|method|parseTopic (Map<Field, String> fields, List<JAXBElement<?>> topicOrGeographicOrTemporal, List<String> keywords)
 specifier|private
 name|void
 name|parseTopic
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -2231,14 +2305,14 @@ name|empty
 argument_list|()
 return|;
 block|}
-DECL|method|parseGeographicInformation (Map<String, String> fields, HierarchicalGeographicDefinition hierarchichalGeographic)
+DECL|method|parseGeographicInformation (Map<Field, String> fields, HierarchicalGeographicDefinition hierarchichalGeographic)
 specifier|private
 name|void
 name|parseGeographicInformation
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -2310,7 +2384,11 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"city"
+argument_list|)
 argument_list|,
 name|city
 operator|.
@@ -2342,7 +2420,11 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"country"
+argument_list|)
 argument_list|,
 name|country
 operator|.
@@ -2353,14 +2435,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|parseLocationAndUrl (Map<String, String> fields, LocationDefinition locationDefinition)
+DECL|method|parseLocationAndUrl (Map<Field, String> fields, LocationDefinition locationDefinition)
 specifier|private
 name|void
 name|parseLocationAndUrl
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -2405,7 +2487,7 @@ name|fields
 argument_list|,
 name|locations
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|LOCATION
 argument_list|,
@@ -2447,7 +2529,7 @@ name|fields
 argument_list|,
 name|urls
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 argument_list|,
@@ -2455,14 +2537,14 @@ literal|", "
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseRecordInfo (Map<String, String> fields, RecordInfoDefinition recordInfo)
+DECL|method|parseRecordInfo (Map<Field, String> fields, RecordInfoDefinition recordInfo)
 specifier|private
 name|void
 name|parseRecordInfo
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -2524,7 +2606,11 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"source"
+argument_list|)
 argument_list|,
 name|source
 operator|.
@@ -2592,7 +2678,7 @@ name|fields
 argument_list|,
 name|languages
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|LANGUAGE
 argument_list|,
@@ -2603,14 +2689,14 @@ block|}
 block|}
 block|}
 comment|/**      * Puts the Information from the RelatedModsGroup. It has the same elements like the ModsGroup.      * But Informations like volume, issue and the pages appear here instead of in the ModsGroup.      * Also if there appears a title field, then this indicates that is the name of journal which the article belongs to.      */
-DECL|method|parseRelatedModsGroup (Map<String, String> fields, List<Object> relatedModsGroup)
+DECL|method|parseRelatedModsGroup (Map<Field, String> fields, List<Object> relatedModsGroup)
 specifier|private
 name|void
 name|parseRelatedModsGroup
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -2719,10 +2805,15 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|detail
 operator|.
 name|getType
 argument_list|()
+argument_list|)
 argument_list|,
 name|value
 operator|.
@@ -2847,7 +2938,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNAL
 argument_list|,
@@ -2863,7 +2954,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|putPageInformation (ExtentDefinition extentDefinition, Map<String, String> fields)
+DECL|method|putPageInformation (ExtentDefinition extentDefinition, Map<Field, String> fields)
 specifier|private
 name|void
 name|putPageInformation
@@ -2873,7 +2964,7 @@ name|extentDefinition
 parameter_list|,
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -2894,7 +2985,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|,
@@ -2925,7 +3016,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|,
@@ -2968,7 +3059,7 @@ name|fields
 operator|.
 name|get
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|)
@@ -2977,7 +3068,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|,
@@ -2991,14 +3082,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|putPlaceOrPublisherOrDate (Map<String, String> fields, String elementName, Object object)
+DECL|method|putPlaceOrPublisherOrDate (Map<Field, String> fields, String elementName, Object object)
 specifier|private
 name|void
 name|putPlaceOrPublisherOrDate
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -3081,7 +3172,11 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"issuance"
+argument_list|)
 argument_list|,
 name|issuance
 operator|.
@@ -3153,7 +3248,7 @@ name|fields
 argument_list|,
 name|places
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|ADDRESS
 argument_list|,
@@ -3193,14 +3288,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|putPublisherOrEdition (Map<String, String> fields, String elementName, StringPlusLanguagePlusSupplied pubOrEd)
+DECL|method|putPublisherOrEdition (Map<Field, String> fields, String elementName, StringPlusLanguagePlusSupplied pubOrEd)
 specifier|private
 name|void
 name|putPublisherOrEdition
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -3227,7 +3322,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|PUBLISHER
 argument_list|,
@@ -3253,7 +3348,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|EDITION
 argument_list|,
@@ -3265,14 +3360,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|putDate (Map<String, String> fields, String elementName, DateDefinition date)
+DECL|method|putDate (Map<Field, String> fields, String elementName, DateDefinition date)
 specifier|private
 name|void
 name|putDate
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -3308,7 +3403,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -3330,28 +3425,16 @@ case|case
 literal|"dateCreated"
 case|:
 comment|//If there was no year in date issued, then take the year from date created
-if|if
-condition|(
 name|fields
 operator|.
-name|get
+name|computeIfAbsent
 argument_list|(
-name|FieldName
-operator|.
-name|YEAR
-argument_list|)
-operator|==
-literal|null
-condition|)
-block|{
-name|fields
-operator|.
-name|put
-argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
+name|k
+lambda|->
 name|date
 operator|.
 name|getValue
@@ -3365,12 +3448,15 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"created"
+argument_list|)
 argument_list|,
 name|date
 operator|.
@@ -3386,7 +3472,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"captured"
+argument_list|)
 argument_list|,
 name|date
 operator|.
@@ -3402,7 +3492,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"modified"
+argument_list|)
 argument_list|,
 name|date
 operator|.
@@ -3416,14 +3510,14 @@ break|break;
 block|}
 block|}
 block|}
-DECL|method|putIfListIsNotEmpty (Map<String, String> fields, List<String> list, String key, String separator)
+DECL|method|putIfListIsNotEmpty (Map<Field, String> fields, List<String> list, Field key, String separator)
 specifier|private
 name|void
 name|putIfListIsNotEmpty
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -3435,7 +3529,7 @@ name|String
 argument_list|>
 name|list
 parameter_list|,
-name|String
+name|Field
 name|key
 parameter_list|,
 name|String
@@ -3475,7 +3569,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|handleAuthorsInNamePart (NameDefinition name, List<String> authors, Map<String, String> fields)
+DECL|method|handleAuthorsInNamePart (NameDefinition name, List<String> authors, Map<Field, String> fields)
 specifier|private
 name|void
 name|handleAuthorsInNamePart
@@ -3491,7 +3585,7 @@ name|authors
 parameter_list|,
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -3777,7 +3871,11 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"affiliation"
+argument_list|)
 argument_list|,
 name|affiliation
 operator|.
@@ -3864,21 +3962,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|putIfValueNotNull (Map<String, String> fields, String modsKey, String value)
+DECL|method|putIfValueNotNull (Map<Field, String> fields, Field field, String value)
 specifier|private
 name|void
 name|putIfValueNotNull
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
 name|fields
 parameter_list|,
-name|String
-name|modsKey
+name|Field
+name|field
 parameter_list|,
 name|String
 name|value
@@ -3895,7 +3993,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|modsKey
+name|field
 argument_list|,
 name|value
 argument_list|)

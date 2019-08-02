@@ -592,7 +592,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|Keyword
 import|;
 end_import
 
@@ -606,7 +606,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|Keyword
+name|field
+operator|.
+name|FieldFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -1287,7 +1305,7 @@ operator|new
 name|StackPane
 argument_list|()
 decl_stmt|;
-comment|/**      * Shows a group add/edit dialog.      *      * @param jabrefFrame The parent frame.      * @param editedGroup The group being edited, or null if a new group is to be      *                    created.      */
+comment|/**      * Shows a group add/edit dialog.      *      * @param editedGroup The group being edited, or null if a new group is to be      *                    created.      */
 DECL|method|GroupDialog (DialogService dialogService, BasePanel basePanel, JabRefPreferences prefs, AbstractGroup editedGroup)
 specifier|public
 name|GroupDialog
@@ -2326,6 +2344,10 @@ argument_list|,
 name|getContext
 argument_list|()
 argument_list|,
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|keywordGroupSearchField
 operator|.
 name|getText
@@ -2333,6 +2355,7 @@ argument_list|()
 operator|.
 name|trim
 argument_list|()
+argument_list|)
 argument_list|,
 name|keywordGroupSearchTerm
 operator|.
@@ -2361,6 +2384,10 @@ argument_list|,
 name|getContext
 argument_list|()
 argument_list|,
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|keywordGroupSearchField
 operator|.
 name|getText
@@ -2368,6 +2395,7 @@ argument_list|()
 operator|.
 name|trim
 argument_list|()
+argument_list|)
 argument_list|,
 name|keywordGroupSearchTerm
 operator|.
@@ -2456,6 +2484,10 @@ argument_list|,
 name|getContext
 argument_list|()
 argument_list|,
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|autoGroupKeywordsField
 operator|.
 name|getText
@@ -2463,6 +2495,7 @@ argument_list|()
 operator|.
 name|trim
 argument_list|()
+argument_list|)
 argument_list|,
 name|autoGroupKeywordsDeliminator
 operator|.
@@ -2498,6 +2531,10 @@ argument_list|,
 name|getContext
 argument_list|()
 argument_list|,
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|autoGroupPersonsField
 operator|.
 name|getText
@@ -2505,6 +2542,7 @@ argument_list|()
 operator|.
 name|trim
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2870,6 +2908,9 @@ name|group
 operator|.
 name|getSearchField
 argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|keywordGroupSearchTerm
@@ -2943,6 +2984,9 @@ argument_list|(
 name|group
 operator|.
 name|getSearchField
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3167,6 +3211,9 @@ name|group
 operator|.
 name|getField
 argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3198,6 +3245,9 @@ argument_list|(
 name|group
 operator|.
 name|getField
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3855,9 +3905,12 @@ name|autoGroupPersonsField
 operator|.
 name|setText
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

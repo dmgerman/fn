@@ -204,7 +204,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -761,7 +763,7 @@ name|preferences
 operator|.
 name|getAsOptional
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 operator|+
@@ -1068,7 +1070,7 @@ name|preferences
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 operator|+

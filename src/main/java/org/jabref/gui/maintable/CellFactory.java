@@ -134,7 +134,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -148,7 +150,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|specialfields
+name|field
 operator|.
 name|SpecialField
 import|;
@@ -162,9 +164,27 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|strings
+name|entry
 operator|.
-name|StringUtil
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -179,7 +199,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|JabRefIcon
 argument_list|>
@@ -217,7 +237,7 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PDF
 argument_list|,
@@ -237,7 +257,7 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 argument_list|,
@@ -257,7 +277,11 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"citeseerurl"
+argument_list|)
 argument_list|,
 name|icon
 argument_list|)
@@ -275,7 +299,7 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|EPRINT
 argument_list|,
@@ -295,7 +319,7 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|,
@@ -315,7 +339,7 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PS
 argument_list|,
@@ -335,7 +359,7 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FOLDER
 argument_list|,
@@ -355,7 +379,7 @@ name|TABLE_ICONS
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 argument_list|,
@@ -387,7 +411,7 @@ name|put
 argument_list|(
 name|fileType
 operator|.
-name|getName
+name|getField
 argument_list|()
 argument_list|,
 name|icon
@@ -422,9 +446,6 @@ argument_list|(
 name|SpecialField
 operator|.
 name|RELEVANCE
-operator|.
-name|getFieldName
-argument_list|()
 argument_list|,
 name|icon
 argument_list|)
@@ -457,9 +478,6 @@ argument_list|(
 name|SpecialField
 operator|.
 name|QUALITY
-operator|.
-name|getFieldName
-argument_list|()
 argument_list|,
 name|icon
 argument_list|)
@@ -493,9 +511,6 @@ argument_list|(
 name|SpecialField
 operator|.
 name|RANKING
-operator|.
-name|getFieldName
-argument_list|()
 argument_list|,
 name|icon
 argument_list|)
@@ -529,9 +544,6 @@ argument_list|(
 name|SpecialField
 operator|.
 name|PRIORITY
-operator|.
-name|getFieldName
-argument_list|()
 argument_list|,
 name|icon
 argument_list|)
@@ -565,9 +577,6 @@ argument_list|(
 name|SpecialField
 operator|.
 name|READ_STATUS
-operator|.
-name|getFieldName
-argument_list|()
 argument_list|,
 name|icon
 argument_list|)
@@ -601,37 +610,20 @@ argument_list|(
 name|SpecialField
 operator|.
 name|PRINTED
-operator|.
-name|getFieldName
-argument_list|()
 argument_list|,
 name|icon
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getTableIcon (String fieldType)
+DECL|method|getTableIcon (Field field)
 specifier|public
 name|Node
 name|getTableIcon
 parameter_list|(
-name|String
-name|fieldType
+name|Field
+name|field
 parameter_list|)
 block|{
-if|if
-condition|(
-name|StringUtil
-operator|.
-name|isBlank
-argument_list|(
-name|fieldType
-argument_list|)
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
 name|JabRefIcon
 name|icon
 init|=
@@ -639,7 +631,7 @@ name|TABLE_ICONS
 operator|.
 name|get
 argument_list|(
-name|fieldType
+name|field
 argument_list|)
 decl_stmt|;
 if|if
@@ -649,7 +641,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|//LOGGER.info("Error: no table icon defined for type '" + fieldType + "'.");
+comment|//LOGGER.info("Error: no table icon defined for type '" + field + "'.");
 return|return
 literal|null
 return|;

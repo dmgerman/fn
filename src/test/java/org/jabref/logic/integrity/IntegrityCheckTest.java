@@ -230,7 +230,85 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|FieldFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|InternalField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -330,7 +408,7 @@ name|api
 operator|.
 name|Assertions
 operator|.
-name|assertFalse
+name|assertNotEquals
 import|;
 end_import
 
@@ -376,11 +454,15 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"sometitle"
 argument_list|,
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|)
 argument_list|,
 name|BibDatabaseMode
@@ -395,11 +477,15 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"sometitle"
 argument_list|,
-literal|"patent"
+name|StandardEntryType
+operator|.
+name|Patent
 argument_list|)
 argument_list|,
 name|BibDatabaseMode
@@ -415,11 +501,15 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"sometitle"
 argument_list|,
-literal|"patent"
+name|StandardEntryType
+operator|.
+name|Patent
 argument_list|)
 argument_list|,
 name|BibDatabaseMode
@@ -435,11 +525,15 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"sometitle"
 argument_list|,
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|)
 argument_list|,
 name|BibDatabaseMode
@@ -460,7 +554,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"http://www.google.com"
 argument_list|)
@@ -470,7 +566,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"file://c:/asdf/asdf"
 argument_list|)
@@ -480,7 +578,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"http://scikit-learn.org/stable/modules/ensemble.html#random-forests"
 argument_list|)
@@ -490,7 +590,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"www.google.com"
 argument_list|)
@@ -500,7 +602,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"google.com"
 argument_list|)
@@ -510,7 +614,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"c:/asdf/asdf"
 argument_list|)
@@ -528,7 +634,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2014"
 argument_list|)
@@ -538,7 +646,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"1986"
 argument_list|)
@@ -548,7 +658,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"around 1986"
 argument_list|)
@@ -558,7 +670,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"(around 1986)"
 argument_list|)
@@ -568,7 +682,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"1986,"
 argument_list|)
@@ -578,7 +694,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"1986}%"
 argument_list|)
@@ -588,7 +706,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"1986(){},.;!?<>%&$"
 argument_list|)
@@ -598,7 +718,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"abc"
 argument_list|)
@@ -608,7 +730,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"86"
 argument_list|)
@@ -618,7 +742,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"204"
 argument_list|)
@@ -628,7 +754,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"1986a"
 argument_list|)
@@ -638,7 +766,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"(1986a)"
 argument_list|)
@@ -648,7 +778,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"1986a,"
 argument_list|)
@@ -658,7 +790,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"1986}a%"
 argument_list|)
@@ -668,7 +802,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"1986a(){},.;!?<>%&$"
 argument_list|)
@@ -688,7 +824,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"edition"
+name|StandardField
+operator|.
+name|EDITION
 argument_list|,
 literal|"Second"
 argument_list|)
@@ -705,7 +843,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"edition"
+name|StandardField
+operator|.
+name|EDITION
 argument_list|,
 literal|"Third"
 argument_list|)
@@ -722,7 +862,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"edition"
+name|StandardField
+operator|.
+name|EDITION
 argument_list|,
 literal|"second"
 argument_list|)
@@ -739,7 +881,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"edition"
+name|StandardField
+operator|.
+name|EDITION
 argument_list|,
 literal|"2"
 argument_list|)
@@ -756,7 +900,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"edition"
+name|StandardField
+operator|.
+name|EDITION
 argument_list|,
 literal|"2"
 argument_list|)
@@ -775,7 +921,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"edition"
+name|StandardField
+operator|.
+name|EDITION
 argument_list|,
 literal|"2nd"
 argument_list|)
@@ -792,7 +940,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"edition"
+name|StandardField
+operator|.
+name|EDITION
 argument_list|,
 literal|"2"
 argument_list|)
@@ -809,7 +959,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"edition"
+name|StandardField
+operator|.
+name|EDITION
 argument_list|,
 literal|"10"
 argument_list|)
@@ -826,7 +978,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"edition"
+name|StandardField
+operator|.
+name|EDITION
 argument_list|,
 literal|"Third, revised and expanded edition"
 argument_list|)
@@ -843,7 +997,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"edition"
+name|StandardField
+operator|.
+name|EDITION
 argument_list|,
 literal|"Edition 2000"
 argument_list|)
@@ -860,7 +1016,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"edition"
+name|StandardField
+operator|.
+name|EDITION
 argument_list|,
 literal|"2nd"
 argument_list|)
@@ -875,7 +1033,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"edition"
+name|StandardField
+operator|.
+name|EDITION
 argument_list|,
 literal|"1"
 argument_list|)
@@ -895,7 +1055,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"note"
+name|StandardField
+operator|.
+name|NOTE
 argument_list|,
 literal|"Lorem ipsum"
 argument_list|)
@@ -912,7 +1074,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"note"
+name|StandardField
+operator|.
+name|NOTE
 argument_list|,
 literal|"Lorem ipsum? 10"
 argument_list|)
@@ -929,7 +1093,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"note"
+name|StandardField
+operator|.
+name|NOTE
 argument_list|,
 literal|"lorem ipsum"
 argument_list|)
@@ -946,7 +1112,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"note"
+name|StandardField
+operator|.
+name|NOTE
 argument_list|,
 literal|"Lorem ipsum"
 argument_list|)
@@ -963,7 +1131,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"note"
+name|StandardField
+operator|.
+name|NOTE
 argument_list|,
 literal|"\\url{someurl}"
 argument_list|)
@@ -980,7 +1150,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"note"
+name|StandardField
+operator|.
+name|NOTE
 argument_list|,
 literal|"lorem ipsum"
 argument_list|)
@@ -1005,7 +1177,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"howpublished"
+name|StandardField
+operator|.
+name|HOWPUBLISHED
 argument_list|,
 literal|"Lorem ipsum"
 argument_list|)
@@ -1022,7 +1196,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"howpublished"
+name|StandardField
+operator|.
+name|HOWPUBLISHED
 argument_list|,
 literal|"Lorem ipsum? 10"
 argument_list|)
@@ -1039,7 +1215,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"howpublished"
+name|StandardField
+operator|.
+name|HOWPUBLISHED
 argument_list|,
 literal|"lorem ipsum"
 argument_list|)
@@ -1056,7 +1234,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"howpublished"
+name|StandardField
+operator|.
+name|HOWPUBLISHED
 argument_list|,
 literal|"\\url{someurl}"
 argument_list|)
@@ -1073,7 +1253,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"howpublished"
+name|StandardField
+operator|.
+name|HOWPUBLISHED
 argument_list|,
 literal|"Lorem ipsum"
 argument_list|)
@@ -1090,7 +1272,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"howpublished"
+name|StandardField
+operator|.
+name|HOWPUBLISHED
 argument_list|,
 literal|"lorem ipsum"
 argument_list|)
@@ -1115,7 +1299,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#mar#"
 argument_list|)
@@ -1132,7 +1318,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#dec#"
 argument_list|)
@@ -1149,7 +1337,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#bla#"
 argument_list|)
@@ -1166,7 +1356,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"Dec"
 argument_list|)
@@ -1183,7 +1375,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"December"
 argument_list|)
@@ -1200,7 +1394,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"Lorem"
 argument_list|)
@@ -1217,7 +1413,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"10"
 argument_list|)
@@ -1234,7 +1432,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"1"
 argument_list|)
@@ -1251,7 +1451,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"10"
 argument_list|)
@@ -1268,7 +1470,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#jan#"
 argument_list|)
@@ -1285,7 +1489,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"jan"
 argument_list|)
@@ -1302,7 +1508,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"january"
 argument_list|)
@@ -1319,7 +1527,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"January"
 argument_list|)
@@ -1336,7 +1546,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"Lorem"
 argument_list|)
@@ -1361,7 +1573,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"journaltitle"
+name|StandardField
+operator|.
+name|JOURNALTITLE
 argument_list|,
 literal|"A journal"
 argument_list|)
@@ -1378,7 +1592,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"journaltitle"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"A journal"
 argument_list|)
@@ -1403,7 +1619,9 @@ name|correctContext
 init|=
 name|createContext
 argument_list|(
-literal|"bibtexkey"
+name|InternalField
+operator|.
+name|KEY_FIELD
 argument_list|,
 literal|"Knuth2014"
 argument_list|)
@@ -1423,7 +1641,9 @@ argument_list|)
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Knuth"
 argument_list|)
@@ -1443,7 +1663,9 @@ argument_list|)
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2014"
 argument_list|)
@@ -1459,7 +1681,9 @@ name|wrongContext
 init|=
 name|createContext
 argument_list|(
-literal|"bibtexkey"
+name|InternalField
+operator|.
+name|KEY_FIELD
 argument_list|,
 literal|"Knuth2014a"
 argument_list|)
@@ -1479,7 +1703,9 @@ argument_list|)
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Knuth"
 argument_list|)
@@ -1499,7 +1725,9 @@ argument_list|)
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2014"
 argument_list|)
@@ -1521,7 +1749,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"x"
 argument_list|)
@@ -1531,7 +1761,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"{x}"
 argument_list|)
@@ -1541,7 +1773,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"{x}x{}x{{}}"
 argument_list|)
@@ -1551,7 +1785,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"{x}x{}}x{{}}"
 argument_list|)
@@ -1561,7 +1797,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"}"
 argument_list|)
@@ -1571,7 +1809,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"{"
 argument_list|)
@@ -1587,10 +1827,10 @@ parameter_list|()
 block|{
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
-name|InternalBibtexFields
+name|FieldFactory
 operator|.
 name|getPersonNameFields
 argument_list|()
@@ -1766,7 +2006,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"This is a title"
 argument_list|)
@@ -1783,7 +2025,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"This is a Title"
 argument_list|)
@@ -1800,7 +2044,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"This is a {T}itle"
 argument_list|)
@@ -1817,7 +2063,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"{This is a Title}"
 argument_list|)
@@ -1834,7 +2082,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"This is a {Title}"
 argument_list|)
@@ -1851,7 +2101,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"{C}urrent {C}hronicle"
 argument_list|)
@@ -1868,7 +2120,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"{A Model-Driven Approach for Monitoring {ebBP} BusinessTransactions}"
 argument_list|)
@@ -1885,7 +2139,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"This is a title"
 argument_list|)
@@ -1902,7 +2158,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"This is a Title"
 argument_list|)
@@ -1919,7 +2177,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"This is a {T}itle"
 argument_list|)
@@ -1936,7 +2196,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"{This is a Title}"
 argument_list|)
@@ -1953,7 +2215,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"This is a {Title}"
 argument_list|)
@@ -1970,7 +2234,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"{C}urrent {C}hronicle"
 argument_list|)
@@ -1987,7 +2253,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"{A Model-Driven Approach for Monitoring {ebBP} BusinessTransactions}"
 argument_list|)
@@ -2008,16 +2276,20 @@ parameter_list|()
 block|{
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
 name|Arrays
 operator|.
 name|asList
 argument_list|(
-literal|"booktitle"
+name|StandardField
+operator|.
+name|BOOKTITLE
 argument_list|,
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|)
 control|)
 block|{
@@ -2064,7 +2336,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"IEEE Software"
 argument_list|)
@@ -2074,7 +2348,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"IEEE Whocares"
 argument_list|)
@@ -2170,7 +2446,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|,
 literal|":build.gradle:gradle"
 argument_list|,
@@ -2182,7 +2460,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|,
 literal|"description:build.gradle:gradle"
 argument_list|,
@@ -2194,7 +2474,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|,
 literal|":asflakjfwofja:PDF"
 argument_list|,
@@ -2256,7 +2538,9 @@ name|databaseContext
 init|=
 name|createContext
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|,
 literal|":file.pdf:PDF"
 argument_list|)
@@ -2285,11 +2569,15 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"11--15"
 argument_list|,
-literal|"inproceedings"
+name|StandardEntryType
+operator|.
+name|InProceedings
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2297,11 +2585,15 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"11--15"
 argument_list|,
-literal|"proceedings"
+name|StandardEntryType
+operator|.
+name|Proceedings
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2317,11 +2609,15 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"booktitle"
+name|StandardField
+operator|.
+name|BOOKTITLE
 argument_list|,
 literal|"2014 Fourth International Conference on Digital Information and Communication Technology and it's Applications (DICTAP)"
 argument_list|,
-literal|"proceedings"
+name|StandardEntryType
+operator|.
+name|Proceedings
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2329,11 +2625,15 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"booktitle"
+name|StandardField
+operator|.
+name|BOOKTITLE
 argument_list|,
 literal|"Digital Information and Communication Technology and it's Applications (DICTAP), 2014 Fourth International Conference on"
 argument_list|,
-literal|"proceedings"
+name|StandardEntryType
+operator|.
+name|Proceedings
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2349,7 +2649,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"1--2"
 argument_list|)
@@ -2359,7 +2661,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"12"
 argument_list|)
@@ -2369,7 +2673,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"1-2"
 argument_list|)
@@ -2379,7 +2685,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"1,2,3"
 argument_list|)
@@ -2389,7 +2697,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"43+"
 argument_list|)
@@ -2399,7 +2709,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"1 2"
 argument_list|)
@@ -2409,7 +2721,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"{1}-{2}"
 argument_list|)
@@ -2419,7 +2733,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"7,41,73--97"
 argument_list|)
@@ -2429,7 +2745,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"7,41--42,73"
 argument_list|)
@@ -2439,7 +2757,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"7--11,41--43,73"
 argument_list|)
@@ -2449,7 +2769,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"7+,41--43,73"
 argument_list|)
@@ -2469,7 +2791,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"1--2"
 argument_list|)
@@ -2486,7 +2810,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"12"
 argument_list|)
@@ -2503,7 +2829,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"1-2"
 argument_list|)
@@ -2521,7 +2849,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"1,2,3"
 argument_list|)
@@ -2538,7 +2868,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"43+"
 argument_list|)
@@ -2555,7 +2887,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"1 2"
 argument_list|)
@@ -2572,7 +2906,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"{1}-{2}"
 argument_list|)
@@ -2589,7 +2925,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"7,41,73--97"
 argument_list|)
@@ -2606,7 +2944,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"7,41--42,73"
 argument_list|)
@@ -2623,7 +2963,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"7--11,41--43,73"
 argument_list|)
@@ -2640,7 +2982,9 @@ name|withMode
 argument_list|(
 name|createContext
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"7+,41--43,73"
 argument_list|)
@@ -2663,7 +3007,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Not a single hash mark"
 argument_list|)
@@ -2673,7 +3019,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#jan#"
 argument_list|)
@@ -2683,7 +3031,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"#einstein# and #newton#"
 argument_list|)
@@ -2693,7 +3043,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#jan"
 argument_list|)
@@ -2703,7 +3055,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"#einstein# #amp; #newton#"
 argument_list|)
@@ -2721,7 +3075,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Not a single {HTML} character"
 argument_list|)
@@ -2731,7 +3087,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#jan#"
 argument_list|)
@@ -2741,7 +3099,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"A. Einstein and I. Newton"
 argument_list|)
@@ -2751,7 +3111,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"http://www.thinkmind.org/index.php?view=article&amp;articleid=cloud_computing_2013_1_20_20130"
 argument_list|)
@@ -2761,7 +3123,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Lenhard, J&ouml;rg"
 argument_list|)
@@ -2771,7 +3135,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Lenhard, J&#227;rg"
 argument_list|)
@@ -2781,7 +3147,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"&Auml;rling Str&ouml;m for&#8211;&#x2031;"
 argument_list|)
@@ -2799,7 +3167,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"0020-7217"
 argument_list|)
@@ -2809,7 +3179,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"1687-6180"
 argument_list|)
@@ -2819,7 +3191,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"2434-561x"
 argument_list|)
@@ -2829,7 +3203,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"Some other stuff"
 argument_list|)
@@ -2839,7 +3215,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"0020-7218"
 argument_list|)
@@ -2857,7 +3235,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"0-201-53082-1"
 argument_list|)
@@ -2867,7 +3247,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"0-9752298-0-X"
 argument_list|)
@@ -2877,7 +3259,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"978-0-306-40615-7"
 argument_list|)
@@ -2887,7 +3271,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"Some other stuff"
 argument_list|)
@@ -2897,7 +3283,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"0-201-53082-2"
 argument_list|)
@@ -2907,7 +3295,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"978-0-306-40615-8"
 argument_list|)
@@ -2925,7 +3315,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1023/A:1022883727209"
 argument_list|)
@@ -2935,7 +3327,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.17487/rfc1436"
 argument_list|)
@@ -2945,7 +3339,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1002/(SICI)1097-4571(199205)43:4<284::AID-ASI3>3.0.CO;2-0"
 argument_list|)
@@ -2955,7 +3351,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"asdf"
 argument_list|)
@@ -2979,12 +3377,12 @@ decl_stmt|;
 comment|// populate with all known fields
 for|for
 control|(
-name|String
-name|fieldName
+name|Field
+name|field
 range|:
-name|InternalBibtexFields
+name|FieldFactory
 operator|.
-name|getAllPublicAndInternalFieldNames
+name|getCommonFields
 argument_list|()
 control|)
 block|{
@@ -2992,7 +3390,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|UUID
 operator|.
@@ -3009,13 +3407,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|UUID
+name|StandardField
 operator|.
-name|randomUUID
-argument_list|()
-operator|.
-name|toString
-argument_list|()
+name|EPRINT
 argument_list|,
 name|UUID
 operator|.
@@ -3097,7 +3491,7 @@ argument_list|,
 literal|false
 argument_list|)
 operator|.
-name|checkBibtexDatabase
+name|checkDatabase
 argument_list|()
 expr_stmt|;
 name|assertEquals
@@ -3119,7 +3513,9 @@ name|assertCorrect
 argument_list|(
 name|createContext
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Only ascii characters!'@12"
 argument_list|)
@@ -3129,7 +3525,9 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"Umlauts are nÃ¶t Ã¤llowed"
 argument_list|)
@@ -3139,25 +3537,27 @@ name|assertWrong
 argument_list|(
 name|createContext
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Some unicode â"
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createContext (String field, String value, String type)
+DECL|method|createContext (Field field, String value, EntryType type)
 specifier|private
 name|BibDatabaseContext
 name|createContext
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|,
 name|String
 name|value
 parameter_list|,
-name|String
+name|EntryType
 name|type
 parameter_list|)
 block|{
@@ -3210,12 +3610,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|createContext (String field, String value, MetaData metaData)
+DECL|method|createContext (Field field, String value, MetaData metaData)
 specifier|private
 name|BibDatabaseContext
 name|createContext
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|,
 name|String
@@ -3269,12 +3669,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|createContext (String field, String value)
+DECL|method|createContext (Field field, String value)
 specifier|private
 name|BibDatabaseContext
 name|createContext
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|,
 name|String
@@ -3341,87 +3741,17 @@ argument_list|,
 literal|false
 argument_list|)
 operator|.
-name|checkBibtexDatabase
+name|checkDatabase
 argument_list|()
 decl_stmt|;
-name|assertFalse
+name|assertNotEquals
 argument_list|(
-name|messages
+name|Collections
 operator|.
-name|isEmpty
+name|emptyList
 argument_list|()
 argument_list|,
 name|messages
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|assertWrong (BibDatabaseContext context, boolean allowIntegerEdition)
-specifier|private
-name|void
-name|assertWrong
-parameter_list|(
-name|BibDatabaseContext
-name|context
-parameter_list|,
-name|boolean
-name|allowIntegerEdition
-parameter_list|)
-block|{
-name|List
-argument_list|<
-name|IntegrityMessage
-argument_list|>
-name|messages
-init|=
-operator|new
-name|IntegrityCheck
-argument_list|(
-name|context
-argument_list|,
-name|mock
-argument_list|(
-name|FilePreferences
-operator|.
-name|class
-argument_list|)
-argument_list|,
-name|createBibtexKeyPatternPreferences
-argument_list|()
-argument_list|,
-operator|new
-name|JournalAbbreviationRepository
-argument_list|(
-operator|new
-name|Abbreviation
-argument_list|(
-literal|"IEEE Software"
-argument_list|,
-literal|"IEEE SW"
-argument_list|)
-argument_list|)
-argument_list|,
-literal|true
-argument_list|,
-name|allowIntegerEdition
-argument_list|)
-operator|.
-name|checkBibtexDatabase
-argument_list|()
-decl_stmt|;
-name|assertFalse
-argument_list|(
-name|messages
-operator|.
-name|isEmpty
-argument_list|()
-argument_list|,
-name|messages
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3472,7 +3802,7 @@ argument_list|,
 literal|false
 argument_list|)
 operator|.
-name|checkBibtexDatabase
+name|checkDatabase
 argument_list|()
 decl_stmt|;
 name|assertEquals
@@ -3536,7 +3866,7 @@ argument_list|,
 name|allowIntegerEdition
 argument_list|)
 operator|.
-name|checkBibtexDatabase
+name|checkDatabase
 argument_list|()
 decl_stmt|;
 name|assertEquals

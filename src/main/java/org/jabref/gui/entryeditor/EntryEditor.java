@@ -90,6 +90,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|stream
 operator|.
 name|Collectors
@@ -543,6 +553,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -1795,9 +1821,9 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|List
+name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 argument_list|>
 name|tab
@@ -2444,13 +2470,13 @@ name|fetcher
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setFocusToField (String fieldName)
+DECL|method|setFocusToField (Field field)
 specifier|public
 name|void
 name|setFocusToField
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 block|{
 name|DefaultTaskExecutor
@@ -2491,7 +2517,7 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 condition|)
 block|{
@@ -2517,7 +2543,7 @@ name|fieldsEditorTab
 operator|.
 name|requestFocus
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 expr_stmt|;
 block|}

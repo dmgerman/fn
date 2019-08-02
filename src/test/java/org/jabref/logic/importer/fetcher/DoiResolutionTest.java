@@ -64,6 +64,22 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|support
 operator|.
 name|DisabledOnCIServer
@@ -183,7 +199,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1051/0004-6361/201527330"
 argument_list|)
@@ -223,7 +241,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1051/0004-6361/201527330; 10.1051/0004-6361/20152711233"
 argument_list|)
@@ -262,7 +282,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1186/unknown-doi"
 argument_list|)

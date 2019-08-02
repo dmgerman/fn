@@ -104,7 +104,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -508,7 +510,7 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
 argument_list|,
@@ -533,7 +535,7 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -667,7 +669,7 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
 argument_list|,
@@ -692,7 +694,7 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -2098,7 +2100,7 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
 argument_list|,
@@ -2123,7 +2125,7 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -2252,7 +2254,7 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
 argument_list|,
@@ -2277,7 +2279,7 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -2406,7 +2408,7 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
 argument_list|,
@@ -2431,7 +2433,7 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -2560,7 +2562,7 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
 argument_list|,
@@ -2585,7 +2587,7 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -4954,7 +4956,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"w1, w2a w2b, w3"
 argument_list|)
@@ -5050,7 +5054,7 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
 argument_list|,
@@ -5082,7 +5086,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"w1, w2a w2b, w3"
 argument_list|)
@@ -5128,7 +5134,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"w1, w2a w2b, w3"
 argument_list|)
@@ -5225,7 +5233,7 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
 argument_list|,
@@ -5257,7 +5265,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"w1, w2a w2b, w3"
 argument_list|)
@@ -5450,7 +5460,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Green Scheduling of Whatever"
 argument_list|)
@@ -5521,7 +5533,7 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
 argument_list|,
@@ -5553,7 +5565,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Green Scheduling of Whatever"
 argument_list|)
@@ -5608,7 +5622,7 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
 argument_list|,
@@ -5640,7 +5654,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Green Scheduling of Whatever"
 argument_list|)
@@ -5683,7 +5699,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Green Scheduling of: Whatever"
 argument_list|)
@@ -5724,7 +5742,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Green Scheduling of `Whatever`"
 argument_list|)
@@ -5765,7 +5785,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"The Interesting Title"
 argument_list|)
@@ -5806,7 +5828,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"The Interesting Title"
 argument_list|)
@@ -5847,7 +5871,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"the InTeresting title longer than THREE words"
 argument_list|)
@@ -5888,7 +5914,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"the InTeresting title longer than THREE words"
 argument_list|)
@@ -5929,7 +5957,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"A title WITH some of The key words"
 argument_list|)
@@ -5970,7 +6000,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"the InTeresting title longer than THREE words"
 argument_list|)
@@ -6011,7 +6043,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"A title WITH some of The key words"
 argument_list|)
@@ -6052,7 +6086,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_1
 argument_list|)
@@ -6061,7 +6097,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2019"
 argument_list|)
@@ -6070,7 +6108,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"the InTeresting title longer than THREE words"
 argument_list|)
@@ -6111,7 +6151,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_3
 argument_list|)
@@ -6120,7 +6162,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2019"
 argument_list|)
@@ -6129,7 +6173,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"the InTeresting title longer than THREE words"
 argument_list|)
@@ -6170,7 +6216,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_1
 argument_list|)
@@ -6179,7 +6227,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2019"
 argument_list|)

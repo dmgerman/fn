@@ -78,7 +78,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -108,7 +126,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -132,7 +150,7 @@ specifier|final
 name|String
 name|fileDirPattern
 decl_stmt|;
-DECL|method|FilePreferences (String user, Map<String, String> fieldFileDirectories, boolean bibLocationAsPrimary, String fileNamePattern, String fileDirPattern)
+DECL|method|FilePreferences (String user, Map<Field, String> fieldFileDirectories, boolean bibLocationAsPrimary, String fileNamePattern, String fileDirPattern)
 specifier|public
 name|FilePreferences
 parameter_list|(
@@ -141,7 +159,7 @@ name|user
 parameter_list|,
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -198,7 +216,7 @@ return|return
 name|user
 return|;
 block|}
-DECL|method|getFileDirectory (String field)
+DECL|method|getFileDirectory (Field field)
 specifier|public
 name|Optional
 argument_list|<
@@ -206,7 +224,7 @@ name|Path
 argument_list|>
 name|getFileDirectory
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|)
 block|{
@@ -290,7 +308,7 @@ block|{
 return|return
 name|getFileDirectory
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 argument_list|)

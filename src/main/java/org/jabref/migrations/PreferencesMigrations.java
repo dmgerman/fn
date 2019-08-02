@@ -150,7 +150,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|EntryTypeFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -268,7 +284,7 @@ argument_list|,
 name|mainPrefsNode
 argument_list|)
 expr_stmt|;
-name|upgradeStoredCustomEntryTypes
+name|upgradeStoredBibEntryTypes
 argument_list|(
 name|Globals
 operator|.
@@ -831,9 +847,12 @@ name|JabRefPreferences
 operator|.
 name|EXPORT_PRIMARY_SORT_FIELD
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|prefs
@@ -844,9 +863,12 @@ name|JabRefPreferences
 operator|.
 name|EXPORT_SECONDARY_SORT_FIELD
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|EDITOR
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|prefs
@@ -857,9 +879,12 @@ name|JabRefPreferences
 operator|.
 name|EXPORT_TERTIARY_SORT_FIELD
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|prefs
@@ -929,9 +954,12 @@ name|JabRefPreferences
 operator|.
 name|EXPORT_PRIMARY_SORT_FIELD
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|prefs
@@ -942,9 +970,12 @@ name|JabRefPreferences
 operator|.
 name|EXPORT_SECONDARY_SORT_FIELD
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|prefs
@@ -955,9 +986,12 @@ name|JabRefPreferences
 operator|.
 name|EXPORT_TERTIARY_SORT_FIELD
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|EDITOR
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|prefs
@@ -997,11 +1031,11 @@ block|}
 block|}
 block|}
 comment|/**      * Migrate all customized entry types from versions<=3.7      */
-DECL|method|upgradeStoredCustomEntryTypes (JabRefPreferences prefs, Preferences mainPrefsNode)
+DECL|method|upgradeStoredBibEntryTypes (JabRefPreferences prefs, Preferences mainPrefsNode)
 specifier|private
 specifier|static
 name|void
-name|upgradeStoredCustomEntryTypes
+name|upgradeStoredBibEntryTypes
 parameter_list|(
 name|JabRefPreferences
 name|prefs
@@ -1046,7 +1080,7 @@ argument_list|)
 expr_stmt|;
 name|CustomEntryTypePreferenceMigration
 operator|.
-name|upgradeStoredCustomEntryTypes
+name|upgradeStoredBibEntryTypes
 argument_list|(
 name|prefs
 operator|.
@@ -1792,7 +1826,12 @@ name|keyPattern
 operator|.
 name|addBibtexKeyPattern
 argument_list|(
+name|EntryTypeFactory
+operator|.
+name|parse
+argument_list|(
 name|key
+argument_list|)
 argument_list|,
 name|oldPatternPrefs
 operator|.

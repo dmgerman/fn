@@ -44,6 +44,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -301,6 +313,38 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|FieldFactory
 import|;
 end_import
 
@@ -585,7 +629,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Append a given value to a given field for all entries in a Collection. This method DOES NOT update any UndoManager,      * but returns a relevant CompoundEdit that should be registered by the caller.      *      * @param entries      The entries to process the operation for.      * @param field        The name of the field to append to.      * @param textToAppend The value to set. A null in this case will simply preserve the current field state.      * @return A CompoundEdit for the entire operation.      */
-DECL|method|massAppendField (Collection<BibEntry> entries, String field, String textToAppend)
+DECL|method|massAppendField (Collection<BibEntry> entries, Field field, String textToAppend)
 specifier|private
 specifier|static
 name|UndoableEdit
@@ -597,7 +641,7 @@ name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|,
 name|String
@@ -705,7 +749,7 @@ name|compoundEdit
 return|;
 block|}
 comment|/**      * Move contents from one field to another for a Collection of entries.      *      * @param entries         The entries to do this operation for.      * @param field           The field to move contents from.      * @param newField        The field to move contents into.      * @param overwriteValues If true, overwrites any existing values in the new field. If false, makes no change for      *                        entries with existing value in the new field.      * @return A CompoundEdit for the entire operation.      */
-DECL|method|massRenameField (Collection<BibEntry> entries, String field, String newField, boolean overwriteValues)
+DECL|method|massRenameField (Collection<BibEntry> entries, Field field, Field newField, boolean overwriteValues)
 specifier|private
 specifier|static
 name|UndoableEdit
@@ -717,10 +761,10 @@ name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|,
-name|String
+name|Field
 name|newField
 parameter_list|,
 name|boolean
@@ -898,7 +942,7 @@ name|compoundEdit
 return|;
 block|}
 comment|/**      * Set a given field to a given value for all entries in a Collection. This method DOES NOT update any UndoManager,      * but returns a relevant CompoundEdit that should be registered by the caller.      *      * @param entries         The entries to set the field for.      * @param field           The name of the field to set.      * @param textToSet       The value to set. This value can be null, indicating that the field should be cleared.      * @param overwriteValues Indicate whether the value should be set even if an entry already has the field set.      * @return A CompoundEdit for the entire operation.      */
-DECL|method|massSetField (Collection<BibEntry> entries, String field, String textToSet, boolean overwriteValues)
+DECL|method|massSetField (Collection<BibEntry> entries, Field field, String textToSet, boolean overwriteValues)
 specifier|private
 specifier|static
 name|UndoableEdit
@@ -910,7 +954,7 @@ name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|,
 name|String
@@ -1075,6 +1119,24 @@ argument_list|()
 operator|.
 name|getAllVisibleFields
 argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|Field
+operator|::
+name|getName
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toSet
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ToggleGroup
@@ -1533,13 +1595,18 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-name|String
-name|fieldName
+name|Field
+name|field
 init|=
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|fieldComboBox
 operator|.
 name|getValue
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|NamedCompound
 name|compoundEdit
@@ -1571,12 +1638,17 @@ name|massRenameField
 argument_list|(
 name|entries
 argument_list|,
-name|fieldName
+name|field
 argument_list|,
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|renameTextField
 operator|.
 name|getText
 argument_list|()
+argument_list|)
 argument_list|,
 name|overwriteCheckBox
 operator|.
@@ -1603,7 +1675,7 @@ name|massAppendField
 argument_list|(
 name|entries
 argument_list|,
-name|fieldName
+name|field
 argument_list|,
 name|appendTextField
 operator|.
@@ -1623,7 +1695,7 @@ name|massSetField
 argument_list|(
 name|entries
 argument_list|,
-name|fieldName
+name|field
 argument_list|,
 name|setRadioButton
 operator|.

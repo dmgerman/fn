@@ -82,7 +82,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -259,16 +275,18 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Wei Wang and Yun He and Tong Li and Jiajun Zhu and Jinzhuo Liu"
 argument_list|)
@@ -277,7 +295,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1155/2018/5913634"
 argument_list|)
@@ -286,7 +306,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"1875-919X"
 argument_list|)
@@ -295,7 +317,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"Scientific Programming"
 argument_list|)
@@ -304,7 +328,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"Hindawi Limited"
 argument_list|)
@@ -313,7 +339,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An Integrated Model for Information Retrieval Based Change Impact Analysis"
 argument_list|)
@@ -322,7 +350,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"http://dx.doi.org/10.1155/2018/5913634"
 argument_list|)
@@ -331,7 +361,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"2018"
 argument_list|)
@@ -340,7 +372,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2018"
 argument_list|)
@@ -349,7 +383,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|StandardField
+operator|.
+name|ABSTRACT
 argument_list|,
 literal|"The paper presents an approach to combine multiple existing information retrieval (IR) techniques to support change impact analysis, which seeks to identify the possible outcomes of a change or determine the necessary modifications for affecting a desired change. The approach integrates a bag-of-words based IR technique, where each class or method is abstracted as a set of words, and a neural network based IR technique to derive conceptual couplings from the source code of a software system. We report rigorous empirical assessments of the changes of three open source systems: jEdit, muCommander, and JabRef. The impact sets obtained are evaluated at the method level of granularity, and the results show that our integrated approach provides statistically significant improvements in accuracy across several cut points relative to the accuracies provided by the individual methods employed independently. Improvements in F-score values of up to 7.3%, 10.9%, and 17.3% are obtained over a baseline technique for jEdit, muCommander, and JabRef, respectively."
 argument_list|)
@@ -431,7 +467,9 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|,
 name|bibEntry
 operator|.
@@ -452,7 +490,9 @@ name|bibEntry
 operator|.
 name|getField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -469,7 +509,9 @@ name|bibEntry
 operator|.
 name|getField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -486,7 +528,9 @@ name|bibEntry
 operator|.
 name|getField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -503,7 +547,9 @@ name|bibEntry
 operator|.
 name|getField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -520,7 +566,9 @@ name|bibEntry
 operator|.
 name|getField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|)
 argument_list|)
 expr_stmt|;

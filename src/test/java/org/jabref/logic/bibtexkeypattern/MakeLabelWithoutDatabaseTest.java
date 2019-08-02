@@ -30,6 +30,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|jupiter
@@ -97,7 +113,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe"
 argument_list|)
@@ -106,7 +124,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -115,7 +135,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An awesome paper on JabRef"
 argument_list|)
@@ -166,7 +188,9 @@ name|localEntry
 operator|.
 name|setField
 argument_list|(
-literal|"editor"
+name|StandardField
+operator|.
+name|EDITOR
 argument_list|,
 literal|"John Doe"
 argument_list|)
@@ -175,7 +199,9 @@ name|localEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -184,7 +210,9 @@ name|localEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An awesome paper on JabRef"
 argument_list|)

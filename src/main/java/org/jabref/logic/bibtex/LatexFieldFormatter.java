@@ -36,7 +36,41 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|InternalField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -64,16 +98,6 @@ specifier|public
 class|class
 name|LatexFieldFormatter
 block|{
-comment|// "Fieldname" to indicate that a field should be treated as a bibtex string. Used when writing database to file.
-DECL|field|BIBTEX_STRING
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|BIBTEX_STRING
-init|=
-literal|"__string"
-decl_stmt|;
 DECL|field|FIELD_START
 specifier|private
 specifier|static
@@ -374,8 +398,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Formats the content of a field.      *      * @param content   the content of the field      * @param fieldName the name of the field - used to trigger different serializations, e.g., turning off resolution for some strings      * @return a formatted string suitable for output      * @throws InvalidFieldValueException if s is not a correct bibtex string, e.g., because of improperly balanced braces or using # not paired      */
-DECL|method|format (String content, String fieldName)
+comment|/**      * Formats the content of a field.      *      * @param content   the content of the field      * @param field the name of the field - used to trigger different serializations, e.g., turning off resolution for some strings      * @return a formatted string suitable for output      * @throws InvalidFieldValueException if s is not a correct bibtex string, e.g., because of improperly balanced braces or using # not paired      */
+DECL|method|format (String content, Field field)
 specifier|public
 name|String
 name|format
@@ -383,8 +407,8 @@ parameter_list|(
 name|String
 name|content
 parameter_list|,
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 throws|throws
 name|InvalidFieldValueException
@@ -454,20 +478,14 @@ name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}
-comment|// If the field is non-standard, we will just append braces,
-comment|// wrap and write.
-name|boolean
-name|resolveStrings
-init|=
-name|shouldResolveStrings
-argument_list|(
-name|fieldName
-argument_list|)
-decl_stmt|;
+comment|// If the field is non-standard, we will just append braces, wrap and write.
 if|if
 condition|(
 operator|!
-name|resolveStrings
+name|shouldResolveStrings
+argument_list|(
+name|field
+argument_list|)
 condition|)
 block|{
 return|return
@@ -475,7 +493,7 @@ name|formatWithoutResolvingStrings
 argument_list|(
 name|result
 argument_list|,
-name|fieldName
+name|field
 argument_list|)
 return|;
 block|}
@@ -492,12 +510,12 @@ name|formatAndResolveStrings
 argument_list|(
 name|result
 argument_list|,
-name|fieldName
+name|field
 argument_list|)
 return|;
 block|}
 comment|/**      * This method handles # in the field content to get valid bibtex strings      *      * For instance,<code>#jan# - #feb#</code> gets<code>jan #{ - } # feb</code> (see @link{org.jabref.logic.bibtex.LatexFieldFormatterTests#makeHashEnclosedWordsRealStringsInMonthField()})      */
-DECL|method|formatAndResolveStrings (String content, String fieldName)
+DECL|method|formatAndResolveStrings (String content, Field field)
 specifier|private
 name|String
 name|formatAndResolveStrings
@@ -505,8 +523,8 @@ parameter_list|(
 name|String
 name|content
 parameter_list|,
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 throws|throws
 name|InvalidFieldValueException
@@ -793,24 +811,19 @@ name|format
 argument_list|(
 name|stringBuilder
 argument_list|,
-name|fieldName
+name|field
 argument_list|)
 return|;
 block|}
-DECL|method|shouldResolveStrings (String fieldName)
+DECL|method|shouldResolveStrings (Field field)
 specifier|private
 name|boolean
 name|shouldResolveStrings
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 block|{
-name|boolean
-name|resolveStrings
-init|=
-literal|true
-decl_stmt|;
 if|if
 condition|(
 name|prefs
@@ -820,60 +833,39 @@ argument_list|()
 condition|)
 block|{
 comment|// Resolve strings for all fields except some:
-for|for
-control|(
-name|String
-name|exception
-range|:
+return|return
+operator|!
 name|prefs
 operator|.
 name|getDoNotResolveStringsFor
 argument_list|()
-control|)
-block|{
-if|if
-condition|(
-name|exception
 operator|.
-name|equals
+name|contains
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
-condition|)
-block|{
-name|resolveStrings
-operator|=
-literal|false
-expr_stmt|;
-break|break;
-block|}
-block|}
+return|;
 block|}
 else|else
 block|{
 comment|// Default operation - we only resolve strings for standard fields:
-name|resolveStrings
-operator|=
-name|InternalBibtexFields
-operator|.
-name|isStandardField
-argument_list|(
-name|fieldName
-argument_list|)
+return|return
+name|field
+operator|instanceof
+name|StandardField
 operator|||
+name|InternalField
+operator|.
 name|BIBTEX_STRING
 operator|.
 name|equals
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|resolveStrings
 return|;
 block|}
-DECL|method|formatWithoutResolvingStrings (String content, String fieldName)
+block|}
+DECL|method|formatWithoutResolvingStrings (String content, Field field)
 specifier|private
 name|String
 name|formatWithoutResolvingStrings
@@ -881,8 +873,8 @@ parameter_list|(
 name|String
 name|content
 parameter_list|,
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 throws|throws
 name|InvalidFieldValueException
@@ -915,7 +907,7 @@ name|format
 argument_list|(
 name|content
 argument_list|,
-name|fieldName
+name|field
 argument_list|)
 argument_list|)
 expr_stmt|;

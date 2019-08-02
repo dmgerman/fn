@@ -178,6 +178,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
 name|de
 operator|.
 name|saxsys
@@ -262,11 +278,11 @@ name|AbstractEditorViewModel
 extends|extends
 name|AbstractViewModel
 block|{
-DECL|field|fieldName
+DECL|field|field
 specifier|protected
 specifier|final
-name|String
-name|fieldName
+name|Field
+name|field
 decl_stmt|;
 DECL|field|text
 specifier|protected
@@ -307,12 +323,12 @@ name|String
 argument_list|>
 name|fieldBinding
 decl_stmt|;
-DECL|method|AbstractEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
+DECL|method|AbstractEditorViewModel (Field field, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
 specifier|public
 name|AbstractEditorViewModel
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|AutoCompleteSuggestionProvider
 argument_list|<
@@ -326,9 +342,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|fieldName
+name|field
 operator|=
-name|fieldName
+name|field
 expr_stmt|;
 name|this
 operator|.
@@ -353,7 +369,7 @@ name|fieldCheckers
 operator|.
 name|getForField
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 control|)
 block|{
@@ -442,7 +458,7 @@ name|entry
 operator|.
 name|getFieldBinding
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 expr_stmt|;
 name|BindingsHelper
@@ -473,7 +489,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 operator|.
 name|orElse
@@ -485,7 +501,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|newValue
 argument_list|)
@@ -510,7 +526,7 @@ name|UndoableFieldChange
 argument_list|(
 name|entry
 argument_list|,
-name|fieldName
+name|field
 argument_list|,
 name|oldValue
 argument_list|,

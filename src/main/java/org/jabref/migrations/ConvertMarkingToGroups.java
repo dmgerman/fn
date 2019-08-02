@@ -160,7 +160,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|InternalField
 import|;
 end_import
 
@@ -539,7 +541,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|MARKED_INTERNAL
 argument_list|)
@@ -653,7 +655,7 @@ name|entry
 operator|.
 name|clearField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|MARKED_INTERNAL
 argument_list|)

@@ -553,6 +553,9 @@ name|termsFileType
 init|=
 name|OptionalUtil
 operator|.
+expr|<
+name|ExternalFileType
+operator|>
 name|orElse
 argument_list|(
 name|ExternalFileTypes

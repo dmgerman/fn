@@ -56,6 +56,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -232,6 +242,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|metadata
 operator|.
 name|FilePreferences
@@ -348,9 +374,9 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|List
+name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 argument_list|>
 name|getEntryEditorTabList
@@ -514,8 +540,7 @@ name|saveCustomEntryTypes
 parameter_list|()
 function_decl|;
 DECL|method|getAllowIntegerEdition ()
-specifier|public
-name|Boolean
+name|boolean
 name|getAllowIntegerEdition
 parameter_list|()
 function_decl|;

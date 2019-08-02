@@ -106,6 +106,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|InternalField
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -326,12 +342,12 @@ if|if
 condition|(
 name|fieldChangedEvent
 operator|.
-name|getFieldName
+name|getField
 argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|BibEntry
+name|InternalField
 operator|.
 name|KEY_FIELD
 argument_list|)

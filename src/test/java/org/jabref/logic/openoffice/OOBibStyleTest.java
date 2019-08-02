@@ -260,6 +260,50 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|UnknownEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|util
 operator|.
 name|DummyFileUpdateMonitor
@@ -1512,7 +1556,11 @@ name|style
 operator|.
 name|getReferenceFormat
 argument_list|(
+operator|new
+name|UnknownEntryType
+argument_list|(
 literal|"default"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|l
@@ -1557,7 +1605,9 @@ name|style
 operator|.
 name|getReferenceFormat
 argument_list|(
-literal|"incollection"
+name|StandardEntryType
+operator|.
+name|InCollection
 argument_list|)
 expr_stmt|;
 name|l
@@ -1621,7 +1671,9 @@ name|style
 operator|.
 name|getReferenceFormat
 argument_list|(
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|)
 decl_stmt|;
 name|l
@@ -1644,14 +1696,18 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|)
 expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"{JabRef Development Team}"
 argument_list|)
@@ -1660,7 +1716,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"JabRef Manual"
 argument_list|)
@@ -1669,7 +1727,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -1733,7 +1793,9 @@ name|style
 operator|.
 name|getReferenceFormat
 argument_list|(
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|)
 decl_stmt|;
 name|l
@@ -1756,14 +1818,18 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|)
 expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alpha von Beta"
 argument_list|)
@@ -1772,7 +1838,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"JabRef Manual"
 argument_list|)
@@ -1781,7 +1849,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -1873,14 +1943,18 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|)
 expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"{JabRef Development Team}"
 argument_list|)
@@ -1889,7 +1963,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"JabRef Manual"
 argument_list|)
@@ -1898,7 +1974,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -2012,14 +2090,18 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|)
 expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alpha von Beta"
 argument_list|)
@@ -2028,7 +2110,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"JabRef Manual"
 argument_list|)
@@ -2037,7 +2121,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -2151,14 +2237,18 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|)
 expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -2272,14 +2362,18 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|)
 expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alpha von Beta"
 argument_list|)
@@ -2393,7 +2487,9 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|)
 expr_stmt|;
 name|database
@@ -2505,7 +2601,9 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alpha Beta"
 argument_list|)
@@ -2514,7 +2612,9 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Paper 1"
 argument_list|)
@@ -2523,7 +2623,9 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2000"
 argument_list|)
@@ -2553,7 +2655,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alpha Beta"
 argument_list|)
@@ -2562,7 +2666,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Paper 2"
 argument_list|)
@@ -2571,7 +2677,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2000"
 argument_list|)
@@ -2601,7 +2709,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Gamma Epsilon"
 argument_list|)
@@ -2610,7 +2720,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2001"
 argument_list|)
@@ -2774,7 +2886,9 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alpha Beta"
 argument_list|)
@@ -2783,7 +2897,9 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Paper 1"
 argument_list|)
@@ -2792,7 +2908,9 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2000"
 argument_list|)
@@ -2822,7 +2940,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alpha Beta"
 argument_list|)
@@ -2831,7 +2951,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Paper 2"
 argument_list|)
@@ -2840,7 +2962,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2000"
 argument_list|)
@@ -2870,7 +2994,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Gamma Epsilon"
 argument_list|)
@@ -2879,7 +3005,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2001"
 argument_list|)
@@ -3043,7 +3171,9 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alpha Beta"
 argument_list|)
@@ -3052,7 +3182,9 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Paper 1"
 argument_list|)
@@ -3061,7 +3193,9 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2000"
 argument_list|)
@@ -3091,7 +3225,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alpha Beta"
 argument_list|)
@@ -3100,7 +3236,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Paper 2"
 argument_list|)
@@ -3109,7 +3247,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2000"
 argument_list|)
@@ -3139,7 +3279,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alpha Beta"
 argument_list|)
@@ -3148,7 +3290,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Paper 3"
 argument_list|)
@@ -3157,7 +3301,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2000"
 argument_list|)
@@ -3301,7 +3447,9 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alpha Beta"
 argument_list|)
@@ -3310,7 +3458,9 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Paper 1"
 argument_list|)
@@ -3319,7 +3469,9 @@ name|entry1
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2000"
 argument_list|)
@@ -3349,7 +3501,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alpha Beta"
 argument_list|)
@@ -3358,7 +3512,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Paper 2"
 argument_list|)
@@ -3367,7 +3523,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2000"
 argument_list|)
@@ -3397,7 +3555,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alpha Beta"
 argument_list|)
@@ -3406,7 +3566,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Paper 3"
 argument_list|)
@@ -3415,7 +3577,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2000"
 argument_list|)
@@ -3759,14 +3923,18 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|)
 expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alpha von Beta and Gamma Epsilon and Ypsilon Tau"
 argument_list|)
@@ -3775,7 +3943,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"JabRef Manual"
 argument_list|)
@@ -3784,7 +3954,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
