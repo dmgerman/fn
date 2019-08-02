@@ -46,6 +46,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -94,7 +110,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|lastFieldChanged
 specifier|private
-name|String
+name|Field
 name|lastFieldChanged
 decl_stmt|;
 DECL|field|context
@@ -199,7 +215,7 @@ name|equals
 argument_list|(
 name|fieldChange
 operator|.
-name|getFieldName
+name|getField
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -219,7 +235,7 @@ name|lastFieldChanged
 operator|=
 name|fieldChange
 operator|.
-name|getFieldName
+name|getField
 argument_list|()
 expr_stmt|;
 name|eventBus

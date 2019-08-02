@@ -108,6 +108,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_class
 DECL|class|FieldFormatterCleanups
 specifier|public
@@ -471,7 +487,7 @@ block|{
 comment|//first, group all formatters by the field for which they apply
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|List
 argument_list|<
@@ -493,7 +509,7 @@ range|:
 name|actionList
 control|)
 block|{
-name|String
+name|Field
 name|key
 init|=
 name|cleanup
@@ -586,7 +602,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|List
 argument_list|<
@@ -608,6 +624,9 @@ argument_list|(
 name|entry
 operator|.
 name|getKey
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;

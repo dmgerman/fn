@@ -300,7 +300,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|InternalField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -655,7 +673,7 @@ decl_stmt|;
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|INTERNAL_ALL_FIELD
 argument_list|,
@@ -671,7 +689,7 @@ comment|// Many titles in the CiteSeer database have all-capital titles, for con
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,

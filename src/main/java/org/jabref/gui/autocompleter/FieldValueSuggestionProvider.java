@@ -36,6 +36,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_comment
 comment|/**  * Stores the full content of one field.  */
 end_comment
@@ -52,28 +68,28 @@ argument_list|<
 name|String
 argument_list|>
 block|{
-DECL|field|fieldName
+DECL|field|field
 specifier|private
 specifier|final
-name|String
-name|fieldName
+name|Field
+name|field
 decl_stmt|;
-DECL|method|FieldValueSuggestionProvider (String fieldName)
+DECL|method|FieldValueSuggestionProvider (Field field)
 name|FieldValueSuggestionProvider
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 block|{
 name|this
 operator|.
-name|fieldName
+name|field
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 expr_stmt|;
 block|}
@@ -101,7 +117,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 operator|.
 name|ifPresent

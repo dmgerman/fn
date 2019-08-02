@@ -156,6 +156,16 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -422,6 +432,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntryTypesManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -498,6 +522,12 @@ specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
+DECL|field|entryTypesManager
+specifier|private
+specifier|final
+name|BibEntryTypesManager
+name|entryTypesManager
+decl_stmt|;
 DECL|method|SaveDatabaseAction (BasePanel panel, JabRefPreferences prefs)
 specifier|public
 name|SaveDatabaseAction
@@ -538,6 +568,12 @@ operator|.
 name|prefs
 operator|=
 name|prefs
+expr_stmt|;
+name|entryTypesManager
+operator|=
+name|Globals
+operator|.
+name|entryTypesManager
 expr_stmt|;
 block|}
 DECL|method|saveDatabase (Path file, boolean selectedOnly, Charset encoding, SavePreferences.DatabaseSaveType saveType)
@@ -610,6 +646,8 @@ argument_list|(
 name|fileWriter
 argument_list|,
 name|preferences
+argument_list|,
+name|entryTypesManager
 argument_list|)
 decl_stmt|;
 if|if
@@ -1598,6 +1636,10 @@ operator|.
 name|start
 argument_list|(
 name|context
+argument_list|,
+name|entryTypesManager
+argument_list|,
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}

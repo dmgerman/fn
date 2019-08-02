@@ -184,7 +184,57 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|InternalField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -307,7 +357,7 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|)
@@ -320,7 +370,7 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|)
@@ -333,7 +383,7 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|BibEntry
+name|InternalField
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -401,6 +451,33 @@ name|entries
 operator|=
 name|entryList
 expr_stmt|;
+block|}
+DECL|method|getField (BibEntry e, Field field)
+specifier|private
+specifier|static
+name|String
+name|getField
+parameter_list|(
+name|BibEntry
+name|e
+parameter_list|,
+name|Field
+name|field
+parameter_list|)
+block|{
+return|return
+name|e
+operator|.
+name|getField
+argument_list|(
+name|field
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
+return|;
 block|}
 DECL|method|getDOMrepresentation ()
 specifier|public
@@ -1135,6 +1212,9 @@ name|e
 operator|.
 name|getType
 argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1148,7 +1228,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|ISBN
 argument_list|)
@@ -1164,7 +1244,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|BibEntry
+name|InternalField
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -1180,13 +1260,13 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//new AuthorLastFirst().format(getField(e, FieldName.AUTHOR_FIELD)));
+comment|//new AuthorLastFirst().format(getField(e, StandardField.AUTHOR_FIELD)));
 name|addTableCell
 argument_list|(
 name|result
@@ -1209,7 +1289,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|)
@@ -1227,7 +1307,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNAL
 argument_list|)
@@ -1243,7 +1323,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|VOLUME
 argument_list|)
@@ -1259,7 +1339,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|NUMBER
 argument_list|)
@@ -1275,7 +1355,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|MONTH
 argument_list|)
@@ -1291,7 +1371,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|)
@@ -1307,7 +1387,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|)
@@ -1323,7 +1403,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|ADDRESS
 argument_list|)
@@ -1339,7 +1419,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|NOTE
 argument_list|)
@@ -1355,7 +1435,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 argument_list|)
@@ -1371,7 +1451,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|BOOKTITLE
 argument_list|)
@@ -1387,7 +1467,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|CHAPTER
 argument_list|)
@@ -1403,7 +1483,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|EDITION
 argument_list|)
@@ -1419,7 +1499,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|SERIES
 argument_list|)
@@ -1435,13 +1515,13 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|EDITOR
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//new AuthorLastFirst().format(getField(e, FieldName.EDITOR_FIELD)));
+comment|//new AuthorLastFirst().format(getField(e, StandardField.EDITOR_FIELD)));
 name|addTableCell
 argument_list|(
 name|result
@@ -1452,7 +1532,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|PUBLISHER
 argument_list|)
@@ -1468,7 +1548,11 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"reporttype"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1482,7 +1566,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|HOWPUBLISHED
 argument_list|)
@@ -1498,7 +1582,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|INSTITUTION
 argument_list|)
@@ -1514,7 +1598,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|ORGANIZATION
 argument_list|)
@@ -1530,7 +1614,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|SCHOOL
 argument_list|)
@@ -1546,7 +1630,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|ANNOTE
 argument_list|)
@@ -1562,7 +1646,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|ASSIGNEE
 argument_list|)
@@ -1578,7 +1662,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|DAY
 argument_list|)
@@ -1594,7 +1678,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|DAYFILED
 argument_list|)
@@ -1610,7 +1694,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|MONTHFILED
 argument_list|)
@@ -1626,7 +1710,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|YEARFILED
 argument_list|)
@@ -1642,7 +1726,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|LANGUAGE
 argument_list|)
@@ -1658,7 +1742,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|NATIONALITY
 argument_list|)
@@ -1674,7 +1758,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|REVISION
 argument_list|)
@@ -1773,33 +1857,6 @@ expr_stmt|;
 block|}
 return|return
 name|result
-return|;
-block|}
-DECL|method|getField (BibEntry e, String field)
-specifier|private
-specifier|static
-name|String
-name|getField
-parameter_list|(
-name|BibEntry
-name|e
-parameter_list|,
-name|String
-name|field
-parameter_list|)
-block|{
-return|return
-name|e
-operator|.
-name|getField
-argument_list|(
-name|field
-argument_list|)
-operator|.
-name|orElse
-argument_list|(
-literal|""
-argument_list|)
 return|;
 block|}
 DECL|method|addTableCell (Document doc, Element parent, String content)

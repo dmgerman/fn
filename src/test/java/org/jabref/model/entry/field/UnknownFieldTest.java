@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.model.entry
+DECL|package|org.jabref.model.entry.field
 package|package
 name|org
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|model
 operator|.
 name|entry
+operator|.
+name|field
 package|;
 end_package
 
@@ -43,55 +45,52 @@ import|;
 end_import
 
 begin_class
-DECL|class|FieldNameTest
-specifier|public
+DECL|class|UnknownFieldTest
 class|class
-name|FieldNameTest
+name|UnknownFieldTest
 block|{
 annotation|@
 name|Test
-DECL|method|testOrFieldsTwoTerms ()
-specifier|public
+DECL|method|fieldsConsideredEqualIfSameName ()
 name|void
-name|testOrFieldsTwoTerms
+name|fieldsConsideredEqualIfSameName
 parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"aaa/bbb"
-argument_list|,
-name|FieldName
-operator|.
-name|orFields
+operator|new
+name|UnknownField
 argument_list|(
-literal|"aaa"
+literal|"title"
+argument_list|)
 argument_list|,
-literal|"bbb"
+operator|new
+name|UnknownField
+argument_list|(
+literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testOrFieldsThreeTerms ()
-specifier|public
+DECL|method|fieldsConsideredEqualINameDifferByCapitalization ()
 name|void
-name|testOrFieldsThreeTerms
+name|fieldsConsideredEqualINameDifferByCapitalization
 parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"aaa/bbb/ccc"
-argument_list|,
-name|FieldName
-operator|.
-name|orFields
+operator|new
+name|UnknownField
 argument_list|(
-literal|"aaa"
+literal|"tiTle"
+argument_list|)
 argument_list|,
-literal|"bbb"
-argument_list|,
-literal|"ccc"
+operator|new
+name|UnknownField
+argument_list|(
+literal|"Title"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -34,6 +34,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -88,6 +98,22 @@ name|ImportFormatPreferences
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_class
 DECL|class|EntryEditorPreferences
 specifier|public
@@ -101,9 +127,9 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|List
+name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 argument_list|>
 name|entryEditorTabList
@@ -131,7 +157,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|customTabFieldNames
 decl_stmt|;
@@ -169,7 +195,7 @@ specifier|final
 name|boolean
 name|shouldShowLatexCitationsTab
 decl_stmt|;
-DECL|method|EntryEditorPreferences (Map<String, List<String>> entryEditorTabList, LatexFieldFormatterPreferences latexFieldFormatterPreferences, ImportFormatPreferences importFormatPreferences, List<String> customTabFieldNames, boolean shouldShowRecommendationsTab, boolean isMrdlibAccepted, boolean shouldShowLatexCitationsTab, boolean showSourceTabByDefault, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, KeyBindingRepository keyBindings, boolean avoidOverwritingCiteKey)
+DECL|method|EntryEditorPreferences (Map<String, Set<Field>> entryEditorTabList, LatexFieldFormatterPreferences latexFieldFormatterPreferences, ImportFormatPreferences importFormatPreferences, List<Field> customTabFieldNames, boolean shouldShowRecommendationsTab, boolean isMrdlibAccepted, boolean shouldShowLatexCitationsTab, boolean showSourceTabByDefault, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, KeyBindingRepository keyBindings, boolean avoidOverwritingCiteKey)
 specifier|public
 name|EntryEditorPreferences
 parameter_list|(
@@ -177,9 +203,9 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|List
+name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 argument_list|>
 name|entryEditorTabList
@@ -192,7 +218,7 @@ name|importFormatPreferences
 parameter_list|,
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|customTabFieldNames
 parameter_list|,
@@ -291,9 +317,9 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|List
+name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 argument_list|>
 name|getEntryEditorTabList
@@ -327,7 +353,7 @@ DECL|method|getCustomTabFieldNames ()
 specifier|public
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|getCustomTabFieldNames
 parameter_list|()

@@ -54,7 +54,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -66,22 +68,20 @@ name|FieldNameLabel
 extends|extends
 name|Label
 block|{
-DECL|method|FieldNameLabel (String fieldName)
+DECL|method|FieldNameLabel (Field field)
 specifier|public
 name|FieldNameLabel
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|FieldName
+name|field
 operator|.
 name|getDisplayName
-argument_list|(
-name|fieldName
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|setPadding

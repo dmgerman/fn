@@ -192,7 +192,10 @@ name|setValue
 argument_list|(
 name|fileType
 operator|.
-name|getFieldName
+name|getField
+argument_list|()
+operator|.
+name|getDisplayName
 argument_list|()
 argument_list|)
 expr_stmt|;

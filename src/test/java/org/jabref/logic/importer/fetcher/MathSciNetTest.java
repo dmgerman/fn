@@ -96,7 +96,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -281,9 +297,9 @@ name|ratiuEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 expr_stmt|;
 name|ratiuEntry
@@ -297,7 +313,9 @@ name|ratiuEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Chechkin, Gregory A. and Ratiu, Tudor S. and Romanov, Maxim S. and Samokhin, Vyacheslav N."
 argument_list|)
@@ -306,7 +324,9 @@ name|ratiuEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Existence and uniqueness theorems for the two-dimensional {E}ricksen-{L}eslie system"
 argument_list|)
@@ -315,7 +335,9 @@ name|ratiuEntry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"Journal of Mathematical Fluid Mechanics"
 argument_list|)
@@ -324,7 +346,9 @@ name|ratiuEntry
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"18"
 argument_list|)
@@ -333,7 +357,9 @@ name|ratiuEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -342,7 +368,9 @@ name|ratiuEntry
 operator|.
 name|setField
 argument_list|(
-literal|"number"
+name|StandardField
+operator|.
+name|NUMBER
 argument_list|,
 literal|"3"
 argument_list|)
@@ -351,7 +379,9 @@ name|ratiuEntry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"571--589"
 argument_list|)
@@ -360,7 +390,9 @@ name|ratiuEntry
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"1422-6928"
 argument_list|)
@@ -369,7 +401,9 @@ name|ratiuEntry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"76A15 (35A01 35A02 35K61 82D30)"
 argument_list|)
@@ -378,7 +412,9 @@ name|ratiuEntry
 operator|.
 name|setField
 argument_list|(
-literal|"mrnumber"
+name|StandardField
+operator|.
+name|MR_NUMBER
 argument_list|,
 literal|"3537908"
 argument_list|)
@@ -387,7 +423,9 @@ name|ratiuEntry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1007/s00021-016-0250-0"
 argument_list|)
@@ -413,7 +451,9 @@ name|searchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"existence"
 argument_list|)
@@ -422,7 +462,9 @@ name|searchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Ratiu"
 argument_list|)
@@ -431,7 +473,9 @@ name|searchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"fluid"
 argument_list|)
@@ -482,7 +526,9 @@ name|searchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"mrnumber"
+name|StandardField
+operator|.
+name|MR_NUMBER
 argument_list|,
 literal|"3537908"
 argument_list|)

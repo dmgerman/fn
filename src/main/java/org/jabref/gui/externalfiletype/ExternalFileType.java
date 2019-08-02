@@ -26,6 +26,38 @@ name|JabRefIcon
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|FieldFactory
+import|;
+end_import
+
 begin_interface
 DECL|interface|ExternalFileType
 specifier|public
@@ -47,16 +79,21 @@ name|String
 name|getMimeType
 parameter_list|()
 function_decl|;
-comment|/**      * Get the bibtex field name used to extension to this file type.      * Currently we assume that field name equals filename extension.      *      * @return The field name.      */
-DECL|method|getFieldName ()
+comment|/**      * Get the bibtex field name used for this file type.      * Currently we assume that field name equals filename extension.      *      * @return The field name.      */
+DECL|method|getField ()
 specifier|default
-name|String
-name|getFieldName
+name|Field
+name|getField
 parameter_list|()
 block|{
 return|return
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|getExtension
 argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|getOpenWithApplication ()

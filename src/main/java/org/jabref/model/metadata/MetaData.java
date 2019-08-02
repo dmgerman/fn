@@ -192,7 +192,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -341,9 +357,7 @@ specifier|final
 name|String
 name|FILE_DIRECTORY
 init|=
-name|FieldName
-operator|.
-name|FILE
+literal|"file"
 operator|+
 name|FilePreferences
 operator|.
@@ -414,7 +428,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|EntryType
 argument_list|,
 name|String
 argument_list|>
@@ -731,7 +745,7 @@ argument_list|()
 decl_stmt|;
 name|Map
 argument_list|<
-name|String
+name|EntryType
 argument_list|,
 name|List
 argument_list|<
@@ -753,7 +767,7 @@ name|nonDefaultPatterns
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setCiteKeyPattern (List<String> defaultValue, Map<String, List<String>> nonDefaultPatterns)
+DECL|method|setCiteKeyPattern (List<String> defaultValue, Map<EntryType, List<String>> nonDefaultPatterns)
 specifier|public
 name|void
 name|setCiteKeyPattern
@@ -766,7 +780,7 @@ name|defaultValue
 parameter_list|,
 name|Map
 argument_list|<
-name|String
+name|EntryType
 argument_list|,
 name|List
 argument_list|<
@@ -789,7 +803,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|EntryType
 argument_list|,
 name|List
 argument_list|<
@@ -997,27 +1011,27 @@ name|postChange
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|clearContentSelectors (String fieldName)
+DECL|method|clearContentSelectors (Field field)
 specifier|public
 name|void
 name|clearContentSelectors
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 block|{
 name|contentSelectors
 operator|.
 name|removeSelector
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 expr_stmt|;
 name|postChange
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getContentSelectorValuesForField (String fieldName)
+DECL|method|getContentSelectorValuesForField (Field field)
 specifier|public
 name|List
 argument_list|<
@@ -1025,8 +1039,8 @@ name|String
 argument_list|>
 name|getContentSelectorValuesForField
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 block|{
 return|return
@@ -1034,7 +1048,7 @@ name|contentSelectors
 operator|.
 name|getSelectorValuesForField
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 return|;
 block|}

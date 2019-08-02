@@ -180,7 +180,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -257,9 +273,9 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|INPROCEEDINGS
+name|InProceedings
 argument_list|)
 expr_stmt|;
 name|entry
@@ -273,7 +289,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Educational session 1"
 argument_list|)
@@ -282,7 +300,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"booktitle"
+name|StandardField
+operator|.
+name|BOOKTITLE
 argument_list|,
 literal|"Custom Integrated Circuits Conference (CICC), 2011 IEEE"
 argument_list|)
@@ -291,7 +311,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2011"
 argument_list|)
@@ -300,7 +322,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"mont"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"Sept."
 argument_list|)
@@ -309,7 +333,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"1-7"
 argument_list|)
@@ -318,7 +344,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|StandardField
+operator|.
+name|ABSTRACT
 argument_list|,
 literal|"Start of the above-titled section of the conference proceedings record."
 argument_list|)
@@ -327,7 +355,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1109/CICC.2011.6055279"
 argument_list|)
@@ -336,7 +366,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"0886-5930"
 argument_list|)
@@ -372,7 +404,9 @@ init|=
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 operator|new
 name|IdentityFormatter
@@ -414,7 +448,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -476,7 +512,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -511,7 +549,9 @@ init|=
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 operator|new
 name|LowerCaseFormatter
@@ -553,7 +593,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -588,7 +630,9 @@ init|=
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 operator|new
 name|LowerCaseFormatter
@@ -601,7 +645,9 @@ init|=
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 operator|new
 name|IdentityFormatter
@@ -645,7 +691,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -680,7 +728,9 @@ init|=
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 operator|new
 name|LowerCaseFormatter
@@ -693,7 +743,9 @@ init|=
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 operator|new
 name|IdentityFormatter
@@ -706,7 +758,9 @@ init|=
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 operator|new
 name|NormalizeDateFormatter
@@ -752,7 +806,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -798,7 +854,9 @@ init|=
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 operator|new
 name|NormalizePagesFormatter
@@ -811,7 +869,9 @@ init|=
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 operator|new
 name|LowerCaseFormatter
@@ -852,7 +912,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -869,7 +931,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -915,7 +979,9 @@ init|=
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 operator|new
 name|NormalizePagesFormatter
@@ -928,7 +994,9 @@ init|=
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 operator|new
 name|NormalizeDateFormatter
@@ -941,7 +1009,9 @@ init|=
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 operator|new
 name|LowerCaseFormatter
@@ -984,7 +1054,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1001,7 +1073,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1026,7 +1100,7 @@ name|Cleanups
 operator|.
 name|parse
 argument_list|(
-literal|"mont[clear]"
+literal|"month[clear]"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1048,7 +1122,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"mont"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|)
 argument_list|)
 expr_stmt|;

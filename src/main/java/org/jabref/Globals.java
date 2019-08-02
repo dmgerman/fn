@@ -260,6 +260,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|BibEntryTypesManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|util
 operator|.
 name|FileUpdateMonitor
@@ -469,6 +483,16 @@ name|undoManager
 init|=
 operator|new
 name|CountingUndoManager
+argument_list|()
+decl_stmt|;
+DECL|field|entryTypesManager
+specifier|public
+specifier|static
+name|BibEntryTypesManager
+name|entryTypesManager
+init|=
+operator|new
+name|BibEntryTypesManager
 argument_list|()
 decl_stmt|;
 comment|// Key binding preferences

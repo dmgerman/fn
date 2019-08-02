@@ -116,7 +116,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
 import|;
 end_import
 
@@ -130,7 +130,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -303,7 +305,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1109/ACCESS.2016.2535486"
 argument_list|)
@@ -343,7 +347,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"https://ieeexplore.ieee.org/document/7421926/"
 argument_list|)
@@ -383,7 +389,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7421926&ref="
 argument_list|)
@@ -423,7 +431,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7421926"
 argument_list|)
@@ -463,7 +473,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1109/ACCESS.2016.2535486"
 argument_list|)
@@ -472,7 +484,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"http://dx.doi.org/10.1109/ACCESS.2016.2535486"
 argument_list|)
@@ -517,7 +531,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"http://dx.doi.org/10.1109/ACCESS.2016.2535486"
 argument_list|)
@@ -551,7 +567,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1021/bk-2006-WWW.ch014"
 argument_list|)
@@ -587,16 +605,18 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Shatakshi Jha and Ikhlaq Hussain and Bhim Singh and Sukumar Mishra"
 argument_list|)
@@ -605,7 +625,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"date"
+name|StandardField
+operator|.
+name|DATE
 argument_list|,
 literal|"25 2 2019"
 argument_list|)
@@ -614,7 +636,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1049/iet-rpg.2018.5648"
 argument_list|)
@@ -623,7 +647,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|,
 literal|":https\\://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8636659:PDF"
 argument_list|)
@@ -632,7 +658,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"1752-1416"
 argument_list|)
@@ -641,7 +669,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"issue"
+name|StandardField
+operator|.
+name|ISSUE
 argument_list|,
 literal|"3"
 argument_list|)
@@ -650,7 +680,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"journaltitle"
+name|StandardField
+operator|.
+name|JOURNALTITLE
 argument_list|,
 literal|"IET Renewable Power Generation"
 argument_list|)
@@ -659,7 +691,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"418--426"
 argument_list|)
@@ -668,7 +702,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"IET"
 argument_list|)
@@ -677,7 +713,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Optimal operation of PV-DG-battery based microgrid with power quality conditioner"
 argument_list|)
@@ -686,7 +724,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"13"
 argument_list|)
@@ -707,9 +747,6 @@ decl_stmt|;
 comment|//article number
 name|fetchedEntries
 operator|.
-name|stream
-argument_list|()
-operator|.
 name|forEach
 argument_list|(
 name|entry
@@ -718,7 +755,7 @@ name|entry
 operator|.
 name|clearField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|)
@@ -753,16 +790,18 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|INPROCEEDINGS
+name|InProceedings
 argument_list|)
 decl_stmt|;
 name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Igor Steinmacher and Tayana Uchoa Conte and Christoph Treude and Marco AurÃ©lio Gerosa"
 argument_list|)
@@ -771,7 +810,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"date"
+name|StandardField
+operator|.
+name|DATE
 argument_list|,
 literal|"14-22 May 2016"
 argument_list|)
@@ -780,7 +821,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"eventdate"
+name|StandardField
+operator|.
+name|EVENTDATE
 argument_list|,
 literal|"14-22 May 2016"
 argument_list|)
@@ -789,7 +832,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"eventtitleaddon"
+name|StandardField
+operator|.
+name|EVENTTITLEADDON
 argument_list|,
 literal|"Austin, TX"
 argument_list|)
@@ -798,7 +843,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"location"
+name|StandardField
+operator|.
+name|LOCATION
 argument_list|,
 literal|"Austin, TX"
 argument_list|)
@@ -807,7 +854,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1145/2884781.2884806"
 argument_list|)
@@ -816,7 +865,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"978-1-4503-3900-1"
 argument_list|)
@@ -825,7 +876,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"1558-1225"
 argument_list|)
@@ -834,7 +887,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"journaltitle"
+name|StandardField
+operator|.
+name|JOURNALTITLE
 argument_list|,
 literal|"2016 IEEE/ACM 38th International Conference on Software Engineering (ICSE)"
 argument_list|)
@@ -843,7 +898,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"273--284"
 argument_list|)
@@ -852,7 +909,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"IEEE"
 argument_list|)
@@ -861,7 +920,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"Portals, Documentation, Computer bugs, Joining processes, Industries, Open source software, Newcomers, Newbies, Novices, Beginners, Open Source Software, Barriers, Obstacles, Onboarding, Joining Process"
 argument_list|)
@@ -870,7 +931,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Overcoming Open Source Project Entry Barriers with a Portal for Newcomers"
 argument_list|)
@@ -879,7 +942,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|,
 literal|":https\\://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7886910:PDF"
 argument_list|)
@@ -888,7 +953,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|StandardField
+operator|.
+name|ABSTRACT
 argument_list|,
 literal|"Community-based Open Source Software (OSS) projects are usually self-organized and dynamic, receiving contributions from distributed volunteers. Newcomer are important to the survival, long-term success, and continuity of these communities. However, newcomers face many barriers when making their first contribution to an OSS project, leading in many cases to dropouts. Therefore, a major challenge for OSS projects is to provide ways to support newcomers during their first contribution. In this paper, we propose and evaluate FLOSScoach, a portal created to support newcomers to OSS projects. FLOSScoach was designed based on a conceptual model of barriers created in our previous work. To evaluate the portal, we conducted a study with 65 students, relying on qualitative data from diaries, self-efficacy questionnaires, and the Technology Acceptance Model. The results indicate that FLOSScoach played an important role in guiding newcomers and in lowering barriers related to the orientation and contribution process, whereas it was not effective in lowering technical barriers. We also found that FLOSScoach is useful, easy to use, and increased newcomers' confidence to contribute. Our results can help project maintainers on deciding the points that need more attention in order to help OSS project newcomers overcome entry barriers."
 argument_list|)

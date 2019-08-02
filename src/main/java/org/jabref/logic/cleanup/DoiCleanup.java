@@ -132,7 +132,41 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -171,7 +205,7 @@ specifier|static
 specifier|final
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|FIELDS
 init|=
@@ -179,15 +213,19 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|NOTE
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"ee"
+argument_list|)
 argument_list|)
 decl_stmt|;
 annotation|@
@@ -222,7 +260,7 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|)
@@ -235,7 +273,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|)
@@ -292,7 +330,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|,
@@ -307,7 +345,7 @@ name|FieldChange
 argument_list|(
 name|entry
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|,
@@ -327,7 +365,7 @@ block|}
 comment|// Doi field seems to contain Doi -> cleanup note, url, ee field
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
 name|FIELDS
@@ -369,7 +407,7 @@ block|{
 comment|// As the Doi field is empty we now check if note, url, or ee field contains a Doi
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
 name|FIELDS
@@ -414,7 +452,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|,
@@ -452,7 +490,7 @@ return|return
 name|changes
 return|;
 block|}
-DECL|method|removeFieldValue (BibEntry entry, String field, List<FieldChange> changes)
+DECL|method|removeFieldValue (BibEntry entry, Field field, List<FieldChange> changes)
 specifier|private
 name|void
 name|removeFieldValue
@@ -460,7 +498,7 @@ parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|,
 name|List

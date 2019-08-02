@@ -108,7 +108,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -248,13 +250,13 @@ operator|=
 name|allowIntegerEdition
 expr_stmt|;
 block|}
-DECL|method|checkBibtexDatabase ()
+DECL|method|checkDatabase ()
 specifier|public
 name|List
 argument_list|<
 name|IntegrityMessage
 argument_list|>
-name|checkBibtexDatabase
+name|checkDatabase
 parameter_list|()
 block|{
 name|List
@@ -286,7 +288,7 @@ name|result
 operator|.
 name|addAll
 argument_list|(
-name|checkBibtexEntry
+name|checkEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -297,13 +299,13 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|checkBibtexEntry (BibEntry entry)
+DECL|method|checkEntry (BibEntry entry)
 specifier|public
 name|List
 argument_list|<
 name|IntegrityMessage
 argument_list|>
-name|checkBibtexEntry
+name|checkEntry
 parameter_list|(
 name|BibEntry
 name|entry
@@ -431,7 +433,7 @@ argument_list|(
 operator|new
 name|JournalInAbbreviationListChecker
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNAL
 argument_list|,
@@ -454,7 +456,7 @@ argument_list|(
 operator|new
 name|JournalInAbbreviationListChecker
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNALTITLE
 argument_list|,

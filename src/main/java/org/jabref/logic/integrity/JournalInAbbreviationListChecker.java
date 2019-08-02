@@ -110,6 +110,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_class
 DECL|class|JournalInAbbreviationListChecker
 specifier|public
@@ -121,7 +137,7 @@ block|{
 DECL|field|field
 specifier|private
 specifier|final
-name|String
+name|Field
 name|field
 decl_stmt|;
 DECL|field|abbreviationRepository
@@ -130,11 +146,11 @@ specifier|final
 name|JournalAbbreviationRepository
 name|abbreviationRepository
 decl_stmt|;
-DECL|method|JournalInAbbreviationListChecker (String field, JournalAbbreviationRepository abbreviationRepository)
+DECL|method|JournalInAbbreviationListChecker (Field field, JournalAbbreviationRepository abbreviationRepository)
 specifier|public
 name|JournalInAbbreviationListChecker
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|,
 name|JournalAbbreviationRepository

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.model.entry.specialfields
+DECL|package|org.jabref.model.entry.field
 package|package
 name|org
 operator|.
@@ -10,7 +10,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|specialfields
+name|field
 package|;
 end_package
 
@@ -140,7 +140,7 @@ argument_list|(
 literal|"relevant"
 argument_list|)
 block|;
-comment|// keyword used at keyword field
+comment|// keyword used in keyword field
 DECL|field|keyword
 specifier|private
 specifier|final

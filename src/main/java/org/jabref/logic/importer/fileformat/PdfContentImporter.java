@@ -284,20 +284,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
 name|EntryType
 import|;
 end_import
@@ -312,7 +298,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|LinkedFile
 import|;
 end_import
 
@@ -326,7 +312,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|LinkedFile
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -1438,9 +1440,9 @@ decl_stmt|;
 name|EntryType
 name|type
 init|=
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|INPROCEEDINGS
+name|InProceedings
 decl_stmt|;
 if|if
 condition|(
@@ -1905,9 +1907,9 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|TECHREPORT
+name|TechReport
 expr_stmt|;
 name|pos
 operator|=
@@ -2181,9 +2183,12 @@ name|curString
 operator|.
 name|indexOf
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2403,7 +2408,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -2422,7 +2427,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|EDITOR
 argument_list|,
@@ -2441,7 +2446,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|,
@@ -2464,7 +2469,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|,
@@ -2483,7 +2488,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -2502,7 +2507,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|BOOKTITLE
 argument_list|,
@@ -2521,7 +2526,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|,
@@ -2540,7 +2545,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|SERIES
 argument_list|,
@@ -2559,7 +2564,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|VOLUME
 argument_list|,
@@ -2578,7 +2583,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|NUMBER
 argument_list|,
@@ -2597,7 +2602,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|,
@@ -2616,7 +2621,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -2635,7 +2640,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PUBLISHER
 argument_list|,

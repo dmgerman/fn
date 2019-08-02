@@ -70,7 +70,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|EntryTypes
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -84,7 +86,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibEntry
+name|EntryTypeFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|InternalField
 import|;
 end_import
 
@@ -117,7 +135,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|EntryTypes
+name|EntryTypeFactory
 operator|.
 name|isExclusiveBiblatex
 argument_list|(
@@ -146,11 +164,16 @@ name|entry
 operator|.
 name|getType
 argument_list|()
+operator|.
+name|getDisplayName
+argument_list|()
 argument_list|)
 argument_list|,
 name|entry
 argument_list|,
-literal|"bibtexkey"
+name|InternalField
+operator|.
+name|KEY_FIELD
 argument_list|)
 argument_list|)
 return|;

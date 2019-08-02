@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.model.entry.specialfields
+DECL|package|org.jabref.model.entry.field
 package|package
 name|org
 operator|.
@@ -10,7 +10,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|specialfields
+name|field
 package|;
 end_package
 
@@ -54,38 +54,6 @@ name|assertEquals
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|jupiter
-operator|.
-name|api
-operator|.
-name|Assertions
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|jupiter
-operator|.
-name|api
-operator|.
-name|Assertions
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_class
 DECL|class|SpecialFieldTest
 specifier|public
@@ -113,7 +81,7 @@ argument_list|)
 argument_list|,
 name|SpecialField
 operator|.
-name|getSpecialFieldInstanceFromFieldName
+name|fromName
 argument_list|(
 literal|"ranking"
 argument_list|)
@@ -137,45 +105,7 @@ argument_list|()
 argument_list|,
 name|SpecialField
 operator|.
-name|getSpecialFieldInstanceFromFieldName
-argument_list|(
-literal|"title"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|isSpecialFieldTrueForValidField ()
-specifier|public
-name|void
-name|isSpecialFieldTrueForValidField
-parameter_list|()
-block|{
-name|assertTrue
-argument_list|(
-name|SpecialField
-operator|.
-name|isSpecialField
-argument_list|(
-literal|"ranking"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|isSpecialFieldFalseForInvalidField ()
-specifier|public
-name|void
-name|isSpecialFieldFalseForInvalidField
-parameter_list|()
-block|{
-name|assertFalse
-argument_list|(
-name|SpecialField
-operator|.
-name|isSpecialField
+name|fromName
 argument_list|(
 literal|"title"
 argument_list|)

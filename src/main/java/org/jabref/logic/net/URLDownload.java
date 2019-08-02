@@ -1675,7 +1675,7 @@ name|connection
 operator|.
 name|getHeaderField
 argument_list|(
-literal|"Location"
+literal|"location"
 argument_list|)
 decl_stmt|;
 comment|// open the new connnection again

@@ -72,6 +72,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|strings
 operator|.
 name|StringUtil
@@ -92,12 +108,12 @@ specifier|final
 name|JournalAbbreviationRepository
 name|journalAbbreviationRepository
 decl_stmt|;
-DECL|method|JournalEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, JournalAbbreviationRepository journalAbbreviationRepository, FieldCheckers fieldCheckers)
+DECL|method|JournalEditorViewModel (Field field, AutoCompleteSuggestionProvider<?> suggestionProvider, JournalAbbreviationRepository journalAbbreviationRepository, FieldCheckers fieldCheckers)
 specifier|public
 name|JournalEditorViewModel
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|AutoCompleteSuggestionProvider
 argument_list|<
@@ -114,7 +130,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|suggestionProvider
 argument_list|,
@@ -197,7 +213,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// TODO: Add undo
-comment|//panel.getUndoManager().addEdit(new UndoableFieldChange(entry, editor.getFieldName(), text, nextAbbreviation));
+comment|//panel.getUndoManager().addEdit(new UndoableFieldChange(entry, editor.getName(), text, nextAbbreviation));
 block|}
 block|}
 block|}

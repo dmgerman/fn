@@ -84,6 +84,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_comment
 comment|/**  * Search rule for regex-based search.  */
 end_comment
@@ -242,12 +258,12 @@ return|;
 block|}
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
 name|bibEntry
 operator|.
-name|getFieldNames
+name|getFields
 argument_list|()
 control|)
 block|{

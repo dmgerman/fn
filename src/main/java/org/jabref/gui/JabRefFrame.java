@@ -1552,7 +1552,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BiblatexEntryTypes
+name|StandardEntryType
 import|;
 end_import
 
@@ -1566,23 +1566,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|specialfields
+name|field
 operator|.
 name|SpecialField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -3629,9 +3631,9 @@ name|NewEntryAction
 argument_list|(
 name|this
 argument_list|,
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|,
 name|dialogService
 argument_list|,
@@ -7294,6 +7296,12 @@ operator|.
 name|start
 argument_list|(
 name|context
+argument_list|,
+name|Globals
+operator|.
+name|entryTypesManager
+argument_list|,
+name|prefs
 argument_list|)
 expr_stmt|;
 comment|// Track opening
@@ -7644,7 +7652,7 @@ name|selectedEntry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 argument_list|)
@@ -7696,7 +7704,7 @@ name|selectedEntry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 argument_list|)
@@ -7708,7 +7716,7 @@ name|selectedEntry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|)

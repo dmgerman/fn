@@ -76,7 +76,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BiblatexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -204,17 +220,15 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|BOOK
+name|Book
 argument_list|)
 expr_stmt|;
 name|bibEntry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"9780321356680"
 argument_list|)
 expr_stmt|;
@@ -222,7 +236,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Effective Java (2nd Edition)"
 argument_list|)
@@ -231,7 +247,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"Addison-Wesley"
 argument_list|)
@@ -240,7 +258,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2008"
 argument_list|)
@@ -249,7 +269,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Joshua Bloch"
 argument_list|)
@@ -258,7 +280,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"978-0321356680"
 argument_list|)
@@ -267,7 +291,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"https://www.amazon.com/Effective-Java-2nd-Joshua-Bloch/dp/0321356683?SubscriptionId=AKIAIOBINVZYXZQZ2U3A&tag=chimbori05-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=0321356683"
 argument_list|)
@@ -365,10 +391,8 @@ argument_list|)
 decl_stmt|;
 name|bibEntry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"0321356683"
 argument_list|)
 expr_stmt|;
@@ -376,7 +400,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"0321356683"
 argument_list|)
@@ -421,10 +447,8 @@ argument_list|)
 decl_stmt|;
 name|bibEntry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"9780321356680"
 argument_list|)
 expr_stmt|;
@@ -432,7 +456,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"9780321356680"
 argument_list|)
@@ -473,17 +499,15 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|BOOK
+name|Book
 argument_list|)
 expr_stmt|;
 name|bibEntry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"3642434738"
 argument_list|)
 expr_stmt|;
@@ -491,7 +515,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Fundamentals of Business Process Management"
 argument_list|)
@@ -500,7 +526,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"Springer"
 argument_list|)
@@ -509,7 +537,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2015"
 argument_list|)
@@ -518,7 +548,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Marlon Dumas and Marcello La Rosa and Jan Mendling and Hajo A. Reijers"
 argument_list|)
@@ -527,7 +559,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"3642434738"
 argument_list|)
@@ -536,7 +570,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"https://www.amazon.com/Fundamentals-Business-Process-Management-Marlon/dp/3642434738?SubscriptionId=AKIAIOBINVZYXZQZ2U3A&tag=chimbori05-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=3642434738"
 argument_list|)

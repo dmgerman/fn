@@ -556,7 +556,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -1164,7 +1166,9 @@ name|BibEntryWriter
 argument_list|(
 name|formatter
 argument_list|,
-literal|false
+name|Globals
+operator|.
+name|entryTypesManager
 argument_list|)
 operator|.
 name|writeWithoutPrependedNewlines
@@ -1942,7 +1946,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -1957,7 +1961,7 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|String
+name|Field
 name|fieldName
 init|=
 name|field
@@ -1975,13 +1979,6 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|InternalBibtexFields
-operator|.
-name|isDisplayableField
-argument_list|(
-name|fieldName
-argument_list|)
-operator|&&
 operator|!
 name|newEntry
 operator|.
@@ -2024,7 +2021,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -2039,7 +2036,7 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|String
+name|Field
 name|fieldName
 init|=
 name|field

@@ -74,6 +74,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|util
 operator|.
 name|OptionalUtil
@@ -93,7 +109,7 @@ block|{
 DECL|field|field
 specifier|protected
 specifier|final
-name|String
+name|Field
 name|field
 decl_stmt|;
 DECL|field|checker
@@ -102,11 +118,11 @@ specifier|final
 name|ValueChecker
 name|checker
 decl_stmt|;
-DECL|method|FieldChecker (String field, ValueChecker checker)
+DECL|method|FieldChecker (Field field, ValueChecker checker)
 specifier|public
 name|FieldChecker
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|,
 name|ValueChecker

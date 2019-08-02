@@ -170,6 +170,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|util
 operator|.
 name|DummyFileUpdateMonitor
@@ -494,7 +510,11 @@ name|entry
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"test"
+argument_list|)
 argument_list|,
 literal|"testvalue"
 argument_list|)
@@ -589,7 +609,11 @@ name|entry
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"test"
+argument_list|)
 argument_list|,
 literal|"new value"
 argument_list|)

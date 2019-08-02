@@ -118,7 +118,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|Month
 import|;
 end_import
 
@@ -132,7 +132,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|Month
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -497,6 +515,9 @@ name|bibEntry
 operator|.
 name|getType
 argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|,
 operator|new
@@ -523,7 +544,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|String
+name|Field
 name|key
 range|:
 name|bibEntry
@@ -563,7 +584,7 @@ lambda|->
 block|{
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|MONTH
 operator|.
@@ -602,6 +623,9 @@ operator|new
 name|Key
 argument_list|(
 name|key
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|,
 operator|new

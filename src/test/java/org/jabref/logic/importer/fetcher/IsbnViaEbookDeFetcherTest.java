@@ -76,7 +76,39 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BiblatexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -188,17 +220,15 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|BOOK
+name|Book
 argument_list|)
 expr_stmt|;
 name|bibEntry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"9780134685991"
 argument_list|)
 expr_stmt|;
@@ -206,7 +236,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Effective Java"
 argument_list|)
@@ -215,7 +247,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"Addison Wesley"
 argument_list|)
@@ -224,7 +258,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2018"
 argument_list|)
@@ -233,7 +269,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Bloch, Joshua"
 argument_list|)
@@ -242,7 +280,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"date"
+name|StandardField
+operator|.
+name|DATE
 argument_list|,
 literal|"2018-01-11"
 argument_list|)
@@ -251,7 +291,11 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"ean"
+argument_list|)
 argument_list|,
 literal|"9780134685991"
 argument_list|)
@@ -260,7 +304,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"0134685997"
 argument_list|)
@@ -269,7 +315,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"https://www.ebook.de/de/product/28983211/joshua_bloch_effective_java.html"
 argument_list|)
@@ -439,17 +487,15 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|BOOK
+name|Book
 argument_list|)
 expr_stmt|;
 name|bibEntry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"9783662565094"
 argument_list|)
 expr_stmt|;
@@ -457,7 +503,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Fundamentals of Business Process Management"
 argument_list|)
@@ -466,7 +514,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"Springer Berlin Heidelberg"
 argument_list|)
@@ -475,7 +525,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2018"
 argument_list|)
@@ -484,7 +536,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Dumas, Marlon and Rosa, Marcello La and Mendling, Jan and Reijers, Hajo A."
 argument_list|)
@@ -493,7 +547,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"date"
+name|StandardField
+operator|.
+name|DATE
 argument_list|,
 literal|"2018-03-23"
 argument_list|)
@@ -502,7 +558,11 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"ean"
+argument_list|)
 argument_list|,
 literal|"9783662565094"
 argument_list|)
@@ -511,7 +571,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"https://www.ebook.de/de/product/33399253/marlon_dumas_marcello_la_rosa_jan_mendling_hajo_a_reijers_fundamentals_of_business_process_management.html"
 argument_list|)

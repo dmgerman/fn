@@ -184,6 +184,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -352,7 +368,7 @@ argument_list|)
 expr_stmt|;
 name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|allFields
 init|=
@@ -367,7 +383,7 @@ name|addAll
 argument_list|(
 name|memEntry
 operator|.
-name|getFieldNames
+name|getFields
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -377,7 +393,7 @@ name|addAll
 argument_list|(
 name|tmpEntry
 operator|.
-name|getFieldNames
+name|getFields
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -387,13 +403,13 @@ name|addAll
 argument_list|(
 name|diskEntry
 operator|.
-name|getFieldNames
+name|getFields
 argument_list|()
 argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
 name|allFields
@@ -747,7 +763,7 @@ decl_stmt|;
 DECL|field|field
 specifier|private
 specifier|final
-name|String
+name|Field
 name|field
 decl_stmt|;
 DECL|field|inMem
@@ -768,11 +784,11 @@ specifier|final
 name|String
 name|onDisk
 decl_stmt|;
-DECL|method|FieldChangeViewModel (String field, BibEntry memEntry, BibEntry tmpEntry, String inMem, String onTmp, String onDisk)
+DECL|method|FieldChangeViewModel (Field field, BibEntry memEntry, BibEntry tmpEntry, String inMem, String onTmp, String onDisk)
 specifier|public
 name|FieldChangeViewModel
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|,
 name|BibEntry
@@ -794,6 +810,9 @@ block|{
 name|super
 argument_list|(
 name|field
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|entry

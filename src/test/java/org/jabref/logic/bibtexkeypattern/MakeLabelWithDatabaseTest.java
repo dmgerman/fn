@@ -82,6 +82,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|jupiter
@@ -175,7 +191,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe"
 argument_list|)
@@ -184,7 +202,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -193,7 +213,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An awesome paper on JabRef"
 argument_list|)
@@ -319,7 +341,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe"
 argument_list|)
@@ -328,7 +352,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -472,7 +498,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe"
 argument_list|)
@@ -481,7 +509,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -625,7 +655,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe"
 argument_list|)
@@ -634,7 +666,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -700,7 +734,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe"
 argument_list|)
@@ -709,7 +745,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -745,7 +783,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe"
 argument_list|)
@@ -754,7 +794,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -840,7 +882,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe"
 argument_list|)
@@ -849,7 +893,9 @@ name|entry2
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -879,7 +925,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe"
 argument_list|)
@@ -888,7 +936,9 @@ name|entry3
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2016"
 argument_list|)
@@ -1401,7 +1451,9 @@ name|entry
 operator|.
 name|clearField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|)
 expr_stmt|;
 operator|new
@@ -1453,7 +1505,9 @@ name|entry
 operator|.
 name|clearField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|)
 expr_stmt|;
 operator|new
@@ -1640,7 +1694,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An aweSOme Paper on JabRef"
 argument_list|)
@@ -1694,7 +1750,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An aweSOme Paper on JabRef"
 argument_list|)
@@ -1748,7 +1806,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An aweSOme Paper on JabRef"
 argument_list|)
@@ -1802,7 +1862,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An aweSOme Paper on JabRef"
 argument_list|)
@@ -1856,7 +1918,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An aweSOme Paper on JabRef"
 argument_list|)
@@ -1955,7 +2019,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An aweSOme Paper on JabRef"
 argument_list|)
@@ -2009,7 +2075,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An aweSOme Paper on JabRef"
 argument_list|)
@@ -2063,7 +2131,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An aweSOme Paper on JabRef"
 argument_list|)
@@ -2117,7 +2187,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An aweSOme Paper on JabRef"
 argument_list|)
@@ -2171,7 +2243,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An aweSOme Paper on JabRef"
 argument_list|)
@@ -2315,7 +2389,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe and Donald Smith and Will Wonder"
 argument_list|)
@@ -2369,7 +2445,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe and Donald Smith and Will Wonder"
 argument_list|)
@@ -2423,7 +2501,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe and Donald Smith and Will Wonder"
 argument_list|)
@@ -2475,7 +2555,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe and Donald Smith and Will Wonder"
 argument_list|)
@@ -2549,7 +2631,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe and Donald Smith and Will Wonder"
 argument_list|)
@@ -2603,7 +2687,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe and Donald Smith and Will Wonder"
 argument_list|)
@@ -2657,7 +2743,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe and Donald Smith and Will Wonder"
 argument_list|)
@@ -2711,7 +2799,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Please replace the spaces"
 argument_list|)

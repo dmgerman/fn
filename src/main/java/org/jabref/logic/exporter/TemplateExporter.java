@@ -270,6 +270,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -453,7 +467,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *      * @param name              to display to the user and to call this format in the console.      * @param lfFileName        Name of the main layout file.      * @param directory         Directory in which to find the layout file.      * @param extension         May or may not contain the . (for instance .txt).      * @param layoutPreferences Preferences for the layout      * @param savePreferences   Preferences for saving      */
+comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *      * @param name              to display to the user and to call this format in the console.      * @param lfFileName        Name of the main layout file.      * @param extension         May or may not contain the . (for instance .txt).      * @param layoutPreferences Preferences for the layout      * @param savePreferences   Preferences for saving      */
 DECL|method|TemplateExporter (String name, String lfFileName, String extension, LayoutFormatterPreferences layoutPreferences, SavePreferences savePreferences)
 specifier|public
 name|TemplateExporter
@@ -1084,7 +1098,7 @@ block|}
 block|}
 name|Map
 argument_list|<
-name|String
+name|EntryType
 argument_list|,
 name|Layout
 argument_list|>
@@ -1119,7 +1133,7 @@ operator|++
 expr_stmt|;
 comment|// Increment entry counter.
 comment|// Get the layout
-name|String
+name|EntryType
 name|type
 init|=
 name|entry

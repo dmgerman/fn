@@ -164,7 +164,7 @@ lambda|->
 operator|!
 name|entry
 operator|.
-name|getFieldNames
+name|getFields
 argument_list|()
 operator|.
 name|isEmpty

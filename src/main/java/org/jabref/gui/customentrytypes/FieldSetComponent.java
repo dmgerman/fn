@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.gui.customentrytypes
+DECL|package|org.jabref.gui.BibEntryTypes
 package|package
 name|org
 operator|.
@@ -8,7 +8,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|customentrytypes
+name|BibEntryTypes
 package|;
 end_package
 

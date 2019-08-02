@@ -64,20 +64,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
 name|BibtexString
 import|;
 end_import
@@ -92,7 +78,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -213,7 +215,9 @@ name|bibentry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"O. Kitsune"
 argument_list|)
@@ -222,7 +226,9 @@ name|bibentry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2017"
 argument_list|)
@@ -231,7 +237,9 @@ name|bibentry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"213--216"
 argument_list|)
@@ -246,9 +254,9 @@ name|dbentry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 expr_stmt|;
 name|dbentry
@@ -262,7 +270,9 @@ name|dbentry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Eric von Hippel and Georg von Krogh"
 argument_list|)
@@ -271,7 +281,9 @@ name|dbentry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Open Source Software and the \"Private-Collective\" Innovation Model: Issues for Organization Science"
 argument_list|)
@@ -280,7 +292,9 @@ name|dbentry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"Organization Science"
 argument_list|)
@@ -289,7 +303,9 @@ name|dbentry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2003"
 argument_list|)
@@ -298,7 +314,9 @@ name|dbentry
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"14"
 argument_list|)
@@ -307,7 +325,9 @@ name|dbentry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"209--223"
 argument_list|)
@@ -316,7 +336,9 @@ name|dbentry
 operator|.
 name|setField
 argument_list|(
-literal|"number"
+name|StandardField
+operator|.
+name|NUMBER
 argument_list|,
 literal|"2"
 argument_list|)
@@ -325,7 +347,9 @@ name|dbentry
 operator|.
 name|setField
 argument_list|(
-literal|"address"
+name|StandardField
+operator|.
+name|ADDRESS
 argument_list|,
 literal|"Institute for Operations Research and the Management Sciences (INFORMS), Linthicum, Maryland, USA"
 argument_list|)
@@ -334,7 +358,9 @@ name|dbentry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"http://dx.doi.org/10.1287/orsc.14.2.209.14992"
 argument_list|)
@@ -343,7 +369,9 @@ name|dbentry
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"1526-5455"
 argument_list|)
@@ -352,7 +380,9 @@ name|dbentry
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"INFORMS"
 argument_list|)
@@ -505,7 +535,7 @@ name|bibentry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|EDITOR
 argument_list|,
@@ -555,7 +585,7 @@ name|bibentry
 operator|.
 name|clearField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|)
@@ -603,7 +633,7 @@ name|bibentry
 operator|.
 name|clearField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|)
@@ -612,7 +642,7 @@ name|bibentry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|EDITOR
 argument_list|,
@@ -716,7 +746,9 @@ name|bibentry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"#sgr#"
 argument_list|)
@@ -725,7 +757,9 @@ name|bibentry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2017"
 argument_list|)
@@ -734,7 +768,9 @@ name|bibentry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"213--216"
 argument_list|)
@@ -916,7 +952,9 @@ name|another_bibentry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"GraÅ¾ulis, Saulius"
 argument_list|)
@@ -925,7 +963,9 @@ name|another_bibentry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2017"
 argument_list|)
@@ -934,7 +974,9 @@ name|another_bibentry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"213--216"
 argument_list|)
@@ -1288,7 +1330,7 @@ name|child
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
 argument_list|,
@@ -1454,7 +1496,7 @@ name|child
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
 argument_list|,
