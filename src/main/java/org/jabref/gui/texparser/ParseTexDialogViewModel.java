@@ -398,6 +398,26 @@ name|ValidationStatus
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
 DECL|class|ParseTexDialogViewModel
 specifier|public
@@ -406,6 +426,22 @@ name|ParseTexDialogViewModel
 extends|extends
 name|AbstractViewModel
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOGGER
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|ParseTexDialogViewModel
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|TEX_EXT
 specifier|private
 specifier|static
@@ -976,7 +1012,14 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Error searching an invalid directory"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Error searching files: %s"
+argument_list|,
+name|directory
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -1045,15 +1088,26 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|IOException
+name|LOGGER
+operator|.
+name|error
 argument_list|(
-literal|"Error searching files"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Error searching files: %s"
 argument_list|,
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
-throw|;
+argument_list|)
+expr_stmt|;
+return|return
+name|parent
+return|;
 block|}
 name|List
 argument_list|<

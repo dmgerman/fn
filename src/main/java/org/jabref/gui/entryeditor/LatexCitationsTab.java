@@ -16,18 +16,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Path
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Optional
@@ -43,6 +31,18 @@ operator|.
 name|stream
 operator|.
 name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|Button
 import|;
 end_import
 
@@ -115,6 +115,18 @@ operator|.
 name|text
 operator|.
 name|Text
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DialogService
 import|;
 end_import
 
@@ -238,7 +250,7 @@ specifier|final
 name|ProgressIndicator
 name|progressIndicator
 decl_stmt|;
-DECL|method|LatexCitationsTab (BibDatabaseContext databaseContext, PreferencesService preferencesService, TaskExecutor taskExecutor)
+DECL|method|LatexCitationsTab (BibDatabaseContext databaseContext, PreferencesService preferencesService, TaskExecutor taskExecutor, DialogService dialogService)
 specifier|public
 name|LatexCitationsTab
 parameter_list|(
@@ -250,6 +262,9 @@ name|preferencesService
 parameter_list|,
 name|TaskExecutor
 name|taskExecutor
+parameter_list|,
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|this
@@ -264,6 +279,8 @@ argument_list|,
 name|preferencesService
 argument_list|,
 name|taskExecutor
+argument_list|,
+name|dialogService
 argument_list|)
 expr_stmt|;
 name|this
@@ -433,6 +450,86 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getLatexDirectoryBox ()
+specifier|private
+name|VBox
+name|getLatexDirectoryBox
+parameter_list|()
+block|{
+name|Text
+name|latexDirectoryText
+init|=
+operator|new
+name|Text
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%n%n%s: %s"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Current search directory"
+argument_list|)
+argument_list|,
+name|viewModel
+operator|.
+name|directoryProperty
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|latexDirectoryText
+operator|.
+name|setStyle
+argument_list|(
+literal|"-fx-font-weight: bold;"
+argument_list|)
+expr_stmt|;
+name|Button
+name|latexDirectoryButton
+init|=
+operator|new
+name|Button
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Set LaTeX file directory"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|latexDirectoryButton
+operator|.
+name|setOnAction
+argument_list|(
+name|event
+lambda|->
+name|viewModel
+operator|.
+name|setLatexDirectory
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+operator|new
+name|VBox
+argument_list|(
+literal|15
+argument_list|,
+name|latexDirectoryText
+argument_list|,
+name|latexDirectoryButton
+argument_list|)
+return|;
+block|}
 DECL|method|getCitationsPane ()
 specifier|private
 name|ScrollPane
@@ -474,17 +571,6 @@ argument_list|,
 name|titleText
 argument_list|)
 decl_stmt|;
-name|Path
-name|basePath
-init|=
-name|viewModel
-operator|.
-name|directoryProperty
-argument_list|()
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 name|citationsBox
 operator|.
 name|getChildren
@@ -508,7 +594,13 @@ name|citation
 operator|.
 name|getDisplayGraphic
 argument_list|(
-name|basePath
+name|viewModel
+operator|.
+name|directoryProperty
+argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|Optional
 operator|.
@@ -524,6 +616,17 @@ operator|.
 name|toList
 argument_list|()
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|citationsBox
+operator|.
+name|getChildren
+argument_list|()
+operator|.
+name|add
+argument_list|(
+name|getLatexDirectoryBox
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ScrollPane
@@ -592,28 +695,7 @@ name|notFoundText
 operator|.
 name|setStyle
 argument_list|(
-literal|"-fx-font-size: 110%"
-argument_list|)
-expr_stmt|;
-name|Text
-name|notFoundAdviceText
-init|=
-operator|new
-name|Text
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"You can set the LaTeX file directory in the 'Library properties' dialog."
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|notFoundAdviceText
-operator|.
-name|setStyle
-argument_list|(
-literal|"-fx-font-weight: bold;"
+literal|"-fx-font-size: 110%;"
 argument_list|)
 expr_stmt|;
 name|VBox
@@ -628,7 +710,8 @@ name|notFoundTitleText
 argument_list|,
 name|notFoundText
 argument_list|,
-name|notFoundAdviceText
+name|getLatexDirectoryBox
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|ScrollPane
@@ -719,6 +802,9 @@ argument_list|,
 name|errorTitleText
 argument_list|,
 name|errorMessageText
+argument_list|,
+name|getLatexDirectoryBox
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|ScrollPane

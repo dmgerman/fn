@@ -1885,6 +1885,8 @@ argument_list|,
 name|preferencesService
 argument_list|,
 name|taskExecutor
+argument_list|,
+name|dialogService
 argument_list|)
 argument_list|)
 expr_stmt|;
