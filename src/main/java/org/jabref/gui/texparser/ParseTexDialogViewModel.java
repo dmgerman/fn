@@ -654,15 +654,6 @@ name|get
 argument_list|(
 name|path
 argument_list|)
-operator|!=
-literal|null
-operator|&&
-name|Paths
-operator|.
-name|get
-argument_list|(
-name|path
-argument_list|)
 operator|.
 name|toFile
 argument_list|()
@@ -995,15 +986,6 @@ operator|.
 name|toFile
 argument_list|()
 operator|.
-name|exists
-argument_list|()
-operator|||
-operator|!
-name|directory
-operator|.
-name|toFile
-argument_list|()
-operator|.
 name|isDirectory
 argument_list|()
 condition|)
@@ -1016,7 +998,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Error searching files: %s"
+literal|"Invalid directory for searching: %s"
 argument_list|,
 name|directory
 argument_list|)
@@ -1096,7 +1078,15 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Error searching files: %s"
+literal|"%s while searching files: %s"
+argument_list|,
+name|e
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|e
 operator|.
@@ -1184,10 +1174,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|subRoot
-operator|!=
-literal|null
-operator|&&
 operator|!
 name|subRoot
 operator|.
@@ -1296,19 +1282,12 @@ argument_list|()
 operator|.
 name|getPath
 argument_list|()
-operator|.
-name|toAbsolutePath
-argument_list|()
 argument_list|)
 operator|.
 name|filter
 argument_list|(
 name|path
 lambda|->
-name|path
-operator|!=
-literal|null
-operator|&&
 name|path
 operator|.
 name|toFile
@@ -1334,6 +1313,13 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"There are no valid files checked"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|BackgroundTask

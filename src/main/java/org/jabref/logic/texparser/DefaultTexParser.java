@@ -226,7 +226,16 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * It is allowed to add new cite commands for pattern matching.      *      *<p>Some valid examples: "citep", "[cC]ite", "[cC]ite(author|title|year|t|p)?"      *      *<p>TODO: Add support for multicite commands.      */
+DECL|field|TEX_EXT
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|TEX_EXT
+init|=
+literal|".tex"
+decl_stmt|;
+comment|/**      * It is allowed to add new cite commands for pattern matching.      * Some valid examples: "citep", "[cC]ite", and "[cC]ite(author|title|year|t|p)?".      */
 DECL|field|CITE_COMMANDS
 specifier|private
 specifier|static
@@ -311,15 +320,6 @@ argument_list|,
 name|INCLUDE_GROUP
 argument_list|)
 argument_list|)
-decl_stmt|;
-DECL|field|TEX_EXT
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|TEX_EXT
-init|=
-literal|".tex"
 decl_stmt|;
 DECL|field|texParserResult
 specifier|private
@@ -445,12 +445,14 @@ control|)
 block|{
 if|if
 condition|(
-name|Files
-operator|.
-name|notExists
-argument_list|(
+operator|!
 name|file
-argument_list|)
+operator|.
+name|toFile
+argument_list|()
+operator|.
+name|exists
+argument_list|()
 condition|)
 block|{
 name|LOGGER
@@ -586,7 +588,15 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Error searching files: %s"
+literal|"%s while parsing files: %s"
+argument_list|,
+name|e
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|e
 operator|.
@@ -755,9 +765,6 @@ name|Path
 name|inputFile
 init|=
 name|file
-operator|.
-name|toAbsolutePath
-argument_list|()
 operator|.
 name|getParent
 argument_list|()

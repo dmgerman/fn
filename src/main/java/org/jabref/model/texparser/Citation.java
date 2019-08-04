@@ -293,7 +293,24 @@ operator|+
 name|CONTEXT_WIDTH
 argument_list|)
 decl_stmt|;
+comment|// Add three dots when the string does not contain all the line.
 return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s%s%s"
+argument_list|,
+operator|(
+name|start
+operator|>
+literal|0
+operator|)
+condition|?
+literal|"... "
+else|:
+literal|""
+argument_list|,
 name|lineText
 operator|.
 name|substring
@@ -301,6 +318,20 @@ argument_list|(
 name|start
 argument_list|,
 name|end
+argument_list|)
+operator|.
+name|trim
+argument_list|()
+argument_list|,
+operator|(
+name|end
+operator|<
+name|lineLength
+operator|)
+condition|?
+literal|" ..."
+else|:
+literal|""
 argument_list|)
 return|;
 block|}
