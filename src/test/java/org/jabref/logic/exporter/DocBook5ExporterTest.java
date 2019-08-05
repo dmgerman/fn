@@ -212,18 +212,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|jabref
-operator|.
-name|support
-operator|.
-name|DisabledOnCIServer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|jupiter
@@ -603,11 +591,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|DisabledOnCIServer
-argument_list|(
-literal|"Fails on CI for some reason"
-argument_list|)
 DECL|method|testPerformExportForSingleEntry (@empDir Path testFolder)
 name|void
 name|testPerformExportForSingleEntry
@@ -683,6 +666,9 @@ name|isSimilarTo
 argument_list|(
 name|control
 argument_list|)
+operator|.
+name|normalizeWhitespace
+argument_list|()
 operator|.
 name|withNodeMatcher
 argument_list|(

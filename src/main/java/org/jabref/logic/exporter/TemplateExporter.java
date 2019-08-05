@@ -1175,6 +1175,9 @@ operator|+
 literal|'.'
 operator|+
 name|type
+operator|.
+name|getName
+argument_list|()
 operator|+
 name|LAYOUT_EXTENSION
 argument_list|)
