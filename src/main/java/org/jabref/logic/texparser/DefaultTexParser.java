@@ -800,7 +800,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|nestedFile
 operator|.
 name|toFile
@@ -808,26 +807,7 @@ argument_list|()
 operator|.
 name|exists
 argument_list|()
-condition|)
-block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Nested file does not exist: %s"
-argument_list|,
-name|nestedFile
-argument_list|)
-argument_list|)
-expr_stmt|;
-continue|continue;
-block|}
-if|if
-condition|(
+operator|&&
 operator|!
 name|texFiles
 operator|.
