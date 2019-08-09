@@ -54,16 +54,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringJoiner
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -278,11 +268,11 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Check if an entry with the given key is present in the list of new entries.      */
-DECL|method|checkEntryNewDatabase (String key)
+comment|/**      * Check if an entry with the given key is not present in the list of new entries.      */
+DECL|method|isNotKeyIntoNewEntries (String key)
 specifier|public
 name|boolean
-name|checkEntryNewDatabase
+name|isNotKeyIntoNewEntries
 parameter_list|(
 name|String
 name|key
@@ -294,7 +284,7 @@ operator|.
 name|stream
 argument_list|()
 operator|.
-name|anyMatch
+name|noneMatch
 argument_list|(
 name|entry
 lambda|->
@@ -381,72 +371,46 @@ name|toString
 parameter_list|()
 block|{
 return|return
-operator|new
-name|StringJoiner
+name|String
+operator|.
+name|format
 argument_list|(
-literal|", "
+literal|"TexBibEntriesResolverResult{texParserResult=%s, unresolvedKeys=%s, newEntries=%s, crossRefsCount=%s}"
 argument_list|,
 name|this
 operator|.
-name|getClass
-argument_list|()
-operator|.
-name|getSimpleName
-argument_list|()
-operator|+
-literal|"["
-argument_list|,
-literal|"]"
-argument_list|)
-operator|.
-name|add
-argument_list|(
-literal|"texParserResult = "
-operator|+
 name|texParserResult
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"unresolvedKeys = "
-operator|+
 name|unresolvedKeys
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"newEntries = "
-operator|+
 name|newEntries
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"crossRefsCount = "
-operator|+
 name|crossRefsCount
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 annotation|@
 name|Override
-DECL|method|equals (Object o)
+DECL|method|equals (Object obj)
 specifier|public
 name|boolean
 name|equals
 parameter_list|(
 name|Object
-name|o
+name|obj
 parameter_list|)
 block|{
 if|if
 condition|(
 name|this
 operator|==
-name|o
+name|obj
 condition|)
 block|{
 return|return
@@ -455,14 +419,14 @@ return|;
 block|}
 if|if
 condition|(
-name|o
+name|obj
 operator|==
 literal|null
 operator|||
 name|getClass
 argument_list|()
 operator|!=
-name|o
+name|obj
 operator|.
 name|getClass
 argument_list|()
@@ -478,7 +442,7 @@ init|=
 operator|(
 name|TexBibEntriesResolverResult
 operator|)
-name|o
+name|obj
 decl_stmt|;
 return|return
 name|Objects

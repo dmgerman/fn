@@ -2960,6 +2960,15 @@ name|ACCEPT_RECOMMENDATIONS
 init|=
 literal|"acceptRecommendations"
 decl_stmt|;
+DECL|field|SHOW_LATEX_CITATIONS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SHOW_LATEX_CITATIONS
+init|=
+literal|"showLatexCitations"
+decl_stmt|;
 DECL|field|SEND_LANGUAGE_DATA
 specifier|public
 specifier|static
@@ -4710,6 +4719,17 @@ argument_list|,
 name|Boolean
 operator|.
 name|FALSE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|SHOW_LATEX_CITATIONS
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -6976,6 +6996,11 @@ argument_list|)
 argument_list|,
 name|getBoolean
 argument_list|(
+name|SHOW_LATEX_CITATIONS
+argument_list|)
+argument_list|,
+name|getBoolean
+argument_list|(
 name|DEFAULT_SHOW_SOURCE
 argument_list|)
 argument_list|,
@@ -9155,7 +9180,7 @@ annotation|@
 name|Override
 DECL|method|getEnforceLegalKeys ()
 specifier|public
-name|Boolean
+name|boolean
 name|getEnforceLegalKeys
 parameter_list|()
 block|{

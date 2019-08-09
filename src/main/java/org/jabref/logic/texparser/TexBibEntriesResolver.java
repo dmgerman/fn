@@ -171,10 +171,9 @@ control|)
 block|{
 if|if
 condition|(
-operator|!
 name|result
 operator|.
-name|checkEntryNewDatabase
+name|isNotKeyIntoNewEntries
 argument_list|(
 name|key
 argument_list|)
@@ -267,10 +266,9 @@ lambda|->
 block|{
 if|if
 condition|(
-operator|!
 name|result
 operator|.
-name|checkEntryNewDatabase
+name|isNotKeyIntoNewEntries
 argument_list|(
 name|crossRef
 argument_list|)

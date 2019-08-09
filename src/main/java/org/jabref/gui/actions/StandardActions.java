@@ -1500,7 +1500,7 @@ argument_list|)
 block|,
 DECL|enumConstant|PARSE_TEX
 DECL|enumConstant|Localization.lang
-DECL|enumConstant|IconTheme.JabRefIcons.APPLICATION_TEXSTUDIO
+DECL|enumConstant|IconTheme.JabRefIcons.LATEX_CITATIONS
 name|PARSE_TEX
 argument_list|(
 name|Localization
@@ -1514,7 +1514,7 @@ name|IconTheme
 operator|.
 name|JabRefIcons
 operator|.
-name|APPLICATION_TEXSTUDIO
+name|LATEX_CITATIONS
 argument_list|)
 block|,
 DECL|enumConstant|NEW_SUB_LIBRARY_FROM_AUX

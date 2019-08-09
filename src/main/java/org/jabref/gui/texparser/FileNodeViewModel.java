@@ -26,11 +26,13 @@ end_import
 
 begin_import
 import|import
-name|java
+name|javafx
 operator|.
-name|util
+name|beans
 operator|.
-name|StringJoiner
+name|property
+operator|.
+name|ReadOnlyListWrapper
 import|;
 end_import
 
@@ -70,6 +72,7 @@ end_import
 
 begin_class
 DECL|class|FileNodeViewModel
+specifier|public
 class|class
 name|FileNodeViewModel
 block|{
@@ -109,18 +112,18 @@ name|path
 expr_stmt|;
 name|this
 operator|.
-name|fileCount
-operator|=
-literal|0
-expr_stmt|;
-name|this
-operator|.
 name|children
 operator|=
 name|FXCollections
 operator|.
 name|observableArrayList
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|fileCount
+operator|=
+literal|0
 expr_stmt|;
 block|}
 DECL|method|getPath ()
@@ -131,6 +134,24 @@ parameter_list|()
 block|{
 return|return
 name|path
+return|;
+block|}
+DECL|method|getChildren ()
+specifier|public
+name|ObservableList
+argument_list|<
+name|FileNodeViewModel
+argument_list|>
+name|getChildren
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ReadOnlyListWrapper
+argument_list|<>
+argument_list|(
+name|children
+argument_list|)
 return|;
 block|}
 DECL|method|getFileCount ()
@@ -158,19 +179,6 @@ name|fileCount
 operator|=
 name|fileCount
 expr_stmt|;
-block|}
-DECL|method|getChildren ()
-specifier|public
-name|ObservableList
-argument_list|<
-name|FileNodeViewModel
-argument_list|>
-name|getChildren
-parameter_list|()
-block|{
-return|return
-name|children
-return|;
 block|}
 comment|/**      * Return a string for displaying a node name (and its number of children if it is a directory).      */
 DECL|method|getDisplayText ()
@@ -243,46 +251,24 @@ name|toString
 parameter_list|()
 block|{
 return|return
-operator|new
-name|StringJoiner
+name|String
+operator|.
+name|format
 argument_list|(
-literal|", "
+literal|"FileNodeViewModel{path=%s, children=%s, fileCount=%s}"
 argument_list|,
-name|FileNodeViewModel
+name|this
 operator|.
-name|class
-operator|.
-name|getSimpleName
-argument_list|()
-operator|+
-literal|"["
-argument_list|,
-literal|"]"
-argument_list|)
-operator|.
-name|add
-argument_list|(
-literal|"path="
-operator|+
 name|path
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"fileCount="
-operator|+
+name|children
+argument_list|,
+name|this
+operator|.
 name|fileCount
 argument_list|)
-operator|.
-name|add
-argument_list|(
-literal|"children="
-operator|+
-name|children
-argument_list|)
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 block|}

@@ -189,7 +189,13 @@ specifier|private
 name|boolean
 name|avoidOverwritingCiteKey
 decl_stmt|;
-DECL|method|EntryEditorPreferences (Map<String, Set<Field>> entryEditorTabList, LatexFieldFormatterPreferences latexFieldFormatterPreferences, ImportFormatPreferences importFormatPreferences, List<Field> customTabFieldNames, boolean shouldShowRecommendationsTab, boolean isMrdlibAccepted, boolean showSourceTabByDefault, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, KeyBindingRepository keyBindings, boolean avoidOverwritingCiteKey)
+DECL|field|shouldShowLatexCitationsTab
+specifier|private
+specifier|final
+name|boolean
+name|shouldShowLatexCitationsTab
+decl_stmt|;
+DECL|method|EntryEditorPreferences (Map<String, Set<Field>> entryEditorTabList, LatexFieldFormatterPreferences latexFieldFormatterPreferences, ImportFormatPreferences importFormatPreferences, List<Field> customTabFieldNames, boolean shouldShowRecommendationsTab, boolean isMrdlibAccepted, boolean shouldShowLatexCitationsTab, boolean showSourceTabByDefault, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, KeyBindingRepository keyBindings, boolean avoidOverwritingCiteKey)
 specifier|public
 name|EntryEditorPreferences
 parameter_list|(
@@ -221,6 +227,9 @@ name|shouldShowRecommendationsTab
 parameter_list|,
 name|boolean
 name|isMrdlibAccepted
+parameter_list|,
+name|boolean
+name|shouldShowLatexCitationsTab
 parameter_list|,
 name|boolean
 name|showSourceTabByDefault
@@ -294,6 +303,12 @@ operator|.
 name|avoidOverwritingCiteKey
 operator|=
 name|avoidOverwritingCiteKey
+expr_stmt|;
+name|this
+operator|.
+name|shouldShowLatexCitationsTab
+operator|=
+name|shouldShowLatexCitationsTab
 expr_stmt|;
 block|}
 DECL|method|getEntryEditorTabList ()
@@ -422,6 +437,16 @@ name|showSourceTabByDefault
 operator|=
 name|showSourceTabByDefault
 expr_stmt|;
+block|}
+DECL|method|shouldShowLatexCitationsTab ()
+specifier|public
+name|boolean
+name|shouldShowLatexCitationsTab
+parameter_list|()
+block|{
+return|return
+name|shouldShowLatexCitationsTab
+return|;
 block|}
 DECL|method|avoidOverwritingCiteKey ()
 specifier|public
