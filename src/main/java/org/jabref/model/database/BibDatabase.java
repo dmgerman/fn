@@ -789,7 +789,16 @@ init|=
 operator|new
 name|TreeSet
 argument_list|<>
-argument_list|()
+argument_list|(
+name|Comparator
+operator|.
+name|comparing
+argument_list|(
+name|Field
+operator|::
+name|getName
+argument_list|)
+argument_list|)
 decl_stmt|;
 for|for
 control|(
