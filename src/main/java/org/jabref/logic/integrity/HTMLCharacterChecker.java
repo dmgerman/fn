@@ -120,7 +120,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldProperty
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -134,7 +136,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|field
+operator|.
+name|FieldProperty
 import|;
 end_import
 
@@ -193,7 +197,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -211,15 +215,13 @@ block|{
 comment|// skip verbatim fields
 if|if
 condition|(
-name|InternalBibtexFields
-operator|.
-name|getFieldProperties
-argument_list|(
 name|field
 operator|.
 name|getKey
 argument_list|()
-argument_list|)
+operator|.
+name|getProperties
+argument_list|()
 operator|.
 name|contains
 argument_list|(

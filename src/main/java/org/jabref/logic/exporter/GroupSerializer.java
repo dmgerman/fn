@@ -452,6 +452,9 @@ name|group
 operator|.
 name|getSearchField
 argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|MetadataSerializationConfiguration
 operator|.
@@ -1251,6 +1254,9 @@ name|group
 operator|.
 name|getField
 argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|MetadataSerializationConfiguration
 operator|.
@@ -1395,6 +1401,9 @@ argument_list|(
 name|group
 operator|.
 name|getField
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|,
 name|MetadataSerializationConfiguration

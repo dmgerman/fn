@@ -170,6 +170,22 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -227,12 +243,12 @@ specifier|private
 name|EditorTextField
 name|textField
 decl_stmt|;
-DECL|method|BibtexKeyEditor (String fieldName, JabRefPreferences preferences, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers, BibDatabaseContext databaseContext, UndoManager undoManager, DialogService dialogService)
+DECL|method|BibtexKeyEditor (Field field, JabRefPreferences preferences, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers, BibDatabaseContext databaseContext, UndoManager undoManager, DialogService dialogService)
 specifier|public
 name|BibtexKeyEditor
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|JabRefPreferences
 name|preferences
@@ -269,7 +285,7 @@ operator|=
 operator|new
 name|BibtexKeyEditorViewModel
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|suggestionProvider
 argument_list|,

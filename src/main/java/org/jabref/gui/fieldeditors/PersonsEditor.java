@@ -124,6 +124,22 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -152,13 +168,13 @@ specifier|final
 name|TextInputControl
 name|textInput
 decl_stmt|;
-DECL|method|PersonsEditor (final String fieldName, final AutoCompleteSuggestionProvider<?> suggestionProvider, final JabRefPreferences preferences, final FieldCheckers fieldCheckers, final boolean isSingleLine)
+DECL|method|PersonsEditor (final Field field, final AutoCompleteSuggestionProvider<?> suggestionProvider, final JabRefPreferences preferences, final FieldCheckers fieldCheckers, final boolean isSingleLine)
 specifier|public
 name|PersonsEditor
 parameter_list|(
 specifier|final
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 specifier|final
 name|AutoCompleteSuggestionProvider
@@ -187,7 +203,7 @@ operator|=
 operator|new
 name|PersonsEditorViewModel
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|suggestionProvider
 argument_list|,

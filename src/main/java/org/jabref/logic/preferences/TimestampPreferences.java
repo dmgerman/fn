@@ -34,6 +34,22 @@ name|DateTimeFormatter
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_class
 DECL|class|TimestampPreferences
 specifier|public
@@ -55,7 +71,7 @@ decl_stmt|;
 DECL|field|timestampField
 specifier|private
 specifier|final
-name|String
+name|Field
 name|timestampField
 decl_stmt|;
 DECL|field|timestampFormat
@@ -70,7 +86,7 @@ specifier|final
 name|boolean
 name|overwriteTimestamp
 decl_stmt|;
-DECL|method|TimestampPreferences (boolean useTimestamps, boolean useModifiedTimestamp, String timestampField, String timestampFormat, boolean overwriteTimestamp)
+DECL|method|TimestampPreferences (boolean useTimestamps, boolean useModifiedTimestamp, Field timestampField, String timestampFormat, boolean overwriteTimestamp)
 specifier|public
 name|TimestampPreferences
 parameter_list|(
@@ -80,7 +96,7 @@ parameter_list|,
 name|boolean
 name|useModifiedTimestamp
 parameter_list|,
-name|String
+name|Field
 name|timestampField
 parameter_list|,
 name|String
@@ -143,7 +159,7 @@ return|;
 block|}
 DECL|method|getTimestampField ()
 specifier|public
-name|String
+name|Field
 name|getTimestampField
 parameter_list|()
 block|{

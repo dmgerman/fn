@@ -58,7 +58,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -167,16 +183,18 @@ name|expected
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|MISC
+name|Misc
 argument_list|)
 expr_stmt|;
 name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Wang Wei and Zhang Pingwen and Zhang Zhifei"
 argument_list|)
@@ -185,7 +203,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Rigorous Derivation from Landau-de Gennes Theory to Eericksen-leslie Theory"
 argument_list|)
@@ -194,7 +214,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1.1.744.5780"
 argument_list|)
@@ -245,16 +267,18 @@ name|expected
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|MISC
+name|Misc
 argument_list|)
 expr_stmt|;
 name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Lazarus Richard S."
 argument_list|)
@@ -263,7 +287,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Coping Theory and Research: Past Present and Future"
 argument_list|)
@@ -272,7 +298,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1.1.115.9665"
 argument_list|)
@@ -281,7 +309,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"1993"
 argument_list|)
@@ -290,7 +320,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"journaltitle"
+name|StandardField
+operator|.
+name|JOURNALTITLE
 argument_list|,
 literal|"PSYCHOSOMATIC MEDICINE"
 argument_list|)

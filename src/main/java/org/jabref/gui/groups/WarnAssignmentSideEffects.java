@@ -54,16 +54,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Locale
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -96,7 +86,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -110,7 +102,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|field
+operator|.
+name|InternalField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -153,7 +163,7 @@ specifier|private
 name|WarnAssignmentSideEffects
 parameter_list|()
 block|{     }
-comment|/**      * Warns the user of undesired side effects of an explicit assignment/removal of entries to/from this group.      * Currently there are four types of groups: AllEntriesGroup, SearchGroup - do not support explicit assignment.      * ExplicitGroup and KeywordGroup - this modifies entries upon assignment/removal.      * Modifications are acceptable unless they affect a standard field (such as "author") besides the "keywords" or "groups' field.      *      * @param parent The Component used as a parent when displaying a confirmation dialog.      * @return true if the assignment has no undesired side effects, or the user chose to perform it anyway. false      * otherwise (this indicates that the user has aborted the assignment).      */
+comment|/**      * Warns the user of undesired side effects of an explicit assignment/removal of entries to/from this group.      * Currently there are four types of groups: AllEntriesGroup, SearchGroup - do not support explicit assignment.      * ExplicitGroup and KeywordGroup - this modifies entries upon assignment/removal.      * Modifications are acceptable unless they affect a field (such as "author") besides the "keywords" or "groups' field.      *      * @param parent The Component used as a parent when displaying a confirmation dialog.      * @return true if the assignment has no undesired side effects, or the user chose to perform it anyway. false      * otherwise (this indicates that the user has aborted the assignment).      */
 DECL|method|warnAssignmentSideEffects (List<AbstractGroup> groups, Component parent)
 specifier|public
 specifier|static
@@ -172,7 +182,7 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|affectedFields
 init|=
@@ -204,24 +214,17 @@ name|KeywordGroup
 operator|)
 name|group
 decl_stmt|;
-name|String
+name|Field
 name|field
 init|=
 name|keywordGroup
 operator|.
 name|getSearchField
 argument_list|()
-operator|.
-name|toLowerCase
-argument_list|(
-name|Locale
-operator|.
-name|ROOT
-argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 operator|.
@@ -230,7 +233,7 @@ argument_list|(
 name|field
 argument_list|)
 operator|||
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 operator|.
@@ -243,27 +246,6 @@ block|{
 continue|continue;
 comment|// this is not undesired
 block|}
-for|for
-control|(
-name|String
-name|fieldName
-range|:
-name|InternalBibtexFields
-operator|.
-name|getAllPublicFieldNames
-argument_list|()
-control|)
-block|{
-if|if
-condition|(
-name|field
-operator|.
-name|equals
-argument_list|(
-name|fieldName
-argument_list|)
-condition|)
-block|{
 name|affectedFields
 operator|.
 name|add
@@ -271,9 +253,6 @@ argument_list|(
 name|field
 argument_list|)
 expr_stmt|;
-break|break;
-block|}
-block|}
 block|}
 block|}
 if|if
@@ -311,7 +290,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|String
+name|Field
 name|affectedField
 range|:
 name|affectedFields
@@ -322,6 +301,9 @@ operator|.
 name|append
 argument_list|(
 name|affectedField
+operator|.
+name|getDisplayName
+argument_list|()
 argument_list|)
 operator|.
 name|append

@@ -12,6 +12,22 @@ name|util
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_class
 DECL|class|UpdateFieldPreferences
 specifier|public
@@ -45,7 +61,7 @@ decl_stmt|;
 DECL|field|timeStampField
 specifier|private
 specifier|final
-name|String
+name|Field
 name|timeStampField
 decl_stmt|;
 DECL|field|timeStampFormat
@@ -60,7 +76,7 @@ specifier|final
 name|String
 name|defaultOwner
 decl_stmt|;
-DECL|method|UpdateFieldPreferences (boolean useOwner, boolean overwriteOwner, String defaultOwner, boolean useTimeStamp, boolean overwriteTimeStamp, String timeStampField, String timeStampFormat)
+DECL|method|UpdateFieldPreferences (boolean useOwner, boolean overwriteOwner, String defaultOwner, boolean useTimeStamp, boolean overwriteTimeStamp, Field timeStampField, String timeStampFormat)
 specifier|public
 name|UpdateFieldPreferences
 parameter_list|(
@@ -79,7 +95,7 @@ parameter_list|,
 name|boolean
 name|overwriteTimeStamp
 parameter_list|,
-name|String
+name|Field
 name|timeStampField
 parameter_list|,
 name|String
@@ -151,7 +167,7 @@ return|;
 block|}
 DECL|method|getTimeStampField ()
 specifier|public
-name|String
+name|Field
 name|getTimeStampField
 parameter_list|()
 block|{

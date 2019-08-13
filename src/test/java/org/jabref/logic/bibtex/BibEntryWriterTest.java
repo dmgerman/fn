@@ -158,21 +158,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BiblatexEntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryTypes
+name|BibEntryTypesManager
 import|;
 end_import
 
@@ -187,6 +173,66 @@ operator|.
 name|entry
 operator|.
 name|LinkedFile
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|UnknownEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -389,7 +435,9 @@ argument_list|(
 name|latexFieldFormatterPreferences
 argument_list|)
 argument_list|,
-literal|true
+operator|new
+name|BibEntryTypesManager
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -416,9 +464,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 comment|//set a required field
@@ -426,7 +474,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Foo Bar"
 argument_list|)
@@ -435,7 +485,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"International Journal of Something"
 argument_list|)
@@ -445,7 +497,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"number"
+name|StandardField
+operator|.
+name|NUMBER
 argument_list|,
 literal|"1"
 argument_list|)
@@ -454,7 +508,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"note"
+name|StandardField
+operator|.
+name|NOTE
 argument_list|,
 literal|"some note"
 argument_list|)
@@ -506,13 +562,13 @@ name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number  = {1},"
+literal|"  note    = {some note},"
 operator|+
 name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note    = {some note},"
+literal|"  number  = {1},"
 operator|+
 name|OS
 operator|.
@@ -573,20 +629,21 @@ name|entry
 init|=
 operator|new
 name|BibEntry
-argument_list|()
-decl_stmt|;
-name|entry
-operator|.
-name|setType
+argument_list|(
+operator|new
+name|UnknownEntryType
 argument_list|(
 literal|"other"
 argument_list|)
-expr_stmt|;
+argument_list|)
+decl_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"Comment"
+name|StandardField
+operator|.
+name|COMMENT
 argument_list|,
 literal|"testentry"
 argument_list|)
@@ -650,9 +707,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|LinkedFile
@@ -772,14 +829,20 @@ name|entry
 operator|.
 name|setType
 argument_list|(
+operator|new
+name|UnknownEntryType
+argument_list|(
 literal|"ReallyUnknownType"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"Comment"
+name|StandardField
+operator|.
+name|COMMENT
 argument_list|,
 literal|"testentry"
 argument_list|)
@@ -1190,7 +1253,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"BlaBla"
 argument_list|)
@@ -1250,13 +1315,13 @@ name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number  = {1},"
+literal|"  note    = {some note},"
 operator|+
 name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note    = {some note},"
+literal|"  number  = {1},"
 operator|+
 name|OS
 operator|.
@@ -1385,7 +1450,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"BlaBla"
 argument_list|)
@@ -1445,13 +1512,13 @@ name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number       = {1},"
+literal|"  note         = {some note},"
 operator|+
 name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note         = {some note},"
+literal|"  number       = {1},"
 operator|+
 name|OS
 operator|.
@@ -1590,7 +1657,9 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-literal|"inproceedings"
+name|StandardEntryType
+operator|.
+name|InProceedings
 argument_list|)
 expr_stmt|;
 comment|//write out bibtex string
@@ -1642,13 +1711,13 @@ name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number       = {1},"
+literal|"  note         = {some note},"
 operator|+
 name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note         = {some note},"
+literal|"  number       = {1},"
 operator|+
 name|OS
 operator|.
@@ -2088,13 +2157,13 @@ decl_stmt|;
 comment|// modify month field
 name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|fields
 init|=
 name|entry
 operator|.
-name|getFieldNames
+name|getFields
 argument_list|()
 decl_stmt|;
 name|assertTrue
@@ -2103,7 +2172,9 @@ name|fields
 operator|.
 name|contains
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2115,7 +2186,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|)
 operator|.
 name|get
@@ -2265,7 +2338,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"howpublished"
+name|StandardField
+operator|.
+name|HOWPUBLISHED
 argument_list|,
 literal|"asdf"
 argument_list|)
@@ -2325,13 +2400,13 @@ name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number       = {1},"
+literal|"  note         = {some note},"
 operator|+
 name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note         = {some note},"
+literal|"  number       = {1},"
 operator|+
 name|OS
 operator|.
@@ -2381,16 +2456,18 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"  "
 argument_list|)
@@ -2399,7 +2476,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"note"
+name|StandardField
+operator|.
+name|NOTE
 argument_list|,
 literal|"some note"
 argument_list|)
@@ -2481,16 +2560,18 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"note"
+name|StandardField
+operator|.
+name|NOTE
 argument_list|,
 literal|"        some note    \t"
 argument_list|)
@@ -2570,16 +2651,18 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"note"
+name|StandardField
+operator|.
+name|NOTE
 argument_list|,
 literal|"some text with unbalanced { braces"
 argument_list|)
@@ -2847,7 +2930,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"John Doe"
 argument_list|)
@@ -2913,13 +2998,13 @@ name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number  = {1},"
+literal|"  note    = {some note},"
 operator|+
 name|OS
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note    = {some note},"
+literal|"  number  = {1},"
 operator|+
 name|OS
 operator|.

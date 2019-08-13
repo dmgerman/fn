@@ -22,6 +22,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Optional
@@ -250,6 +260,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|BibEntryTypesManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|util
 operator|.
 name|FileUpdateMonitor
@@ -279,6 +303,20 @@ operator|.
 name|base
 operator|.
 name|StandardSystemProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|mashape
+operator|.
+name|unirest
+operator|.
+name|http
+operator|.
+name|Unirest
 import|;
 end_import
 
@@ -445,6 +483,16 @@ name|undoManager
 init|=
 operator|new
 name|CountingUndoManager
+argument_list|()
+decl_stmt|;
+DECL|field|entryTypesManager
+specifier|public
+specifier|static
+name|BibEntryTypesManager
+name|entryTypesManager
+init|=
+operator|new
+name|BibEntryTypesManager
 argument_list|()
 decl_stmt|;
 comment|// Key binding preferences
@@ -845,6 +893,20 @@ block|{
 name|stopTelemetryClient
 argument_list|()
 expr_stmt|;
+try|try
+block|{
+name|Unirest
+operator|.
+name|shutdown
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ignore
+parameter_list|)
+block|{ }
 block|}
 DECL|method|getTelemetryClient ()
 specifier|public

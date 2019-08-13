@@ -106,7 +106,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -203,7 +205,7 @@ expr_stmt|;
 name|String
 name|testInput
 init|=
-literal|"{    \"label\": {        \"label-language\": \"en\",        \"label-text\": \"Related Items\"    },    \"recommendation-set-id\": \"1\",    \"recommendations\": {        \"74021358\": {            \"abstract\": \"abstract\",            \"authors\": [                \"Sajovic, Marija\"         ],            \"published_year\": \"2006\",            \"item_id_original\": \"12088644\",            \"keywords\": [                \"visoko\\u0161olski program Geodezija - smer Prostorska informatika\"            ],            \"language_provided\": \"sl\",            \"recommendation_id\": \"1\",            \"title\": \"The protection of rural lands with the spatial development strategy on the case of Hrastnik commune\",            \"url\": \"http://drugg.fgg.uni-lj.si/701/1/GEV_0199_Sajovic.pdf\"        },        \"82005804\": {            \"abstract\": \"abstract\",            \"year_published\": null,            \"item_id_original\": \"30145702\",            \"language_provided\": null,            \"recommendation_id\": \"2\",            \"title\": \"Engagement of the volunteers in the solution to the accidents in the South-Moravia region\"        },        \"82149599\": {            \"abstract\": \"abstract\",            \"year_published\": null,            \"item_id_original\": \"97690763\",            \"language_provided\": null,            \"recommendation_id\": \"3\",            \"title\": \"\\\"The only Father's word\\\". The relationship of the Father and the Son in the documents of saint John of the Cross\",            \"url\": \"http://www.nusl.cz/ntk/nusl-285711\"        },        \"84863921\": {            \"abstract\": \"abstract\",            \"authors\": [                \"Kaffa, Elena\"            ],            \"year_published\": null,            \"item_id_original\": \"19397104\",            \"keywords\": [                \"BX\",                \"D111\"            ],            \"language_provided\": \"en\",            \"recommendation_id\": \"4\",            \"title\": \"Greek Church of Cyprus, the Morea and Constantinople during the Frankish Era (1196-1303)\"        },        \"88950992\": {            \"abstract\": \"abstract\",            \"authors\": [                \"Yasui, Kono\"            ],            \"year_published\": null,            \"item_id_original\": \"38763657\",            \"language_provided\": null,            \"recommendation_id\": \"5\",            \"title\": \"A Phylogenetic Consideration on the Vascular Plants, Cotyledonary Node Including Hypocotyl Being Taken as the Ancestral Form : A Preliminary Note\"        }    }}"
+literal|"{\"label\": {\"label-description\": \"The following articles are similar to the document have currently selected.\", \"label-language\": \"en\", \"label-text\": \"Related Articles\"},    \"recommendation_set_id\": \"1\",    \"recommendations\": {        \"74021358\": {            \"abstract\": \"abstract\",            \"authors\":\"Sajovic, Marija\",            \"published_year\": \"2006\",            \"item_id_original\": \"12088644\",            \"keywords\": [                \"visoko\\u0161olski program Geodezija - smer Prostorska informatika\"            ],            \"language_provided\": \"sl\",            \"recommendation_id\": \"1\",            \"title\": \"The protection of rural lands with the spatial development strategy on the case of Hrastnik commune\",            \"url\": \"http://drugg.fgg.uni-lj.si/701/1/GEV_0199_Sajovic.pdf\"        },        \"82005804\": {            \"abstract\": \"abstract\",            \"year_published\": null,            \"item_id_original\": \"30145702\",            \"language_provided\": null,            \"recommendation_id\": \"2\",            \"title\": \"Engagement of the volunteers in the solution to the accidents in the South-Moravia region\"        },        \"82149599\": {            \"abstract\": \"abstract\",            \"year_published\": null,            \"item_id_original\": \"97690763\",            \"language_provided\": null,            \"recommendation_id\": \"3\",            \"title\": \"\\\"The only Father's word\\\". The relationship of the Father and the Son in the documents of saint John of the Cross\",            \"url\": \"http://www.nusl.cz/ntk/nusl-285711\"        },        \"84863921\": {            \"abstract\": \"abstract\",            \"authors\":\"Kaffa, Elena\",            \"year_published\": null,            \"item_id_original\": \"19397104\",            \"keywords\": [                \"BX\",                \"D111\"            ],            \"language_provided\": \"en\",            \"recommendation_id\": \"4\",            \"title\": \"Greek Church of Cyprus, the Morea and Constantinople during the Frankish Era (1196-1303)\"        },        \"88950992\": {            \"abstract\": \"abstract\",            \"authors\":\"Yasui, Kono\",            \"year_published\": null,            \"item_id_original\": \"38763657\",            \"language_provided\": null,            \"recommendation_id\": \"5\",            \"title\": \"A Phylogenetic Consideration on the Vascular Plants, Cotyledonary Node Including Hypocotyl Being Taken as the Ancestral Form : A Preliminary Note\"        }    }}"
 decl_stmt|;
 name|input
 operator|=
@@ -324,7 +326,7 @@ argument_list|)
 operator|.
 name|getLatexFreeField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|)
@@ -381,7 +383,7 @@ argument_list|)
 operator|.
 name|getLatexFreeField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|)

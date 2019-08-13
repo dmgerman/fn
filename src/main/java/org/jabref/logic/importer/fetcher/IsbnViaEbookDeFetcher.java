@@ -142,7 +142,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -274,13 +276,13 @@ parameter_list|)
 block|{
 comment|// We MUST NOT clean the URL. this is the deal with ebook.de
 comment|// DO NOT add following code:
-comment|// new FieldFormatterCleanup(FieldName.URL, new ClearFormatter()).cleanup(entry);
+comment|// new FieldFormatterCleanup(StandardField.URL, new ClearFormatter()).cleanup(entry);
 comment|// Fetcher returns page numbers as "30 Seiten" -> remove every non-digit character in the PAGETOTAL field
 name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGETOTAL
 argument_list|)
@@ -293,7 +295,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGETOTAL
 argument_list|,
@@ -311,7 +313,7 @@ expr_stmt|;
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGETOTAL
 argument_list|,
@@ -328,7 +330,7 @@ expr_stmt|;
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,

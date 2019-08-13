@@ -78,16 +78,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Locale
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
 import|;
 end_import
@@ -119,16 +109,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TreeSet
 import|;
 end_import
 
@@ -198,7 +178,7 @@ name|beans
 operator|.
 name|property
 operator|.
-name|SimpleStringProperty
+name|ObjectProperty
 import|;
 end_import
 
@@ -210,7 +190,7 @@ name|beans
 operator|.
 name|property
 operator|.
-name|StringProperty
+name|SimpleObjectProperty
 import|;
 end_import
 
@@ -242,18 +222,6 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|EntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|FieldChange
 import|;
 end_import
@@ -269,20 +237,6 @@ operator|.
 name|database
 operator|.
 name|BibDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibDatabaseMode
 import|;
 end_import
 
@@ -331,6 +285,70 @@ operator|.
 name|event
 operator|.
 name|FieldChangedEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|InternalField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|OrFields
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -434,50 +452,16 @@ name|BibEntry
 implements|implements
 name|Cloneable
 block|{
-DECL|field|TYPE_HEADER
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|TYPE_HEADER
-init|=
-literal|"entrytype"
-decl_stmt|;
-DECL|field|OBSOLETE_TYPE_HEADER
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|OBSOLETE_TYPE_HEADER
-init|=
-literal|"bibtextype"
-decl_stmt|;
-DECL|field|KEY_FIELD
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|KEY_FIELD
-init|=
-literal|"bibtexkey"
-decl_stmt|;
 DECL|field|DEFAULT_TYPE
 specifier|public
 specifier|static
 specifier|final
-name|String
+name|EntryType
 name|DEFAULT_TYPE
 init|=
-literal|"misc"
-decl_stmt|;
-DECL|field|INTERNAL_ID_FIELD
-specifier|protected
-specifier|static
-specifier|final
-name|String
-name|INTERNAL_ID_FIELD
-init|=
-literal|"JabRef-internal-id"
+name|StandardEntryType
+operator|.
+name|Misc
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private
@@ -521,7 +505,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|Set
 argument_list|<
@@ -541,7 +525,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -570,18 +554,24 @@ decl_stmt|;
 DECL|field|type
 specifier|private
 specifier|final
-name|StringProperty
+name|ObjectProperty
+argument_list|<
+name|EntryType
+argument_list|>
 name|type
 init|=
 operator|new
-name|SimpleStringProperty
-argument_list|()
+name|SimpleObjectProperty
+argument_list|<>
+argument_list|(
+name|DEFAULT_TYPE
+argument_list|)
 decl_stmt|;
 DECL|field|fields
 specifier|private
 name|ObservableMap
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -635,14 +625,14 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Constructs a new BibEntry with the given ID and given type      *      * @param id   The ID to be used      * @param type The type to set. May be null or empty. In that case, DEFAULT_TYPE is used.      */
-DECL|method|BibEntry (String id, String type)
+DECL|method|BibEntry (String id, EntryType type)
 specifier|private
 name|BibEntry
 parameter_list|(
 name|String
 name|id
 parameter_list|,
-name|String
+name|EntryType
 name|type
 parameter_list|)
 block|{
@@ -692,9 +682,6 @@ name|next
 argument_list|()
 argument_list|,
 name|type
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -713,7 +700,7 @@ block|{
 return|return
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|MONTH
 argument_list|,
@@ -724,8 +711,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the text stored in the given field of the given bibtex entry      * which belongs to the given database.      *<p>      * If a database is given, this function will try to resolve any string      * references in the field-value.      * Also, if a database is given, this function will try to find values for      * unset fields in the entry linked by the "crossref" field, if any.      *      * @param field    The field to return the value of.      * @param database maybenull      *                 The database of the bibtex entry.      * @return The resolved field value or null if not found.      */
-DECL|method|getResolvedFieldOrAlias (String field, BibDatabase database)
+DECL|method|getResolvedFieldOrAlias (OrFields fields, BibDatabase database)
 specifier|public
 name|Optional
 argument_list|<
@@ -733,7 +719,64 @@ name|String
 argument_list|>
 name|getResolvedFieldOrAlias
 parameter_list|(
+name|OrFields
+name|fields
+parameter_list|,
+name|BibDatabase
+name|database
+parameter_list|)
+block|{
+for|for
+control|(
+name|Field
+name|field
+range|:
+name|fields
+control|)
+block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
+name|value
+init|=
+name|getResolvedFieldOrAlias
+argument_list|(
+name|field
+argument_list|,
+name|database
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|value
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+return|return
+name|value
+return|;
+block|}
+block|}
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
+comment|/**      * Returns the text stored in the given field of the given bibtex entry      * which belongs to the given database.      *<p>      * If a database is given, this function will try to resolve any string      * references in the field-value.      * Also, if a database is given, this function will try to find values for      * unset fields in the entry linked by the "crossref" field, if any.      *      * @param field    The field to return the value of.      * @param database maybenull      *                 The database of the bibtex entry.      * @return The resolved field value or null if not found.      */
+DECL|method|getResolvedFieldOrAlias (Field field, BibDatabase database)
+specifier|public
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getResolvedFieldOrAlias
+parameter_list|(
+name|Field
 name|field
 parameter_list|,
 name|BibDatabase
@@ -742,6 +785,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|InternalField
+operator|.
 name|TYPE_HEADER
 operator|.
 name|equals
@@ -749,6 +794,8 @@ argument_list|(
 name|field
 argument_list|)
 operator|||
+name|InternalField
+operator|.
 name|OBSOLETE_TYPE_HEADER
 operator|.
 name|equals
@@ -757,67 +804,25 @@ name|field
 argument_list|)
 condition|)
 block|{
-name|Optional
-argument_list|<
-name|EntryType
-argument_list|>
-name|entryType
-init|=
-name|EntryTypes
-operator|.
-name|getType
-argument_list|(
-name|getType
-argument_list|()
-argument_list|,
-name|BibDatabaseMode
-operator|.
-name|BIBLATEX
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|entryType
-operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
 return|return
 name|Optional
 operator|.
 name|of
 argument_list|(
-name|entryType
+name|type
 operator|.
 name|get
 argument_list|()
 operator|.
-name|getName
+name|getDisplayName
 argument_list|()
 argument_list|)
 return|;
-block|}
-else|else
-block|{
-return|return
-name|Optional
-operator|.
-name|of
-argument_list|(
-name|StringUtil
-operator|.
-name|capitalizeFirst
-argument_list|(
-name|getType
-argument_list|()
-argument_list|)
-argument_list|)
-return|;
-block|}
 block|}
 if|if
 condition|(
+name|InternalField
+operator|.
 name|KEY_FIELD
 operator|.
 name|equals
@@ -953,7 +958,7 @@ name|FieldChangedEvent
 argument_list|(
 name|this
 argument_list|,
-name|BibEntry
+name|InternalField
 operator|.
 name|INTERNAL_ID_FIELD
 argument_list|,
@@ -988,6 +993,8 @@ name|fields
 operator|.
 name|get
 argument_list|(
+name|InternalField
+operator|.
 name|KEY_FIELD
 argument_list|)
 return|;
@@ -1008,10 +1015,30 @@ block|{
 return|return
 name|setField
 argument_list|(
+name|InternalField
+operator|.
 name|KEY_FIELD
 argument_list|,
 name|newCiteKey
 argument_list|)
+return|;
+block|}
+DECL|method|withCiteKey (String newCiteKey)
+specifier|public
+name|BibEntry
+name|withCiteKey
+parameter_list|(
+name|String
+name|newCiteKey
+parameter_list|)
+block|{
+name|setCiteKey
+argument_list|(
+name|newCiteKey
+argument_list|)
+expr_stmt|;
+return|return
+name|this
 return|;
 block|}
 DECL|method|getCiteKeyOptional ()
@@ -1032,6 +1059,8 @@ name|fields
 operator|.
 name|get
 argument_list|(
+name|InternalField
+operator|.
 name|KEY_FIELD
 argument_list|)
 argument_list|)
@@ -1057,7 +1086,7 @@ block|}
 comment|/**      * Returns this entry's type.      */
 DECL|method|getType ()
 specifier|public
-name|String
+name|EntryType
 name|getType
 parameter_list|()
 block|{
@@ -1070,7 +1099,10 @@ return|;
 block|}
 DECL|method|typeProperty ()
 specifier|public
-name|StringProperty
+name|ObjectProperty
+argument_list|<
+name|EntryType
+argument_list|>
 name|typeProperty
 parameter_list|()
 block|{
@@ -1092,31 +1124,6 @@ name|type
 parameter_list|)
 block|{
 return|return
-name|this
-operator|.
-name|setType
-argument_list|(
-name|type
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-return|;
-block|}
-comment|/**      * Sets this entry's type.      */
-DECL|method|setType (String type)
-specifier|public
-name|Optional
-argument_list|<
-name|FieldChange
-argument_list|>
-name|setType
-parameter_list|(
-name|String
-name|type
-parameter_list|)
-block|{
-return|return
 name|setType
 argument_list|(
 name|type
@@ -1128,7 +1135,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Sets this entry's type.      */
-DECL|method|setType (String type, EntryEventSource eventSource)
+DECL|method|setType (EntryType newType, EntryEventSource eventSource)
 specifier|public
 name|Optional
 argument_list|<
@@ -1136,50 +1143,27 @@ name|FieldChange
 argument_list|>
 name|setType
 parameter_list|(
-name|String
-name|type
+name|EntryType
+name|newType
 parameter_list|,
 name|EntryEventSource
 name|eventSource
 parameter_list|)
 block|{
-name|String
-name|newType
-decl_stmt|;
-if|if
-condition|(
-name|Strings
+name|Objects
 operator|.
-name|isNullOrEmpty
+name|requireNonNull
 argument_list|(
-name|type
+name|newType
 argument_list|)
-condition|)
-block|{
-name|newType
-operator|=
-name|DEFAULT_TYPE
 expr_stmt|;
-block|}
-else|else
-block|{
-name|newType
-operator|=
-name|type
-expr_stmt|;
-block|}
-name|String
+name|EntryType
 name|oldType
 init|=
-name|getField
-argument_list|(
-name|TYPE_HEADER
-argument_list|)
+name|type
 operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
+name|get
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1205,13 +1189,6 @@ operator|.
 name|setValue
 argument_list|(
 name|newType
-operator|.
-name|toLowerCase
-argument_list|(
-name|Locale
-operator|.
-name|ENGLISH
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|changed
@@ -1226,11 +1203,19 @@ name|FieldChange
 argument_list|(
 name|this
 argument_list|,
+name|InternalField
+operator|.
 name|TYPE_HEADER
 argument_list|,
 name|oldType
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|newType
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|eventBus
@@ -1256,19 +1241,19 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns an set containing the names of all fields that are      * set for this particular entry.      *      * @return a set of existing field names      */
-DECL|method|getFieldNames ()
+DECL|method|getFields ()
 specifier|public
 name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
-name|getFieldNames
+name|getFields
 parameter_list|()
 block|{
 return|return
-operator|new
-name|TreeSet
-argument_list|<>
+name|Collections
+operator|.
+name|unmodifiableSet
 argument_list|(
 name|fields
 operator|.
@@ -1278,7 +1263,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the contents of the given field as an Optional.      */
-DECL|method|getField (String name)
+DECL|method|getField (Field field)
 specifier|public
 name|Optional
 argument_list|<
@@ -1286,8 +1271,8 @@ name|String
 argument_list|>
 name|getField
 parameter_list|(
-name|String
-name|name
+name|Field
+name|field
 parameter_list|)
 block|{
 return|return
@@ -1299,22 +1284,19 @@ name|fields
 operator|.
 name|get
 argument_list|(
-name|toLowerCase
-argument_list|(
-name|name
-argument_list|)
+name|field
 argument_list|)
 argument_list|)
 return|;
 block|}
 comment|/**      * Returns true if the entry has the given field, or false if it is not set.      */
-DECL|method|hasField (String name)
+DECL|method|hasField (Field field)
 specifier|public
 name|boolean
 name|hasField
 parameter_list|(
-name|String
-name|name
+name|Field
+name|field
 parameter_list|)
 block|{
 return|return
@@ -1322,44 +1304,12 @@ name|fields
 operator|.
 name|containsKey
 argument_list|(
-name|toLowerCase
-argument_list|(
-name|name
-argument_list|)
+name|field
 argument_list|)
 return|;
 block|}
-DECL|method|toLowerCase (String fieldName)
-specifier|private
-name|String
-name|toLowerCase
-parameter_list|(
-name|String
-name|fieldName
-parameter_list|)
-block|{
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|fieldName
-argument_list|,
-literal|"field name must not be null"
-argument_list|)
-expr_stmt|;
-return|return
-name|fieldName
-operator|.
-name|toLowerCase
-argument_list|(
-name|Locale
-operator|.
-name|ENGLISH
-argument_list|)
-return|;
-block|}
-comment|/**      * Internal method used to get the content of a field (or its alias)      *      * Used by {@link #getFieldOrAlias(String)} and {@link #getFieldOrAliasLatexFree(String)}      *      * @param name name of the field      * @param getFieldInterface      *      * @return determined field value      */
-DECL|method|genericGetFieldOrAlias (String name, GetFieldInterface getFieldInterface)
+comment|/**      * Internal method used to get the content of a field (or its alias)      *      * Used by {@link #getFieldOrAlias(Field)} and {@link #getFieldOrAliasLatexFree(Field)}      *      * @param field the field      * @param getFieldInterface      *      * @return determined field value      */
+DECL|method|genericGetFieldOrAlias (Field field, GetFieldInterface getFieldInterface)
 specifier|private
 name|Optional
 argument_list|<
@@ -1367,8 +1317,8 @@ name|String
 argument_list|>
 name|genericGetFieldOrAlias
 parameter_list|(
-name|String
-name|name
+name|Field
+name|field
 parameter_list|,
 name|GetFieldInterface
 name|getFieldInterface
@@ -1384,10 +1334,7 @@ name|getFieldInterface
 operator|.
 name|getValueForField
 argument_list|(
-name|toLowerCase
-argument_list|(
-name|name
-argument_list|)
+name|field
 argument_list|)
 decl_stmt|;
 if|if
@@ -1412,7 +1359,7 @@ name|fieldValue
 return|;
 block|}
 comment|// No value of this field found, so look at the alias
-name|String
+name|Field
 name|aliasForField
 init|=
 name|EntryConverter
@@ -1421,7 +1368,7 @@ name|FIELD_ALIASES
 operator|.
 name|get
 argument_list|(
-name|name
+name|field
 argument_list|)
 decl_stmt|;
 if|if
@@ -1443,13 +1390,13 @@ block|}
 comment|// Finally, handle dates
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|DATE
 operator|.
 name|equals
 argument_list|(
-name|name
+name|field
 argument_list|)
 condition|)
 block|{
@@ -1467,7 +1414,7 @@ name|getFieldInterface
 operator|.
 name|getValueForField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|)
@@ -1476,7 +1423,7 @@ name|getFieldInterface
 operator|.
 name|getValueForField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|MONTH
 argument_list|)
@@ -1485,7 +1432,7 @@ name|getFieldInterface
 operator|.
 name|getValueForField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DAY
 argument_list|)
@@ -1504,31 +1451,31 @@ return|;
 block|}
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 operator|.
 name|equals
 argument_list|(
-name|name
+name|field
 argument_list|)
 operator|||
-name|FieldName
+name|StandardField
 operator|.
 name|MONTH
 operator|.
 name|equals
 argument_list|(
-name|name
+name|field
 argument_list|)
 operator|||
-name|FieldName
+name|StandardField
 operator|.
 name|DAY
 operator|.
 name|equals
 argument_list|(
-name|name
+name|field
 argument_list|)
 condition|)
 block|{
@@ -1542,7 +1489,7 @@ name|getFieldInterface
 operator|.
 name|getValueForField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DATE
 argument_list|)
@@ -1589,13 +1536,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 operator|.
 name|equals
 argument_list|(
-name|name
+name|field
 argument_list|)
 condition|)
 block|{
@@ -1618,13 +1565,13 @@ return|;
 block|}
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|MONTH
 operator|.
 name|equals
 argument_list|(
-name|name
+name|field
 argument_list|)
 condition|)
 block|{
@@ -1647,13 +1594,13 @@ return|;
 block|}
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|DAY
 operator|.
 name|equals
 argument_list|(
-name|name
+name|field
 argument_list|)
 condition|)
 block|{
@@ -1717,7 +1664,7 @@ block|{
 return|return
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|)
@@ -1730,8 +1677,8 @@ name|parse
 argument_list|)
 return|;
 block|}
-comment|/**      * Return the LaTeX-free contents of the given field or its alias an an Optional      *      * For details see also {@link #getFieldOrAlias(String)}      *      * @param name the name of the field      * @return  the stored latex-free content of the field (or its alias)      */
-DECL|method|getFieldOrAliasLatexFree (String name)
+comment|/**      * Return the LaTeX-free contents of the given field or its alias an an Optional      *      * For details see also {@link #getFieldOrAlias(Field)}      *      * @param name the name of the field      * @return  the stored latex-free content of the field (or its alias)      */
+DECL|method|getFieldOrAliasLatexFree (Field name)
 specifier|public
 name|Optional
 argument_list|<
@@ -1739,7 +1686,7 @@ name|String
 argument_list|>
 name|getFieldOrAliasLatexFree
 parameter_list|(
-name|String
+name|Field
 name|name
 parameter_list|)
 block|{
@@ -1755,7 +1702,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the contents of the given field or its alias as an Optional      *<p>      * The following aliases are considered (old bibtex<-> new biblatex) based      * on the biblatex documentation, chapter 2.2.5:<br>      * address<-> location<br>      * annote<-> annotation<br>      * archiveprefix<-> eprinttype<br>      * journal<-> journaltitle<br>      * key<-> sortkey<br>      * pdf<-> file<br      * primaryclass<-> eprintclass<br>      * school<-> institution<br>      * These work bidirectional.<br>      *</p>      *      *<p>      * Special attention is paid to dates: (see the biblatex documentation,      * chapter 2.3.8)      * The fields 'year' and 'month' are used if the 'date'      * field is empty. Conversely, getFieldOrAlias("year") also tries to      * extract the year from the 'date' field (analogously for 'month').      *</p>      */
-DECL|method|getFieldOrAlias (String name)
+DECL|method|getFieldOrAlias (Field field)
 specifier|public
 name|Optional
 argument_list|<
@@ -1763,14 +1710,14 @@ name|String
 argument_list|>
 name|getFieldOrAlias
 parameter_list|(
-name|String
-name|name
+name|Field
+name|field
 parameter_list|)
 block|{
 return|return
 name|genericGetFieldOrAlias
 argument_list|(
-name|name
+name|field
 argument_list|,
 name|this
 operator|::
@@ -1779,14 +1726,14 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Sets a number of fields simultaneously. The given HashMap contains field      * names as keys, each mapped to the value to set.      */
-DECL|method|setField (Map<String, String> fields)
+DECL|method|setField (Map<Field, String> fields)
 specifier|public
 name|void
 name|setField
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -1812,8 +1759,8 @@ name|setField
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Set a field, and notify listeners about the change.      *      * @param name        The field to set      * @param value       The value to set      * @param eventSource Source the event is sent from      */
-DECL|method|setField (String name, String value, EntryEventSource eventSource)
+comment|/**      * Set a field, and notify listeners about the change.      *      * @param field        The field to set      * @param value       The value to set      * @param eventSource Source the event is sent from      */
+DECL|method|setField (Field field, String value, EntryEventSource eventSource)
 specifier|public
 name|Optional
 argument_list|<
@@ -1821,8 +1768,8 @@ name|FieldChange
 argument_list|>
 name|setField
 parameter_list|(
-name|String
-name|name
+name|Field
+name|field
 parameter_list|,
 name|String
 name|value
@@ -1835,7 +1782,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|name
+name|field
 argument_list|,
 literal|"field name must not be null"
 argument_list|)
@@ -1849,14 +1796,6 @@ argument_list|,
 literal|"field value must not be null"
 argument_list|)
 expr_stmt|;
-name|String
-name|fieldName
-init|=
-name|toLowerCase
-argument_list|(
-name|name
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|value
@@ -1868,7 +1807,7 @@ block|{
 return|return
 name|clearField
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 return|;
 block|}
@@ -1877,7 +1816,7 @@ name|oldValue
 init|=
 name|getField
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 operator|.
 name|orElse
@@ -1917,7 +1856,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|value
 operator|.
@@ -1927,7 +1866,7 @@ argument_list|)
 expr_stmt|;
 name|invalidateFieldCache
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 expr_stmt|;
 name|FieldChange
@@ -1938,7 +1877,7 @@ name|FieldChange
 argument_list|(
 name|this
 argument_list|,
-name|fieldName
+name|field
 argument_list|,
 name|oldValue
 argument_list|,
@@ -1989,7 +1928,7 @@ name|change
 argument_list|)
 return|;
 block|}
-DECL|method|setField (String name, Optional<String> value, EntryEventSource eventSource)
+DECL|method|setField (Field field, Optional<String> value, EntryEventSource eventSource)
 specifier|public
 name|Optional
 argument_list|<
@@ -1997,8 +1936,8 @@ name|FieldChange
 argument_list|>
 name|setField
 parameter_list|(
-name|String
-name|name
+name|Field
+name|field
 parameter_list|,
 name|Optional
 argument_list|<
@@ -2021,7 +1960,7 @@ block|{
 return|return
 name|setField
 argument_list|(
-name|name
+name|field
 argument_list|,
 name|value
 operator|.
@@ -2039,8 +1978,8 @@ name|empty
 argument_list|()
 return|;
 block|}
-comment|/**      * Set a field, and notify listeners about the change.      *      * @param name  The field to set.      * @param value The value to set.      */
-DECL|method|setField (String name, String value)
+comment|/**      * Set a field, and notify listeners about the change.      *      * @param field  The field to set.      * @param value The value to set.      */
+DECL|method|setField (Field field, String value)
 specifier|public
 name|Optional
 argument_list|<
@@ -2048,8 +1987,8 @@ name|FieldChange
 argument_list|>
 name|setField
 parameter_list|(
-name|String
-name|name
+name|Field
+name|field
 parameter_list|,
 name|String
 name|value
@@ -2058,7 +1997,7 @@ block|{
 return|return
 name|setField
 argument_list|(
-name|name
+name|field
 argument_list|,
 name|value
 argument_list|,
@@ -2068,8 +2007,8 @@ name|LOCAL
 argument_list|)
 return|;
 block|}
-comment|/**      * Remove the mapping for the field name, and notify listeners about      * the change.      *      * @param name The field to clear.      */
-DECL|method|clearField (String name)
+comment|/**      * Remove the mapping for the field name, and notify listeners about      * the change.      *      * @param field The field to clear.      */
+DECL|method|clearField (Field field)
 specifier|public
 name|Optional
 argument_list|<
@@ -2077,14 +2016,14 @@ name|FieldChange
 argument_list|>
 name|clearField
 parameter_list|(
-name|String
-name|name
+name|Field
+name|field
 parameter_list|)
 block|{
 return|return
 name|clearField
 argument_list|(
-name|name
+name|field
 argument_list|,
 name|EntryEventSource
 operator|.
@@ -2092,8 +2031,8 @@ name|LOCAL
 argument_list|)
 return|;
 block|}
-comment|/**      * Remove the mapping for the field name, and notify listeners about      * the change including the {@link EntryEventSource}.      *      * @param name        The field to clear.      * @param eventSource the source a new {@link FieldChangedEvent} should be posten from.      */
-DECL|method|clearField (String name, EntryEventSource eventSource)
+comment|/**      * Remove the mapping for the field name, and notify listeners about      * the change including the {@link EntryEventSource}.      *      * @param field       the field to clear.      * @param eventSource the source a new {@link FieldChangedEvent} should be posten from.      */
+DECL|method|clearField (Field field, EntryEventSource eventSource)
 specifier|public
 name|Optional
 argument_list|<
@@ -2101,21 +2040,13 @@ name|FieldChange
 argument_list|>
 name|clearField
 parameter_list|(
-name|String
-name|name
+name|Field
+name|field
 parameter_list|,
 name|EntryEventSource
 name|eventSource
 parameter_list|)
 block|{
-name|String
-name|fieldName
-init|=
-name|toLowerCase
-argument_list|(
-name|name
-argument_list|)
-decl_stmt|;
 name|Optional
 argument_list|<
 name|String
@@ -2124,7 +2055,7 @@ name|oldValue
 init|=
 name|getField
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 decl_stmt|;
 if|if
@@ -2151,12 +2082,12 @@ name|fields
 operator|.
 name|remove
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 expr_stmt|;
 name|invalidateFieldCache
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 expr_stmt|;
 name|FieldChange
@@ -2167,7 +2098,7 @@ name|FieldChange
 argument_list|(
 name|this
 argument_list|,
-name|fieldName
+name|field
 argument_list|,
 name|oldValue
 operator|.
@@ -2199,178 +2130,44 @@ name|change
 argument_list|)
 return|;
 block|}
-comment|/**      * Determines whether this entry has all the given fields present. If a non-null      * database argument is given, this method will try to look up missing fields in      * entries linked by the "crossref" field, if any.      *      * @param allFields An array of field names to be checked.      * @param database  The database in which to look up crossref'd entries, if any. This      *                  argument can be null, meaning that no attempt will be made to follow crossrefs.      * @return true if all fields are set or could be resolved, false otherwise.      */
-DECL|method|allFieldsPresent (Collection<String> allFields, BibDatabase database)
+comment|/**      * Determines whether this entry has all the given fields present. If a non-null      * database argument is given, this method will try to look up missing fields in      * entries linked by the "crossref" field, if any.      *      * @param fields An array of field names to be checked.      * @param database  The database in which to look up crossref'd entries, if any. This      *                  argument can be null, meaning that no attempt will be made to follow crossrefs.      * @return true if all fields are set or could be resolved, false otherwise.      */
+DECL|method|allFieldsPresent (Collection<OrFields> fields, BibDatabase database)
 specifier|public
 name|boolean
 name|allFieldsPresent
 parameter_list|(
 name|Collection
 argument_list|<
-name|String
+name|OrFields
 argument_list|>
-name|allFields
+name|fields
 parameter_list|,
 name|BibDatabase
 name|database
 parameter_list|)
 block|{
-for|for
-control|(
-name|String
-name|field
-range|:
-name|allFields
-control|)
-block|{
-name|String
-name|fieldName
-init|=
-name|toLowerCase
-argument_list|(
-name|field
-argument_list|)
-decl_stmt|;
-comment|// OR fields
-if|if
-condition|(
-name|fieldName
-operator|.
-name|contains
-argument_list|(
-name|FieldName
-operator|.
-name|FIELD_SEPARATOR
-argument_list|)
-condition|)
-block|{
-name|String
-index|[]
-name|altFields
-init|=
-name|field
-operator|.
-name|split
-argument_list|(
-name|FieldName
-operator|.
-name|FIELD_SEPARATOR
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|atLeastOnePresent
-argument_list|(
-name|altFields
-argument_list|,
-name|database
-argument_list|)
-condition|)
-block|{
 return|return
-literal|false
-return|;
-block|}
-block|}
-else|else
-block|{
-if|if
-condition|(
-operator|!
+name|fields
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|allMatch
+argument_list|(
+name|field
+lambda|->
 name|this
 operator|.
 name|getResolvedFieldOrAlias
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|database
 argument_list|)
 operator|.
 name|isPresent
 argument_list|()
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-block|}
-block|}
-return|return
-literal|true
-return|;
-block|}
-DECL|method|atLeastOnePresent (String[] fieldsToCheck, BibDatabase database)
-specifier|private
-name|boolean
-name|atLeastOnePresent
-parameter_list|(
-name|String
-index|[]
-name|fieldsToCheck
-parameter_list|,
-name|BibDatabase
-name|database
-parameter_list|)
-block|{
-for|for
-control|(
-name|String
-name|field
-range|:
-name|fieldsToCheck
-control|)
-block|{
-name|String
-name|fieldName
-init|=
-name|toLowerCase
-argument_list|(
-name|field
 argument_list|)
-decl_stmt|;
-name|Optional
-argument_list|<
-name|String
-argument_list|>
-name|value
-init|=
-name|this
-operator|.
-name|getResolvedFieldOrAlias
-argument_list|(
-name|fieldName
-argument_list|,
-name|database
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|(
-name|value
-operator|.
-name|isPresent
-argument_list|()
-operator|)
-operator|&&
-operator|!
-name|value
-operator|.
-name|get
-argument_list|()
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-block|}
-return|return
-literal|false
 return|;
 block|}
 comment|/**      * Returns a clone of this entry. Useful for copying.      * This will set a new ID for the cloned entry to be able to distinguish both copies.      */
@@ -2457,7 +2254,7 @@ index|[]
 block|{
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|)
@@ -2469,7 +2266,7 @@ argument_list|)
 block|,
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|)
@@ -2481,7 +2278,7 @@ argument_list|)
 block|,
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|)
@@ -2566,7 +2363,7 @@ block|{
 return|return
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|)
@@ -2585,7 +2382,7 @@ block|{
 return|return
 name|getFieldOrAlias
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DATE
 argument_list|)
@@ -2751,7 +2548,7 @@ name|this
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|)
@@ -2778,7 +2575,7 @@ name|this
 operator|.
 name|clearField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|)
@@ -2810,7 +2607,7 @@ name|this
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|,
@@ -2956,7 +2753,7 @@ name|keywordsContent
 init|=
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|)
@@ -3006,7 +2803,7 @@ name|keywordsContent
 init|=
 name|getResolvedFieldOrAlias
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|,
@@ -3141,7 +2938,7 @@ DECL|method|getFieldMap ()
 specifier|public
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -3336,12 +3133,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|withField (String field, String value)
+DECL|method|withField (Field field, String value)
 specifier|public
 name|BibEntry
 name|withField
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|,
 name|String
@@ -3370,7 +3167,7 @@ return|return
 name|commentsBeforeEntry
 return|;
 block|}
-DECL|method|getEntryLinkList (String fieldName, BibDatabase database)
+DECL|method|getEntryLinkList (Field field, BibDatabase database)
 specifier|public
 name|List
 argument_list|<
@@ -3378,8 +3175,8 @@ name|ParsedEntryLink
 argument_list|>
 name|getEntryLinkList
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|BibDatabase
 name|database
@@ -3388,7 +3185,7 @@ block|{
 return|return
 name|getField
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 operator|.
 name|map
@@ -3414,7 +3211,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|setEntryLinkList (String fieldName, List<ParsedEntryLink> list)
+DECL|method|setEntryLinkList (Field field, List<ParsedEntryLink> list)
 specifier|public
 name|Optional
 argument_list|<
@@ -3422,8 +3219,8 @@ name|FieldChange
 argument_list|>
 name|setEntryLinkList
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|List
 argument_list|<
@@ -3435,7 +3232,7 @@ block|{
 return|return
 name|setField
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|EntryLinkList
 operator|.
@@ -3446,7 +3243,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|getFieldAsWords (String field)
+DECL|method|getFieldAsWords (Field field)
 specifier|public
 name|Set
 argument_list|<
@@ -3454,18 +3251,10 @@ name|String
 argument_list|>
 name|getFieldAsWords
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|)
 block|{
-name|String
-name|fieldName
-init|=
-name|toLowerCase
-argument_list|(
-name|field
-argument_list|)
-decl_stmt|;
 name|Set
 argument_list|<
 name|String
@@ -3476,7 +3265,7 @@ name|fieldsAsWords
 operator|.
 name|get
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 decl_stmt|;
 if|if
@@ -3499,7 +3288,7 @@ name|fields
 operator|.
 name|get
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 decl_stmt|;
 if|if
@@ -3540,7 +3329,7 @@ name|fieldsAsWords
 operator|.
 name|put
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|words
 argument_list|)
@@ -3563,35 +3352,37 @@ block|{
 return|return
 name|clearField
 argument_list|(
+name|InternalField
+operator|.
 name|KEY_FIELD
 argument_list|)
 return|;
 block|}
-DECL|method|invalidateFieldCache (String fieldName)
+DECL|method|invalidateFieldCache (Field field)
 specifier|private
 name|void
 name|invalidateFieldCache
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 block|{
 name|latexFreeFields
 operator|.
 name|remove
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 expr_stmt|;
 name|fieldsAsWords
 operator|.
 name|remove
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getLatexFreeField (String name)
+DECL|method|getLatexFreeField (Field field)
 specifier|public
 name|Optional
 argument_list|<
@@ -3599,8 +3390,8 @@ name|String
 argument_list|>
 name|getLatexFreeField
 parameter_list|(
-name|String
-name|name
+name|Field
+name|field
 parameter_list|)
 block|{
 if|if
@@ -3608,15 +3399,17 @@ condition|(
 operator|!
 name|hasField
 argument_list|(
-name|name
+name|field
 argument_list|)
 operator|&&
 operator|!
+name|InternalField
+operator|.
 name|TYPE_HEADER
 operator|.
 name|equals
 argument_list|(
-name|name
+name|field
 argument_list|)
 condition|)
 block|{
@@ -3634,7 +3427,7 @@ name|latexFreeFields
 operator|.
 name|containsKey
 argument_list|(
-name|name
+name|field
 argument_list|)
 condition|)
 block|{
@@ -3647,10 +3440,7 @@ name|latexFreeFields
 operator|.
 name|get
 argument_list|(
-name|toLowerCase
-argument_list|(
-name|name
-argument_list|)
+name|field
 argument_list|)
 argument_list|)
 return|;
@@ -3658,11 +3448,13 @@ block|}
 elseif|else
 if|if
 condition|(
+name|InternalField
+operator|.
 name|KEY_FIELD
 operator|.
 name|equals
 argument_list|(
-name|name
+name|field
 argument_list|)
 condition|)
 block|{
@@ -3680,7 +3472,7 @@ name|latexFreeFields
 operator|.
 name|put
 argument_list|(
-name|name
+name|field
 argument_list|,
 name|citeKey
 operator|.
@@ -3695,58 +3487,34 @@ block|}
 elseif|else
 if|if
 condition|(
+name|InternalField
+operator|.
 name|TYPE_HEADER
 operator|.
 name|equals
 argument_list|(
-name|name
+name|field
 argument_list|)
-condition|)
-block|{
-name|Optional
-argument_list|<
-name|EntryType
-argument_list|>
-name|entryType
-init|=
-name|EntryTypes
-operator|.
-name|getType
-argument_list|(
-name|getType
-argument_list|()
-argument_list|,
-name|BibDatabaseMode
-operator|.
-name|BIBLATEX
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|entryType
-operator|.
-name|isPresent
-argument_list|()
 condition|)
 block|{
 name|String
-name|entryName
+name|typeName
 init|=
-name|entryType
+name|type
 operator|.
 name|get
 argument_list|()
 operator|.
-name|getName
+name|getDisplayName
 argument_list|()
 decl_stmt|;
 name|latexFreeFields
 operator|.
 name|put
 argument_list|(
-name|name
+name|field
 argument_list|,
-name|entryName
+name|typeName
 argument_list|)
 expr_stmt|;
 return|return
@@ -3754,27 +3522,9 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|entryName
+name|typeName
 argument_list|)
 return|;
-block|}
-else|else
-block|{
-return|return
-name|Optional
-operator|.
-name|of
-argument_list|(
-name|StringUtil
-operator|.
-name|capitalizeFirst
-argument_list|(
-name|getType
-argument_list|()
-argument_list|)
-argument_list|)
-return|;
-block|}
 block|}
 else|else
 block|{
@@ -3787,7 +3537,7 @@ name|format
 argument_list|(
 name|getField
 argument_list|(
-name|name
+name|field
 argument_list|)
 operator|.
 name|get
@@ -3801,7 +3551,7 @@ name|latexFreeFields
 operator|.
 name|put
 argument_list|(
-name|name
+name|field
 argument_list|,
 name|latexFreeField
 argument_list|)
@@ -3841,7 +3591,7 @@ name|this
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 argument_list|)
@@ -3886,7 +3636,7 @@ name|this
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 argument_list|,
@@ -3913,7 +3663,7 @@ name|oldValue
 init|=
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 argument_list|)
@@ -3967,7 +3717,7 @@ name|year
 lambda|->
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -4001,7 +3751,7 @@ name|day
 lambda|->
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DAY
 argument_list|,
@@ -4025,7 +3775,7 @@ block|{
 return|return
 name|getFieldOrAlias
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|MONTH
 argument_list|)
@@ -4038,7 +3788,7 @@ name|parse
 argument_list|)
 return|;
 block|}
-DECL|method|getFieldBinding (String fieldName)
+DECL|method|getFieldBinding (Field field)
 specifier|public
 name|ObjectBinding
 argument_list|<
@@ -4046,10 +3796,11 @@ name|String
 argument_list|>
 name|getFieldBinding
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 block|{
+comment|//noinspection unchecked
 return|return
 name|Bindings
 operator|.
@@ -4057,7 +3808,7 @@ name|valueAt
 argument_list|(
 name|fields
 argument_list|,
-name|fieldName
+name|field
 argument_list|)
 return|;
 block|}
@@ -4073,6 +3824,8 @@ block|{
 return|return
 name|getFieldBinding
 argument_list|(
+name|InternalField
+operator|.
 name|KEY_FIELD
 argument_list|)
 return|;
@@ -4116,7 +3869,7 @@ DECL|method|getFieldsObservable ()
 specifier|public
 name|ObservableMap
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -4149,15 +3902,15 @@ specifier|private
 interface|interface
 name|GetFieldInterface
 block|{
-DECL|method|getValueForField (String fieldName)
+DECL|method|getValueForField (Field field)
 name|Optional
 argument_list|<
 name|String
 argument_list|>
 name|getValueForField
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 function_decl|;
 block|}

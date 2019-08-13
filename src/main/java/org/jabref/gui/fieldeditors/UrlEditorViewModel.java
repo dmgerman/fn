@@ -122,6 +122,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|strings
 operator|.
 name|StringUtil
@@ -164,12 +180,12 @@ argument_list|(
 literal|true
 argument_list|)
 decl_stmt|;
-DECL|method|UrlEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, DialogService dialogService, FieldCheckers fieldCheckers)
+DECL|method|UrlEditorViewModel (Field field, AutoCompleteSuggestionProvider<?> suggestionProvider, DialogService dialogService, FieldCheckers fieldCheckers)
 specifier|public
 name|UrlEditorViewModel
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|AutoCompleteSuggestionProvider
 argument_list|<
@@ -186,7 +202,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|suggestionProvider
 argument_list|,

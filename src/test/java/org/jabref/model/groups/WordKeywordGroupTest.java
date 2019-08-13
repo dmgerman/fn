@@ -46,7 +46,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -171,7 +173,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"test"
 argument_list|,
@@ -193,7 +197,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"test"
 argument_list|,
@@ -215,7 +221,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"\\H2O"
 argument_list|,
@@ -245,7 +253,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"test"
 argument_list|)
@@ -275,7 +285,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"Some sentence containing test word"
 argument_list|)
@@ -305,7 +317,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"Some,list,containing,test,word"
 argument_list|)
@@ -335,7 +349,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"Some;list;containing;test;word"
 argument_list|)
@@ -365,7 +381,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"\\H2O"
 argument_list|)
@@ -395,7 +413,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"Some sentence containing \\H2O word"
 argument_list|)
@@ -425,7 +445,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"Test"
 argument_list|)
@@ -455,7 +477,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"Some sentence containing Test word"
 argument_list|)
@@ -501,7 +525,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|)
@@ -522,7 +546,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|,
@@ -549,7 +573,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|)
@@ -570,7 +594,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|,
@@ -597,7 +621,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|)
@@ -618,7 +642,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|,
@@ -645,7 +669,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|)
@@ -666,7 +690,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|,
@@ -693,7 +717,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|)

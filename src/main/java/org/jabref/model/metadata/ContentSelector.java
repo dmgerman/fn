@@ -52,17 +52,33 @@ name|Objects
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_class
 DECL|class|ContentSelector
 specifier|public
 class|class
 name|ContentSelector
 block|{
-DECL|field|fieldName
+DECL|field|field
 specifier|private
 specifier|final
-name|String
-name|fieldName
+name|Field
+name|field
 decl_stmt|;
 DECL|field|values
 specifier|private
@@ -73,12 +89,12 @@ name|String
 argument_list|>
 name|values
 decl_stmt|;
-DECL|method|ContentSelector (String fieldName, String... values)
+DECL|method|ContentSelector (Field field, String... values)
 specifier|public
 name|ContentSelector
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|String
 modifier|...
@@ -87,7 +103,7 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|Arrays
 operator|.
@@ -98,12 +114,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ContentSelector (String fieldName, List<String> values)
+DECL|method|ContentSelector (Field field, List<String> values)
 specifier|public
 name|ContentSelector
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|List
 argument_list|<
@@ -114,9 +130,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|fieldName
+name|field
 operator|=
-name|fieldName
+name|field
 expr_stmt|;
 name|this
 operator|.
@@ -179,11 +195,11 @@ name|Objects
 operator|.
 name|equals
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|that
 operator|.
-name|fieldName
+name|field
 argument_list|)
 operator|&&
 name|Objects
@@ -211,20 +227,20 @@ name|Objects
 operator|.
 name|hash
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|values
 argument_list|)
 return|;
 block|}
-DECL|method|getFieldName ()
+DECL|method|getField ()
 specifier|public
-name|String
-name|getFieldName
+name|Field
+name|getField
 parameter_list|()
 block|{
 return|return
-name|fieldName
+name|field
 return|;
 block|}
 DECL|method|getValues ()

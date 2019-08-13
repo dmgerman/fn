@@ -22,6 +22,22 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_class
 DECL|class|XmpPreferences
 specifier|public
@@ -39,7 +55,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|xmpPrivacyFilter
 decl_stmt|;
@@ -49,7 +65,7 @@ specifier|final
 name|Character
 name|keywordSeparator
 decl_stmt|;
-DECL|method|XmpPreferences (boolean useXMPPrivacyFilter, List<String> xmpPrivacyFilter, Character keywordSeparator)
+DECL|method|XmpPreferences (boolean useXMPPrivacyFilter, List<Field> xmpPrivacyFilter, Character keywordSeparator)
 specifier|public
 name|XmpPreferences
 parameter_list|(
@@ -58,7 +74,7 @@ name|useXMPPrivacyFilter
 parameter_list|,
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|xmpPrivacyFilter
 parameter_list|,
@@ -99,7 +115,7 @@ DECL|method|getXmpPrivacyFilter ()
 specifier|public
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|getXmpPrivacyFilter
 parameter_list|()

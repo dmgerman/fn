@@ -76,7 +76,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|IEEETranEntryTypes
+name|StandardEntryType
 import|;
 end_import
 
@@ -332,9 +332,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|IEEETranEntryTypes
+name|StandardEntryType
 operator|.
-name|ELECTRONIC
+name|Electronic
 argument_list|)
 decl_stmt|;
 name|db

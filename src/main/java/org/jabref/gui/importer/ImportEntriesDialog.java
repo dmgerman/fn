@@ -212,6 +212,16 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|DialogService
@@ -394,7 +404,37 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -943,15 +983,27 @@ name|selectedProperty
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+name|BackgroundTask
+operator|.
+name|wrap
+argument_list|(
+parameter_list|()
+lambda|->
 name|viewModel
 operator|.
 name|hasDuplicate
 argument_list|(
 name|entry
 argument_list|)
-condition|)
+argument_list|)
+operator|.
+name|onSuccess
+argument_list|(
+name|duplicateFound
+lambda|->
+block|{
+lambda|if (duplicateFound
+argument_list|)
 block|{
 name|Button
 name|duplicateButton
@@ -1008,11 +1060,21 @@ name|duplicateButton
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+argument_list|)
+operator|.
+name|executeWith
+argument_list|(
+name|Globals
+operator|.
+name|TASK_EXECUTOR
+argument_list|)
+expr_stmt|;
 return|return
 name|container
 return|;
 block|}
-argument_list|)
+block|)
 operator|.
 name|withOnMouseClickedEvent
 argument_list|(
@@ -1047,6 +1109,9 @@ argument_list|(
 name|entriesListView
 argument_list|)
 expr_stmt|;
+end_class
+
+begin_expr_stmt
 name|entriesListView
 operator|.
 name|setSelectionModel
@@ -1057,9 +1122,11 @@ argument_list|<>
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
+end_expr_stmt
+
+begin_function
+unit|}      private
 DECL|method|getEntryNode (BibEntry entry)
-specifier|private
 name|Node
 name|getEntryNode
 parameter_list|(
@@ -1101,7 +1168,7 @@ name|entry
 operator|.
 name|getFieldOrAliasLatexFree
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|)
@@ -1132,7 +1199,7 @@ name|entry
 operator|.
 name|getFieldOrAliasLatexFree
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|)
@@ -1163,7 +1230,7 @@ name|entry
 operator|.
 name|getFieldOrAliasLatexFree
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|)
@@ -1194,7 +1261,7 @@ name|entry
 operator|.
 name|getFieldOrAliasLatexFree
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNAL
 argument_list|)
@@ -1248,7 +1315,7 @@ name|entry
 operator|.
 name|getFieldOrAliasLatexFree
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|)
@@ -1308,28 +1375,32 @@ return|return
 name|entryContainer
 return|;
 block|}
-DECL|method|getIcon (String type)
+end_function
+
+begin_function
+DECL|method|getIcon (EntryType type)
 specifier|private
 name|IconTheme
 operator|.
 name|JabRefIcons
 name|getIcon
 parameter_list|(
-name|String
+name|EntryType
 name|type
 parameter_list|)
 block|{
-switch|switch
+if|if
 condition|(
-name|type
+name|StandardEntryType
 operator|.
-name|toLowerCase
-argument_list|()
+name|Book
+operator|.
+name|equals
+argument_list|(
+name|type
+argument_list|)
 condition|)
 block|{
-case|case
-literal|"book"
-case|:
 return|return
 name|IconTheme
 operator|.
@@ -1337,7 +1408,7 @@ name|JabRefIcons
 operator|.
 name|BOOK
 return|;
-default|default:
+block|}
 return|return
 name|IconTheme
 operator|.
@@ -1346,7 +1417,9 @@ operator|.
 name|ARTICLE
 return|;
 block|}
-block|}
+end_function
+
+begin_function
 DECL|method|unselectAll ()
 specifier|public
 name|void
@@ -1362,6 +1435,9 @@ name|clearChecks
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|selectAllNewEntries ()
 specifier|public
 name|void
@@ -1406,8 +1482,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

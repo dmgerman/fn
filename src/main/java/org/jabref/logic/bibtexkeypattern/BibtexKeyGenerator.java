@@ -152,6 +152,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|strings
 operator|.
 name|StringUtil
@@ -713,7 +727,7 @@ decl_stmt|;
 try|try
 block|{
 comment|// get the type of entry
-name|String
+name|EntryType
 name|entryType
 init|=
 name|entry

@@ -108,7 +108,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -162,7 +164,13 @@ specifier|final
 name|boolean
 name|enforceLegalKey
 decl_stmt|;
-DECL|method|IntegrityCheck (BibDatabaseContext bibDatabaseContext, FilePreferences filePreferences, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, JournalAbbreviationRepository journalAbbreviationRepository, boolean enforceLegalKey)
+DECL|field|allowIntegerEdition
+specifier|private
+specifier|final
+name|boolean
+name|allowIntegerEdition
+decl_stmt|;
+DECL|method|IntegrityCheck (BibDatabaseContext bibDatabaseContext, FilePreferences filePreferences, BibtexKeyPatternPreferences bibtexKeyPatternPreferences, JournalAbbreviationRepository journalAbbreviationRepository, boolean enforceLegalKey, boolean allowIntegerEdition)
 specifier|public
 name|IntegrityCheck
 parameter_list|(
@@ -180,6 +188,9 @@ name|journalAbbreviationRepository
 parameter_list|,
 name|boolean
 name|enforceLegalKey
+parameter_list|,
+name|boolean
+name|allowIntegerEdition
 parameter_list|)
 block|{
 name|this
@@ -232,14 +243,20 @@ name|enforceLegalKey
 operator|=
 name|enforceLegalKey
 expr_stmt|;
+name|this
+operator|.
+name|allowIntegerEdition
+operator|=
+name|allowIntegerEdition
+expr_stmt|;
 block|}
-DECL|method|checkBibtexDatabase ()
+DECL|method|checkDatabase ()
 specifier|public
 name|List
 argument_list|<
 name|IntegrityMessage
 argument_list|>
-name|checkBibtexDatabase
+name|checkDatabase
 parameter_list|()
 block|{
 name|List
@@ -271,7 +288,7 @@ name|result
 operator|.
 name|addAll
 argument_list|(
-name|checkBibtexEntry
+name|checkEntry
 argument_list|(
 name|entry
 argument_list|)
@@ -282,13 +299,13 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|checkBibtexEntry (BibEntry entry)
+DECL|method|checkEntry (BibEntry entry)
 specifier|public
 name|List
 argument_list|<
 name|IntegrityMessage
 argument_list|>
-name|checkBibtexEntry
+name|checkEntry
 parameter_list|(
 name|BibEntry
 name|entry
@@ -329,6 +346,8 @@ argument_list|,
 name|journalAbbreviationRepository
 argument_list|,
 name|enforceLegalKey
+argument_list|,
+name|allowIntegerEdition
 argument_list|)
 decl_stmt|;
 for|for
@@ -414,7 +433,7 @@ argument_list|(
 operator|new
 name|JournalInAbbreviationListChecker
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNAL
 argument_list|,
@@ -437,7 +456,7 @@ argument_list|(
 operator|new
 name|JournalInAbbreviationListChecker
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNALTITLE
 argument_list|,

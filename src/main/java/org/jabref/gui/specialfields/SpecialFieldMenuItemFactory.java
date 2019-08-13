@@ -124,7 +124,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|specialfields
+name|field
 operator|.
 name|SpecialField
 import|;
@@ -140,7 +140,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|specialfields
+name|field
 operator|.
 name|SpecialFieldValue
 import|;

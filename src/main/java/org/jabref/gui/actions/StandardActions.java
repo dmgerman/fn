@@ -1498,6 +1498,25 @@ operator|.
 name|WEB_SEARCH
 argument_list|)
 block|,
+DECL|enumConstant|PARSE_TEX
+DECL|enumConstant|Localization.lang
+DECL|enumConstant|IconTheme.JabRefIcons.LATEX_CITATIONS
+name|PARSE_TEX
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Search for Citations in LaTeX Files"
+argument_list|)
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcons
+operator|.
+name|LATEX_CITATIONS
+argument_list|)
+block|,
 DECL|enumConstant|NEW_SUB_LIBRARY_FROM_AUX
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|Localization.lang

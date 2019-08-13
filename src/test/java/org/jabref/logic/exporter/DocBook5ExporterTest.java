@@ -108,7 +108,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|Collections
 import|;
 end_import
 
@@ -188,7 +188,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
 import|;
 end_import
 
@@ -202,7 +202,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -375,10 +377,10 @@ specifier|private
 name|Path
 name|xmlFile
 decl_stmt|;
-DECL|field|exportFormat
+DECL|field|exporter
 specifier|private
 name|Exporter
-name|exportFormat
+name|exporter
 decl_stmt|;
 annotation|@
 name|BeforeEach
@@ -469,7 +471,7 @@ argument_list|,
 name|xmpPreferences
 argument_list|)
 decl_stmt|;
-name|exportFormat
+name|exporter
 operator|=
 name|exporterFactory
 operator|.
@@ -513,16 +515,16 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|BOOK
+name|Book
 argument_list|)
 decl_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -533,7 +535,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -544,7 +546,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ISBN
 argument_list|,
@@ -579,9 +581,9 @@ argument_list|)
 expr_stmt|;
 name|entries
 operator|=
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|entry
 argument_list|)
@@ -611,7 +613,7 @@ argument_list|(
 literal|"ThisIsARandomlyNamedFile"
 argument_list|)
 decl_stmt|;
-name|exportFormat
+name|exporter
 operator|.
 name|export
 argument_list|(
@@ -664,6 +666,9 @@ name|isSimilarTo
 argument_list|(
 name|control
 argument_list|)
+operator|.
+name|normalizeWhitespace
+argument_list|()
 operator|.
 name|withNodeMatcher
 argument_list|(

@@ -52,6 +52,38 @@ name|Objects
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|FieldFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Stores the save order config from MetaData  *<p>  * Format:<choice>, pair of field + ascending (boolean)  */
 end_comment
@@ -257,11 +289,16 @@ argument_list|(
 operator|new
 name|SortCriterion
 argument_list|(
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|data
 operator|.
 name|get
 argument_list|(
 name|index
+argument_list|)
 argument_list|)
 argument_list|,
 name|data
@@ -559,6 +596,9 @@ argument_list|(
 name|sortCriterion
 operator|.
 name|field
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|res
@@ -588,7 +628,7 @@ name|SortCriterion
 block|{
 DECL|field|field
 specifier|public
-name|String
+name|Field
 name|field
 decl_stmt|;
 DECL|field|descending
@@ -596,11 +636,11 @@ specifier|public
 name|boolean
 name|descending
 decl_stmt|;
-DECL|method|SortCriterion (String field, String descending)
+DECL|method|SortCriterion (Field field, String descending)
 specifier|public
 name|SortCriterion
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|,
 name|String
@@ -625,11 +665,11 @@ name|descending
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SortCriterion (String field, boolean descending)
+DECL|method|SortCriterion (Field field, boolean descending)
 specifier|public
 name|SortCriterion
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|,
 name|boolean

@@ -102,6 +102,22 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -146,12 +162,12 @@ specifier|private
 name|EditorTextArea
 name|textArea
 decl_stmt|;
-DECL|method|OwnerEditor (String fieldName, JabRefPreferences preferences, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
+DECL|method|OwnerEditor (Field field, JabRefPreferences preferences, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
 specifier|public
 name|OwnerEditor
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|JabRefPreferences
 name|preferences
@@ -173,7 +189,7 @@ operator|=
 operator|new
 name|OwnerEditorViewModel
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|suggestionProvider
 argument_list|,

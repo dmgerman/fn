@@ -126,7 +126,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|InternalField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -464,7 +482,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|)
@@ -496,7 +514,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 name|groupName
 argument_list|,
@@ -568,7 +588,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|)

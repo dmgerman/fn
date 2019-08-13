@@ -102,6 +102,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|groups
 operator|.
 name|AllEntriesGroup
@@ -630,7 +646,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"test"
 argument_list|,
@@ -691,7 +709,9 @@ name|GroupHierarchyType
 operator|.
 name|REFINING
 argument_list|,
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"asdf"
 argument_list|,
@@ -862,7 +882,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|','
 argument_list|,
@@ -919,7 +941,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"authors"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|)
 decl_stmt|;
 name|List
@@ -946,7 +970,7 @@ name|Collections
 operator|.
 name|singletonList
 argument_list|(
-literal|"0 AutomaticPersonsGroup:myAutomaticGroup;0;authors;1;;;;"
+literal|"0 AutomaticPersonsGroup:myAutomaticGroup;0;author;1;;;;"
 argument_list|)
 argument_list|,
 name|serialization
@@ -1134,9 +1158,9 @@ literal|"1 StaticGroup:ExplicitGrandParent;0;1;;;;"
 argument_list|,
 literal|"2 StaticGroup:ExplicitB;1;1;;;;"
 argument_list|,
-literal|"2 KeywordGroup:KeywordParent;0;searchField;searchExpression;1;0;1;;;;"
+literal|"2 KeywordGroup:KeywordParent;0;keywords;searchExpression;1;0;1;;;;"
 argument_list|,
-literal|"3 KeywordGroup:KeywordNode;0;searchField;searchExpression;1;0;1;;;;"
+literal|"3 KeywordGroup:KeywordNode;0;keywords;searchExpression;1;0;1;;;;"
 argument_list|,
 literal|"4 StaticGroup:ExplicitChild;1;1;;;;"
 argument_list|,
@@ -1144,13 +1168,13 @@ literal|"3 SearchGroup:SearchC;2;searchExpression;1;0;1;;;;"
 argument_list|,
 literal|"3 StaticGroup:ExplicitC;1;1;;;;"
 argument_list|,
-literal|"3 KeywordGroup:KeywordC;0;searchField;searchExpression;1;0;1;;;;"
+literal|"3 KeywordGroup:KeywordC;0;keywords;searchExpression;1;0;1;;;;"
 argument_list|,
 literal|"2 SearchGroup:SearchB;2;searchExpression;1;0;1;;;;"
 argument_list|,
-literal|"2 KeywordGroup:KeywordB;0;searchField;searchExpression;1;0;1;;;;"
+literal|"2 KeywordGroup:KeywordB;0;keywords;searchExpression;1;0;1;;;;"
 argument_list|,
-literal|"1 KeywordGroup:KeywordA;0;searchField;searchExpression;1;0;1;;;;"
+literal|"1 KeywordGroup:KeywordA;0;keywords;searchExpression;1;0;1;;;;"
 argument_list|)
 decl_stmt|;
 name|assertEquals

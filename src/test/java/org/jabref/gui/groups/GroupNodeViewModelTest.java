@@ -134,7 +134,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|InternalField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -392,7 +410,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"test"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"search"
 argument_list|,
@@ -429,7 +449,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"test"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"search"
 argument_list|,
@@ -513,7 +535,9 @@ argument_list|()
 operator|.
 name|withField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> B> B1, A> C"
 argument_list|)
@@ -527,7 +551,9 @@ argument_list|()
 operator|.
 name|withField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> D, E"
 argument_list|)
@@ -541,7 +567,9 @@ argument_list|()
 operator|.
 name|withField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> B> B2"
 argument_list|)
@@ -572,7 +600,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|','
 argument_list|,
@@ -599,7 +629,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A"
 argument_list|,
@@ -622,7 +654,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> B"
 argument_list|,
@@ -645,7 +679,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> B> B1"
 argument_list|,
@@ -668,7 +704,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> B> B2"
 argument_list|,
@@ -691,7 +729,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> C"
 argument_list|,
@@ -714,7 +754,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> D"
 argument_list|,
@@ -737,7 +779,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"E"
 argument_list|,
@@ -852,7 +896,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A"
 argument_list|,
@@ -876,7 +922,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A"
 argument_list|,
@@ -899,7 +947,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> B"
 argument_list|,
@@ -922,7 +972,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> B> B1"
 argument_list|,
@@ -1027,7 +1079,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A"
 argument_list|,
@@ -1051,7 +1105,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A"
 argument_list|,
@@ -1074,7 +1130,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> B"
 argument_list|,
@@ -1097,7 +1155,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> B> B1"
 argument_list|,
@@ -1202,7 +1262,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A"
 argument_list|,
@@ -1226,7 +1288,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A"
 argument_list|,
@@ -1249,7 +1313,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> B"
 argument_list|,
@@ -1272,7 +1338,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> B> B1"
 argument_list|,
@@ -1377,7 +1445,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A"
 argument_list|,
@@ -1401,7 +1471,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A"
 argument_list|,
@@ -1424,7 +1496,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> B"
 argument_list|,
@@ -1447,7 +1521,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A> B> B1"
 argument_list|,
@@ -1631,7 +1707,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|)

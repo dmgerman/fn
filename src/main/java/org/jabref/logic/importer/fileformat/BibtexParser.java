@@ -122,6 +122,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|LinkedList
 import|;
 end_import
@@ -173,6 +183,16 @@ operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -368,7 +388,21 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|BibEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntryTypesManager
 import|;
 end_import
 
@@ -396,7 +430,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|CustomEntryType
+name|EntryTypeFactory
 import|;
 end_import
 
@@ -410,7 +444,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|EntryType
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -424,7 +460,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|FieldFactory
 import|;
 end_import
 
@@ -437,6 +475,8 @@ operator|.
 name|model
 operator|.
 name|entry
+operator|.
+name|field
 operator|.
 name|FieldProperty
 import|;
@@ -452,7 +492,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -579,11 +621,9 @@ name|database
 decl_stmt|;
 DECL|field|entryTypes
 specifier|private
-name|Map
+name|Set
 argument_list|<
-name|String
-argument_list|,
-name|EntryType
+name|BibEntryType
 argument_list|>
 name|entryTypes
 decl_stmt|;
@@ -920,7 +960,7 @@ expr_stmt|;
 name|entryTypes
 operator|=
 operator|new
-name|HashMap
+name|HashSet
 argument_list|<>
 argument_list|()
 expr_stmt|;
@@ -1608,7 +1648,7 @@ operator|.
 name|length
 argument_list|()
 argument_list|,
-name|CustomEntryType
+name|BibEntryTypesManager
 operator|.
 name|ENTRYTYPE_FLAG
 operator|.
@@ -1619,7 +1659,7 @@ argument_list|)
 operator|.
 name|equals
 argument_list|(
-name|CustomEntryType
+name|BibEntryTypesManager
 operator|.
 name|ENTRYTYPE_FLAG
 argument_list|)
@@ -1629,11 +1669,11 @@ comment|// A custom entry type can also be stored in a
 comment|// "@comment"
 name|Optional
 argument_list|<
-name|CustomEntryType
+name|BibEntryType
 argument_list|>
 name|typ
 init|=
-name|CustomEntryType
+name|BibEntryTypesManager
 operator|.
 name|parse
 argument_list|(
@@ -1650,16 +1690,8 @@ condition|)
 block|{
 name|entryTypes
 operator|.
-name|put
+name|add
 argument_list|(
-name|typ
-operator|.
-name|get
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-argument_list|,
 name|typ
 operator|.
 name|get
@@ -2513,7 +2545,12 @@ name|content
 init|=
 name|parseFieldContent
 argument_list|(
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|name
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|LOGGER
@@ -2584,9 +2621,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|EntryTypeFactory
 operator|.
-name|getTypeOrDefault
+name|parse
 argument_list|(
 name|entryType
 argument_list|)
@@ -2740,9 +2777,13 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|String
-name|key
+name|Field
+name|field
 init|=
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|parseTextToken
 argument_list|()
 operator|.
@@ -2751,6 +2792,7 @@ argument_list|(
 name|Locale
 operator|.
 name|ROOT
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|skipWhitespace
@@ -2766,7 +2808,7 @@ name|content
 init|=
 name|parseFieldContent
 argument_list|(
-name|key
+name|field
 argument_list|)
 decl_stmt|;
 if|if
@@ -2784,7 +2826,7 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-name|key
+name|field
 argument_list|)
 condition|)
 block|{
@@ -2794,17 +2836,15 @@ comment|// editor lines, stringing them together instead of getting just
 comment|// one of them.
 comment|// Multiple author or editor lines are not allowed by the bibtex
 comment|// format, but
-comment|// at least one online database exports bibtex like that, making
+comment|// at least one online database exports bibtex likes to do that, making
 comment|// it inconvenient
 comment|// for users if JabRef did not accept it.
 if|if
 condition|(
-name|InternalBibtexFields
+name|field
 operator|.
-name|getFieldProperties
-argument_list|(
-name|key
-argument_list|)
+name|getProperties
+argument_list|()
 operator|.
 name|contains
 argument_list|(
@@ -2818,13 +2858,13 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|key
+name|field
 argument_list|,
 name|entry
 operator|.
 name|getField
 argument_list|(
-name|key
+name|field
 argument_list|)
 operator|.
 name|get
@@ -2839,13 +2879,13 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 operator|.
 name|equals
 argument_list|(
-name|key
+name|field
 argument_list|)
 condition|)
 block|{
@@ -2870,7 +2910,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|key
+name|field
 argument_list|,
 name|content
 argument_list|)
@@ -2878,13 +2918,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|parseFieldContent (String key)
+DECL|method|parseFieldContent (Field field)
 specifier|private
 name|String
 name|parseFieldContent
 parameter_list|(
-name|String
-name|key
+name|Field
+name|field
 parameter_list|)
 throws|throws
 name|IOException
@@ -2968,7 +3008,7 @@ name|format
 argument_list|(
 name|text
 argument_list|,
-name|key
+name|field
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3000,7 +3040,7 @@ name|format
 argument_list|(
 name|text
 argument_list|,
-name|key
+name|field
 argument_list|)
 argument_list|)
 expr_stmt|;

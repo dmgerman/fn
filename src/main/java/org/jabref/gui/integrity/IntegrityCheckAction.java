@@ -397,6 +397,17 @@ name|JabRefPreferences
 operator|.
 name|ENFORCE_LEGAL_BIBTEX_KEY
 argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ALLOW_INTEGER_EDITION_BIBTEX
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|Task
@@ -495,7 +506,7 @@ name|addAll
 argument_list|(
 name|check
 operator|.
-name|checkBibtexEntry
+name|checkEntry
 argument_list|(
 name|entry
 argument_list|)

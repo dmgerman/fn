@@ -158,6 +158,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|airhacks
@@ -198,12 +214,12 @@ name|ParsedEntryLink
 argument_list|>
 name|linkedEntriesBar
 decl_stmt|;
-DECL|method|LinkedEntriesEditor (String fieldName, BibDatabaseContext databaseContext, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
+DECL|method|LinkedEntriesEditor (Field field, BibDatabaseContext databaseContext, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
 specifier|public
 name|LinkedEntriesEditor
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|BibDatabaseContext
 name|databaseContext
@@ -225,7 +241,7 @@ operator|=
 operator|new
 name|LinkedEntriesEditorViewModel
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|suggestionProvider
 argument_list|,

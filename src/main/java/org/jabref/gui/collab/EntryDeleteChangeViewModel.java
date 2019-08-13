@@ -28,6 +28,16 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|JabRefGUI
 import|;
 end_import
@@ -330,6 +340,10 @@ argument_list|()
 operator|.
 name|getDialogService
 argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|stateManager
 argument_list|)
 decl_stmt|;
 name|previewViewer

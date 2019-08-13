@@ -176,7 +176,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -472,9 +474,12 @@ name|lang
 argument_list|(
 literal|"Upgrade external PDF/PS links to use the '%0' field."
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
+operator|.
+name|getDisplayName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -38,16 +38,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -472,20 +462,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
 name|LinkedFile
 import|;
 end_import
@@ -500,7 +476,39 @@ name|model
 operator|.
 name|entry
 operator|.
-name|specialfields
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|FieldFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
 operator|.
 name|SpecialField
 import|;
@@ -516,9 +524,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|specialfields
+name|field
 operator|.
 name|SpecialFieldValue
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -533,20 +557,6 @@ operator|.
 name|groups
 operator|.
 name|AbstractGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|strings
-operator|.
-name|StringUtil
 import|;
 end_import
 
@@ -846,11 +856,11 @@ name|JabRefIcons
 operator|.
 name|DOI
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 argument_list|)
@@ -871,11 +881,11 @@ name|JabRefIcons
 operator|.
 name|WWW
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|)
@@ -904,7 +914,7 @@ name|JabRefIcons
 operator|.
 name|WWW
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|EPRINT
 argument_list|)
@@ -1262,21 +1272,6 @@ name|getNormalColumns
 argument_list|()
 control|)
 block|{
-comment|// Stored column name will be used as header
-comment|// There might be more than one field to display, e.g., "author/editor" or "date/year" - so split
-name|String
-index|[]
-name|fields
-init|=
-name|columnName
-operator|.
-name|split
-argument_list|(
-name|FieldName
-operator|.
-name|FIELD_SEPARATOR
-argument_list|)
-decl_stmt|;
 name|NormalTableColumn
 name|column
 init|=
@@ -1285,11 +1280,11 @@ name|NormalTableColumn
 argument_list|(
 name|columnName
 argument_list|,
-name|Arrays
+name|FieldFactory
 operator|.
-name|asList
+name|parseOrFields
 argument_list|(
-name|fields
+name|columnName
 argument_list|)
 argument_list|,
 name|database
@@ -2179,6 +2174,16 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+operator|.
+name|getXMPPreferences
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFilePreferences
+argument_list|()
 argument_list|,
 name|externalFileTypes
 argument_list|)
@@ -2324,6 +2329,16 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+operator|.
+name|getXMPPreferences
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getFilePreferences
+argument_list|()
 argument_list|,
 name|externalFileTypes
 argument_list|)
@@ -2382,23 +2397,23 @@ comment|/**      * Creates a column for DOIs or URLs.      * The {@code firstFie
 end_comment
 
 begin_function
-DECL|method|createUrlOrDoiColumn (JabRefIcon icon, String firstField, String secondField)
+DECL|method|createUrlOrDoiColumn (JabRefIcon icon, Field firstField, Field secondField)
 specifier|private
 name|TableColumn
 argument_list|<
 name|BibEntryTableViewModel
 argument_list|,
-name|String
+name|Field
 argument_list|>
 name|createUrlOrDoiColumn
 parameter_list|(
 name|JabRefIcon
 name|icon
 parameter_list|,
-name|String
+name|Field
 name|firstField
 parameter_list|,
-name|String
+name|Field
 name|secondField
 parameter_list|)
 block|{
@@ -2406,7 +2421,7 @@ name|TableColumn
 argument_list|<
 name|BibEntryTableViewModel
 argument_list|,
-name|String
+name|Field
 argument_list|>
 name|column
 init|=
@@ -2432,21 +2447,17 @@ argument_list|,
 operator|new
 name|Tooltip
 argument_list|(
-name|StringUtil
-operator|.
-name|capitalizeFirst
-argument_list|(
 name|firstField
-argument_list|)
+operator|.
+name|getDisplayName
+argument_list|()
 operator|+
 literal|" / "
 operator|+
-name|StringUtil
-operator|.
-name|capitalizeFirst
-argument_list|(
 name|secondField
-argument_list|)
+operator|.
+name|getDisplayName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2536,7 +2547,7 @@ name|ValueTableCellFactory
 argument_list|<
 name|BibEntryTableViewModel
 argument_list|,
-name|String
+name|Field
 argument_list|>
 argument_list|()
 operator|.
@@ -2560,7 +2571,7 @@ parameter_list|(
 name|BibEntryTableViewModel
 name|entry
 parameter_list|,
-name|String
+name|Field
 name|content
 parameter_list|)
 lambda|->
@@ -2591,7 +2602,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|openUrlOrDoi (MouseEvent event, BibEntryTableViewModel entry, String field)
+DECL|method|openUrlOrDoi (MouseEvent event, BibEntryTableViewModel entry, Field field)
 specifier|private
 name|void
 name|openUrlOrDoi
@@ -2602,7 +2613,7 @@ parameter_list|,
 name|BibEntryTableViewModel
 name|entry
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|)
 block|{
@@ -2715,7 +2726,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|createIdentifierTooltip (BibEntryTableViewModel entry, String content)
+DECL|method|createIdentifierTooltip (BibEntryTableViewModel entry, Field field)
 specifier|private
 name|String
 name|createIdentifierTooltip
@@ -2723,15 +2734,15 @@ parameter_list|(
 name|BibEntryTableViewModel
 name|entry
 parameter_list|,
-name|String
-name|content
+name|Field
+name|field
 parameter_list|)
 block|{
 name|Optional
 argument_list|<
 name|String
 argument_list|>
-name|field
+name|value
 init|=
 name|entry
 operator|.
@@ -2740,12 +2751,12 @@ argument_list|()
 operator|.
 name|getField
 argument_list|(
-name|content
+name|field
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|field
+name|value
 operator|.
 name|isPresent
 argument_list|()
@@ -2753,13 +2764,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 operator|.
 name|equals
 argument_list|(
-name|content
+name|field
 argument_list|)
 condition|)
 block|{
@@ -2772,7 +2783,7 @@ literal|"Open %0 URL (%1)"
 argument_list|,
 literal|"DOI"
 argument_list|,
-name|field
+name|value
 operator|.
 name|get
 argument_list|()
@@ -2782,13 +2793,13 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 operator|.
 name|equals
 argument_list|(
-name|content
+name|field
 argument_list|)
 condition|)
 block|{
@@ -2799,7 +2810,7 @@ name|lang
 argument_list|(
 literal|"Open URL (%0)"
 argument_list|,
-name|field
+name|value
 operator|.
 name|get
 argument_list|()
@@ -2809,13 +2820,13 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|EPRINT
 operator|.
 name|equals
 argument_list|(
-name|content
+name|field
 argument_list|)
 condition|)
 block|{
@@ -2828,7 +2839,7 @@ literal|"Open %0 URL (%1)"
 argument_list|,
 literal|"ArXiv"
 argument_list|,
-name|field
+name|value
 operator|.
 name|get
 argument_list|()
@@ -2843,20 +2854,20 @@ block|}
 end_function
 
 begin_function
-DECL|method|createEprintColumn (JabRefIcon icon, String field)
+DECL|method|createEprintColumn (JabRefIcon icon, Field field)
 specifier|private
 name|TableColumn
 argument_list|<
 name|BibEntryTableViewModel
 argument_list|,
-name|String
+name|Field
 argument_list|>
 name|createEprintColumn
 parameter_list|(
 name|JabRefIcon
 name|icon
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|)
 block|{
@@ -2864,7 +2875,7 @@ name|TableColumn
 argument_list|<
 name|BibEntryTableViewModel
 argument_list|,
-name|String
+name|Field
 argument_list|>
 name|column
 init|=
@@ -2936,7 +2947,7 @@ name|ValueTableCellFactory
 argument_list|<
 name|BibEntryTableViewModel
 argument_list|,
-name|String
+name|Field
 argument_list|>
 argument_list|()
 operator|.
@@ -2960,7 +2971,7 @@ parameter_list|(
 name|BibEntryTableViewModel
 name|entry
 parameter_list|,
-name|String
+name|Field
 name|content
 parameter_list|)
 lambda|->

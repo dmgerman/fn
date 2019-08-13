@@ -62,12 +62,14 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|InternalField
 import|;
 end_import
 
 begin_comment
-comment|/**  * This group contains entries, which were manually assigned to it.  * Assignments are stored in the {@link FieldName#GROUPS} field.  * Thus, internally, we represent {@link ExplicitGroup} as a special {@link WordKeywordGroup} operating on  * {@link FieldName#GROUPS}.  */
+comment|/**  * This group contains entries, which were manually assigned to it.  * Assignments are stored in the {@link InternalField#GROUPS} field.  * Thus, internally, we represent {@link ExplicitGroup} as a special {@link WordKeywordGroup} operating on  * {@link InternalField#GROUPS}.  */
 end_comment
 
 begin_class
@@ -113,7 +115,7 @@ name|name
 argument_list|,
 name|context
 argument_list|,
-name|FieldName
+name|InternalField
 operator|.
 name|GROUPS
 argument_list|,

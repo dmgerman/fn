@@ -142,7 +142,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|EntryType
 import|;
 end_import
 
@@ -156,7 +156,39 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -603,10 +635,12 @@ name|subtitle
 init|=
 literal|""
 decl_stmt|;
-name|String
+name|EntryType
 name|entryType
 init|=
-literal|"book"
+name|StandardEntryType
+operator|.
+name|Book
 decl_stmt|;
 comment|// Default
 comment|// Alle relevanten Informationen einsammeln
@@ -1345,7 +1379,9 @@ condition|)
 block|{
 name|entryType
 operator|=
-literal|"phdthesis"
+name|StandardEntryType
+operator|.
+name|PhdThesis
 expr_stmt|;
 block|}
 block|}
@@ -1482,17 +1518,21 @@ expr_stmt|;
 block|}
 name|entryType
 operator|=
-literal|"proceedings"
+name|StandardEntryType
+operator|.
+name|Proceedings
 expr_stmt|;
 block|}
 comment|// Wenn eine Verlagsdiss vorliegt
 if|if
 condition|(
-literal|"phdthesis"
+name|entryType
 operator|.
 name|equals
 argument_list|(
-name|entryType
+name|StandardEntryType
+operator|.
+name|PhdThesis
 argument_list|)
 operator|&&
 operator|(
@@ -1504,7 +1544,9 @@ condition|)
 block|{
 name|entryType
 operator|=
-literal|"book"
+name|StandardEntryType
+operator|.
+name|Book
 expr_stmt|;
 block|}
 comment|//Hilfskategorien zur Entscheidung @article
@@ -1724,7 +1766,9 @@ condition|)
 block|{
 name|entryType
 operator|=
-literal|"incollection"
+name|StandardEntryType
+operator|.
+name|InCollection
 expr_stmt|;
 block|}
 if|if
@@ -1739,7 +1783,9 @@ condition|)
 block|{
 name|entryType
 operator|=
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 expr_stmt|;
 block|}
 block|}
@@ -1786,12 +1832,7 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
-operator|.
-name|getTypeOrDefault
-argument_list|(
 name|entryType
-argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// Zuordnung der Felder in AbhÃ¤ngigkeit vom Dokumenttyp
@@ -1806,7 +1847,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -1825,7 +1866,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|EDITOR
 argument_list|,
@@ -1844,7 +1885,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -1917,7 +1958,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|SUBTITLE
 argument_list|,
@@ -1939,7 +1980,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PUBLISHER
 argument_list|,
@@ -1958,7 +1999,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -1977,7 +2018,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ADDRESS
 argument_list|,
@@ -1996,7 +2037,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|SERIES
 argument_list|,
@@ -2015,7 +2056,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|EDITION
 argument_list|,
@@ -2034,7 +2075,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ISBN
 argument_list|,
@@ -2053,7 +2094,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ISSN
 argument_list|,
@@ -2072,7 +2113,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|NUMBER
 argument_list|,
@@ -2091,7 +2132,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGETOTAL
 argument_list|,
@@ -2110,7 +2151,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|,
@@ -2129,7 +2170,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|VOLUME
 argument_list|,
@@ -2148,7 +2189,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNAL
 argument_list|,
@@ -2167,7 +2208,11 @@ name|result
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"ppn_GVK"
+argument_list|)
 argument_list|,
 name|ppn
 argument_list|)
@@ -2184,7 +2229,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 argument_list|,
@@ -2203,7 +2248,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|NOTE
 argument_list|,
@@ -2231,7 +2276,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNAL
 argument_list|,
@@ -2260,7 +2305,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|BOOKTITLE
 argument_list|,

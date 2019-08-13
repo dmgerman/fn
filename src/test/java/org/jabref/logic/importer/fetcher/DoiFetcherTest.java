@@ -76,7 +76,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BiblatexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -232,17 +248,15 @@ name|bibEntryBurd2011
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|BOOK
+name|Book
 argument_list|)
 expr_stmt|;
 name|bibEntryBurd2011
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"Burd_2011"
 argument_list|)
 expr_stmt|;
@@ -250,7 +264,9 @@ name|bibEntryBurd2011
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Java{\\textregistered} For Dummies{\\textregistered}"
 argument_list|)
@@ -259,7 +275,9 @@ name|bibEntryBurd2011
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"Wiley Publishing, Inc."
 argument_list|)
@@ -268,7 +286,9 @@ name|bibEntryBurd2011
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2011"
 argument_list|)
@@ -277,7 +297,9 @@ name|bibEntryBurd2011
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Barry Burd"
 argument_list|)
@@ -286,7 +308,9 @@ name|bibEntryBurd2011
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"jul"
 argument_list|)
@@ -295,7 +319,9 @@ name|bibEntryBurd2011
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1002/9781118257517"
 argument_list|)
@@ -310,17 +336,15 @@ name|bibEntryDecker2007
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|INPROCEEDINGS
+name|InProceedings
 argument_list|)
 expr_stmt|;
 name|bibEntryDecker2007
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"Decker_2007"
 argument_list|)
 expr_stmt|;
@@ -328,7 +352,9 @@ name|bibEntryDecker2007
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Gero Decker and Oliver Kopp and Frank Leymann and Mathias Weske"
 argument_list|)
@@ -337,7 +363,9 @@ name|bibEntryDecker2007
 operator|.
 name|setField
 argument_list|(
-literal|"booktitle"
+name|StandardField
+operator|.
+name|BOOKTITLE
 argument_list|,
 literal|"{IEEE} International Conference on Web Services ({ICWS} 2007)"
 argument_list|)
@@ -346,7 +374,9 @@ name|bibEntryDecker2007
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"jul"
 argument_list|)
@@ -355,7 +385,9 @@ name|bibEntryDecker2007
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"{IEEE}"
 argument_list|)
@@ -364,7 +396,9 @@ name|bibEntryDecker2007
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"{BPEL}4Chor: Extending {BPEL} for Modeling Choreographies"
 argument_list|)
@@ -373,7 +407,9 @@ name|bibEntryDecker2007
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2007"
 argument_list|)
@@ -382,7 +418,9 @@ name|bibEntryDecker2007
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1109/icws.2007.59"
 argument_list|)

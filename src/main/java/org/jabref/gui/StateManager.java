@@ -72,6 +72,18 @@ name|beans
 operator|.
 name|property
 operator|.
+name|IntegerProperty
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|beans
+operator|.
+name|property
+operator|.
 name|ReadOnlyListProperty
 import|;
 end_import
@@ -203,7 +215,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class manages the GUI-state of JabRef, including:  * - currently selected database  * - currently selected group  * Coming soon:  * - open databases  * - active search  */
+comment|/**  * This class manages the GUI-state of JabRef, including:  * - currently selected database  * - currently selected group  * - active search  * - active number of search results  */
 end_comment
 
 begin_class
@@ -292,6 +304,22 @@ operator|.
 name|empty
 argument_list|()
 decl_stmt|;
+DECL|field|searchResultMap
+specifier|private
+specifier|final
+name|ObservableMap
+argument_list|<
+name|BibDatabaseContext
+argument_list|,
+name|IntegerProperty
+argument_list|>
+name|searchResultMap
+init|=
+name|FXCollections
+operator|.
+name|observableHashMap
+argument_list|()
+decl_stmt|;
 DECL|method|StateManager ()
 specifier|public
 name|StateManager
@@ -341,6 +369,53 @@ parameter_list|()
 block|{
 return|return
 name|activeSearchQuery
+return|;
+block|}
+DECL|method|setActiveSearchResultSize (BibDatabaseContext database, IntegerProperty resultSize)
+specifier|public
+name|void
+name|setActiveSearchResultSize
+parameter_list|(
+name|BibDatabaseContext
+name|database
+parameter_list|,
+name|IntegerProperty
+name|resultSize
+parameter_list|)
+block|{
+name|searchResultMap
+operator|.
+name|put
+argument_list|(
+name|database
+argument_list|,
+name|resultSize
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getSearchResultSize ()
+specifier|public
+name|IntegerProperty
+name|getSearchResultSize
+parameter_list|()
+block|{
+return|return
+name|searchResultMap
+operator|.
+name|get
+argument_list|(
+name|activeDatabase
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|orElse
+argument_list|(
+operator|new
+name|BibDatabaseContext
+argument_list|()
+argument_list|)
+argument_list|)
 return|;
 block|}
 DECL|method|activeGroupProperty ()

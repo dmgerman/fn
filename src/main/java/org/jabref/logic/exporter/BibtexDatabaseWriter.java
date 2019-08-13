@@ -162,6 +162,34 @@ name|model
 operator|.
 name|entry
 operator|.
+name|BibEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntryTypesManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexString
 import|;
 end_import
@@ -176,7 +204,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|CustomEntryType
+name|field
+operator|.
+name|InternalField
 import|;
 end_import
 
@@ -252,7 +282,7 @@ name|PREAMBLE_PREFIX
 init|=
 literal|"@Preamble"
 decl_stmt|;
-DECL|method|BibtexDatabaseWriter (Writer writer, SavePreferences preferences)
+DECL|method|BibtexDatabaseWriter (Writer writer, SavePreferences preferences, BibEntryTypesManager entryTypesManager)
 specifier|public
 name|BibtexDatabaseWriter
 parameter_list|(
@@ -261,6 +291,9 @@ name|writer
 parameter_list|,
 name|SavePreferences
 name|preferences
+parameter_list|,
+name|BibEntryTypesManager
+name|entryTypesManager
 parameter_list|)
 block|{
 name|super
@@ -268,6 +301,8 @@ argument_list|(
 name|writer
 argument_list|,
 name|preferences
+argument_list|,
+name|entryTypesManager
 argument_list|)
 expr_stmt|;
 block|}
@@ -640,7 +675,7 @@ operator|.
 name|getContent
 argument_list|()
 argument_list|,
-name|LatexFieldFormatter
+name|InternalField
 operator|.
 name|BIBTEX_STRING
 argument_list|)
@@ -682,12 +717,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|writeEntryTypeDefinition (CustomEntryType customType)
+DECL|method|writeEntryTypeDefinition (BibEntryType customType)
 specifier|protected
 name|void
 name|writeEntryTypeDefinition
 parameter_list|(
-name|CustomEntryType
+name|BibEntryType
 name|customType
 parameter_list|)
 throws|throws
@@ -715,10 +750,12 @@ name|writer
 operator|.
 name|write
 argument_list|(
-name|customType
+name|BibEntryTypesManager
 operator|.
-name|getAsString
-argument_list|()
+name|serialize
+argument_list|(
+name|customType
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|writer
@@ -854,7 +891,7 @@ name|getLatexFieldFormatterPreferences
 argument_list|()
 argument_list|)
 argument_list|,
-literal|true
+name|entryTypesManager
 argument_list|)
 decl_stmt|;
 name|bibtexEntryWriter

@@ -46,6 +46,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_comment
 comment|/**  * Stores all words in the given field which are separated by SEPARATING_CHARS.  */
 end_comment
@@ -72,29 +88,29 @@ name|SEPARATING_CHARS
 init|=
 literal|";,\n "
 decl_stmt|;
-DECL|field|fieldName
+DECL|field|field
 specifier|private
 specifier|final
-name|String
-name|fieldName
+name|Field
+name|field
 decl_stmt|;
-DECL|method|WordSuggestionProvider (String fieldName)
+DECL|method|WordSuggestionProvider (Field field)
 specifier|public
 name|WordSuggestionProvider
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 block|{
 name|this
 operator|.
-name|fieldName
+name|field
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 expr_stmt|;
 block|}
@@ -122,7 +138,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 operator|.
 name|ifPresent
