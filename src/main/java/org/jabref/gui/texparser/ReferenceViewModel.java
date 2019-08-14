@@ -80,6 +80,12 @@ specifier|final
 name|String
 name|entry
 decl_stmt|;
+DECL|field|highlighted
+specifier|private
+specifier|final
+name|boolean
+name|highlighted
+decl_stmt|;
 DECL|field|citationList
 specifier|private
 specifier|final
@@ -89,12 +95,15 @@ name|Citation
 argument_list|>
 name|citationList
 decl_stmt|;
-DECL|method|ReferenceViewModel (String entry, Collection<Citation> citationColl)
+DECL|method|ReferenceViewModel (String entry, boolean highlighted, Collection<Citation> citationColl)
 specifier|public
 name|ReferenceViewModel
 parameter_list|(
 name|String
 name|entry
+parameter_list|,
+name|boolean
+name|highlighted
 parameter_list|,
 name|Collection
 argument_list|<
@@ -108,6 +117,12 @@ operator|.
 name|entry
 operator|=
 name|entry
+expr_stmt|;
+name|this
+operator|.
+name|highlighted
+operator|=
+name|highlighted
 expr_stmt|;
 name|this
 operator|.
@@ -125,6 +140,16 @@ argument_list|(
 name|citationColl
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|isHighlighted ()
+specifier|public
+name|boolean
+name|isHighlighted
+parameter_list|()
+block|{
+return|return
+name|highlighted
+return|;
 block|}
 DECL|method|getCitationList ()
 specifier|public
@@ -180,11 +205,15 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"ReferenceViewModel{entry='%s', citationList=%s}"
+literal|"ReferenceViewModel{entry='%s', highlighted=%s, citationList=%s}"
 argument_list|,
 name|this
 operator|.
 name|entry
+argument_list|,
+name|this
+operator|.
+name|highlighted
 argument_list|,
 name|this
 operator|.

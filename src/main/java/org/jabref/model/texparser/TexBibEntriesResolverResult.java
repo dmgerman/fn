@@ -16,9 +16,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|nio
 operator|.
-name|ArrayList
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -28,7 +30,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|HashSet
 import|;
 end_import
 
@@ -49,20 +51,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibDatabase
 import|;
 end_import
 
@@ -106,28 +94,23 @@ specifier|final
 name|TexParserResult
 name|texParserResult
 decl_stmt|;
-DECL|field|unresolvedKeys
+DECL|field|newEntryKeys
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
-name|unresolvedKeys
+name|newEntryKeys
 decl_stmt|;
 DECL|field|newEntries
 specifier|private
 specifier|final
-name|List
+name|Set
 argument_list|<
 name|BibEntry
 argument_list|>
 name|newEntries
-decl_stmt|;
-DECL|field|crossRefsCount
-specifier|private
-name|int
-name|crossRefsCount
 decl_stmt|;
 DECL|method|TexBibEntriesResolverResult (TexParserResult texParserResult)
 specifier|public
@@ -145,10 +128,10 @@ name|texParserResult
 expr_stmt|;
 name|this
 operator|.
-name|unresolvedKeys
+name|newEntryKeys
 operator|=
 operator|new
-name|ArrayList
+name|HashSet
 argument_list|<>
 argument_list|()
 expr_stmt|;
@@ -157,15 +140,9 @@ operator|.
 name|newEntries
 operator|=
 operator|new
-name|ArrayList
+name|HashSet
 argument_list|<>
 argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|crossRefsCount
-operator|=
-literal|0
 expr_stmt|;
 block|}
 DECL|method|getTexParserResult ()
@@ -178,22 +155,22 @@ return|return
 name|texParserResult
 return|;
 block|}
-DECL|method|getUnresolvedKeys ()
+DECL|method|getNewEntryKeys ()
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
-name|getUnresolvedKeys
+name|getNewEntryKeys
 parameter_list|()
 block|{
 return|return
-name|unresolvedKeys
+name|newEntryKeys
 return|;
 block|}
 DECL|method|getNewEntries ()
 specifier|public
-name|List
+name|Set
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -204,14 +181,67 @@ return|return
 name|newEntries
 return|;
 block|}
-DECL|method|getCrossRefsCount ()
+DECL|method|addEntry (BibEntry entry)
 specifier|public
-name|int
-name|getCrossRefsCount
+name|void
+name|addEntry
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+name|newEntries
+operator|.
+name|add
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|ifPresent
+argument_list|(
+name|entryKey
+lambda|->
+block|{
+name|newEntryKeys
+operator|.
+name|add
+argument_list|(
+name|entryKey
+argument_list|)
+expr_stmt|;
+name|newEntries
+operator|.
+name|add
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Return the BIB files multimap from the TexParserResult object.      */
+DECL|method|getBibFiles ()
+specifier|public
+name|Multimap
+argument_list|<
+name|Path
+argument_list|,
+name|Path
+argument_list|>
+name|getBibFiles
 parameter_list|()
 block|{
 return|return
-name|crossRefsCount
+name|texParserResult
+operator|.
+name|getBibFiles
+argument_list|()
 return|;
 block|}
 comment|/**      * Return the citations multimap from the TexParserResult object.      */
@@ -233,135 +263,6 @@ name|getCitations
 argument_list|()
 return|;
 block|}
-comment|/**      * Return a set of strings with the keys of the citations multimap from the TexParserResult object.      */
-DECL|method|getCitationsKeySet ()
-specifier|public
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|getCitationsKeySet
-parameter_list|()
-block|{
-return|return
-name|texParserResult
-operator|.
-name|getCitationsKeySet
-argument_list|()
-return|;
-block|}
-comment|/**      * Add an unresolved key to the list.      */
-DECL|method|addUnresolvedKey (String key)
-specifier|public
-name|void
-name|addUnresolvedKey
-parameter_list|(
-name|String
-name|key
-parameter_list|)
-block|{
-name|unresolvedKeys
-operator|.
-name|add
-argument_list|(
-name|key
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Check if an entry with the given key is not present in the list of new entries.      */
-DECL|method|isNotKeyIntoNewEntries (String key)
-specifier|public
-name|boolean
-name|isNotKeyIntoNewEntries
-parameter_list|(
-name|String
-name|key
-parameter_list|)
-block|{
-return|return
-name|newEntries
-operator|.
-name|stream
-argument_list|()
-operator|.
-name|noneMatch
-argument_list|(
-name|entry
-lambda|->
-name|key
-operator|.
-name|equals
-argument_list|(
-name|entry
-operator|.
-name|getCiteKeyOptional
-argument_list|()
-operator|.
-name|orElse
-argument_list|(
-literal|null
-argument_list|)
-argument_list|)
-argument_list|)
-return|;
-block|}
-comment|/**      * Add 1 to the cross references counter.      */
-DECL|method|increaseCrossRefsCount ()
-specifier|public
-name|void
-name|increaseCrossRefsCount
-parameter_list|()
-block|{
-name|crossRefsCount
-operator|++
-expr_stmt|;
-block|}
-comment|/**      * Insert into the list of new entries an entry with the given key.      */
-DECL|method|insertEntry (BibDatabase masterDatabase, String key)
-specifier|public
-name|void
-name|insertEntry
-parameter_list|(
-name|BibDatabase
-name|masterDatabase
-parameter_list|,
-name|String
-name|key
-parameter_list|)
-block|{
-name|masterDatabase
-operator|.
-name|getEntryByKey
-argument_list|(
-name|key
-argument_list|)
-operator|.
-name|ifPresent
-argument_list|(
-name|this
-operator|::
-name|insertEntry
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Insert into the list of new entries the given entry.      */
-DECL|method|insertEntry (BibEntry entry)
-specifier|public
-name|void
-name|insertEntry
-parameter_list|(
-name|BibEntry
-name|entry
-parameter_list|)
-block|{
-name|newEntries
-operator|.
-name|add
-argument_list|(
-name|entry
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|toString ()
@@ -375,7 +276,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"TexBibEntriesResolverResult{texParserResult=%s, unresolvedKeys=%s, newEntries=%s, crossRefsCount=%s}"
+literal|"TexBibEntriesResolverResult{texParserResult=%s, newEntryKeys=%s, newEntries=%s}"
 argument_list|,
 name|this
 operator|.
@@ -383,15 +284,11 @@ name|texParserResult
 argument_list|,
 name|this
 operator|.
-name|unresolvedKeys
+name|newEntryKeys
 argument_list|,
 name|this
 operator|.
 name|newEntries
-argument_list|,
-name|this
-operator|.
-name|crossRefsCount
 argument_list|)
 return|;
 block|}
@@ -460,11 +357,11 @@ name|Objects
 operator|.
 name|equals
 argument_list|(
-name|unresolvedKeys
+name|newEntryKeys
 argument_list|,
 name|that
 operator|.
-name|unresolvedKeys
+name|newEntryKeys
 argument_list|)
 operator|&&
 name|Objects
@@ -476,17 +373,6 @@ argument_list|,
 name|that
 operator|.
 name|newEntries
-argument_list|)
-operator|&&
-name|Objects
-operator|.
-name|equals
-argument_list|(
-name|crossRefsCount
-argument_list|,
-name|that
-operator|.
-name|crossRefsCount
 argument_list|)
 return|;
 block|}
@@ -505,11 +391,9 @@ name|hash
 argument_list|(
 name|texParserResult
 argument_list|,
-name|unresolvedKeys
+name|newEntryKeys
 argument_list|,
 name|newEntries
-argument_list|,
-name|crossRefsCount
 argument_list|)
 return|;
 block|}
