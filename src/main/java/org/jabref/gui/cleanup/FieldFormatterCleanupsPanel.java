@@ -879,7 +879,7 @@ name|getName
 argument_list|()
 argument_list|)
 operator|.
-name|withTooltip
+name|withStringTooltip
 argument_list|(
 name|action
 lambda|->
@@ -1347,7 +1347,7 @@ operator|::
 name|getName
 argument_list|)
 operator|.
-name|withTooltip
+name|withStringTooltip
 argument_list|(
 name|Formatter
 operator|::

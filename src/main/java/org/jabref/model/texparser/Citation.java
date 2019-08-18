@@ -48,7 +48,7 @@ specifier|final
 name|int
 name|CONTEXT_WIDTH
 init|=
-literal|200
+literal|300
 decl_stmt|;
 DECL|field|path
 specifier|private
@@ -307,7 +307,7 @@ operator|>
 literal|0
 operator|)
 condition|?
-literal|"... "
+literal|"..."
 else|:
 literal|""
 argument_list|,
@@ -329,7 +329,7 @@ operator|<
 name|lineLength
 operator|)
 condition|?
-literal|" ..."
+literal|"..."
 else|:
 literal|""
 argument_list|)
