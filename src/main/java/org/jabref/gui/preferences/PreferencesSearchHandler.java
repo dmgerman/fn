@@ -155,7 +155,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|PrefsTab
+name|PreferencesTab
 argument_list|>
 name|preferenceTabs
 decl_stmt|;
@@ -164,7 +164,7 @@ specifier|private
 specifier|final
 name|ListProperty
 argument_list|<
-name|PrefsTab
+name|PreferencesTab
 argument_list|>
 name|filteredPreferenceTabs
 decl_stmt|;
@@ -173,7 +173,7 @@ specifier|private
 specifier|final
 name|ArrayListMultimap
 argument_list|<
-name|PrefsTab
+name|PreferencesTab
 argument_list|,
 name|Labeled
 argument_list|>
@@ -193,12 +193,12 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|PreferencesSearchHandler (List<PrefsTab> preferenceTabs)
+DECL|method|PreferencesSearchHandler (List<PreferencesTab> preferenceTabs)
 name|PreferencesSearchHandler
 parameter_list|(
 name|List
 argument_list|<
-name|PrefsTab
+name|PreferencesTab
 argument_list|>
 name|preferenceTabs
 parameter_list|)
@@ -265,7 +265,7 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|PrefsTab
+name|PreferencesTab
 name|tab
 range|:
 name|preferenceTabsLabelNames
@@ -444,12 +444,12 @@ name|preferenceTabs
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * Traverse all nodes of a PrefsTab and return a      * mapping from PrefsTab to all its Labeled type nodes.      */
+comment|/*      * Traverse all nodes of a PreferencesTab and return a      * mapping from PreferencesTab to all its Labeled type nodes.      */
 DECL|method|getPrefsTabLabelMap ()
 specifier|private
 name|ArrayListMultimap
 argument_list|<
-name|PrefsTab
+name|PreferencesTab
 argument_list|,
 name|Labeled
 argument_list|>
@@ -458,7 +458,7 @@ parameter_list|()
 block|{
 name|ArrayListMultimap
 argument_list|<
-name|PrefsTab
+name|PreferencesTab
 argument_list|,
 name|Labeled
 argument_list|>
@@ -471,8 +471,8 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|PrefsTab
-name|prefsTab
+name|PreferencesTab
+name|preferencesTab
 range|:
 name|preferenceTabs
 control|)
@@ -480,7 +480,7 @@ block|{
 name|Node
 name|builder
 init|=
-name|prefsTab
+name|preferencesTab
 operator|.
 name|getBuilder
 argument_list|()
@@ -542,7 +542,7 @@ name|prefsTabLabelMap
 operator|.
 name|put
 argument_list|(
-name|prefsTab
+name|preferencesTab
 argument_list|,
 name|labeled
 argument_list|)
@@ -560,7 +560,7 @@ DECL|method|filteredPreferenceTabsProperty ()
 specifier|protected
 name|ListProperty
 argument_list|<
-name|PrefsTab
+name|PreferencesTab
 argument_list|>
 name|filteredPreferenceTabsProperty
 parameter_list|()

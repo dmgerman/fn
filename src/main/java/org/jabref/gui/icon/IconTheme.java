@@ -2588,6 +2588,14 @@ name|MaterialDesignIcon
 operator|.
 name|FORMAT_LINE_SPACING
 argument_list|)
+operator|,
+DECL|enumConstant|PASSWORD_REVEALED
+name|PASSWORD_REVEALED
+argument_list|(
+name|MaterialDesignIcon
+operator|.
+name|EYE
+argument_list|)
 expr_stmt|;
 end_class
 
