@@ -330,6 +330,34 @@ argument_list|,
 literal|"\\citep{Einstein1920c}"
 argument_list|)
 expr_stmt|;
+name|testMatchCite
+argument_list|(
+name|EINSTEIN_C
+argument_list|,
+literal|"\\autocite{Einstein1920c}"
+argument_list|)
+expr_stmt|;
+name|testMatchCite
+argument_list|(
+name|EINSTEIN_C
+argument_list|,
+literal|"\\Autocite{Einstein1920c}"
+argument_list|)
+expr_stmt|;
+name|testMatchCite
+argument_list|(
+name|DARWIN
+argument_list|,
+literal|"\\blockcquote[p. 28]{Darwin1888}{some text}"
+argument_list|)
+expr_stmt|;
+name|testMatchCite
+argument_list|(
+name|DARWIN
+argument_list|,
+literal|"\\textcquote[p. 18]{Darwin1888}{blablabla}"
+argument_list|)
+expr_stmt|;
 name|testNonMatchCite
 argument_list|(
 literal|"\\citet21312{123U123n123resolvedKey}"

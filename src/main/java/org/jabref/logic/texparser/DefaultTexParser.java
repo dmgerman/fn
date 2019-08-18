@@ -247,9 +247,11 @@ init|=
 block|{
 literal|"[cC]ite(alt|alp|author|authorfull|date|num|p|t|text|title|url|year|yearpar)?"
 block|,
-literal|"([aA]|fnote|foot|footfull|full|no|[nN]ote|[pP]aren|[pP]note|[tT]ext|[sS]mart|super)cite"
+literal|"([aA]|[aA]uto|fnote|foot|footfull|full|no|[nN]ote|[pP]aren|[pP]note|[tT]ext|[sS]mart|super)cite"
 block|,
 literal|"footcitetext"
+block|,
+literal|"(block|text)cquote"
 block|}
 decl_stmt|;
 DECL|field|CITE_GROUP
@@ -276,7 +278,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"\\\\(%s)\\*?(?:\\[(?:[^\\]]*)\\]){0,2}\\{(?<%s>[^\\}]*)\\}"
+literal|"\\\\(%s)\\*?(?:\\[(?:[^\\]]*)\\]){0,2}\\{(?<%s>[^\\}]*)\\}(?:\\{[^\\}]*\\})?"
 argument_list|,
 name|String
 operator|.
