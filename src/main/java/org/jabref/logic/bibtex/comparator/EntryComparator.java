@@ -82,6 +82,24 @@ name|model
 operator|.
 name|entry
 operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
 name|FieldProperty
 import|;
 end_import
@@ -96,7 +114,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|field
+operator|.
+name|InternalField
 import|;
 end_import
 
@@ -118,7 +138,7 @@ block|{
 DECL|field|sortField
 specifier|private
 specifier|final
-name|String
+name|Field
 name|sortField
 decl_stmt|;
 DECL|field|descending
@@ -133,12 +153,6 @@ specifier|final
 name|boolean
 name|binary
 decl_stmt|;
-DECL|field|numeric
-specifier|private
-specifier|final
-name|boolean
-name|numeric
-decl_stmt|;
 DECL|field|next
 specifier|private
 specifier|final
@@ -148,7 +162,7 @@ name|BibEntry
 argument_list|>
 name|next
 decl_stmt|;
-DECL|method|EntryComparator (boolean binary, boolean descending, String field, Comparator<BibEntry> next)
+DECL|method|EntryComparator (boolean binary, boolean descending, Field field, Comparator<BibEntry> next)
 specifier|public
 name|EntryComparator
 parameter_list|(
@@ -158,7 +172,7 @@ parameter_list|,
 name|boolean
 name|descending
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|,
 name|Comparator
@@ -192,19 +206,8 @@ name|next
 operator|=
 name|next
 expr_stmt|;
-name|this
-operator|.
-name|numeric
-operator|=
-name|InternalBibtexFields
-operator|.
-name|isNumeric
-argument_list|(
-name|sortField
-argument_list|)
-expr_stmt|;
 block|}
-DECL|method|EntryComparator (boolean binary, boolean descending, String field)
+DECL|method|EntryComparator (boolean binary, boolean descending, Field field)
 specifier|public
 name|EntryComparator
 parameter_list|(
@@ -214,7 +217,7 @@ parameter_list|,
 name|boolean
 name|descending
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|)
 block|{
@@ -241,17 +244,6 @@ operator|.
 name|next
 operator|=
 literal|null
-expr_stmt|;
-name|this
-operator|.
-name|numeric
-operator|=
-name|InternalBibtexFields
-operator|.
-name|isNumeric
-argument_list|(
-name|sortField
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -398,12 +390,10 @@ comment|// If the field is author or editor, we rearrange names so they are
 comment|// sorted according to last name.
 if|if
 condition|(
-name|InternalBibtexFields
-operator|.
-name|getFieldProperties
-argument_list|(
 name|sortField
-argument_list|)
+operator|.
+name|getProperties
+argument_list|()
 operator|.
 name|contains
 argument_list|(
@@ -475,7 +465,7 @@ name|sortField
 operator|.
 name|equals
 argument_list|(
-name|BibEntry
+name|InternalField
 operator|.
 name|TYPE_HEADER
 argument_list|)
@@ -500,7 +490,10 @@ block|}
 elseif|else
 if|if
 condition|(
-name|numeric
+name|sortField
+operator|.
+name|isNumeric
+argument_list|()
 condition|)
 block|{
 try|try

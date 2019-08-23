@@ -48,23 +48,13 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
 operator|.
 name|gui
 operator|.
-name|BasePanel
+name|DialogService
 import|;
 end_import
 
@@ -102,25 +92,25 @@ specifier|public
 class|class
 name|MergeReviewIntoCommentConfirmationDialog
 block|{
-DECL|field|panel
+DECL|field|dialogService
 specifier|private
 specifier|final
-name|BasePanel
-name|panel
+name|DialogService
+name|dialogService
 decl_stmt|;
-DECL|method|MergeReviewIntoCommentConfirmationDialog (BasePanel panel)
+DECL|method|MergeReviewIntoCommentConfirmationDialog (DialogService dialogService)
 specifier|public
 name|MergeReviewIntoCommentConfirmationDialog
 parameter_list|(
-name|BasePanel
-name|panel
+name|DialogService
+name|dialogService
 parameter_list|)
 block|{
 name|this
 operator|.
-name|panel
+name|dialogService
 operator|=
-name|panel
+name|dialogService
 expr_stmt|;
 block|}
 DECL|method|askUserForMerge (List<BibEntry> conflicts)
@@ -175,27 +165,8 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|String
-index|[]
-name|options
+name|content
 init|=
-block|{
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Merge fields"
-argument_list|)
-block|}
-decl_stmt|;
-name|int
-name|answer
-init|=
-name|JOptionPane
-operator|.
-name|showOptionDialog
-argument_list|(
-literal|null
-argument_list|,
 name|bibKeys
 operator|+
 literal|" "
@@ -224,7 +195,12 @@ name|lang
 argument_list|(
 literal|"The conflicting fields of these entries will be merged into the 'Comment' field."
 argument_list|)
-argument_list|,
+decl_stmt|;
+return|return
+name|dialogService
+operator|.
+name|showConfirmationDialogAndWait
+argument_list|(
 name|Localization
 operator|.
 name|lang
@@ -232,28 +208,15 @@ argument_list|(
 literal|"Review Field Migration"
 argument_list|)
 argument_list|,
-name|JOptionPane
+name|content
+argument_list|,
+name|Localization
 operator|.
-name|DEFAULT_OPTION
-argument_list|,
-name|JOptionPane
-operator|.
-name|WARNING_MESSAGE
-argument_list|,
-literal|null
-argument_list|,
-name|options
-argument_list|,
-name|options
-index|[
-literal|0
-index|]
+name|lang
+argument_list|(
+literal|"Merge fields"
 argument_list|)
-decl_stmt|;
-return|return
-literal|0
-operator|==
-name|answer
+argument_list|)
 return|;
 block|}
 block|}

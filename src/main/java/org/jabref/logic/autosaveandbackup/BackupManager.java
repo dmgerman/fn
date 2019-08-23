@@ -296,6 +296,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntryTypesManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -427,12 +441,24 @@ specifier|final
 name|CoarseChangeFilter
 name|changeFilter
 decl_stmt|;
-DECL|method|BackupManager (BibDatabaseContext bibDatabaseContext)
+DECL|field|entryTypesManager
+specifier|private
+specifier|final
+name|BibEntryTypesManager
+name|entryTypesManager
+decl_stmt|;
+DECL|method|BackupManager (BibDatabaseContext bibDatabaseContext, BibEntryTypesManager entryTypesManager, JabRefPreferences preferences)
 specifier|private
 name|BackupManager
 parameter_list|(
 name|BibDatabaseContext
 name|bibDatabaseContext
+parameter_list|,
+name|BibEntryTypesManager
+name|entryTypesManager
+parameter_list|,
+name|JabRefPreferences
+name|preferences
 parameter_list|)
 block|{
 name|this
@@ -443,12 +469,15 @@ name|bibDatabaseContext
 expr_stmt|;
 name|this
 operator|.
+name|entryTypesManager
+operator|=
+name|entryTypesManager
+expr_stmt|;
+name|this
+operator|.
 name|preferences
 operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
+name|preferences
 expr_stmt|;
 name|BlockingQueue
 argument_list|<
@@ -519,8 +548,8 @@ name|BACKUP_EXTENSION
 argument_list|)
 return|;
 block|}
-comment|/**      * Starts the BackupManager which is associated with the given {@link BibDatabaseContext}.      * As long as no database file is present in {@link BibDatabaseContext}, the {@link BackupManager} will do nothing.      *      * @param bibDatabaseContext Associated {@link BibDatabaseContext}      */
-DECL|method|start (BibDatabaseContext bibDatabaseContext)
+comment|/**      * Starts the BackupManager which is associated with the given {@link BibDatabaseContext}.      * As long as no database file is present in {@link BibDatabaseContext}, the {@link BackupManager} will do nothing.      *      * @param bibDatabaseContext Associated {@link BibDatabaseContext}      * @param entryTypesManager      * @param preferences      */
+DECL|method|start (BibDatabaseContext bibDatabaseContext, BibEntryTypesManager entryTypesManager, JabRefPreferences preferences)
 specifier|public
 specifier|static
 name|BackupManager
@@ -528,6 +557,12 @@ name|start
 parameter_list|(
 name|BibDatabaseContext
 name|bibDatabaseContext
+parameter_list|,
+name|BibEntryTypesManager
+name|entryTypesManager
+parameter_list|,
+name|JabRefPreferences
+name|preferences
 parameter_list|)
 block|{
 name|BackupManager
@@ -537,6 +572,10 @@ operator|new
 name|BackupManager
 argument_list|(
 name|bibDatabaseContext
+argument_list|,
+name|entryTypesManager
+argument_list|,
+name|preferences
 argument_list|)
 decl_stmt|;
 name|backupManager
@@ -777,6 +816,8 @@ argument_list|()
 argument_list|)
 argument_list|,
 name|savePreferences
+argument_list|,
+name|entryTypesManager
 argument_list|)
 operator|.
 name|saveDatabase

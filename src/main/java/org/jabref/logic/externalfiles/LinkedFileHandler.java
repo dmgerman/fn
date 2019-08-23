@@ -495,6 +495,25 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+return|return
+name|renameToName
+argument_list|(
+name|getSuggestedFileName
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|renameToName (String targetFileName)
+specifier|public
+name|boolean
+name|renameToName
+parameter_list|(
+name|String
+name|targetFileName
+parameter_list|)
+throws|throws
+name|IOException
+block|{
 name|Optional
 argument_list|<
 name|Path
@@ -524,12 +543,6 @@ return|return
 literal|false
 return|;
 block|}
-name|String
-name|targetFileName
-init|=
-name|getSuggestedFileName
-argument_list|()
-decl_stmt|;
 name|Path
 name|newPath
 init|=
@@ -704,6 +717,40 @@ name|getLink
 argument_list|()
 decl_stmt|;
 name|String
+name|extension
+init|=
+name|FileHelper
+operator|.
+name|getFileExtension
+argument_list|(
+name|oldFileName
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+name|fileEntry
+operator|.
+name|getFileType
+argument_list|()
+argument_list|)
+decl_stmt|;
+return|return
+name|getSuggestedFileName
+argument_list|(
+name|extension
+argument_list|)
+return|;
+block|}
+DECL|method|getSuggestedFileName (String extension)
+specifier|public
+name|String
+name|getSuggestedFileName
+parameter_list|(
+name|String
+name|extension
+parameter_list|)
+block|{
+name|String
 name|targetFileName
 init|=
 name|FileUtil
@@ -728,20 +775,7 @@ argument_list|()
 operator|+
 literal|'.'
 operator|+
-name|FileHelper
-operator|.
-name|getFileExtension
-argument_list|(
-name|oldFileName
-argument_list|)
-operator|.
-name|orElse
-argument_list|(
-name|fileEntry
-operator|.
-name|getFileType
-argument_list|()
-argument_list|)
+name|extension
 decl_stmt|;
 comment|// Only create valid file names
 return|return
@@ -754,7 +788,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Check to see if a file already exists in the target directory.  Search is not case sensitive.      *      * @return First identified path that matches an existing file.  This name can be used in subsequent calls to      * override the existing file.      */
-DECL|method|findExistingFile (LinkedFile flEntry, BibEntry entry)
+DECL|method|findExistingFile (LinkedFile flEntry, BibEntry entry, String targetFileName)
 specifier|public
 name|Optional
 argument_list|<
@@ -767,14 +801,11 @@ name|flEntry
 parameter_list|,
 name|BibEntry
 name|entry
-parameter_list|)
-block|{
+parameter_list|,
 name|String
 name|targetFileName
-init|=
-name|getSuggestedFileName
-argument_list|()
-decl_stmt|;
+parameter_list|)
+block|{
 comment|// The .get() is legal without check because the method will always return a value.
 name|Path
 name|targetFilePath

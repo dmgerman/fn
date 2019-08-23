@@ -801,11 +801,6 @@ name|keyBindingRepository
 argument_list|,
 name|panel
 argument_list|,
-name|Globals
-operator|.
-name|getKeyPrefs
-argument_list|()
-argument_list|,
 name|frame
 operator|.
 name|getDialogService
@@ -1331,7 +1326,7 @@ name|Globals
 operator|.
 name|clipboardManager
 operator|.
-name|extractEntries
+name|extractData
 argument_list|()
 decl_stmt|;
 if|if

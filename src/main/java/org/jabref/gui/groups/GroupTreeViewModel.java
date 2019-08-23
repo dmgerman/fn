@@ -1005,7 +1005,9 @@ name|showCustomDialogAndWait
 argument_list|(
 operator|new
 name|GroupDialog
-argument_list|()
+argument_list|(
+name|dialogService
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|newGroup
@@ -1100,6 +1102,8 @@ argument_list|(
 operator|new
 name|GroupDialog
 argument_list|(
+name|dialogService
+argument_list|,
 name|oldGroup
 operator|.
 name|getGroupNode

@@ -20,26 +20,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|application
@@ -62,6 +42,18 @@ begin_import
 import|import
 name|javafx
 operator|.
+name|scene
+operator|.
+name|control
+operator|.
+name|Alert
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
 name|stage
 operator|.
 name|Stage
@@ -77,6 +69,18 @@ operator|.
 name|cli
 operator|.
 name|ArgumentProcessor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FXDialog
 import|;
 end_import
 
@@ -270,35 +274,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|EntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|database
 operator|.
 name|BibDatabaseMode
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|InternalBibtexFields
 import|;
 end_import
 
@@ -546,7 +524,7 @@ name|shutdownThreadPools
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Tests if we are running an acceptable Java and terminates JabRef when we are sure the version is not supported.      * This test uses the requirements for the Java version as specified in<code>gradle.build</code>. It is possible to      * define a minimum version including the built number and to indicate whether Java 9 can be use (which it currently      * can't). It tries to compare this version number to the version of the currently running JVM. The check is      * optimistic and will rather return true even if we could not exactly determine the version.      *<p>      * Note: Users with an very old version like 1.6 will not profit from this since class versions are incompatible and      * JabRef won't even start. Currently, JabRef won't start with Java 9 either, but the warning that it cannot be used      * with this version is helpful anyway to prevent users to update from an old 1.8 directly to version 9. Additionally,      * we soon might have a JabRef that does start with Java 9 but is not perfectly compatible. Therefore, we should leave      * the Java 9 check alive.      */
+comment|/**      * Tests if we are running an acceptable Java and terminates JabRef when we are sure the version is not supported.      * This test uses the requirements for the Java version as specified in<code>gradle.build</code>. It is possible to      * define a minimum version including the built number and to indicate whether Java 9 can be used (which it currently      * can't). It tries to compare this version number to the version of the currently running JVM. The check is      * optimistic and will rather return true even if we could not exactly determine the version.      *<p>      * Note: Users with a very old version like 1.6 will not profit from this since class versions are incompatible and      * JabRef won't even start. Currently, JabRef won't start with Java 9 either, but the warning that it cannot be used      * with this version is helpful anyway to prevent users to update from an old 1.8 directly to version 9. Additionally,      * we soon might have a JabRef that does start with Java 9 but is not perfectly compatible. Therefore, we should leave      * the Java 9 check alive.      */
 DECL|method|ensureCorrectJavaVersion ()
 specifier|private
 specifier|static
@@ -684,21 +662,17 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
-name|JFrame
-name|frame
+name|FXDialog
+name|alert
 init|=
 operator|new
-name|JFrame
-argument_list|()
-decl_stmt|;
-name|JOptionPane
-operator|.
-name|showMessageDialog
+name|FXDialog
 argument_list|(
-literal|null
-argument_list|,
-name|versionError
+name|Alert
+operator|.
+name|AlertType
+operator|.
+name|ERROR
 argument_list|,
 name|Localization
 operator|.
@@ -707,15 +681,25 @@ argument_list|(
 literal|"Error"
 argument_list|)
 argument_list|,
-name|JOptionPane
+literal|true
+argument_list|)
+decl_stmt|;
+name|alert
 operator|.
-name|ERROR_MESSAGE
+name|setHeaderText
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
-name|frame
+name|alert
 operator|.
-name|dispose
+name|setContentText
+argument_list|(
+name|versionError
+operator|.
+name|toString
 argument_list|()
+argument_list|)
 expr_stmt|;
 comment|// We exit on Java 9 error since this will definitely not work
 if|if
@@ -811,6 +795,16 @@ return|return
 literal|false
 return|;
 block|}
+else|else
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Could not communicate with other running JabRef instance."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -847,56 +841,6 @@ name|JabRefPreferences
 name|preferences
 parameter_list|)
 block|{
-comment|// Update handling of special fields based on preferences
-name|InternalBibtexFields
-operator|.
-name|updateSpecialFields
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|SERIALIZESPECIALFIELDS
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// Update name of the time stamp field based on preferences
-name|InternalBibtexFields
-operator|.
-name|updateTimeStampField
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getTimestampPreferences
-argument_list|()
-operator|.
-name|getTimestampField
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// Update which fields should be treated as numeric, based on preferences:
-name|InternalBibtexFields
-operator|.
-name|setNumericFields
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getStringList
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|NUMERIC_FIELDS
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|// Read list(s) of journal names and abbreviations
 name|Globals
 operator|.
@@ -906,7 +850,7 @@ operator|new
 name|JournalAbbreviationLoader
 argument_list|()
 expr_stmt|;
-comment|/* Build list of Import and Export formats */
+comment|// Build list of Import and Export formats
 name|Globals
 operator|.
 name|IMPORT_FORMAT_READER
@@ -933,13 +877,15 @@ name|getFileUpdateMonitor
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|EntryTypes
+name|Globals
 operator|.
-name|loadCustomEntryTypes
+name|entryTypesManager
+operator|.
+name|addCustomizedEntryTypes
 argument_list|(
 name|preferences
 operator|.
-name|loadCustomEntryTypes
+name|loadBibEntryTypes
 argument_list|(
 name|BibDatabaseMode
 operator|.
@@ -948,7 +894,7 @@ argument_list|)
 argument_list|,
 name|preferences
 operator|.
-name|loadCustomEntryTypes
+name|loadBibEntryTypes
 argument_list|(
 name|BibDatabaseMode
 operator|.
@@ -987,7 +933,7 @@ name|getProtectedTermsPreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// override used newline character with the one stored in the preferences
+comment|// Override used newline character with the one stored in the preferences
 comment|// The preferences return the system newline character sequence as default
 name|OS
 operator|.

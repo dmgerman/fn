@@ -68,7 +68,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -174,7 +190,9 @@ name|barrosEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Service Interaction Patterns"
 argument_list|)
@@ -183,7 +201,9 @@ name|barrosEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Alistair Barros and Marlon Dumas and Arthur H. M. ter Hofstede"
 argument_list|)
@@ -192,7 +212,9 @@ name|barrosEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2005"
 argument_list|)
@@ -201,7 +223,9 @@ name|barrosEntry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1007/11538394_20"
 argument_list|)
@@ -210,7 +234,9 @@ name|barrosEntry
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"0302-9743"
 argument_list|)
@@ -219,7 +245,9 @@ name|barrosEntry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"302-318"
 argument_list|)
@@ -246,7 +274,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Service Interaction Patterns"
 argument_list|)
@@ -255,7 +285,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Barros, Alistair and Dumas, Marlon and Arthur H.M. ter Hofstede"
 argument_list|)
@@ -264,7 +296,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2005"
 argument_list|)
@@ -316,7 +350,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Towards Application Portability in Platform as a Service"
 argument_list|)
@@ -325,7 +361,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Stefan Kolb"
 argument_list|)
@@ -377,7 +415,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Towards Application Portability in Platform as a Service"
 argument_list|)
@@ -429,7 +469,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Towards Application Portability"
 argument_list|)
@@ -438,7 +480,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Stefan Kolb and Guido Wirtz"
 argument_list|)
@@ -480,7 +524,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Towards Application Portability in Platform as a Service----"
 argument_list|)
@@ -489,7 +535,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Stefan Kolb and Guido Wirtz"
 argument_list|)
@@ -541,7 +589,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Towards Application Portability in Platform as a Service-----"
 argument_list|)
@@ -550,7 +600,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Stefan Kolb and Guido Wirtz"
 argument_list|)
@@ -592,7 +644,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Towards Application Portability in Platform as a Service"
 argument_list|)
@@ -601,7 +655,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Stefan Kolb and Simon Harrer"
 argument_list|)
@@ -654,7 +710,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"A break in the clouds: towards a cloud definition"
 argument_list|)
@@ -768,7 +826,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Service Interaction Patterns"
 argument_list|)
@@ -777,7 +837,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Barros, Alistair and Dumas, Marlon and Arthur H.M. ter Hofstede"
 argument_list|)
@@ -786,7 +848,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2005"
 argument_list|)
@@ -831,16 +895,18 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Dominik Wujastyk"
 argument_list|)
@@ -849,7 +915,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1023/a:1003473214310"
 argument_list|)
@@ -858,7 +926,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"0019-7246"
 argument_list|)
@@ -867,7 +937,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"172-176"
 argument_list|)
@@ -876,7 +948,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"42"
 argument_list|)
@@ -885,7 +959,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"1999"
 argument_list|)

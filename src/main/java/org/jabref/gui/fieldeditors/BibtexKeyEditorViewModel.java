@@ -44,9 +44,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|autocompleter
 operator|.
-name|GenerateBibtexKeySingleAction
+name|AutoCompleteSuggestionProvider
 import|;
 end_import
 
@@ -58,9 +58,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|autocompleter
+name|bibtexkeypattern
 operator|.
-name|AutoCompleteSuggestionProvider
+name|GenerateBibtexKeySingleAction
 import|;
 end_import
 
@@ -103,6 +103,22 @@ operator|.
 name|database
 operator|.
 name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -154,12 +170,12 @@ specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
-DECL|method|BibtexKeyEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers, EntryEditorPreferences preferences, BibDatabaseContext databaseContext, UndoManager undoManager, DialogService dialogService)
+DECL|method|BibtexKeyEditorViewModel (Field field, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers, EntryEditorPreferences preferences, BibDatabaseContext databaseContext, UndoManager undoManager, DialogService dialogService)
 specifier|public
 name|BibtexKeyEditorViewModel
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|AutoCompleteSuggestionProvider
 argument_list|<
@@ -185,7 +201,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|suggestionProvider
 argument_list|,

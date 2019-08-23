@@ -128,9 +128,11 @@ begin_import
 import|import
 name|org
 operator|.
-name|jsoup
+name|jabref
 operator|.
-name|helper
+name|model
+operator|.
+name|strings
 operator|.
 name|StringUtil
 import|;
@@ -202,7 +204,7 @@ name|Parser
 name|getParser
 parameter_list|()
 function_decl|;
-comment|/**      * Performs a cleanup of the fetched entry.      *      * Only systematic errors of the fetcher should be corrected here      * (i.e. if information is consistently contained in the wrong field or the wrong format)      * but not cosmetic issues which may depend on the user's taste (for example, LateX code vs HTML in the abstract).      *      * Try to reuse existing {@link Formatter} for the cleanup. For example,      * {@code new FieldFormatterCleanup(FieldName.TITLE, new RemoveBracesFormatter()).cleanup(entry);}      *      * By default, no cleanup is done.      * @param entry the entry to be cleaned-up      */
+comment|/**      * Performs a cleanup of the fetched entry.      *      * Only systematic errors of the fetcher should be corrected here      * (i.e. if information is consistently contained in the wrong field or the wrong format)      * but not cosmetic issues which may depend on the user's taste (for example, LateX code vs HTML in the abstract).      *      * Try to reuse existing {@link Formatter} for the cleanup. For example,      * {@code new FieldFormatterCleanup(StandardField.TITLE, new RemoveBracesFormatter()).cleanup(entry);}      *      * By default, no cleanup is done.      * @param entry the entry to be cleaned-up      */
 DECL|method|doPostCleanup (BibEntry entry)
 specifier|default
 name|void

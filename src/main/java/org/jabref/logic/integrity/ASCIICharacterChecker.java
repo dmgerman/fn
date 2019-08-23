@@ -88,6 +88,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -140,7 +156,7 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>

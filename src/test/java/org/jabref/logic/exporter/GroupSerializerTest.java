@@ -102,6 +102,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|groups
 operator|.
 name|AllEntriesGroup
@@ -284,6 +300,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|metadata
+operator|.
+name|MetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|util
 operator|.
 name|DummyFileUpdateMonitor
@@ -336,7 +366,6 @@ end_import
 
 begin_class
 DECL|class|GroupSerializerTest
-specifier|public
 class|class
 name|GroupSerializerTest
 block|{
@@ -348,7 +377,6 @@ decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -365,7 +393,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|serializeSingleAllEntriesGroup ()
-specifier|public
 name|void
 name|serializeSingleAllEntriesGroup
 parameter_list|()
@@ -413,7 +440,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|serializeSingleExplicitGroup ()
-specifier|public
 name|void
 name|serializeSingleExplicitGroup
 parameter_list|()
@@ -467,7 +493,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|serializeSingleExplicitGroupWithIconAndDescription ()
-specifier|public
 name|void
 name|serializeSingleExplicitGroupWithIconAndDescription
 parameter_list|()
@@ -552,7 +577,6 @@ annotation|@
 name|Test
 comment|// For https://github.com/JabRef/jabref/issues/1681
 DECL|method|serializeSingleExplicitGroupWithEscapedSlash ()
-specifier|public
 name|void
 name|serializeSingleExplicitGroupWithEscapedSlash
 parameter_list|()
@@ -606,7 +630,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|serializeSingleSimpleKeywordGroup ()
-specifier|public
 name|void
 name|serializeSingleSimpleKeywordGroup
 parameter_list|()
@@ -623,7 +646,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"test"
 argument_list|,
@@ -668,7 +693,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|serializeSingleRegexKeywordGroup ()
-specifier|public
 name|void
 name|serializeSingleRegexKeywordGroup
 parameter_list|()
@@ -685,7 +709,9 @@ name|GroupHierarchyType
 operator|.
 name|REFINING
 argument_list|,
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"asdf"
 argument_list|,
@@ -726,7 +752,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|serializeSingleSearchGroup ()
-specifier|public
 name|void
 name|serializeSingleSearchGroup
 parameter_list|()
@@ -784,7 +809,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|serializeSingleSearchGroupWithRegex ()
-specifier|public
 name|void
 name|serializeSingleSearchGroupWithRegex
 parameter_list|()
@@ -842,7 +866,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|serializeSingleAutomaticKeywordGroup ()
-specifier|public
 name|void
 name|serializeSingleAutomaticKeywordGroup
 parameter_list|()
@@ -859,7 +882,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|','
 argument_list|,
@@ -900,7 +925,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|serializeSingleAutomaticPersonGroup ()
-specifier|public
 name|void
 name|serializeSingleAutomaticPersonGroup
 parameter_list|()
@@ -917,7 +941,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"authors"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|)
 decl_stmt|;
 name|List
@@ -944,7 +970,7 @@ name|Collections
 operator|.
 name|singletonList
 argument_list|(
-literal|"0 AutomaticPersonsGroup:myAutomaticGroup;0;authors;1;;;;"
+literal|"0 AutomaticPersonsGroup:myAutomaticGroup;0;author;1;;;;"
 argument_list|)
 argument_list|,
 name|serialization
@@ -954,7 +980,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|serializeSingleTexGroup ()
-specifier|public
 name|void
 name|serializeSingleTexGroup
 parameter_list|()
@@ -964,8 +989,9 @@ block|{
 name|TexGroup
 name|group
 init|=
-operator|new
 name|TexGroup
+operator|.
+name|createWithoutFileMonitoring
 argument_list|(
 literal|"myTexGroup"
 argument_list|,
@@ -994,6 +1020,10 @@ argument_list|)
 argument_list|,
 operator|new
 name|DummyFileUpdateMonitor
+argument_list|()
+argument_list|,
+operator|new
+name|MetaData
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1031,7 +1061,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|getTreeAsStringInSimpleTree ()
-specifier|public
 name|void
 name|getTreeAsStringInSimpleTree
 parameter_list|()
@@ -1088,7 +1117,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|getTreeAsStringInComplexTree ()
-specifier|public
 name|void
 name|getTreeAsStringInComplexTree
 parameter_list|()
@@ -1130,9 +1158,9 @@ literal|"1 StaticGroup:ExplicitGrandParent;0;1;;;;"
 argument_list|,
 literal|"2 StaticGroup:ExplicitB;1;1;;;;"
 argument_list|,
-literal|"2 KeywordGroup:KeywordParent;0;searchField;searchExpression;1;0;1;;;;"
+literal|"2 KeywordGroup:KeywordParent;0;keywords;searchExpression;1;0;1;;;;"
 argument_list|,
-literal|"3 KeywordGroup:KeywordNode;0;searchField;searchExpression;1;0;1;;;;"
+literal|"3 KeywordGroup:KeywordNode;0;keywords;searchExpression;1;0;1;;;;"
 argument_list|,
 literal|"4 StaticGroup:ExplicitChild;1;1;;;;"
 argument_list|,
@@ -1140,13 +1168,13 @@ literal|"3 SearchGroup:SearchC;2;searchExpression;1;0;1;;;;"
 argument_list|,
 literal|"3 StaticGroup:ExplicitC;1;1;;;;"
 argument_list|,
-literal|"3 KeywordGroup:KeywordC;0;searchField;searchExpression;1;0;1;;;;"
+literal|"3 KeywordGroup:KeywordC;0;keywords;searchExpression;1;0;1;;;;"
 argument_list|,
 literal|"2 SearchGroup:SearchB;2;searchExpression;1;0;1;;;;"
 argument_list|,
-literal|"2 KeywordGroup:KeywordB;0;searchField;searchExpression;1;0;1;;;;"
+literal|"2 KeywordGroup:KeywordB;0;keywords;searchExpression;1;0;1;;;;"
 argument_list|,
-literal|"1 KeywordGroup:KeywordA;0;searchField;searchExpression;1;0;1;;;;"
+literal|"1 KeywordGroup:KeywordA;0;keywords;searchExpression;1;0;1;;;;"
 argument_list|)
 decl_stmt|;
 name|assertEquals

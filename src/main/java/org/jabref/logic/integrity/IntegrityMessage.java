@@ -36,6 +36,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_class
 DECL|class|IntegrityMessage
 specifier|public
@@ -51,11 +67,11 @@ specifier|final
 name|BibEntry
 name|entry
 decl_stmt|;
-DECL|field|fieldName
+DECL|field|field
 specifier|private
 specifier|final
-name|String
-name|fieldName
+name|Field
+name|field
 decl_stmt|;
 DECL|field|message
 specifier|private
@@ -63,7 +79,7 @@ specifier|final
 name|String
 name|message
 decl_stmt|;
-DECL|method|IntegrityMessage (String message, BibEntry entry, String fieldName)
+DECL|method|IntegrityMessage (String message, BibEntry entry, Field field)
 specifier|public
 name|IntegrityMessage
 parameter_list|(
@@ -73,8 +89,8 @@ parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|,
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 block|{
 name|this
@@ -91,9 +107,9 @@ name|entry
 expr_stmt|;
 name|this
 operator|.
-name|fieldName
+name|field
 operator|=
-name|fieldName
+name|field
 expr_stmt|;
 block|}
 annotation|@
@@ -120,7 +136,9 @@ argument_list|)
 operator|+
 literal|"] in "
 operator|+
-name|getFieldName
+name|field
+operator|.
+name|getDisplayName
 argument_list|()
 operator|+
 literal|": "
@@ -149,14 +167,14 @@ return|return
 name|entry
 return|;
 block|}
-DECL|method|getFieldName ()
+DECL|method|getField ()
 specifier|public
-name|String
-name|getFieldName
+name|Field
+name|getField
 parameter_list|()
 block|{
 return|return
-name|fieldName
+name|field
 return|;
 block|}
 annotation|@
@@ -175,7 +193,7 @@ name|message
 argument_list|,
 name|entry
 argument_list|,
-name|fieldName
+name|field
 argument_list|)
 return|;
 block|}
@@ -244,11 +262,11 @@ name|Objects
 operator|.
 name|equals
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|that
 operator|.
-name|fieldName
+name|field
 argument_list|)
 operator|&&
 name|Objects
@@ -278,7 +296,7 @@ name|hash
 argument_list|(
 name|entry
 argument_list|,
-name|fieldName
+name|field
 argument_list|,
 name|message
 argument_list|)

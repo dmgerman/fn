@@ -156,6 +156,16 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -211,20 +221,6 @@ operator|.
 name|util
 operator|.
 name|BackgroundTask
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|util
-operator|.
-name|DefaultTaskExecutor
 import|;
 end_import
 
@@ -436,6 +432,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntryTypesManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -512,6 +522,12 @@ specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
+DECL|field|entryTypesManager
+specifier|private
+specifier|final
+name|BibEntryTypesManager
+name|entryTypesManager
+decl_stmt|;
 DECL|method|SaveDatabaseAction (BasePanel panel, JabRefPreferences prefs)
 specifier|public
 name|SaveDatabaseAction
@@ -552,6 +568,12 @@ operator|.
 name|prefs
 operator|=
 name|prefs
+expr_stmt|;
+name|entryTypesManager
+operator|=
+name|Globals
+operator|.
+name|entryTypesManager
 expr_stmt|;
 block|}
 DECL|method|saveDatabase (Path file, boolean selectedOnly, Charset encoding, SavePreferences.DatabaseSaveType saveType)
@@ -624,6 +646,8 @@ argument_list|(
 name|fileWriter
 argument_list|,
 name|preferences
+argument_list|,
+name|entryTypesManager
 argument_list|)
 decl_stmt|;
 if|if
@@ -735,6 +759,8 @@ throw|throw
 operator|new
 name|SaveException
 argument_list|(
+literal|"Problems saving:"
+argument_list|,
 name|ex
 argument_list|)
 throw|;
@@ -1123,13 +1149,6 @@ operator|.
 name|markExternalChangesAsResolved
 argument_list|()
 expr_stmt|;
-name|DefaultTaskExecutor
-operator|.
-name|runInJavaFXThread
-argument_list|(
-parameter_list|()
-lambda|->
-block|{
 comment|// Reset title of tab
 name|frame
 operator|.
@@ -1159,7 +1178,10 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -1196,9 +1218,6 @@ name|frame
 operator|.
 name|updateAllTabTitles
 argument_list|()
-expr_stmt|;
-block|}
-argument_list|)
 expr_stmt|;
 block|}
 return|return
@@ -1287,7 +1306,10 @@ operator|.
 name|frame
 argument_list|()
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.
@@ -1568,7 +1590,7 @@ expr_stmt|;
 comment|// Reinstall AutosaveManager and BackupManager
 name|panel
 operator|.
-name|resetChangeMonitor
+name|resetChangeMonitorAndChangePane
 argument_list|()
 expr_stmt|;
 if|if
@@ -1614,6 +1636,10 @@ operator|.
 name|start
 argument_list|(
 name|context
+argument_list|,
+name|entryTypesManager
+argument_list|,
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
@@ -1768,7 +1794,10 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|output
+name|getDialogService
+argument_list|()
+operator|.
+name|notify
 argument_list|(
 name|Localization
 operator|.

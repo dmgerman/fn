@@ -176,7 +176,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BiblatexEntryTypes
+name|StandardEntryType
 import|;
 end_import
 
@@ -190,7 +190,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -382,7 +400,7 @@ name|entry
 argument_list|,
 name|DOI
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|)
@@ -395,7 +413,7 @@ name|entry
 argument_list|,
 name|TITLE
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|)
@@ -408,7 +426,7 @@ name|entry
 argument_list|,
 name|JOURNAL
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNALTITLE
 argument_list|)
@@ -421,7 +439,7 @@ name|entry
 argument_list|,
 name|YEAR
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|)
@@ -434,7 +452,7 @@ name|entry
 argument_list|,
 name|VOLUME
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|VOLUME
 argument_list|)
@@ -447,7 +465,7 @@ name|entry
 argument_list|,
 name|PAGES
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|)
@@ -460,7 +478,7 @@ name|entry
 argument_list|,
 name|ISSUE
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|ISSUE
 argument_list|)
@@ -500,9 +518,9 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 expr_stmt|;
 break|break;
@@ -514,9 +532,9 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|MISC
+name|Misc
 argument_list|)
 expr_stmt|;
 break|break;
@@ -573,7 +591,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -602,7 +620,7 @@ name|entry
 argument_list|)
 return|;
 block|}
-DECL|method|appendData (String data, BibEntry entry, Pattern pattern, String fieldName)
+DECL|method|appendData (String data, BibEntry entry, Pattern pattern, Field field)
 specifier|private
 name|void
 name|appendData
@@ -616,8 +634,8 @@ parameter_list|,
 name|Pattern
 name|pattern
 parameter_list|,
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 block|{
 name|Matcher
@@ -642,7 +660,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|matcher
 operator|.

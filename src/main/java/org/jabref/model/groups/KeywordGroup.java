@@ -12,6 +12,22 @@ name|groups
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_comment
 comment|/**  * Matches entries based on a search phrase relative to the content in a specified field.  */
 end_comment
@@ -28,7 +44,7 @@ block|{
 DECL|field|searchField
 specifier|protected
 specifier|final
-name|String
+name|Field
 name|searchField
 decl_stmt|;
 DECL|field|searchExpression
@@ -43,7 +59,7 @@ specifier|final
 name|boolean
 name|caseSensitive
 decl_stmt|;
-DECL|method|KeywordGroup (String name, GroupHierarchyType context, String searchField, String searchExpression, boolean caseSensitive)
+DECL|method|KeywordGroup (String name, GroupHierarchyType context, Field searchField, String searchExpression, boolean caseSensitive)
 specifier|public
 name|KeywordGroup
 parameter_list|(
@@ -53,7 +69,7 @@ parameter_list|,
 name|GroupHierarchyType
 name|context
 parameter_list|,
-name|String
+name|Field
 name|searchField
 parameter_list|,
 name|String
@@ -111,7 +127,7 @@ return|;
 block|}
 DECL|method|getSearchField ()
 specifier|public
-name|String
+name|Field
 name|getSearchField
 parameter_list|()
 block|{

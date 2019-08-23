@@ -152,6 +152,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|strings
 operator|.
 name|StringUtil
@@ -223,7 +237,7 @@ specifier|final
 name|String
 name|KEY_ILLEGAL_CHARACTERS
 init|=
-literal|"{}(),\\\"-#~^':`"
+literal|"{}(),\\\"-#~^:'`Ê¹"
 decl_stmt|;
 DECL|field|KEY_UNWANTED_CHARACTERS
 specifier|private
@@ -713,7 +727,7 @@ decl_stmt|;
 try|try
 block|{
 comment|// get the type of entry
-name|String
+name|EntryType
 name|entryType
 init|=
 name|entry
@@ -884,6 +898,19 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Remove all illegal characters from the label.
+name|label
+operator|=
+name|cleanKey
+argument_list|(
+name|label
+argument_list|,
+name|bibtexKeyPatternPreferences
+operator|.
+name|isEnforceLegalKey
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|stringBuilder
 operator|.
 name|append
@@ -920,21 +947,12 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Remove all illegal characters from the key.
 name|key
 operator|=
-name|cleanKey
-argument_list|(
 name|stringBuilder
 operator|.
 name|toString
 argument_list|()
-argument_list|,
-name|bibtexKeyPatternPreferences
-operator|.
-name|isEnforceLegalKey
-argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Remove Regular Expressions while generating Keys
 name|String

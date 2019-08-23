@@ -254,7 +254,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -355,12 +357,12 @@ specifier|private
 name|DialogService
 name|dialogService
 decl_stmt|;
-DECL|method|IdentifierEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, TaskExecutor taskExecutor, DialogService dialogService, FieldCheckers fieldCheckers)
+DECL|method|IdentifierEditorViewModel (Field field, AutoCompleteSuggestionProvider<?> suggestionProvider, TaskExecutor taskExecutor, DialogService dialogService, FieldCheckers fieldCheckers)
 specifier|public
 name|IdentifierEditorViewModel
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|AutoCompleteSuggestionProvider
 argument_list|<
@@ -380,7 +382,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|suggestionProvider
 argument_list|,
@@ -415,7 +417,7 @@ name|IdentifierParser
 operator|.
 name|parse
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|input
 argument_list|)
@@ -450,7 +452,7 @@ name|WebFetchers
 operator|.
 name|getIdFetcherForField
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 operator|.
 name|isPresent
@@ -612,7 +614,7 @@ name|fetchAndMerge
 argument_list|(
 name|entry
 argument_list|,
-name|fieldName
+name|field
 argument_list|)
 expr_stmt|;
 block|}
@@ -629,7 +631,7 @@ name|WebFetchers
 operator|.
 name|getIdFetcherForField
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 operator|.
 name|ifPresent
@@ -688,7 +690,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|identifier
 operator|.
@@ -711,12 +713,10 @@ name|lang
 argument_list|(
 literal|"No %0 found"
 argument_list|,
-name|FieldName
+name|field
 operator|.
 name|getDisplayName
-argument_list|(
-name|fieldName
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

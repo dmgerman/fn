@@ -46,6 +46,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -458,6 +470,36 @@ name|formatter
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|getText ()
+specifier|public
+name|String
+name|getText
+parameter_list|()
+block|{
+return|return
+name|layoutEntries
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|LayoutEntry
+operator|::
+name|getText
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|joining
+argument_list|(
+literal|"\n"
+argument_list|)
+argument_list|)
+return|;
 block|}
 comment|/**      * Returns the processed bibtex entry. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
 DECL|method|doLayout (BibEntry bibtex, BibDatabase database)

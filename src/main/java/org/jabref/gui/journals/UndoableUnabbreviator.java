@@ -94,6 +94,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_class
 DECL|class|UndoableUnabbreviator
 specifier|public
@@ -121,8 +137,8 @@ operator|=
 name|journalAbbreviationRepository
 expr_stmt|;
 block|}
-comment|/**      * Unabbreviate the journal name of the given entry.      *      * @param entry     The entry to be treated.      * @param fieldName The field name (e.g. "journal")      * @param ce        If the entry is changed, add an edit to this compound.      * @return true if the entry was changed, false otherwise.      */
-DECL|method|unabbreviate (BibDatabase database, BibEntry entry, String fieldName, CompoundEdit ce)
+comment|/**      * Unabbreviate the journal name of the given entry.      *      * @param entry     The entry to be treated.      * @param field The field      * @param ce        If the entry is changed, add an edit to this compound.      * @return true if the entry was changed, false otherwise.      */
+DECL|method|unabbreviate (BibDatabase database, BibEntry entry, Field field, CompoundEdit ce)
 specifier|public
 name|boolean
 name|unabbreviate
@@ -133,8 +149,8 @@ parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|,
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|CompoundEdit
 name|ce
@@ -147,7 +163,7 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 condition|)
 block|{
@@ -162,7 +178,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 operator|.
 name|get
@@ -248,7 +264,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|newText
 argument_list|)
@@ -262,7 +278,7 @@ name|UndoableFieldChange
 argument_list|(
 name|entry
 argument_list|,
-name|fieldName
+name|field
 argument_list|,
 name|origText
 argument_list|,

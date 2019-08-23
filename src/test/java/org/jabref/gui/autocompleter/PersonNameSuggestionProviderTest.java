@@ -74,6 +74,38 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|jupiter
@@ -182,6 +214,8 @@ specifier|private
 name|BibEntry
 name|entry
 decl_stmt|;
+annotation|@
+name|Test
 DECL|method|initAutoCompleterWithNullFieldThrowsException ()
 specifier|public
 name|void
@@ -200,7 +234,7 @@ operator|new
 name|PersonNameSuggestionProvider
 argument_list|(
 operator|(
-name|String
+name|Field
 operator|)
 literal|null
 argument_list|)
@@ -222,7 +256,9 @@ operator|=
 operator|new
 name|PersonNameSuggestionProvider
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|)
 expr_stmt|;
 name|entry
@@ -235,7 +271,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Vassilis Kostakos"
 argument_list|)
@@ -392,7 +430,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"testTitle"
 argument_list|)
@@ -671,7 +711,9 @@ name|entryTwo
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Kosta"
 argument_list|)
@@ -844,7 +886,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Reagle, Jr., Joseph M."
 argument_list|)
@@ -923,7 +967,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Eric von Hippel"
 argument_list|)
@@ -1002,7 +1048,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Honig BÃ¤r"
 argument_list|)
@@ -1081,7 +1129,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Eric von Hippel"
 argument_list|)
@@ -1160,7 +1210,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Vassilis Kostakos"
 argument_list|)

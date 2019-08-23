@@ -18,7 +18,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Map
 import|;
 end_import
 
@@ -28,7 +28,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|Set
 import|;
 end_import
 
@@ -93,6 +93,38 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|FieldFactory
 import|;
 end_import
 
@@ -198,9 +230,9 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|List
+name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 argument_list|>
 name|tab
@@ -235,12 +267,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|String
+name|FieldFactory
 operator|.
-name|join
+name|serializeFieldsList
 argument_list|(
-literal|";"
-argument_list|,
 name|tab
 operator|.
 name|getValue
@@ -471,7 +501,7 @@ operator|+
 literal|"characters"
 argument_list|)
 operator|+
-literal|": # { } ~ , ^&"
+literal|": # { } ( ) ~ , ^& - \" ' ` Ê¹ \\"
 decl_stmt|;
 name|dialogService
 operator|.

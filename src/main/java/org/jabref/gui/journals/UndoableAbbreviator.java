@@ -94,6 +94,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_class
 DECL|class|UndoableAbbreviator
 specifier|public
@@ -137,7 +153,7 @@ name|isoAbbreviationStyle
 expr_stmt|;
 block|}
 comment|/**      * Abbreviate the journal name of the given entry.      *      * @param database  The database the entry belongs to, or null if no database.      * @param entry     The entry to be treated.      * @param fieldName The field name (e.g. "journal")      * @param ce        If the entry is changed, add an edit to this compound.      * @return true if the entry was changed, false otherwise.      */
-DECL|method|abbreviate (BibDatabase database, BibEntry entry, String fieldName, CompoundEdit ce)
+DECL|method|abbreviate (BibDatabase database, BibEntry entry, Field fieldName, CompoundEdit ce)
 specifier|public
 name|boolean
 name|abbreviate
@@ -148,7 +164,7 @@ parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|,
-name|String
+name|Field
 name|fieldName
 parameter_list|,
 name|CompoundEdit

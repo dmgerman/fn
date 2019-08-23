@@ -102,7 +102,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -189,7 +191,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 argument_list|)

@@ -138,7 +138,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -153,18 +169,6 @@ operator|.
 name|util
 operator|.
 name|OptionalUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jsoup
-operator|.
-name|helper
-operator|.
-name|StringUtil
 import|;
 end_import
 
@@ -189,7 +193,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Fetcher for ISBN trying ebook.de first and then chimbori.com  */
+comment|/**  * Fetcher for ISBN trying ebook.de first, chimbori.com and then ottobib  */
 end_comment
 
 begin_class
@@ -364,6 +368,42 @@ name|identifier
 argument_list|)
 expr_stmt|;
 block|}
+comment|//nothing found at ebook.de and chimbori.com, try ottobib
+if|if
+condition|(
+operator|!
+name|bibEntry
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"No entry found at ebook.de and chimbori.com try ottobib"
+argument_list|)
+expr_stmt|;
+name|IsbnViaOttoBibFetcher
+name|isbnViaOttoBibFetcher
+init|=
+operator|new
+name|IsbnViaOttoBibFetcher
+argument_list|(
+name|importFormatPreferences
+argument_list|)
+decl_stmt|;
+name|bibEntry
+operator|=
+name|isbnViaOttoBibFetcher
+operator|.
+name|performSearchById
+argument_list|(
+name|identifier
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|bibEntry
 return|;
@@ -394,7 +434,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ISBN
 argument_list|)

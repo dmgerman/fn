@@ -58,7 +58,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
+name|Comparator
 import|;
 end_import
 
@@ -188,7 +188,41 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|FieldFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -1342,6 +1376,9 @@ argument_list|()
 operator|.
 name|getType
 argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|context
 argument_list|)
@@ -2415,6 +2452,9 @@ name|getBibtexEntry
 argument_list|()
 operator|.
 name|getType
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3732,17 +3772,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ListIterator
-argument_list|<
-name|BstEntry
-argument_list|>
-name|listIter
-init|=
-name|entries
-operator|.
-name|listIterator
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|BibEntry
@@ -3751,7 +3780,7 @@ range|:
 name|bibtex
 control|)
 block|{
-name|listIter
+name|entries
 operator|.
 name|add
 argument_list|(
@@ -3965,6 +3994,19 @@ name|entrySet
 argument_list|()
 control|)
 block|{
+name|Field
+name|field
+init|=
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
+name|mEntry
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|String
 name|fieldValue
 init|=
@@ -3975,10 +4017,7 @@ argument_list|()
 operator|.
 name|getField
 argument_list|(
-name|mEntry
-operator|.
-name|getKey
-argument_list|()
+name|field
 argument_list|)
 operator|.
 name|orElse
@@ -4013,9 +4052,12 @@ argument_list|()
 operator|.
 name|containsKey
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -4026,9 +4068,12 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 literal|null
 argument_list|)
@@ -4036,7 +4081,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Defines a string macro. It has two arguments; the first is the macro's      * name, which is treated like any other variable or function name, and the      * second is its definition, which must be double-quote-delimited. You must      * have one for each three-letter month abbreviation; in addition, you      * should have one for common journal names. The user's database may      * override any definition you define using this command. If you want to      * define a string the user can't touch, use the FUNCTION command, which has      * a compatible syntax.      *      * @param child      */
+comment|/**      * Defines a string macro. It has two arguments; the first is the macro's      * name, which is treated like any other variable or function name, and the      * second is its definition, which must be double-quote-delimited. You must      * have one for each three-letter month abbreviation; in addition, you      * should have one for common journal names. The user's database may      * override any definition you define using this command. If you want to      * define a string the user can't touch, use the FUNCTION command, which has      * a compatible syntax.      */
 DECL|method|macro (Tree child)
 specifier|private
 name|void
@@ -4136,7 +4181,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*      * Declares the fields and entry variables. It has three arguments, each a      * (possibly empty) list of variable names. The three lists are of: fields,      * integer entry variables, and string entry variables. There is an      * additional field that BibTEX automatically declares, crossref, used for      * cross referencing. And there is an additional string entry variable      * automatically declared, sort.key$, used by the SORT command. Each of      * these variables has a value for each entry on the list.      */
+comment|/**      * Declares the fields and entry variables. It has three arguments, each a      * (possibly empty) list of variable names. The three lists are of: fields,      * integer entry variables, and string entry variables. There is an      * additional field that BibTEX automatically declares, crossref, used for      * cross referencing. And there is an additional string entry variable      * automatically declared, sort.key$, used by the SORT command. Each of      * these variables has a value for each entry on the list.      */
 DECL|method|entry (Tree child)
 specifier|private
 name|void
@@ -4469,20 +4514,18 @@ name|void
 name|sort
 parameter_list|()
 block|{
-name|Collections
+name|entries
 operator|.
 name|sort
 argument_list|(
-name|entries
-argument_list|,
-parameter_list|(
-name|o1
-parameter_list|,
-name|o2
-parameter_list|)
+name|Comparator
+operator|.
+name|comparing
+argument_list|(
+name|o
 lambda|->
 operator|(
-name|o1
+name|o
 operator|.
 name|localStrings
 operator|.
@@ -4491,17 +4534,6 @@ argument_list|(
 literal|"sort.key$"
 argument_list|)
 operator|)
-operator|.
-name|compareTo
-argument_list|(
-name|o2
-operator|.
-name|localStrings
-operator|.
-name|get
-argument_list|(
-literal|"sort.key$"
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

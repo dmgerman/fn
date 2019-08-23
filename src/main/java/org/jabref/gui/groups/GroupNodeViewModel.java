@@ -561,6 +561,15 @@ specifier|final
 name|CustomLocalDragboard
 name|localDragBoard
 decl_stmt|;
+DECL|field|entriesList
+specifier|private
+specifier|final
+name|ObservableList
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entriesList
+decl_stmt|;
 DECL|method|GroupNodeViewModel (BibDatabaseContext databaseContext, StateManager stateManager, TaskExecutor taskExecutor, GroupTreeNode groupNode, CustomLocalDragboard localDragBoard)
 specifier|public
 name|GroupNodeViewModel
@@ -825,6 +834,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Register listener
+comment|// The wrapper created by the FXCollections will set a weak listener on the wrapped list. This weak listener gets garbage collected. Hence, we need to maintain a reference to this list.
+name|entriesList
+operator|=
 name|databaseContext
 operator|.
 name|getDatabase
@@ -832,6 +844,8 @@ argument_list|()
 operator|.
 name|getEntries
 argument_list|()
+expr_stmt|;
+name|entriesList
 operator|.
 name|addListener
 argument_list|(

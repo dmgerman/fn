@@ -126,34 +126,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BiblatexEntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
 name|BibtexString
 import|;
 end_import
@@ -168,7 +140,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|CustomEntryType
+name|StandardEntryType
 import|;
 end_import
 
@@ -182,7 +154,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|IdGenerator
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -897,10 +887,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|addStringAsCollection ()
+DECL|method|setSingleStringAsCollection ()
 specifier|public
 name|void
-name|addStringAsCollection
+name|setSingleStringAsCollection
 parameter_list|()
 block|{
 name|BibtexString
@@ -929,7 +919,7 @@ argument_list|)
 decl_stmt|;
 name|database
 operator|.
-name|addStrings
+name|setStrings
 argument_list|(
 name|strings
 argument_list|)
@@ -954,10 +944,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|addStringAsCollectionWithUpdatedContent ()
+DECL|method|setStringAsCollectionWithUpdatedContentOverridesString ()
 specifier|public
 name|void
-name|addStringAsCollectionWithUpdatedContent
+name|setStringAsCollectionWithUpdatedContentOverridesString
 parameter_list|()
 block|{
 name|BibtexString
@@ -971,18 +961,9 @@ argument_list|,
 literal|"Digital Signal Processing"
 argument_list|)
 decl_stmt|;
-name|List
-argument_list|<
 name|BibtexString
-argument_list|>
-name|strings
+name|newContent
 init|=
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-name|string
-argument_list|,
 operator|new
 name|BibtexString
 argument_list|(
@@ -990,11 +971,25 @@ literal|"DSP"
 argument_list|,
 literal|"ABCD"
 argument_list|)
+decl_stmt|;
+name|List
+argument_list|<
+name|BibtexString
+argument_list|>
+name|strings
+init|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|string
+argument_list|,
+name|newContent
 argument_list|)
 decl_stmt|;
 name|database
 operator|.
-name|addStrings
+name|setStrings
 argument_list|(
 name|strings
 argument_list|)
@@ -1005,7 +1000,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|string
+name|newContent
 argument_list|)
 argument_list|,
 name|database
@@ -1019,10 +1014,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|addStringAsCollectionWithNewContent ()
+DECL|method|setStringAsCollectionWithNewContent ()
 specifier|public
 name|void
-name|addStringAsCollectionWithNewContent
+name|setStringAsCollectionWithNewContent
 parameter_list|()
 block|{
 name|BibtexString
@@ -1064,7 +1059,7 @@ argument_list|)
 decl_stmt|;
 name|database
 operator|.
-name|addStrings
+name|setStrings
 argument_list|(
 name|strings
 argument_list|)
@@ -1379,7 +1374,11 @@ name|entry
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"test"
+argument_list|)
 argument_list|,
 literal|"some value"
 argument_list|)
@@ -1883,26 +1882,15 @@ name|entry
 init|=
 operator|new
 name|BibEntry
-argument_list|(
-operator|new
-name|CustomEntryType
-argument_list|(
-name|IdGenerator
-operator|.
-name|next
 argument_list|()
-argument_list|,
-literal|"required"
-argument_list|,
-literal|"optional"
-argument_list|)
-argument_list|)
 decl_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"#AAA#"
 argument_list|)
@@ -2043,7 +2031,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"#AAA#"
 argument_list|)
@@ -2162,7 +2152,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Oscar Gustafsson"
 argument_list|)
@@ -2235,9 +2227,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|entryB
@@ -2253,9 +2245,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|entryB

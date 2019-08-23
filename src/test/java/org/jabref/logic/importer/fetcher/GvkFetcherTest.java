@@ -102,7 +102,39 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BiblatexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -227,16 +259,18 @@ name|bibEntryPPN591166003
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|BOOK
+name|Book
 argument_list|)
 expr_stmt|;
 name|bibEntryPPN591166003
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Effective Java"
 argument_list|)
@@ -245,7 +279,9 @@ name|bibEntryPPN591166003
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"Addison-Wesley"
 argument_list|)
@@ -254,7 +290,9 @@ name|bibEntryPPN591166003
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2008"
 argument_list|)
@@ -263,7 +301,9 @@ name|bibEntryPPN591166003
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Joshua Bloch"
 argument_list|)
@@ -272,7 +312,9 @@ name|bibEntryPPN591166003
 operator|.
 name|setField
 argument_list|(
-literal|"series"
+name|StandardField
+operator|.
+name|SERIES
 argument_list|,
 literal|"The @Java series"
 argument_list|)
@@ -281,7 +323,9 @@ name|bibEntryPPN591166003
 operator|.
 name|setField
 argument_list|(
-literal|"address"
+name|StandardField
+operator|.
+name|ADDRESS
 argument_list|,
 literal|"Upper Saddle River, NJ [u.a.]"
 argument_list|)
@@ -290,7 +334,9 @@ name|bibEntryPPN591166003
 operator|.
 name|setField
 argument_list|(
-literal|"edition"
+name|StandardField
+operator|.
+name|EDITION
 argument_list|,
 literal|"2. ed., 5. print."
 argument_list|)
@@ -299,7 +345,9 @@ name|bibEntryPPN591166003
 operator|.
 name|setField
 argument_list|(
-literal|"note"
+name|StandardField
+operator|.
+name|NOTE
 argument_list|,
 literal|"Literaturverz. S. 321 - 325"
 argument_list|)
@@ -308,7 +356,9 @@ name|bibEntryPPN591166003
 operator|.
 name|setField
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"9780321356680"
 argument_list|)
@@ -317,7 +367,9 @@ name|bibEntryPPN591166003
 operator|.
 name|setField
 argument_list|(
-literal|"pagetotal"
+name|StandardField
+operator|.
+name|PAGETOTAL
 argument_list|,
 literal|"XXI, 346"
 argument_list|)
@@ -326,7 +378,11 @@ name|bibEntryPPN591166003
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"ppn_gvk"
+argument_list|)
 argument_list|,
 literal|"591166003"
 argument_list|)
@@ -335,7 +391,9 @@ name|bibEntryPPN591166003
 operator|.
 name|setField
 argument_list|(
-literal|"subtitle"
+name|StandardField
+operator|.
+name|SUBTITLE
 argument_list|,
 literal|"[revised and updated for JAVA SE 6]"
 argument_list|)
@@ -350,16 +408,18 @@ name|bibEntryPPN66391437X
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|BOOK
+name|Book
 argument_list|)
 expr_stmt|;
 name|bibEntryPPN66391437X
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Effective unit testing"
 argument_list|)
@@ -368,7 +428,9 @@ name|bibEntryPPN66391437X
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"Manning"
 argument_list|)
@@ -377,7 +439,9 @@ name|bibEntryPPN66391437X
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2013"
 argument_list|)
@@ -386,7 +450,9 @@ name|bibEntryPPN66391437X
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Lasse Koskela"
 argument_list|)
@@ -395,7 +461,9 @@ name|bibEntryPPN66391437X
 operator|.
 name|setField
 argument_list|(
-literal|"address"
+name|StandardField
+operator|.
+name|ADDRESS
 argument_list|,
 literal|"Shelter Island, NY"
 argument_list|)
@@ -404,7 +472,9 @@ name|bibEntryPPN66391437X
 operator|.
 name|setField
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"9781935182573"
 argument_list|)
@@ -413,7 +483,9 @@ name|bibEntryPPN66391437X
 operator|.
 name|setField
 argument_list|(
-literal|"pagetotal"
+name|StandardField
+operator|.
+name|PAGETOTAL
 argument_list|,
 literal|"XXIV, 223"
 argument_list|)
@@ -422,7 +494,11 @@ name|bibEntryPPN66391437X
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"ppn_gvk"
+argument_list|)
 argument_list|,
 literal|"66391437X"
 argument_list|)
@@ -431,7 +507,9 @@ name|bibEntryPPN66391437X
 operator|.
 name|setField
 argument_list|(
-literal|"subtitle"
+name|StandardField
+operator|.
+name|SUBTITLE
 argument_list|,
 literal|"A guide for Java developers"
 argument_list|)

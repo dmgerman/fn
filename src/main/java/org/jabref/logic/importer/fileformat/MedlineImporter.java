@@ -1152,7 +1152,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
 import|;
 end_import
 
@@ -1166,7 +1166,73 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|FieldFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|InternalField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -1775,7 +1841,7 @@ parameter_list|)
 block|{
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -1808,7 +1874,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PMID
 argument_list|,
@@ -1977,7 +2043,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"sections"
+argument_list|)
 argument_list|,
 name|join
 argument_list|(
@@ -2088,7 +2158,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"pubtype"
+argument_list|)
 argument_list|,
 name|join
 argument_list|(
@@ -2162,7 +2236,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"article"
+argument_list|)
 argument_list|,
 name|join
 argument_list|(
@@ -2217,7 +2295,9 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-literal|"pubstatus"
+name|StandardField
+operator|.
+name|PUBSTATE
 argument_list|,
 name|bookData
 operator|.
@@ -2232,9 +2312,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|entry
@@ -2252,14 +2332,14 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addBookInformation (Map<String, String> fields, Book book)
+DECL|method|addBookInformation (Map<Field, String> fields, Book book)
 specifier|private
 name|void
 name|addBookInformation
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -2291,7 +2371,11 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"publocation"
+argument_list|)
 argument_list|,
 name|publisher
 operator|.
@@ -2303,7 +2387,7 @@ name|putStringFromSerializableList
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|PUBLISHER
 argument_list|,
@@ -2339,7 +2423,7 @@ name|putStringFromSerializableList
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -2445,7 +2529,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|VOLUME
 argument_list|,
@@ -2459,7 +2543,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|EDITION
 argument_list|,
@@ -2473,7 +2557,11 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"medium"
+argument_list|)
 argument_list|,
 name|book
 operator|.
@@ -2485,7 +2573,11 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"reportnumber"
+argument_list|)
 argument_list|,
 name|book
 operator|.
@@ -2537,7 +2629,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ISBN
 argument_list|,
@@ -2554,21 +2646,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|putStringFromSerializableList (Map<String, String> fields, String medlineKey, List<Serializable> contentList)
+DECL|method|putStringFromSerializableList (Map<Field, String> fields, Field field, List<Serializable> contentList)
 specifier|private
 name|void
 name|putStringFromSerializableList
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
 name|fields
 parameter_list|,
-name|String
-name|medlineKey
+name|Field
+name|field
 parameter_list|,
 name|List
 argument_list|<
@@ -2625,7 +2717,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|medlineKey
+name|field
 argument_list|,
 name|result
 operator|.
@@ -2635,14 +2727,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addContributionDate (Map<String, String> fields, ContributionDate contributionDate)
+DECL|method|addContributionDate (Map<Field, String> fields, ContributionDate contributionDate)
 specifier|private
 name|void
 name|addContributionDate
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -2707,7 +2799,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"contribution"
+argument_list|)
 argument_list|,
 name|result
 argument_list|)
@@ -2761,7 +2857,7 @@ parameter_list|)
 block|{
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -2817,7 +2913,9 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-literal|"pubstatus"
+name|StandardField
+operator|.
+name|PUBSTATE
 argument_list|,
 name|article
 operator|.
@@ -2884,7 +2982,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"status"
+argument_list|)
 argument_list|,
 name|medlineCitation
 operator|.
@@ -2914,7 +3016,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"created"
+argument_list|)
 argument_list|,
 name|convertToDateFormat
 argument_list|(
@@ -2940,7 +3046,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"pubmodel"
+argument_list|)
 argument_list|,
 name|medlineCitation
 operator|.
@@ -2973,7 +3083,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"completed"
+argument_list|)
 argument_list|,
 name|convertToDateFormat
 argument_list|(
@@ -2999,7 +3113,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PMID
 argument_list|,
@@ -3016,7 +3130,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|OWNER
 argument_list|,
@@ -3051,7 +3165,11 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"country"
+argument_list|)
 argument_list|,
 name|medlineJournalInfo
 operator|.
@@ -3063,7 +3181,11 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"journal-abbreviation"
+argument_list|)
 argument_list|,
 name|medlineJournalInfo
 operator|.
@@ -3075,7 +3197,11 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"nlm-id"
+argument_list|)
 argument_list|,
 name|medlineJournalInfo
 operator|.
@@ -3087,7 +3213,11 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"issn-linking"
+argument_list|)
 argument_list|,
 name|medlineJournalInfo
 operator|.
@@ -3147,7 +3277,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"citation-subset"
+argument_list|)
 argument_list|,
 name|join
 argument_list|(
@@ -3207,7 +3341,11 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"references"
+argument_list|)
 argument_list|,
 name|medlineCitation
 operator|.
@@ -3292,7 +3430,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"space-flight-mission"
+argument_list|)
 argument_list|,
 name|join
 argument_list|(
@@ -3355,9 +3497,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|entry
@@ -3375,14 +3517,14 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addArticleIdList (Map<String, String> fields, ArticleIdList articleIdList)
+DECL|method|addArticleIdList (Map<Field, String> fields, ArticleIdList articleIdList)
 specifier|private
 name|void
 name|addArticleIdList
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -3430,7 +3572,9 @@ name|fields
 operator|.
 name|put
 argument_list|(
-literal|"pmid"
+name|StandardField
+operator|.
+name|PMID
 argument_list|,
 name|id
 operator|.
@@ -3445,10 +3589,15 @@ name|fields
 operator|.
 name|put
 argument_list|(
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|id
 operator|.
 name|getIdType
 argument_list|()
+argument_list|)
 argument_list|,
 name|id
 operator|.
@@ -3460,14 +3609,14 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|addNotes (Map<String, String> fields, List<GeneralNote> generalNote)
+DECL|method|addNotes (Map<Field, String> fields, List<GeneralNote> generalNote)
 specifier|private
 name|void
 name|addNotes
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -3522,7 +3671,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|NOTE
 argument_list|,
@@ -3535,14 +3684,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addInvestigators (Map<String, String> fields, InvestigatorList investigatorList)
+DECL|method|addInvestigators (Map<Field, String> fields, InvestigatorList investigatorList)
 specifier|private
 name|void
 name|addInvestigators
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -3576,8 +3725,6 @@ argument_list|()
 decl_stmt|;
 name|String
 name|name
-init|=
-literal|""
 decl_stmt|;
 comment|// add the investigators like the authors
 if|if
@@ -3703,7 +3850,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"affiliation"
+argument_list|)
 argument_list|,
 name|join
 argument_list|(
@@ -3719,7 +3870,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"investigator"
+argument_list|)
 argument_list|,
 name|join
 argument_list|(
@@ -3731,14 +3886,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addKeyWords (Map<String, String> fields, List<KeywordList> allKeywordLists)
+DECL|method|addKeyWords (Map<Field, String> fields, List<KeywordList> allKeywordLists)
 specifier|private
 name|void
 name|addKeyWords
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -3821,7 +3976,7 @@ name|fields
 operator|.
 name|get
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|)
@@ -3833,7 +3988,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|,
@@ -3875,7 +4030,7 @@ name|fields
 operator|.
 name|get
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|)
@@ -3888,7 +4043,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|,
@@ -3898,14 +4053,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addOtherId (Map<String, String> fields, List<OtherID> otherID)
+DECL|method|addOtherId (Map<Field, String> fields, List<OtherID> otherID)
 specifier|private
 name|void
 name|addOtherId
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -3951,10 +4106,15 @@ name|fields
 operator|.
 name|put
 argument_list|(
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|id
 operator|.
 name|getSource
 argument_list|()
+argument_list|)
 argument_list|,
 name|id
 operator|.
@@ -3965,14 +4125,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addPersonalNames (Map<String, String> fields, PersonalNameSubjectList personalNameSubjectList)
+DECL|method|addPersonalNames (Map<Field, String> fields, PersonalNameSubjectList personalNameSubjectList)
 specifier|private
 name|void
 name|addPersonalNames
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -3988,7 +4148,7 @@ name|fields
 operator|.
 name|get
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|)
@@ -4077,7 +4237,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -4092,14 +4252,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addMeashHeading (Map<String, String> fields, MeshHeadingList meshHeadingList)
+DECL|method|addMeashHeading (Map<Field, String> fields, MeshHeadingList meshHeadingList)
 specifier|private
 name|void
 name|addMeashHeading
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -4131,9 +4291,12 @@ name|getMeshHeading
 argument_list|()
 control|)
 block|{
-name|String
+name|StringBuilder
 name|result
 init|=
+operator|new
+name|StringBuilder
+argument_list|(
 name|keyword
 operator|.
 name|getDescriptorName
@@ -4141,6 +4304,7 @@ argument_list|()
 operator|.
 name|getContent
 argument_list|()
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -4164,13 +4328,19 @@ argument_list|()
 control|)
 block|{
 name|result
-operator|+=
+operator|.
+name|append
+argument_list|(
 literal|", "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|qualifier
 operator|.
 name|getContent
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -4179,6 +4349,9 @@ operator|.
 name|add
 argument_list|(
 name|result
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4186,7 +4359,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|,
@@ -4199,14 +4372,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addGeneSymbols (Map<String, String> fields, GeneSymbolList geneSymbolList)
+DECL|method|addGeneSymbols (Map<Field, String> fields, GeneSymbolList geneSymbolList)
 specifier|private
 name|void
 name|addGeneSymbols
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -4231,7 +4404,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"gene-symbols"
+argument_list|)
 argument_list|,
 name|join
 argument_list|(
@@ -4242,14 +4419,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addChemicals (Map<String, String> fields, List<Chemical> chemicals)
+DECL|method|addChemicals (Map<Field, String> fields, List<Chemical> chemicals)
 specifier|private
 name|void
 name|addChemicals
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -4307,7 +4484,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"chemicals"
+argument_list|)
 argument_list|,
 name|join
 argument_list|(
@@ -4318,14 +4499,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addArticleInformation (Map<String, String> fields, List<Object> content)
+DECL|method|addArticleInformation (Map<Field, String> fields, List<Object> content)
 specifier|private
 name|void
 name|addArticleInformation
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -4365,7 +4546,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNAL
 argument_list|,
@@ -4394,7 +4575,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|ISSN
 argument_list|,
@@ -4417,7 +4598,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|VOLUME
 argument_list|,
@@ -4431,7 +4612,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|ISSUE
 argument_list|,
@@ -4472,7 +4653,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -4589,14 +4770,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addElocationID (Map<String, String> fields, ELocationID eLocationID)
+DECL|method|addElocationID (Map<Field, String> fields, ELocationID eLocationID)
 specifier|private
 name|void
 name|addElocationID
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -4608,16 +4789,14 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|FieldName
-operator|.
-name|DOI
-operator|.
-name|equals
-argument_list|(
 name|eLocationID
 operator|.
 name|getEIdType
 argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"doi"
 argument_list|)
 condition|)
 block|{
@@ -4625,7 +4804,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|,
@@ -4638,14 +4817,14 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-literal|"pii"
-operator|.
-name|equals
-argument_list|(
 name|eLocationID
 operator|.
 name|getEIdType
 argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"pii"
 argument_list|)
 condition|)
 block|{
@@ -4653,7 +4832,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"pii"
+argument_list|)
 argument_list|,
 name|eLocationID
 operator|.
@@ -4663,14 +4846,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addPubDate (Map<String, String> fields, PubDate pubDate)
+DECL|method|addPubDate (Map<Field, String> fields, PubDate pubDate)
 specifier|private
 name|void
 name|addPubDate
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -4695,7 +4878,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -4715,7 +4898,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -4739,7 +4922,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|MONTH
 argument_list|,
@@ -4765,7 +4948,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"season"
+argument_list|)
 argument_list|,
 name|pubDate
 operator|.
@@ -4776,14 +4963,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addAbstract (Map<String, String> fields, Abstract abs)
+DECL|method|addAbstract (Map<Field, String> fields, Abstract abs)
 specifier|private
 name|void
 name|addAbstract
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -4797,7 +4984,11 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+operator|new
+name|UnknownField
+argument_list|(
 literal|"copyright"
+argument_list|)
 argument_list|,
 name|abs
 operator|.
@@ -4862,7 +5053,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|,
@@ -4875,14 +5066,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addPagination (Map<String, String> fields, Pagination pagination)
+DECL|method|addPagination (Map<Field, String> fields, Pagination pagination)
 specifier|private
 name|void
 name|addPagination
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -4936,7 +5127,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|,
@@ -4981,7 +5172,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|,
@@ -5018,7 +5209,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|,
@@ -5056,14 +5247,14 @@ literal|4
 argument_list|)
 return|;
 block|}
-DECL|method|handleAuthors (Map<String, String> fields, AuthorList authors)
+DECL|method|handleAuthors (Map<Field, String> fields, AuthorList authors)
 specifier|private
 name|void
 name|handleAuthors
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -5187,7 +5378,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -5200,14 +5391,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addDateRevised (Map<String, String> fields, DateRevised dateRevised)
+DECL|method|addDateRevised (Map<Field, String> fields, DateRevised dateRevised)
 specifier|private
 name|void
 name|addDateRevised
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -5251,7 +5442,11 @@ name|fields
 operator|.
 name|put
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"revised"
+argument_list|)
 argument_list|,
 name|convertToDateFormat
 argument_list|(
@@ -5274,21 +5469,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|putIfValueNotNull (Map<String, String> fields, String medlineKey, String value)
+DECL|method|putIfValueNotNull (Map<Field, String> fields, Field field, String value)
 specifier|private
 name|void
 name|putIfValueNotNull
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
 name|fields
 parameter_list|,
-name|String
-name|medlineKey
+name|Field
+name|field
 parameter_list|,
 name|String
 name|value
@@ -5305,7 +5500,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|medlineKey
+name|field
 argument_list|,
 name|value
 argument_list|)

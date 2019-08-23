@@ -156,6 +156,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|metadata
 operator|.
 name|FilePreferences
@@ -437,7 +453,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|,
 name|FileFieldWriter
 operator|.
@@ -498,7 +516,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -538,7 +558,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"test title"
 argument_list|)
@@ -547,7 +569,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|,
 name|FileFieldWriter
 operator|.
@@ -667,7 +691,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -726,7 +752,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|,
 name|FileFieldWriter
 operator|.
@@ -740,7 +768,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"test title"
 argument_list|)
@@ -796,7 +826,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -849,7 +881,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|,
 name|FileFieldWriter
 operator|.
@@ -863,7 +897,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"test title"
 argument_list|)
@@ -919,7 +955,9 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -196,7 +196,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -272,12 +290,12 @@ name|BibEntry
 argument_list|>
 name|entry
 decl_stmt|;
-DECL|method|IdentifierEditor (String fieldName, TaskExecutor taskExecutor, DialogService dialogService, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers, JabRefPreferences preferences)
+DECL|method|IdentifierEditor (Field field, TaskExecutor taskExecutor, DialogService dialogService, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers, JabRefPreferences preferences)
 specifier|public
 name|IdentifierEditor
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|TaskExecutor
 name|taskExecutor
@@ -305,7 +323,7 @@ operator|=
 operator|new
 name|IdentifierEditorViewModel
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|suggestionProvider
 argument_list|,
@@ -357,12 +375,10 @@ name|lang
 argument_list|(
 literal|"Get BibTeX data from %0"
 argument_list|,
-name|FieldName
+name|field
 operator|.
 name|getDisplayName
-argument_list|(
-name|fieldName
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
@@ -380,23 +396,21 @@ name|lang
 argument_list|(
 literal|"Look up %0"
 argument_list|,
-name|FieldName
+name|field
 operator|.
 name|getDisplayName
-argument_list|(
-name|fieldName
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|fieldName
+name|field
 operator|.
-name|equalsIgnoreCase
+name|equals
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|)

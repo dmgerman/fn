@@ -76,6 +76,22 @@ name|JournalAbbreviationPreferences
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_class
 DECL|class|JournalsSuggestionProvider
 specifier|public
@@ -84,11 +100,11 @@ name|JournalsSuggestionProvider
 extends|extends
 name|FieldValueSuggestionProvider
 block|{
-DECL|method|JournalsSuggestionProvider (String fieldName, AutoCompletePreferences preferences, JournalAbbreviationLoader abbreviationLoader)
+DECL|method|JournalsSuggestionProvider (Field field, AutoCompletePreferences preferences, JournalAbbreviationLoader abbreviationLoader)
 name|JournalsSuggestionProvider
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|AutoCompletePreferences
 name|preferences
@@ -99,7 +115,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 expr_stmt|;
 name|JournalAbbreviationPreferences

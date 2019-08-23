@@ -52,16 +52,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Comparator
 import|;
 end_import
@@ -160,7 +150,7 @@ operator|new
 name|Object
 argument_list|()
 decl_stmt|;
-comment|/**      * Create a default suggestion provider based on the toString() method of the generic objects      * @param possibleSuggestions All possible suggestions      * @return      */
+comment|/**      * Create a default suggestion provider based on the toString() method of the generic objects      * @param possibleSuggestions All possible suggestions      */
 DECL|method|create (Collection<T> possibleSuggestions)
 specifier|public
 specifier|static
@@ -189,7 +179,7 @@ name|possibleSuggestions
 argument_list|)
 return|;
 block|}
-comment|/**      * Create a default suggestion provider based on the toString() method of the generic objects      * using the provided stringConverter      *      * @param stringConverter A stringConverter which converts generic T into a string      * @param possibleSuggestions All possible suggestions      * @return      */
+comment|/**      * Create a default suggestion provider based on the toString() method of the generic objects      * using the provided stringConverter      *      * @param stringConverter A stringConverter which converts generic T into a string      * @param possibleSuggestions All possible suggestions      */
 DECL|method|create (Callback<T, String> stringConverter, Collection<T> possibleSuggestions)
 specifier|public
 specifier|static
@@ -241,7 +231,7 @@ return|return
 name|suggestionProvider
 return|;
 block|}
-comment|/**      * Add the given new possible suggestions to this  SuggestionProvider      * @param newPossible      */
+comment|/**      * Add the given new possible suggestions to this  SuggestionProvider      */
 DECL|method|addPossibleSuggestions (@uppressWarningsR) T... newPossible)
 specifier|public
 name|void
@@ -268,7 +258,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Add the given new possible suggestions to this  SuggestionProvider      * @param newPossible      */
+comment|/**      * Add the given new possible suggestions to this  SuggestionProvider      */
 DECL|method|addPossibleSuggestions (Collection<T> newPossible)
 specifier|public
 name|void
@@ -386,12 +376,10 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|Collections
+name|suggestions
 operator|.
 name|sort
 argument_list|(
-name|suggestions
-argument_list|,
 name|getComparator
 argument_list|()
 argument_list|)
@@ -401,8 +389,7 @@ return|return
 name|suggestions
 return|;
 block|}
-comment|/***************************************************************************      *                                                                         *      * Static methods                                                          *      *                                                                         *      **************************************************************************/
-comment|/**      * Get the comparator to order the suggestions      * @return      */
+comment|/**      * Get the comparator to order the suggestions      */
 DECL|method|getComparator ()
 specifier|protected
 specifier|abstract
@@ -413,7 +400,7 @@ argument_list|>
 name|getComparator
 parameter_list|()
 function_decl|;
-comment|/**      * Check the given possible suggestion is a match (is a valid suggestion)      * @param suggestion      * @param request      * @return      */
+comment|/**      * Check the given possible suggestion is a match (is a valid suggestion)      */
 DECL|method|isMatch (T suggestion, ISuggestionRequest request)
 specifier|protected
 specifier|abstract
@@ -427,7 +414,6 @@ name|ISuggestionRequest
 name|request
 parameter_list|)
 function_decl|;
-comment|/***************************************************************************      *                                                                         *      * Default implementations                                                 *      *                                                                         *      **************************************************************************/
 comment|/**      * This is a simple string based suggestion provider.      * All generic suggestions T are turned into strings for processing.      *      */
 DECL|class|SuggestionProviderString
 specifier|private
@@ -513,7 +499,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**          * Create a new SuggestionProviderString          * @param stringConverter          */
+comment|/**          * Create a new SuggestionProviderString          */
 DECL|method|SuggestionProviderString (Callback<T, String> stringConverter)
 specifier|public
 name|SuggestionProviderString
@@ -547,24 +533,8 @@ name|this
 operator|.
 name|stringConverter
 operator|=
-operator|new
-name|Callback
-argument_list|<
-name|T
-argument_list|,
-name|String
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|String
-name|call
-parameter_list|(
-name|T
 name|obj
-parameter_list|)
+lambda|->
 block|{
 return|return
 name|obj
@@ -579,7 +549,6 @@ else|:
 literal|""
 return|;
 comment|//$NON-NLS-1$
-block|}
 block|}
 expr_stmt|;
 block|}

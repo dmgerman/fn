@@ -156,20 +156,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
 name|FileFieldParser
 import|;
 end_import
@@ -198,9 +184,41 @@ name|model
 operator|.
 name|entry
 operator|.
-name|specialfields
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
 operator|.
 name|SpecialField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -281,7 +299,7 @@ return|return
 name|entry
 return|;
 block|}
-DECL|method|getResolvedFieldOrAlias (String field, BibDatabase database)
+DECL|method|getResolvedFieldOrAlias (Field field, BibDatabase database)
 specifier|public
 name|Optional
 argument_list|<
@@ -289,7 +307,7 @@ name|String
 argument_list|>
 name|getResolvedFieldOrAlias
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|,
 name|BibDatabase
@@ -307,7 +325,7 @@ name|database
 argument_list|)
 return|;
 block|}
-DECL|method|getField (String fieldName)
+DECL|method|getField (Field field)
 specifier|public
 name|ObjectBinding
 argument_list|<
@@ -315,8 +333,8 @@ name|String
 argument_list|>
 name|getField
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 block|{
 return|return
@@ -324,7 +342,7 @@ name|entry
 operator|.
 name|getFieldBinding
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 return|;
 block|}
@@ -351,16 +369,13 @@ argument_list|(
 name|getField
 argument_list|(
 name|field
-operator|.
-name|getFieldName
-argument_list|()
 argument_list|)
 argument_list|,
 name|value
 lambda|->
 name|field
 operator|.
-name|parse
+name|parseValue
 argument_list|(
 name|value
 argument_list|)
@@ -393,7 +408,7 @@ name|map
 argument_list|(
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 argument_list|)

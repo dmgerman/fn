@@ -300,7 +300,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -615,7 +633,11 @@ comment|// Remove strange "SLACcitation" field
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"SLACcitation"
+argument_list|)
 argument_list|,
 operator|new
 name|ClearFormatter
@@ -631,7 +653,7 @@ comment|// Remove braces around content of "title" field
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,

@@ -477,7 +477,7 @@ specifier|final
 name|String
 name|USER_AGENT
 init|=
-literal|"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0"
+literal|"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0"
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private
@@ -1675,7 +1675,7 @@ name|connection
 operator|.
 name|getHeaderField
 argument_list|(
-literal|"Location"
+literal|"location"
 argument_list|)
 decl_stmt|;
 comment|// open the new connnection again

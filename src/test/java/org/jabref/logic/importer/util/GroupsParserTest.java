@@ -108,6 +108,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|groups
 operator|.
 name|AbstractGroup
@@ -220,6 +236,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|metadata
+operator|.
+name|MetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|util
 operator|.
 name|DummyFileUpdateMonitor
@@ -302,7 +332,6 @@ end_import
 
 begin_class
 DECL|class|GroupsParserTest
-specifier|public
 class|class
 name|GroupsParserTest
 block|{
@@ -311,10 +340,14 @@ specifier|private
 name|FileUpdateMonitor
 name|fileMonitor
 decl_stmt|;
+DECL|field|metaData
+specifier|private
+name|MetaData
+name|metaData
+decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -327,12 +360,17 @@ operator|new
 name|DummyFileUpdateMonitor
 argument_list|()
 expr_stmt|;
+name|metaData
+operator|=
+operator|new
+name|MetaData
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
 comment|// For https://github.com/JabRef/jabref/issues/1681
 DECL|method|fromStringParsesExplicitGroupWithEscapedCharacterInName ()
-specifier|public
 name|void
 name|fromStringParsesExplicitGroupWithEscapedCharacterInName
 parameter_list|()
@@ -366,6 +404,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -379,7 +419,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|keywordDelimiterThatNeedsToBeEscaped ()
-specifier|public
 name|void
 name|keywordDelimiterThatNeedsToBeEscaped
 parameter_list|()
@@ -398,7 +437,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|';'
 argument_list|,
@@ -417,6 +458,8 @@ argument_list|,
 literal|';'
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -430,7 +473,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|hierarchicalDelimiterThatNeedsToBeEscaped ()
-specifier|public
 name|void
 name|hierarchicalDelimiterThatNeedsToBeEscaped
 parameter_list|()
@@ -449,7 +491,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|','
 argument_list|,
@@ -468,6 +512,8 @@ argument_list|,
 literal|';'
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -481,7 +527,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringThrowsParseExceptionForNotEscapedGroupName ()
-specifier|public
 name|void
 name|fromStringThrowsParseExceptionForNotEscapedGroupName
 parameter_list|()
@@ -505,6 +550,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -512,7 +559,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testImportSubGroups ()
-specifier|public
 name|void
 name|testImportSubGroups
 parameter_list|()
@@ -650,6 +696,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -669,7 +717,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringParsesExplicitGroupWithIconAndDescription ()
-specifier|public
 name|void
 name|fromStringParsesExplicitGroupWithIconAndDescription
 parameter_list|()
@@ -733,6 +780,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -746,7 +795,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringParsesAutomaticKeywordGroup ()
-specifier|public
 name|void
 name|fromStringParsesAutomaticKeywordGroup
 parameter_list|()
@@ -765,7 +813,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|','
 argument_list|,
@@ -784,6 +834,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -797,7 +849,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringParsesAutomaticPersonGroup ()
-specifier|public
 name|void
 name|fromStringParsesAutomaticPersonGroup
 parameter_list|()
@@ -816,7 +867,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"authors"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|)
 decl_stmt|;
 name|AbstractGroup
@@ -826,11 +879,13 @@ name|GroupsParser
 operator|.
 name|fromString
 argument_list|(
-literal|"AutomaticPersonsGroup:myAutomaticGroup;0;authors;1;;;;"
+literal|"AutomaticPersonsGroup:myAutomaticGroup;0;author;1;;;;"
 argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -844,7 +899,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringParsesTexGroup ()
-specifier|public
 name|void
 name|fromStringParsesTexGroup
 parameter_list|()
@@ -854,8 +908,9 @@ block|{
 name|TexGroup
 name|expected
 init|=
-operator|new
 name|TexGroup
+operator|.
+name|createWithoutFileMonitoring
 argument_list|(
 literal|"myTexGroup"
 argument_list|,
@@ -883,6 +938,8 @@ argument_list|()
 argument_list|)
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|AbstractGroup
@@ -897,6 +954,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -910,7 +969,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|fromStringUnknownGroupThrowsException ()
-specifier|public
 name|void
 name|fromStringUnknownGroupThrowsException
 parameter_list|()
@@ -934,6 +992,8 @@ argument_list|,
 literal|','
 argument_list|,
 name|fileMonitor
+argument_list|,
+name|metaData
 argument_list|)
 argument_list|)
 expr_stmt|;

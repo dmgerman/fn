@@ -38,6 +38,20 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
 begin_class
 DECL|class|EntryEditorTab
 specifier|public
@@ -55,10 +69,8 @@ decl_stmt|;
 comment|/**      * Needed to track for which type of entry this tab was build and to rebuild it if the type changes      */
 DECL|field|currentEntryType
 specifier|private
-name|String
+name|EntryType
 name|currentEntryType
-init|=
-literal|""
 decl_stmt|;
 comment|/**      * Decide whether to show this tab for the given entry.      */
 DECL|method|shouldShow (BibEntry entry)
@@ -112,14 +124,14 @@ name|currentEntry
 argument_list|)
 operator|||
 operator|!
-name|currentEntryType
-operator|.
-name|equals
-argument_list|(
 name|entry
 operator|.
 name|getType
 argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|currentEntryType
 argument_list|)
 condition|)
 block|{

@@ -36,7 +36,39 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -111,16 +143,18 @@ operator|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 expr_stmt|;
 name|bibtex
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Frame, J. S. and Robinson, G. de B. and Thrall, R. M."
 argument_list|)
@@ -129,7 +163,9 @@ name|bibtex
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"The hook graphs of the symmetric groups"
 argument_list|)
@@ -138,7 +174,9 @@ name|bibtex
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"Canadian J. Math."
 argument_list|)
@@ -147,7 +185,11 @@ name|bibtex
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"fjournal"
+argument_list|)
 argument_list|,
 literal|"Canadian Journal of Mathematics. Journal Canadien de Math\\'ematiques"
 argument_list|)
@@ -156,7 +198,9 @@ name|bibtex
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"6"
 argument_list|)
@@ -165,7 +209,9 @@ name|bibtex
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"1954"
 argument_list|)
@@ -174,7 +220,9 @@ name|bibtex
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"316--324"
 argument_list|)
@@ -183,7 +231,9 @@ name|bibtex
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"0008-414X"
 argument_list|)
@@ -192,7 +242,11 @@ name|bibtex
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"mrclass"
+argument_list|)
 argument_list|,
 literal|"20.0X"
 argument_list|)
@@ -201,7 +255,9 @@ name|bibtex
 operator|.
 name|setField
 argument_list|(
-literal|"mrnumber"
+name|StandardField
+operator|.
+name|MR_NUMBER
 argument_list|,
 literal|"0062127"
 argument_list|)
@@ -210,7 +266,11 @@ name|bibtex
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"mrreviewer"
+argument_list|)
 argument_list|,
 literal|"D. E. Littlewood"
 argument_list|)
@@ -220,16 +280,18 @@ operator|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 expr_stmt|;
 name|biblatex
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Frame, J. S. and Robinson, G. de B. and Thrall, R. M."
 argument_list|)
@@ -238,7 +300,9 @@ name|biblatex
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"The hook graphs of the symmetric groups"
 argument_list|)
@@ -247,7 +311,9 @@ name|biblatex
 operator|.
 name|setField
 argument_list|(
-literal|"journaltitle"
+name|StandardField
+operator|.
+name|JOURNALTITLE
 argument_list|,
 literal|"Canadian J. Math."
 argument_list|)
@@ -256,7 +322,11 @@ name|biblatex
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"fjournal"
+argument_list|)
 argument_list|,
 literal|"Canadian Journal of Mathematics. Journal Canadien de Math\\'ematiques"
 argument_list|)
@@ -265,7 +335,9 @@ name|biblatex
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"6"
 argument_list|)
@@ -274,7 +346,9 @@ name|biblatex
 operator|.
 name|setField
 argument_list|(
-literal|"date"
+name|StandardField
+operator|.
+name|DATE
 argument_list|,
 literal|"1954"
 argument_list|)
@@ -283,7 +357,9 @@ name|biblatex
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"316--324"
 argument_list|)
@@ -292,7 +368,9 @@ name|biblatex
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"0008-414X"
 argument_list|)
@@ -301,7 +379,11 @@ name|biblatex
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"mrclass"
+argument_list|)
 argument_list|,
 literal|"20.0X"
 argument_list|)
@@ -310,7 +392,9 @@ name|biblatex
 operator|.
 name|setField
 argument_list|(
-literal|"mrnumber"
+name|StandardField
+operator|.
+name|MR_NUMBER
 argument_list|,
 literal|"0062127"
 argument_list|)
@@ -319,7 +403,11 @@ name|biblatex
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"mrreviewer"
+argument_list|)
 argument_list|,
 literal|"D. E. Littlewood"
 argument_list|)

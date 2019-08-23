@@ -46,7 +46,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -139,7 +141,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2011"
 argument_list|)
@@ -148,7 +152,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#jan#"
 argument_list|)
@@ -171,7 +177,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|)
@@ -188,7 +194,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|MONTH
 argument_list|)
@@ -207,7 +213,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DATE
 argument_list|)
@@ -233,7 +239,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2011"
 argument_list|)
@@ -242,7 +250,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#jan#"
 argument_list|)
@@ -251,7 +261,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"date"
+name|StandardField
+operator|.
+name|DATE
 argument_list|,
 literal|"2012"
 argument_list|)
@@ -276,7 +288,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|)
@@ -295,7 +307,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|MONTH
 argument_list|)
@@ -314,7 +326,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DATE
 argument_list|)
@@ -338,7 +350,9 @@ argument_list|()
 operator|.
 name|withField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"Best of JabRef"
 argument_list|)
@@ -361,7 +375,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNAL
 argument_list|)
@@ -380,7 +394,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNALTITLE
 argument_list|)

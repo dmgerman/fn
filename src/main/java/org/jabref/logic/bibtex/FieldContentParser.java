@@ -78,7 +78,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -126,7 +144,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|multiLineFields
 decl_stmt|;
@@ -157,7 +175,7 @@ name|multiLineFields
 operator|.
 name|add
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|)
@@ -166,7 +184,7 @@ name|multiLineFields
 operator|.
 name|add
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|COMMENT
 argument_list|)
@@ -175,7 +193,7 @@ name|multiLineFields
 operator|.
 name|add
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|REVIEW
 argument_list|)
@@ -192,8 +210,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Performs the reformatting      *      * @param fieldContent the content to format      * @param bibtexField the name of the bibtex field      * @return the formatted field content.      */
-DECL|method|format (String fieldContent, String bibtexField)
+comment|/**      * Performs the reformatting      *      * @param fieldContent the content to format      * @param field the name of the bibtex field      * @return the formatted field content.      */
+DECL|method|format (String fieldContent, Field field)
 specifier|public
 name|String
 name|format
@@ -201,8 +219,8 @@ parameter_list|(
 name|String
 name|fieldContent
 parameter_list|,
-name|String
-name|bibtexField
+name|Field
+name|field
 parameter_list|)
 block|{
 if|if
@@ -211,7 +229,7 @@ name|multiLineFields
 operator|.
 name|contains
 argument_list|(
-name|bibtexField
+name|field
 argument_list|)
 condition|)
 block|{
@@ -243,7 +261,7 @@ literal|" "
 argument_list|)
 return|;
 block|}
-DECL|method|format (StringBuilder fieldContent, String bibtexField)
+DECL|method|format (StringBuilder fieldContent, Field field)
 specifier|public
 name|String
 name|format
@@ -251,8 +269,8 @@ parameter_list|(
 name|StringBuilder
 name|fieldContent
 parameter_list|,
-name|String
-name|bibtexField
+name|Field
+name|field
 parameter_list|)
 block|{
 return|return
@@ -263,7 +281,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-name|bibtexField
+name|field
 argument_list|)
 return|;
 block|}

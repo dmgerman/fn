@@ -68,7 +68,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -180,16 +196,18 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Steinmacher, Igor and Gerosa, Marco and Conte, Tayana U. and Redmiles, David F."
 argument_list|)
@@ -198,7 +216,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"date"
+name|StandardField
+operator|.
+name|DATE
 argument_list|,
 literal|"2018-06-14"
 argument_list|)
@@ -207,7 +227,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1007/s10606-018-9335-z"
 argument_list|)
@@ -216,7 +238,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"0925-9724"
 argument_list|)
@@ -225,7 +249,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"Computer Supported Cooperative Work (CSCW)"
 argument_list|)
@@ -234,7 +260,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#jun#"
 argument_list|)
@@ -243,7 +271,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"1--44"
 argument_list|)
@@ -252,7 +282,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"Springer"
 argument_list|)
@@ -261,7 +293,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Overcoming Social Barriers When Contributing to Open Source Software Projects"
 argument_list|)
@@ -270,7 +304,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2018"
 argument_list|)
@@ -279,7 +315,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"file"
+name|StandardField
+operator|.
+name|FILE
 argument_list|,
 literal|"online:http\\://link.springer.com/openurl/pdf?id=doi\\:10.1007/s10606-018-9335-z:PDF"
 argument_list|)
@@ -288,7 +326,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|StandardField
+operator|.
+name|ABSTRACT
 argument_list|,
 literal|"An influx of newcomers is critical to the survival, long-term success, and continuity of many Open Source Software (OSS) community-based projects. However, newcomers face many barriers when making their first contribution, leading in many cases to dropouts. Due to the collaborative nature of community-based OSS projects, newcomers may be susceptible to social barriers, such as communication breakdowns and reception issues. In this article, we report a two-phase study aimed at better understanding social barriers faced by newcomers. In the first phase, we qualitatively analyzed the literature and data collected from practitioners to identify barriers that hinder newcomersâ first contribution. We designed a model composed of 58 barriers, including 13 social barriers. In the second phase, based on the barriers model, we developed FLOSScoach, a portal to support newcomers making their first contribution. We evaluated the portal in a diary-based study and found that the portal guided the newcomers and reduced the need for communication. Our results provide insights for communities that want to support newcomers and lay a foundation for building better onboarding tools. The contributions of this paper include identifying and gathering empirical evidence of social barriers faced by newcomers; understanding how social barriers can be reduced or avoided by using a portal that organizes proper information for newcomers (FLOSScoach); presenting guidelines for communities and newcomers on how to reduce or avoid social barriers; and identifying new streams of research."
 argument_list|)
@@ -389,7 +429,9 @@ name|bibEntry
 operator|.
 name|getField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -406,7 +448,9 @@ name|bibEntry
 operator|.
 name|getField
 argument_list|(
-literal|"number"
+name|StandardField
+operator|.
+name|NUMBER
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -423,7 +467,9 @@ name|bibEntry
 operator|.
 name|getField
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -440,7 +486,9 @@ name|bibEntry
 operator|.
 name|getField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -457,7 +505,9 @@ name|bibEntry
 operator|.
 name|getField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -474,7 +524,9 @@ name|bibEntry
 operator|.
 name|getField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -491,7 +543,9 @@ name|bibEntry
 operator|.
 name|getField
 argument_list|(
-literal|"date"
+name|StandardField
+operator|.
+name|DATE
 argument_list|)
 argument_list|)
 expr_stmt|;

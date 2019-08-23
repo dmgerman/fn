@@ -14,6 +14,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jabref
@@ -36,7 +46,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
 import|;
 end_import
 
@@ -50,7 +60,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -78,9 +90,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|entry
@@ -94,7 +106,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -105,7 +117,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|EDITOR
 argument_list|,
@@ -116,7 +128,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -127,7 +139,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|NUMBER
 argument_list|,
@@ -138,7 +150,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|VOLUME
 argument_list|,
@@ -149,7 +161,18 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
+operator|.
+name|ISSUE
+argument_list|,
+literal|"3"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -160,7 +183,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|,
@@ -171,7 +194,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|MONTH
 argument_list|,
@@ -182,7 +205,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 argument_list|,
@@ -193,7 +216,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNAL
 argument_list|,
@@ -204,7 +227,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PUBLISHER
 argument_list|,
@@ -215,7 +238,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ADDRESS
 argument_list|,
@@ -226,7 +249,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 argument_list|,
@@ -237,11 +260,59 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
+operator|.
+name|DOI
+argument_list|,
+literal|"10.1001/bla.blubb"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|,
 literal|"This entry describes a test scenario which may be useful in JabRef. By providing a test entry it is possible to see how certain things will look in this graphical BIB-file mananger."
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+name|StandardField
+operator|.
+name|COMMENT
+argument_list|,
+literal|"Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et "
+operator|+
+literal|"dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. "
+operator|+
+literal|"Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non "
+operator|+
+literal|"proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|putKeywords
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+literal|"KeyWord1"
+argument_list|,
+literal|"KeyWord2"
+argument_list|,
+literal|"KeyWord3"
+argument_list|,
+literal|"Keyword4"
+argument_list|)
+argument_list|,
+literal|';'
 argument_list|)
 expr_stmt|;
 return|return
@@ -261,9 +332,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|BOOK
+name|Book
 argument_list|)
 decl_stmt|;
 name|entry
@@ -277,7 +348,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -288,7 +359,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|EDITOR
 argument_list|,
@@ -299,7 +370,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -310,7 +381,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -321,7 +392,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|MONTH
 argument_list|,
@@ -332,7 +403,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PUBLISHER
 argument_list|,
@@ -343,7 +414,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ADDRESS
 argument_list|,

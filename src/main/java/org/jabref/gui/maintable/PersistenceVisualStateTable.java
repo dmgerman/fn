@@ -387,9 +387,17 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
+name|Double
+operator|.
+name|valueOf
+argument_list|(
 name|normalColumn
 operator|.
 name|getWidth
+argument_list|()
+argument_list|)
+operator|.
+name|intValue
 argument_list|()
 argument_list|)
 argument_list|)
@@ -398,6 +406,7 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|columnNames
 operator|.
 name|size
@@ -407,7 +416,9 @@ name|columnsWidths
 operator|.
 name|size
 argument_list|()
+operator|)
 operator|&&
+operator|(
 name|columnNames
 operator|.
 name|size
@@ -424,6 +435,7 @@ argument_list|)
 operator|.
 name|size
 argument_list|()
+operator|)
 condition|)
 block|{
 name|preferences

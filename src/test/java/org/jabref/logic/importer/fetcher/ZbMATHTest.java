@@ -86,7 +86,39 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -256,9 +288,9 @@ name|donaldsonEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 expr_stmt|;
 name|donaldsonEntry
@@ -272,7 +304,9 @@ name|donaldsonEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"S.K. {Donaldson}"
 argument_list|)
@@ -281,7 +315,9 @@ name|donaldsonEntry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"Journal of Differential Geometry"
 argument_list|)
@@ -290,7 +326,9 @@ name|donaldsonEntry
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"0022-040X; 1945-743X/e"
 argument_list|)
@@ -299,7 +337,9 @@ name|donaldsonEntry
 operator|.
 name|setField
 argument_list|(
-literal|"language"
+name|StandardField
+operator|.
+name|LANGUAGE
 argument_list|,
 literal|"English"
 argument_list|)
@@ -308,7 +348,9 @@ name|donaldsonEntry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"57N13 57R10 53C05 58J99 57R65"
 argument_list|)
@@ -317,7 +359,9 @@ name|donaldsonEntry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"279--315"
 argument_list|)
@@ -326,7 +370,9 @@ name|donaldsonEntry
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"International Press of Boston, Somerville, MA"
 argument_list|)
@@ -335,7 +381,9 @@ name|donaldsonEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"An application of gauge theory to four dimensional topology."
 argument_list|)
@@ -344,7 +392,9 @@ name|donaldsonEntry
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"18"
 argument_list|)
@@ -353,7 +403,9 @@ name|donaldsonEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"1983"
 argument_list|)
@@ -362,7 +414,11 @@ name|donaldsonEntry
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"zbl"
+argument_list|)
 argument_list|,
 literal|"0507.57010"
 argument_list|)

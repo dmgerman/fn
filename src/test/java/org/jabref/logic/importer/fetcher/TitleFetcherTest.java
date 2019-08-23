@@ -76,7 +76,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BiblatexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -213,17 +229,15 @@ name|bibEntryBischof2009
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|INPROCEEDINGS
+name|InProceedings
 argument_list|)
 expr_stmt|;
 name|bibEntryBischof2009
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"Bischof_2009"
 argument_list|)
 expr_stmt|;
@@ -231,7 +245,9 @@ name|bibEntryBischof2009
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Marc Bischof and Oliver Kopp and Tammo van Lessen and Frank Leymann"
 argument_list|)
@@ -240,7 +256,9 @@ name|bibEntryBischof2009
 operator|.
 name|setField
 argument_list|(
-literal|"booktitle"
+name|StandardField
+operator|.
+name|BOOKTITLE
 argument_list|,
 literal|"2009 35th Euromicro Conference on Software Engineering and Advanced Applications"
 argument_list|)
@@ -249,7 +267,9 @@ name|bibEntryBischof2009
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"{IEEE}"
 argument_list|)
@@ -258,7 +278,9 @@ name|bibEntryBischof2009
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"{BPELscript}: A Simplified Script Syntax for {WS}-{BPEL} 2.0"
 argument_list|)
@@ -267,7 +289,9 @@ name|bibEntryBischof2009
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2009"
 argument_list|)
@@ -276,7 +300,9 @@ name|bibEntryBischof2009
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1109/seaa.2009.21"
 argument_list|)

@@ -400,9 +400,9 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|error
 argument_list|(
-literal|"FileUpdateMonitor has been interrupted. Terminating..."
+literal|"FileUpdateMonitor has been interrupted."
 argument_list|,
 name|e
 argument_list|)

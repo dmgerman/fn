@@ -348,7 +348,7 @@ name|NameFormatterTab
 extends|extends
 name|Pane
 implements|implements
-name|PrefsTab
+name|PreferencesTab
 block|{
 DECL|field|prefs
 specifier|private
@@ -1144,25 +1144,15 @@ name|createIconButton
 argument_list|(
 name|StandardActions
 operator|.
-name|HELP
+name|HELP_NAME_FORMATTER
 argument_list|,
 operator|new
 name|HelpAction
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Help on Name Formatting"
-argument_list|)
-argument_list|,
 name|HelpFile
 operator|.
 name|CUSTOM_EXPORTS_NAME_FORMATTER
 argument_list|)
-operator|.
-name|getCommand
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|HBox
@@ -1549,6 +1539,24 @@ name|lang
 argument_list|(
 literal|"Name formatter"
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getRestartWarnings ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getRestartWarnings
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 return|;
 block|}
 block|}

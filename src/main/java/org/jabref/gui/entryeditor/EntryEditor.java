@@ -40,16 +40,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|LinkedList
 import|;
 end_import
@@ -100,9 +90,29 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|stream
 operator|.
 name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|inject
+operator|.
+name|Inject
 import|;
 end_import
 
@@ -252,16 +262,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -300,9 +300,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
-operator|.
-name|ActionFactory
+name|StateManager
 import|;
 end_import
 
@@ -314,23 +312,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
+name|bibtexkeypattern
 operator|.
 name|GenerateBibtexKeySingleAction
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|actions
-operator|.
-name|StandardActions
 import|;
 end_import
 
@@ -550,20 +534,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|SearchQueryHighlightListener
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -594,9 +564,37 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|util
 operator|.
 name|FileUpdateMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|PreferencesService
 import|;
 end_import
 
@@ -659,7 +657,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * GUI component that allows editing of the fields of a BibEntry (i.e. the  * one that shows up, when you double click on an entry in the table)  *<p>  * It hosts the tabs (required, general, optional) and the buttons to the left.  *<p>  * EntryEditor also registers itself to the event bus, receiving  * events whenever a field of the entry changes, enabling the text fields to  * update themselves if the change is made from somewhere else.  */
+comment|/**  * GUI component that allows editing of the fields of a BibEntry (i.e. the one that shows up, when you double click on  * an entry in the table)  *<p>  * It hosts the tabs (required, general, optional) and the buttons to the left.  *<p>  * EntryEditor also registers itself to the event bus, receiving events whenever a field of the entry changes, enabling  * the text fields to update themselves if the change is made from somewhere else.  */
 end_comment
 
 begin_class
@@ -686,42 +684,29 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|databaseContext
-specifier|private
-specifier|final
-name|BibDatabaseContext
-name|databaseContext
-decl_stmt|;
-DECL|field|undoManager
-specifier|private
-specifier|final
-name|CountingUndoManager
-name|undoManager
-decl_stmt|;
 DECL|field|panel
 specifier|private
 specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|field|searchListeners
+DECL|field|databaseContext
 specifier|private
 specifier|final
-name|List
-argument_list|<
-name|SearchQueryHighlightListener
-argument_list|>
-name|searchListeners
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
+name|BibDatabaseContext
+name|databaseContext
 decl_stmt|;
-DECL|field|typeSubscription
+DECL|field|entryEditorPreferences
 specifier|private
-name|Subscription
-name|typeSubscription
+specifier|final
+name|EntryEditorPreferences
+name|entryEditorPreferences
+decl_stmt|;
+DECL|field|fileLinker
+specifier|private
+specifier|final
+name|ExternalFilesEntryLinker
+name|fileLinker
 decl_stmt|;
 DECL|field|tabs
 specifier|private
@@ -732,18 +717,17 @@ name|EntryEditorTab
 argument_list|>
 name|tabs
 decl_stmt|;
-DECL|field|fileMonitor
+DECL|field|typeSubscription
 specifier|private
-specifier|final
-name|FileUpdateMonitor
-name|fileMonitor
+name|Subscription
+name|typeSubscription
 decl_stmt|;
-comment|/**      * A reference to the entry this editor works on.      */
 DECL|field|entry
 specifier|private
 name|BibEntry
 name|entry
 decl_stmt|;
+comment|// A reference to the entry this editor works on.
 DECL|field|sourceTab
 specifier|private
 name|SourceTab
@@ -777,58 +761,57 @@ specifier|private
 name|Label
 name|typeLabel
 decl_stmt|;
-DECL|field|generateCiteKeyButton
-annotation|@
-name|FXML
-specifier|private
-name|Button
-name|generateCiteKeyButton
-decl_stmt|;
-DECL|field|preferences
-specifier|private
-specifier|final
-name|EntryEditorPreferences
-name|preferences
-decl_stmt|;
 DECL|field|dialogService
+annotation|@
+name|Inject
 specifier|private
-specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
-DECL|field|fileLinker
-specifier|private
-specifier|final
-name|ExternalFilesEntryLinker
-name|fileLinker
-decl_stmt|;
 DECL|field|taskExecutor
+annotation|@
+name|Inject
 specifier|private
-specifier|final
 name|TaskExecutor
 name|taskExecutor
 decl_stmt|;
-DECL|method|EntryEditor (BasePanel panel, EntryEditorPreferences preferences, FileUpdateMonitor fileMonitor, DialogService dialogService, ExternalFileTypes externalFileTypes, TaskExecutor taskExecutor)
+DECL|field|preferencesService
+annotation|@
+name|Inject
+specifier|private
+name|PreferencesService
+name|preferencesService
+decl_stmt|;
+DECL|field|stateManager
+annotation|@
+name|Inject
+specifier|private
+name|StateManager
+name|stateManager
+decl_stmt|;
+DECL|field|fileMonitor
+annotation|@
+name|Inject
+specifier|private
+name|FileUpdateMonitor
+name|fileMonitor
+decl_stmt|;
+DECL|field|undoManager
+annotation|@
+name|Inject
+specifier|private
+name|CountingUndoManager
+name|undoManager
+decl_stmt|;
+DECL|method|EntryEditor (BasePanel panel, ExternalFileTypes externalFileTypes)
 specifier|public
 name|EntryEditor
 parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|EntryEditorPreferences
-name|preferences
-parameter_list|,
-name|FileUpdateMonitor
-name|fileMonitor
-parameter_list|,
-name|DialogService
-name|dialogService
-parameter_list|,
 name|ExternalFileTypes
 name|externalFileTypes
-parameter_list|,
-name|TaskExecutor
-name|taskExecutor
 parameter_list|)
 block|{
 name|this
@@ -846,61 +829,6 @@ operator|.
 name|getBibDatabaseContext
 argument_list|()
 expr_stmt|;
-name|this
-operator|.
-name|undoManager
-operator|=
-name|panel
-operator|.
-name|getUndoManager
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|preferences
-operator|=
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|preferences
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|fileMonitor
-operator|=
-name|fileMonitor
-expr_stmt|;
-name|this
-operator|.
-name|dialogService
-operator|=
-name|dialogService
-expr_stmt|;
-name|this
-operator|.
-name|taskExecutor
-operator|=
-name|taskExecutor
-expr_stmt|;
-name|fileLinker
-operator|=
-operator|new
-name|ExternalFilesEntryLinker
-argument_list|(
-name|externalFileTypes
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getFilePreferences
-argument_list|()
-argument_list|,
-name|databaseContext
-argument_list|)
-expr_stmt|;
 name|ViewLoader
 operator|.
 name|view
@@ -916,6 +844,32 @@ operator|.
 name|load
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|entryEditorPreferences
+operator|=
+name|preferencesService
+operator|.
+name|getEntryEditorPreferences
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|fileLinker
+operator|=
+operator|new
+name|ExternalFilesEntryLinker
+argument_list|(
+name|externalFileTypes
+argument_list|,
+name|preferencesService
+operator|.
+name|getFilePreferences
+argument_list|()
+argument_list|,
+name|databaseContext
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|GUIGlobals
@@ -927,8 +881,12 @@ condition|)
 block|{
 name|setStyle
 argument_list|(
-literal|"text-area-background: "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"text-area-background: %s;text-area-foreground: %s;text-area-highlight: %s;"
+argument_list|,
 name|ColorUtil
 operator|.
 name|toHex
@@ -937,11 +895,7 @@ name|GUIGlobals
 operator|.
 name|validFieldBackgroundColor
 argument_list|)
-operator|+
-literal|";"
-operator|+
-literal|"text-area-foreground: "
-operator|+
+argument_list|,
 name|ColorUtil
 operator|.
 name|toHex
@@ -950,11 +904,7 @@ name|GUIGlobals
 operator|.
 name|editorTextColor
 argument_list|)
-operator|+
-literal|";"
-operator|+
-literal|"text-area-highlight: "
-operator|+
+argument_list|,
 name|ColorUtil
 operator|.
 name|toHex
@@ -963,8 +913,7 @@ name|GUIGlobals
 operator|.
 name|activeBackgroundColor
 argument_list|)
-operator|+
-literal|";"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1012,6 +961,8 @@ expr_stmt|;
 name|setupKeyBindings
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
 name|tabs
 operator|=
 name|createTabs
@@ -1131,9 +1082,7 @@ decl_stmt|;
 name|FileDragDropPreferenceType
 name|dragDropPreferencesType
 init|=
-name|Globals
-operator|.
-name|prefs
+name|preferencesService
 operator|.
 name|getEntryEditorFileLinkPreference
 argument_list|()
@@ -1158,8 +1107,8 @@ name|TransferMode
 operator|.
 name|LINK
 condition|)
-comment|//alt on win
 block|{
+comment|// Alt on Windows
 name|LOGGER
 operator|.
 name|debug
@@ -1189,8 +1138,8 @@ name|TransferMode
 operator|.
 name|COPY
 condition|)
-comment|//ctrl on win, no modifier on Xubuntu
 block|{
+comment|// Ctrl on Windows, no modifier on Xubuntu
 name|LOGGER
 operator|.
 name|debug
@@ -1210,6 +1159,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// Shift on Windows or no modifier
 name|LOGGER
 operator|.
 name|debug
@@ -1217,7 +1167,6 @@ argument_list|(
 literal|"Mode MOVE"
 argument_list|)
 expr_stmt|;
-comment|//shift on win or no modifier
 name|fileLinker
 operator|.
 name|moveFilesToFileDirAndAddToEntry
@@ -1228,6 +1177,10 @@ name|files
 argument_list|)
 expr_stmt|;
 block|}
+name|success
+operator|=
+literal|true
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -1249,8 +1202,8 @@ name|TransferMode
 operator|.
 name|COPY
 condition|)
-comment|//ctrl on win, no modifier on Xubuntu
 block|{
+comment|// Ctrl on Windows, no modifier on Xubuntu
 name|LOGGER
 operator|.
 name|debug
@@ -1280,8 +1233,8 @@ name|TransferMode
 operator|.
 name|LINK
 condition|)
-comment|//alt on win
 block|{
+comment|// Alt on Windows
 name|LOGGER
 operator|.
 name|debug
@@ -1301,6 +1254,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// Shift on Windows or no modifier
 name|LOGGER
 operator|.
 name|debug
@@ -1308,7 +1262,6 @@ argument_list|(
 literal|"Mode COPY"
 argument_list|)
 expr_stmt|;
-comment|//shift on win or no modifier
 name|fileLinker
 operator|.
 name|copyFilesToFileDirAndAddToEntry
@@ -1319,6 +1272,10 @@ name|files
 argument_list|)
 expr_stmt|;
 block|}
+name|success
+operator|=
+literal|true
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -1340,8 +1297,8 @@ name|TransferMode
 operator|.
 name|COPY
 condition|)
-comment|//ctrl on win, no modifier on Xubuntu
 block|{
+comment|// Ctrl on Windows, no modifier on Xubuntu
 name|LOGGER
 operator|.
 name|debug
@@ -1371,8 +1328,8 @@ name|TransferMode
 operator|.
 name|LINK
 condition|)
-comment|//alt on win
 block|{
+comment|// Alt on Windows
 name|LOGGER
 operator|.
 name|debug
@@ -1392,6 +1349,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// Shift on Windows or no modifier
 name|LOGGER
 operator|.
 name|debug
@@ -1399,7 +1357,6 @@ argument_list|(
 literal|"Mode LINK"
 argument_list|)
 expr_stmt|;
-comment|//shift on win or no modifier
 name|fileLinker
 operator|.
 name|addFilesToEntry
@@ -1410,6 +1367,10 @@ name|files
 argument_list|)
 expr_stmt|;
 block|}
+name|success
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 name|event
@@ -1452,7 +1413,7 @@ name|KeyBinding
 argument_list|>
 name|keyBinding
 init|=
-name|preferences
+name|entryEditorPreferences
 operator|.
 name|getKeyBindings
 argument_list|()
@@ -1567,15 +1528,6 @@ break|break;
 case|case
 name|CLOSE
 case|:
-name|close
-argument_list|()
-expr_stmt|;
-name|event
-operator|.
-name|consume
-argument_list|()
-expr_stmt|;
-break|break;
 case|case
 name|CLOSE_ENTRY
 case|:
@@ -1628,6 +1580,37 @@ name|delete
 argument_list|(
 name|entry
 argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|FXML
+DECL|method|generateCiteKeyButton ()
+name|void
+name|generateCiteKeyButton
+parameter_list|()
+block|{
+name|GenerateBibtexKeySingleAction
+name|action
+init|=
+operator|new
+name|GenerateBibtexKeySingleAction
+argument_list|(
+name|getEntry
+argument_list|()
+argument_list|,
+name|databaseContext
+argument_list|,
+name|dialogService
+argument_list|,
+name|entryEditorPreferences
+argument_list|,
+name|undoManager
+argument_list|)
+decl_stmt|;
+name|action
+operator|.
+name|execute
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -1686,10 +1669,7 @@ argument_list|(
 operator|new
 name|RequiredFieldsTab
 argument_list|(
-name|panel
-operator|.
-name|getBibDatabaseContext
-argument_list|()
+name|databaseContext
 argument_list|,
 name|panel
 operator|.
@@ -1710,10 +1690,7 @@ argument_list|(
 operator|new
 name|OptionalFieldsTab
 argument_list|(
-name|panel
-operator|.
-name|getBibDatabaseContext
-argument_list|()
+name|databaseContext
 argument_list|,
 name|panel
 operator|.
@@ -1733,10 +1710,7 @@ argument_list|(
 operator|new
 name|OptionalFields2Tab
 argument_list|(
-name|panel
-operator|.
-name|getBibDatabaseContext
-argument_list|()
+name|databaseContext
 argument_list|,
 name|panel
 operator|.
@@ -1756,10 +1730,7 @@ argument_list|(
 operator|new
 name|DeprecatedFieldsTab
 argument_list|(
-name|panel
-operator|.
-name|getBibDatabaseContext
-argument_list|()
+name|databaseContext
 argument_list|,
 name|panel
 operator|.
@@ -1780,10 +1751,7 @@ argument_list|(
 operator|new
 name|OtherFieldsTab
 argument_list|(
-name|panel
-operator|.
-name|getBibDatabaseContext
-argument_list|()
+name|databaseContext
 argument_list|,
 name|panel
 operator|.
@@ -1792,7 +1760,7 @@ argument_list|()
 argument_list|,
 name|undoManager
 argument_list|,
-name|preferences
+name|entryEditorPreferences
 operator|.
 name|getCustomTabFieldNames
 argument_list|()
@@ -1810,14 +1778,14 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|List
+name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 argument_list|>
 name|tab
 range|:
-name|preferences
+name|entryEditorPreferences
 operator|.
 name|getEntryEditorTabList
 argument_list|()
@@ -1843,10 +1811,7 @@ operator|.
 name|getValue
 argument_list|()
 argument_list|,
-name|panel
-operator|.
-name|getBibDatabaseContext
-argument_list|()
+name|databaseContext
 argument_list|,
 name|panel
 operator|.
@@ -1891,7 +1856,9 @@ argument_list|(
 operator|new
 name|RelatedArticlesTab
 argument_list|(
-name|preferences
+name|this
+argument_list|,
+name|entryEditorPreferences
 argument_list|,
 name|dialogService
 argument_list|)
@@ -1907,12 +1874,12 @@ name|databaseContext
 argument_list|,
 name|undoManager
 argument_list|,
-name|preferences
+name|entryEditorPreferences
 operator|.
 name|getLatexFieldFormatterPreferences
 argument_list|()
 argument_list|,
-name|preferences
+name|entryEditorPreferences
 operator|.
 name|getImportFormatPreferences
 argument_list|()
@@ -1920,6 +1887,8 @@ argument_list|,
 name|fileMonitor
 argument_list|,
 name|dialogService
+argument_list|,
+name|stateManager
 argument_list|)
 expr_stmt|;
 name|tabs
@@ -1927,6 +1896,24 @@ operator|.
 name|add
 argument_list|(
 name|sourceTab
+argument_list|)
+expr_stmt|;
+comment|// LaTeX citations tab
+name|tabs
+operator|.
+name|add
+argument_list|(
+operator|new
+name|LatexCitationsTab
+argument_list|(
+name|databaseContext
+argument_list|,
+name|preferencesService
+argument_list|,
+name|taskExecutor
+argument_list|,
+name|dialogService
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -2157,7 +2144,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|preferences
+name|entryEditorPreferences
 operator|.
 name|showSourceTabByDefault
 argument_list|()
@@ -2293,12 +2280,7 @@ name|typeMenu
 init|=
 operator|new
 name|ChangeEntryTypeMenu
-argument_list|(
-name|preferences
-operator|.
-name|getKeyBindings
 argument_list|()
-argument_list|)
 operator|.
 name|getChangeEntryTypePopupMenu
 argument_list|(
@@ -2370,7 +2352,7 @@ name|WebFetchers
 operator|.
 name|getEntryBasedFetchers
 argument_list|(
-name|preferences
+name|entryEditorPreferences
 operator|.
 name|getImportFormatPreferences
 argument_list|()
@@ -2434,40 +2416,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Configure cite key button
-operator|new
-name|ActionFactory
-argument_list|(
-name|preferences
-operator|.
-name|getKeyBindings
-argument_list|()
-argument_list|)
-operator|.
-name|configureIconButton
-argument_list|(
-name|StandardActions
-operator|.
-name|GENERATE_CITE_KEY
-argument_list|,
-operator|new
-name|GenerateBibtexKeySingleAction
-argument_list|(
-name|getEntry
-argument_list|()
-argument_list|,
-name|databaseContext
-argument_list|,
-name|dialogService
-argument_list|,
-name|preferences
-argument_list|,
-name|undoManager
-argument_list|)
-argument_list|,
-name|generateCiteKeyButton
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|fetchAndMerge (EntryBasedFetcher fetcher)
 specifier|private
@@ -2494,46 +2442,13 @@ name|fetcher
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addSearchListener (SearchQueryHighlightListener listener)
-name|void
-name|addSearchListener
-parameter_list|(
-name|SearchQueryHighlightListener
-name|listener
-parameter_list|)
-block|{
-comment|// TODO: Highlight search text in entry editors
-name|searchListeners
-operator|.
-name|add
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|panel
-operator|.
-name|frame
-argument_list|()
-operator|.
-name|getGlobalSearchBar
-argument_list|()
-operator|.
-name|getSearchQueryHighlightObservable
-argument_list|()
-operator|.
-name|addSearchListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|setFocusToField (String fieldName)
+DECL|method|setFocusToField (Field field)
 specifier|public
 name|void
 name|setFocusToField
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 block|{
 name|DefaultTaskExecutor
@@ -2574,7 +2489,7 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 condition|)
 block|{
@@ -2600,7 +2515,7 @@ name|fieldsEditorTab
 operator|.
 name|requestFocus
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 expr_stmt|;
 block|}

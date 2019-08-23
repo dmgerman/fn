@@ -134,7 +134,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|LinkedFile
 import|;
 end_import
 
@@ -148,7 +148,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|LinkedFile
+name|StandardEntryType
 import|;
 end_import
 
@@ -334,9 +334,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 annotation|@

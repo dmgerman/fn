@@ -96,7 +96,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BiblatexEntryTypes
+name|StandardEntryType
 import|;
 end_import
 
@@ -110,7 +110,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -124,7 +126,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -315,9 +319,9 @@ name|diezSliceTheoremEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 expr_stmt|;
 name|diezSliceTheoremEntry
@@ -331,7 +335,9 @@ name|diezSliceTheoremEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Diez, T."
 argument_list|)
@@ -340,7 +346,9 @@ name|diezSliceTheoremEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Slice theorem for Fr$\\backslash$'echet group actions and covariant symplectic field theory"
 argument_list|)
@@ -349,7 +357,9 @@ name|diezSliceTheoremEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2014"
 argument_list|)
@@ -358,7 +368,9 @@ name|diezSliceTheoremEntry
 operator|.
 name|setField
 argument_list|(
-literal|"archiveprefix"
+name|StandardField
+operator|.
+name|ARCHIVEPREFIX
 argument_list|,
 literal|"arXiv"
 argument_list|)
@@ -367,7 +379,9 @@ name|diezSliceTheoremEntry
 operator|.
 name|setField
 argument_list|(
-literal|"eprint"
+name|StandardField
+operator|.
+name|EPRINT
 argument_list|,
 literal|"1405.2249"
 argument_list|)
@@ -376,7 +390,9 @@ name|diezSliceTheoremEntry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"ArXiv e-prints"
 argument_list|)
@@ -385,7 +401,9 @@ name|diezSliceTheoremEntry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"Mathematical Physics, Mathematics - Differential Geometry, Mathematics - Symplectic Geometry, 58B99, 58Z05, 58B25, 22E65, 58D19, 53D20, 53D42"
 argument_list|)
@@ -394,7 +412,9 @@ name|diezSliceTheoremEntry
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#may#"
 argument_list|)
@@ -403,7 +423,11 @@ name|diezSliceTheoremEntry
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"primaryclass"
+argument_list|)
 argument_list|,
 literal|"math-ph"
 argument_list|)
@@ -412,7 +436,9 @@ name|diezSliceTheoremEntry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"http://adsabs.harvard.edu/abs/2014arXiv1405.2249D"
 argument_list|)
@@ -421,7 +447,9 @@ name|diezSliceTheoremEntry
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|StandardField
+operator|.
+name|ABSTRACT
 argument_list|,
 literal|"A general slice theorem for the action of a Fr$\\backslash$'echet Lie group on a "
 operator|+
@@ -464,17 +492,15 @@ name|famaeyMcGaughEntry
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 expr_stmt|;
 name|famaeyMcGaughEntry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"2012LRR....15...10F"
 argument_list|)
 expr_stmt|;
@@ -482,7 +508,9 @@ name|famaeyMcGaughEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Famaey, B. and McGaugh, S. S."
 argument_list|)
@@ -491,7 +519,9 @@ name|famaeyMcGaughEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Modified Newtonian Dynamics (MOND): Observational Phenomenology and Relativistic Extensions"
 argument_list|)
@@ -500,7 +530,9 @@ name|famaeyMcGaughEntry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"Living Reviews in Relativity"
 argument_list|)
@@ -509,7 +541,9 @@ name|famaeyMcGaughEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2012"
 argument_list|)
@@ -518,7 +552,9 @@ name|famaeyMcGaughEntry
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"15"
 argument_list|)
@@ -527,7 +563,9 @@ name|famaeyMcGaughEntry
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#sep#"
 argument_list|)
@@ -536,7 +574,9 @@ name|famaeyMcGaughEntry
 operator|.
 name|setField
 argument_list|(
-literal|"archiveprefix"
+name|StandardField
+operator|.
+name|ARCHIVEPREFIX
 argument_list|,
 literal|"arXiv"
 argument_list|)
@@ -545,7 +585,9 @@ name|famaeyMcGaughEntry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.12942/lrr-2012-10"
 argument_list|)
@@ -554,7 +596,11 @@ name|famaeyMcGaughEntry
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"eid"
+argument_list|)
 argument_list|,
 literal|"10"
 argument_list|)
@@ -563,7 +609,9 @@ name|famaeyMcGaughEntry
 operator|.
 name|setField
 argument_list|(
-literal|"eprint"
+name|StandardField
+operator|.
+name|EPRINT
 argument_list|,
 literal|"1112.3960"
 argument_list|)
@@ -572,7 +620,9 @@ name|famaeyMcGaughEntry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"10"
 argument_list|)
@@ -581,7 +631,9 @@ name|famaeyMcGaughEntry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"astronomical observations, Newtonian limit, equations of motion, extragalactic astronomy, cosmology, theories of gravity, fundamental physics, astrophysics"
 argument_list|)
@@ -590,7 +642,9 @@ name|famaeyMcGaughEntry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"http://adsabs.harvard.edu/abs/2012LRR....15...10F"
 argument_list|)
@@ -605,17 +659,15 @@ name|sunWelchEntry
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 expr_stmt|;
 name|sunWelchEntry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"2012NatMa..11...44S"
 argument_list|)
 expr_stmt|;
@@ -623,7 +675,9 @@ name|sunWelchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Sun, Y. and Welch, G. C. and Leong, W. L. and Takacs, C. J. and Bazan, G. C. and Heeger, A. J."
 argument_list|)
@@ -632,7 +686,9 @@ name|sunWelchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1038/nmat3160"
 argument_list|)
@@ -641,7 +697,9 @@ name|sunWelchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"Nature Materials"
 argument_list|)
@@ -650,7 +708,9 @@ name|sunWelchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#jan#"
 argument_list|)
@@ -659,7 +719,9 @@ name|sunWelchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"44-48"
 argument_list|)
@@ -668,7 +730,9 @@ name|sunWelchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Solution-processed small-molecule solar cells with 6.7\\% efficiency"
 argument_list|)
@@ -677,7 +741,9 @@ name|sunWelchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"11"
 argument_list|)
@@ -686,7 +752,9 @@ name|sunWelchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2012"
 argument_list|)
@@ -695,7 +763,9 @@ name|sunWelchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"http://adsabs.harvard.edu/abs/2012NatMa..11...44S"
 argument_list|)
@@ -710,17 +780,15 @@ name|xiongSunEntry
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 expr_stmt|;
 name|xiongSunEntry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"2007ITGRS..45..879X"
 argument_list|)
 expr_stmt|;
@@ -728,7 +796,9 @@ name|xiongSunEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Xiong, X. and Sun, J. and Barnes, W. and Salomonson, V. and Esposito, J. and Erives, H. and Guenther, B."
 argument_list|)
@@ -737,7 +807,9 @@ name|xiongSunEntry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1109/TGRS.2006.890567"
 argument_list|)
@@ -746,7 +818,9 @@ name|xiongSunEntry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"IEEE Transactions on Geoscience and Remote Sensing"
 argument_list|)
@@ -755,7 +829,9 @@ name|xiongSunEntry
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#apr#"
 argument_list|)
@@ -764,7 +840,9 @@ name|xiongSunEntry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"879-889"
 argument_list|)
@@ -773,7 +851,9 @@ name|xiongSunEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Multiyear On-Orbit Calibration and Performance of Terra MODIS Reflective Solar Bands"
 argument_list|)
@@ -782,7 +862,9 @@ name|xiongSunEntry
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"45"
 argument_list|)
@@ -791,7 +873,9 @@ name|xiongSunEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2007"
 argument_list|)
@@ -800,7 +884,9 @@ name|xiongSunEntry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"http://adsabs.harvard.edu/abs/2007ITGRS..45..879X"
 argument_list|)
@@ -815,17 +901,15 @@ name|ingersollPollardEntry
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 expr_stmt|;
 name|ingersollPollardEntry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"1982Icar...52...62I"
 argument_list|)
 expr_stmt|;
@@ -833,7 +917,9 @@ name|ingersollPollardEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Ingersoll, A. P. and Pollard, D."
 argument_list|)
@@ -842,7 +928,9 @@ name|ingersollPollardEntry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1016/0019-1035(82)90169-5"
 argument_list|)
@@ -851,7 +939,9 @@ name|ingersollPollardEntry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"\\icarus"
 argument_list|)
@@ -860,7 +950,9 @@ name|ingersollPollardEntry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"Atmospheric Circulation, Barotropic Flow, Convective Flow, Flow Stability, Jupiter Atmosphere, Rotating Fluids, Saturn Atmosphere, Adiabatic Flow, Anelasticity, Compressible Fluids, Planetary Rotation, Rotating Cylinders, Scaling Laws, Wind Profiles, PLANETS, JUPITER, SATURN, MOTION, INTERIORS, ATMOSPHERE, ANALYSIS, SCALE, BAROTROPY, CHARACTERISTICS, STRUCTURE, WINDS, VISCOSITY, DATA, CONVECTION, ROTATION, EDDY EFFECTS, ENERGY, ADIABATICITY, DIAGRAMS, REVIEW, LATITUDE, ZONES, VELOCITY, MATHEMATICAL MODELS, HEAT FLOW, EQUATIONS OF MOTION, FLUIDS, DYNAMICS, TEMPERATURE, GRADIENTS"
 argument_list|)
@@ -869,7 +961,9 @@ name|ingersollPollardEntry
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#oct#"
 argument_list|)
@@ -878,7 +972,9 @@ name|ingersollPollardEntry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"62-80"
 argument_list|)
@@ -887,7 +983,9 @@ name|ingersollPollardEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Motion in the interiors and atmospheres of Jupiter and Saturn - Scale analysis, anelastic equations, barotropic stability criterion"
 argument_list|)
@@ -896,7 +994,9 @@ name|ingersollPollardEntry
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"52"
 argument_list|)
@@ -905,7 +1005,9 @@ name|ingersollPollardEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"1982"
 argument_list|)
@@ -914,7 +1016,9 @@ name|ingersollPollardEntry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"http://adsabs.harvard.edu/abs/1982Icar...52...62I"
 argument_list|)
@@ -929,17 +1033,15 @@ name|luceyPaulEntry
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 expr_stmt|;
 name|luceyPaulEntry
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"2000JGR...10520297L"
 argument_list|)
 expr_stmt|;
@@ -947,7 +1049,9 @@ name|luceyPaulEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Lucey, P. G. and Blewett, D. T. and Jolliff, B. L."
 argument_list|)
@@ -956,7 +1060,9 @@ name|luceyPaulEntry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1029/1999JE001117"
 argument_list|)
@@ -965,7 +1071,9 @@ name|luceyPaulEntry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"\\jgr"
 argument_list|)
@@ -974,7 +1082,9 @@ name|luceyPaulEntry
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"Planetology: Solid Surface Planets: Composition, Planetology: Solid Surface Planets: Remote sensing, Planetology: Solid Surface Planets: Surface materials and properties, Planetology: Solar System Objects: Moon (1221)"
 argument_list|)
@@ -983,7 +1093,9 @@ name|luceyPaulEntry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"20297-20306"
 argument_list|)
@@ -992,7 +1104,9 @@ name|luceyPaulEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Lunar iron and titanium abundance algorithms based on final processing of Clementine ultraviolet-visible images"
 argument_list|)
@@ -1001,7 +1115,9 @@ name|luceyPaulEntry
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"105"
 argument_list|)
@@ -1010,7 +1126,9 @@ name|luceyPaulEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2000"
 argument_list|)
@@ -1019,7 +1137,9 @@ name|luceyPaulEntry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"http://adsabs.harvard.edu/abs/2000JGR...10520297L"
 argument_list|)
@@ -1126,7 +1246,9 @@ name|searchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"slice theorem"
 argument_list|)
@@ -1135,7 +1257,9 @@ name|searchEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Diez"
 argument_list|)
@@ -1207,7 +1331,7 @@ name|entry
 operator|.
 name|clearField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|)
@@ -1320,7 +1444,7 @@ name|entry
 operator|.
 name|clearField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|)

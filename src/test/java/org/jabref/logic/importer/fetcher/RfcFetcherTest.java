@@ -62,7 +62,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BiblatexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -199,16 +215,18 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|MISC
+name|Misc
 argument_list|)
 expr_stmt|;
 name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"series"
+name|StandardField
+operator|.
+name|SERIES
 argument_list|,
 literal|"Request for Comments"
 argument_list|)
@@ -217,7 +235,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"number"
+name|StandardField
+operator|.
+name|NUMBER
 argument_list|,
 literal|"1945"
 argument_list|)
@@ -226,7 +246,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"howpublished"
+name|StandardField
+operator|.
+name|HOWPUBLISHED
 argument_list|,
 literal|"RFC 1945"
 argument_list|)
@@ -235,7 +257,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"RFC Editor"
 argument_list|)
@@ -244,7 +268,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.17487/RFC1945"
 argument_list|)
@@ -253,7 +279,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"https://rfc-editor.org/rfc/rfc1945.txt"
 argument_list|)
@@ -262,7 +290,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Henrik Frystyk Nielsen and Roy T. Fielding and Tim Berners-Lee"
 argument_list|)
@@ -271,7 +301,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"{Hypertext Transfer Protocol -- HTTP/1.0}"
 argument_list|)
@@ -280,7 +312,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"pagetotal"
+name|StandardField
+operator|.
+name|PAGETOTAL
 argument_list|,
 literal|"60"
 argument_list|)
@@ -289,7 +323,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"1996"
 argument_list|)
@@ -298,7 +334,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 argument_list|,
 literal|"#may#"
 argument_list|)
@@ -307,7 +345,9 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|StandardField
+operator|.
+name|ABSTRACT
 argument_list|,
 literal|"The Hypertext Transfer Protocol (HTTP) is an application-level protocol with the lightness and speed necessary for distributed, collaborative, hypermedia information systems. This memo provides information for the Internet community. This memo does not specify an Internet standard of any kind."
 argument_list|)

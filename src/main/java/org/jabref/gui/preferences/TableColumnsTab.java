@@ -16,18 +16,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -41,16 +29,6 @@ operator|.
 name|util
 operator|.
 name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
 import|;
 end_import
 
@@ -81,16 +59,6 @@ operator|.
 name|util
 operator|.
 name|Locale
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|AbstractAction
 import|;
 end_import
 
@@ -458,6 +426,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|maintable
+operator|.
+name|ColumnPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|util
 operator|.
 name|DefaultTaskExecutor
@@ -498,20 +480,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexSingleField
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -525,7 +493,7 @@ name|TableColumnsTab
 extends|extends
 name|Pane
 implements|implements
-name|PrefsTab
+name|PreferencesTab
 block|{
 DECL|field|prefs
 specifier|private
@@ -542,6 +510,9 @@ DECL|field|colSetup
 specifier|private
 specifier|final
 name|TableView
+argument_list|<
+name|TableRow
+argument_list|>
 name|colSetup
 decl_stmt|;
 DECL|field|frame
@@ -1796,25 +1767,15 @@ name|createIconButton
 argument_list|(
 name|StandardActions
 operator|.
-name|HELP
+name|HELP_SPECIAL_FIELDS
 argument_list|,
 operator|new
 name|HelpAction
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Help on special fields"
-argument_list|)
-argument_list|,
 name|HelpFile
 operator|.
 name|SPECIAL_FIELDS
 argument_list|)
-operator|.
-name|getCommand
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|rankingColumn
@@ -2389,8 +2350,7 @@ name|setOnAction
 argument_list|(
 name|e
 lambda|->
-operator|new
-name|UpdateOrderAction
+name|updateOrderAction
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2559,6 +2519,18 @@ operator|.
 name|getSelectedIndex
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|listSize
+operator|<
+literal|0
+condition|)
+block|{
+name|listSize
+operator|=
+literal|0
+expr_stmt|;
+block|}
 name|int
 index|[]
 name|indicesToSelect
@@ -2971,7 +2943,7 @@ operator|=
 operator|new
 name|SimpleDoubleProperty
 argument_list|(
-name|BibtexSingleField
+name|ColumnPreferences
 operator|.
 name|DEFAULT_FIELD_LENGTH
 argument_list|)
@@ -3000,7 +2972,7 @@ operator|=
 operator|new
 name|SimpleDoubleProperty
 argument_list|(
-name|BibtexSingleField
+name|ColumnPreferences
 operator|.
 name|DEFAULT_FIELD_LENGTH
 argument_list|)
@@ -3654,9 +3626,17 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
+name|Double
+operator|.
+name|valueOf
+argument_list|(
 name|tr
 operator|.
 name|getLength
+argument_list|()
+argument_list|)
+operator|.
+name|intValue
 argument_list|()
 argument_list|)
 argument_list|)
@@ -3687,38 +3667,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|class|UpdateOrderAction
-class|class
-name|UpdateOrderAction
-extends|extends
-name|AbstractAction
-block|{
-DECL|method|UpdateOrderAction ()
-specifier|public
-name|UpdateOrderAction
-parameter_list|()
-block|{
-name|super
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Update to current column order"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|actionPerformed (ActionEvent e)
-specifier|public
+DECL|method|updateOrderAction ()
+specifier|private
 name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+name|updateOrderAction
+parameter_list|()
 block|{
 name|BasePanel
 name|panel
@@ -3754,13 +3707,11 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// first element (#) not inside data
-comment|/*             for (TableColumn<BibEntry, ?> column : panel.getMainTable().getColumns()) {                 String name = column.getText();                 if ((name != null)&& !name.isEmpty()) {                     map.put(name.toLowerCase(Locale.ROOT), i);                 }             }             */
-name|Collections
+comment|/*         for (TableColumn<BibEntry, ?> column : panel.getMainTable().getColumns()) {             String name = column.getText();             if ((name != null)&& !name.isEmpty()) {                 map.put(name.toLowerCase(Locale.ROOT), i);             }         }         */
+name|data
 operator|.
 name|sort
 argument_list|(
-name|data
-argument_list|,
 parameter_list|(
 name|o1
 parameter_list|,
@@ -3841,7 +3792,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-block|}
 annotation|@
 name|Override
 DECL|method|validateSettings ()
@@ -3869,6 +3819,24 @@ name|lang
 argument_list|(
 literal|"Entry table columns"
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getRestartWarnings ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getRestartWarnings
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 return|;
 block|}
 block|}

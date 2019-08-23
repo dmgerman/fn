@@ -86,7 +86,39 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -242,9 +274,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|INPROCEEDINGS
+name|InProceedings
 argument_list|)
 decl_stmt|;
 name|expected
@@ -258,7 +290,11 @@ name|expected
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"acmid"
+argument_list|)
 argument_list|,
 literal|"3129810"
 argument_list|)
@@ -267,7 +303,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"address"
+name|StandardField
+operator|.
+name|ADDRESS
 argument_list|,
 literal|"New York, NY, USA"
 argument_list|)
@@ -276,7 +314,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Olsson, Tobias and Ericsson, Morgan and Wingkvist, Anna"
 argument_list|)
@@ -285,7 +325,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"booktitle"
+name|StandardField
+operator|.
+name|BOOKTITLE
 argument_list|,
 literal|"Proceedings of the 11th European Conference on Software Architecture: Companion Proceedings"
 argument_list|)
@@ -294,7 +336,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1145/3129790.3129810"
 argument_list|)
@@ -303,7 +347,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"978-1-4503-5217-8"
 argument_list|)
@@ -312,7 +358,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"conformance checking, repository data mining, software architecture"
 argument_list|)
@@ -321,7 +369,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"location"
+name|StandardField
+operator|.
+name|LOCATION
 argument_list|,
 literal|"Canterbury, United Kingdom"
 argument_list|)
@@ -330,7 +380,11 @@ name|expected
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"numpages"
+argument_list|)
 argument_list|,
 literal|"7"
 argument_list|)
@@ -339,7 +393,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"152--158"
 argument_list|)
@@ -348,7 +404,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"ACM"
 argument_list|)
@@ -357,7 +415,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"series"
+name|StandardField
+operator|.
+name|SERIES
 argument_list|,
 literal|"ECSA '17"
 argument_list|)
@@ -366,7 +426,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"The Relationship of Code Churn and Architectural Violations in the Open Source Software JabRef"
 argument_list|)
@@ -375,7 +437,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"http://doi.acm.org/10.1145/3129790.3129810"
 argument_list|)
@@ -384,7 +448,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2017"
 argument_list|)

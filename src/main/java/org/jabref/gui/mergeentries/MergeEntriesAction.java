@@ -76,6 +76,18 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|StateManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|actions
 operator|.
 name|SimpleCommand
@@ -152,6 +164,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|ActionHelper
+operator|.
+name|needsDatabase
+import|;
+end_import
+
 begin_class
 DECL|class|MergeEntriesAction
 specifier|public
@@ -172,12 +200,15 @@ specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
-DECL|method|MergeEntriesAction (JabRefFrame jabRefFrame)
+DECL|method|MergeEntriesAction (JabRefFrame jabRefFrame, StateManager stateManager)
 specifier|public
 name|MergeEntriesAction
 parameter_list|(
 name|JabRefFrame
 name|jabRefFrame
+parameter_list|,
+name|StateManager
+name|stateManager
 parameter_list|)
 block|{
 name|this
@@ -186,12 +217,26 @@ name|jabRefFrame
 operator|=
 name|jabRefFrame
 expr_stmt|;
+name|this
+operator|.
 name|dialogService
 operator|=
 name|jabRefFrame
 operator|.
 name|getDialogService
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|executable
+operator|.
+name|bind
+argument_list|(
+name|needsDatabase
+argument_list|(
+name|stateManager
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -383,8 +428,6 @@ name|getDatabase
 argument_list|()
 argument_list|,
 name|one
-argument_list|,
-name|basePanel
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -411,8 +454,6 @@ name|getDatabase
 argument_list|()
 argument_list|,
 name|two
-argument_list|,
-name|basePanel
 argument_list|)
 argument_list|)
 expr_stmt|;

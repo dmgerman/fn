@@ -138,6 +138,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|InternalField
+import|;
+end_import
+
 begin_class
 DECL|class|BibtexkeyDeviationChecker
 specifier|public
@@ -288,7 +304,7 @@ argument_list|)
 argument_list|,
 name|entry
 argument_list|,
-name|BibEntry
+name|InternalField
 operator|.
 name|KEY_FIELD
 argument_list|)

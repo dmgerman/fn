@@ -30,18 +30,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|icon
 operator|.
 name|JabRefIcon
@@ -58,7 +46,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabase
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -73,20 +61,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|metadata
-operator|.
-name|MetaData
 import|;
 end_import
 
@@ -120,12 +94,12 @@ name|JabRefIcon
 name|getIcon
 parameter_list|()
 function_decl|;
-comment|/**      * The actual operation. This method will not be called on the event dispatch thread, so it should not do GUI      * operations without utilizing invokeLater().      *      * @param database      * @param entries      * @param metaData      */
-DECL|method|pushEntries (BibDatabase database, List<BibEntry> entries, String keyString, MetaData metaData)
+comment|/**      * The actual operation. This method will not be called on the event dispatch thread, so it should not do GUI      * operations without utilizing invokeLater().      */
+DECL|method|pushEntries (BibDatabaseContext database, List<BibEntry> entries, String keyString)
 name|void
 name|pushEntries
 parameter_list|(
-name|BibDatabase
+name|BibDatabaseContext
 name|database
 parameter_list|,
 name|List
@@ -136,19 +110,13 @@ name|entries
 parameter_list|,
 name|String
 name|keyString
-parameter_list|,
-name|MetaData
-name|metaData
 parameter_list|)
 function_decl|;
 comment|/**      * Reporting etc., this method is called on the event dispatch thread after pushEntries() returns.      */
-DECL|method|operationCompleted (BasePanel panel)
+DECL|method|operationCompleted ()
 name|void
 name|operationCompleted
-parameter_list|(
-name|BasePanel
-name|panel
-parameter_list|)
+parameter_list|()
 function_decl|;
 comment|/**      * Check whether this operation requires BibTeX keys to be set for the entries. If true is returned an error message      * will be displayed if keys are missing.      *      * @return true if BibTeX keys are required for this operation.      */
 DECL|method|requiresBibtexKeys ()

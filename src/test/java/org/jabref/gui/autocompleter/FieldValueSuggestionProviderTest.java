@@ -60,6 +60,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|jupiter
@@ -158,7 +174,9 @@ operator|=
 operator|new
 name|FieldValueSuggestionProvider
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|)
 expr_stmt|;
 block|}
@@ -337,9 +355,11 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
-literal|"testTitle"
+literal|"testAuthor"
 argument_list|)
 expr_stmt|;
 name|autoCompleter
@@ -397,7 +417,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"testValue"
 argument_list|)
@@ -459,7 +481,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"testValue"
 argument_list|)
@@ -521,7 +545,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"testValue"
 argument_list|)
@@ -583,7 +609,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"testKey"
 argument_list|)
@@ -634,7 +662,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"testKey"
 argument_list|)
@@ -694,7 +724,9 @@ name|entryOne
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"testValueOne"
 argument_list|)
@@ -717,7 +749,9 @@ name|entryTwo
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"testValueTwo"
 argument_list|)
@@ -781,7 +815,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"val"
 argument_list|)
@@ -843,7 +879,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"test value"
 argument_list|)
@@ -905,7 +943,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"test value"
 argument_list|)
@@ -967,7 +1007,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"field"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"test value"
 argument_list|)

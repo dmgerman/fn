@@ -22,6 +22,20 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
 begin_class
 DECL|class|GlobalBibtexKeyPattern
 specifier|public
@@ -77,7 +91,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getLastLevelBibtexKeyPattern (String key)
+DECL|method|getLastLevelBibtexKeyPattern (EntryType entryType)
 specifier|public
 name|List
 argument_list|<
@@ -85,8 +99,8 @@ name|String
 argument_list|>
 name|getLastLevelBibtexKeyPattern
 parameter_list|(
-name|String
-name|key
+name|EntryType
+name|entryType
 parameter_list|)
 block|{
 return|return

@@ -38,6 +38,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -98,7 +108,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|event
+operator|.
+name|EntryEventSource
 import|;
 end_import
 
@@ -112,9 +124,41 @@ name|model
 operator|.
 name|entry
 operator|.
-name|event
+name|field
 operator|.
-name|EntryEventSource
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|FieldFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|InternalField
 import|;
 end_import
 
@@ -133,7 +177,7 @@ block|{
 DECL|field|field
 specifier|private
 specifier|final
-name|String
+name|Field
 name|field
 decl_stmt|;
 DECL|field|formatter
@@ -142,11 +186,11 @@ specifier|final
 name|Formatter
 name|formatter
 decl_stmt|;
-DECL|method|FieldFormatterCleanup (String field, Formatter formatter)
+DECL|method|FieldFormatterCleanup (Field field, Formatter formatter)
 specifier|public
 name|FieldFormatterCleanup
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|,
 name|Formatter
@@ -182,11 +226,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|FieldName
+name|InternalField
 operator|.
 name|INTERNAL_ALL_FIELD
 operator|.
-name|equalsIgnoreCase
+name|equals
 argument_list|(
 name|field
 argument_list|)
@@ -202,11 +246,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
+name|InternalField
 operator|.
 name|INTERNAL_ALL_TEXT_FIELDS_FIELD
 operator|.
-name|equalsIgnoreCase
+name|equals
 argument_list|(
 name|field
 argument_list|)
@@ -232,7 +276,7 @@ return|;
 block|}
 block|}
 comment|/**      * Runs the formatter on the specified field in the given entry.      *      * If the formatter returns an empty string, then the field is removed.      * @param fieldKey the field on which to run the formatter      * @param entry the entry to be cleaned up      * @return a list of changes of the entry      */
-DECL|method|cleanupSingleField (String fieldKey, BibEntry entry)
+DECL|method|cleanupSingleField (Field fieldKey, BibEntry entry)
 specifier|private
 name|List
 argument_list|<
@@ -240,7 +284,7 @@ name|FieldChange
 argument_list|>
 name|cleanupSingleField
 parameter_list|(
-name|String
+name|Field
 name|fieldKey
 parameter_list|,
 name|BibEntry
@@ -397,12 +441,12 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|String
+name|Field
 name|fieldKey
 range|:
 name|entry
 operator|.
-name|getFieldNames
+name|getFields
 argument_list|()
 control|)
 block|{
@@ -413,7 +457,7 @@ name|fieldKey
 operator|.
 name|equals
 argument_list|(
-name|BibEntry
+name|InternalField
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -462,20 +506,25 @@ argument_list|()
 decl_stmt|;
 name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|fields
 init|=
+operator|new
+name|HashSet
+argument_list|<>
+argument_list|(
 name|entry
 operator|.
-name|getFieldNames
+name|getFields
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|fields
 operator|.
 name|removeAll
 argument_list|(
-name|FieldName
+name|FieldFactory
 operator|.
 name|getNotTextFieldNames
 argument_list|()
@@ -483,7 +532,7 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|String
+name|Field
 name|fieldKey
 range|:
 name|fields
@@ -496,7 +545,7 @@ name|fieldKey
 operator|.
 name|equals
 argument_list|(
-name|BibEntry
+name|InternalField
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -522,7 +571,7 @@ return|;
 block|}
 DECL|method|getField ()
 specifier|public
-name|String
+name|Field
 name|getField
 parameter_list|()
 block|{

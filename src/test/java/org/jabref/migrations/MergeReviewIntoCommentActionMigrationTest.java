@@ -72,7 +72,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -231,7 +233,7 @@ name|actualEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|REVIEW
 argument_list|,
@@ -262,7 +264,7 @@ name|expectedEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|COMMENT
 argument_list|,
@@ -313,7 +315,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|COMMENT
 argument_list|,
@@ -383,7 +385,7 @@ name|actualEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|REVIEW
 argument_list|,
@@ -414,7 +416,7 @@ name|expectedEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|COMMENT
 argument_list|,
@@ -470,7 +472,7 @@ name|actualEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|REVIEW
 argument_list|,
@@ -481,7 +483,7 @@ name|actualEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|COMMENT
 argument_list|,
@@ -512,7 +514,7 @@ name|expectedEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|COMMENT
 argument_list|,
@@ -578,7 +580,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -589,7 +591,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,

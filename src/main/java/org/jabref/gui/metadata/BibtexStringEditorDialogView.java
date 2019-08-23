@@ -14,6 +14,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|event
@@ -115,6 +125,18 @@ operator|.
 name|converter
 operator|.
 name|DefaultStringConverter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DialogService
 import|;
 end_import
 
@@ -324,6 +346,13 @@ specifier|private
 specifier|final
 name|BibtexStringEditorDialogViewModel
 name|viewModel
+decl_stmt|;
+DECL|field|dialogService
+annotation|@
+name|Inject
+specifier|private
+name|DialogService
+name|dialogService
 decl_stmt|;
 DECL|method|BibtexStringEditorDialogView (BibDatabase database)
 specifier|public
@@ -602,6 +631,72 @@ name|cell
 parameter_list|)
 lambda|->
 block|{
+name|String
+name|newLabelValue
+init|=
+name|cell
+operator|.
+name|getNewValue
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|cell
+operator|.
+name|getTableView
+argument_list|()
+operator|.
+name|getItems
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|anyMatch
+argument_list|(
+name|strs
+lambda|->
+name|strs
+operator|.
+name|labelProperty
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|newLabelValue
+argument_list|)
+argument_list|)
+argument_list|)
+block|{
+name|dialogService
+operator|.
+name|showErrorDialogAndWait
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"A string with the label '%0' already exists."
+argument_list|,
+name|newLabelValue
+argument_list|)
+argument_list|)
+block|;
+name|cell
+operator|.
+name|getRowValue
+argument_list|()
+operator|.
+name|setLabel
+argument_list|(
+literal|""
+argument_list|)
+block|;             }
+else|else
+block|{
 name|cell
 operator|.
 name|getRowValue
@@ -616,8 +711,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-argument_list|)
-expr_stmt|;
+block|}
+block|)
+class|;
+end_class
+
+begin_expr_stmt
 name|colContent
 operator|.
 name|setOnEditCommit
@@ -649,6 +748,9 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|tblStrings
 operator|.
 name|itemsProperty
@@ -662,6 +764,9 @@ name|allStringsProperty
 argument_list|()
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|tblStrings
 operator|.
 name|setEditable
@@ -669,6 +774,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|viewModel
 operator|.
 name|seletedItemProperty
@@ -685,8 +793,10 @@ name|selectedItemProperty
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
+end_expr_stmt
+
+begin_function
+unit|}      @
 name|FXML
 DECL|method|addString (ActionEvent event)
 specifier|private
@@ -703,6 +813,9 @@ name|addNewString
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|FXML
 DECL|method|openHelp (ActionEvent event)
@@ -720,6 +833,9 @@ name|openHelpPage
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|FXML
 DECL|method|removeString (ActionEvent event)
@@ -737,8 +853,8 @@ name|removeString
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

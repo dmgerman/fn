@@ -58,6 +58,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_comment
 comment|/**  * Matches entries if the content of a given field is matched by a regular expression.  */
 end_comment
@@ -75,7 +91,7 @@ specifier|private
 name|Pattern
 name|pattern
 decl_stmt|;
-DECL|method|RegexKeywordGroup (String name, GroupHierarchyType context, String searchField, String searchExpression, boolean caseSensitive)
+DECL|method|RegexKeywordGroup (String name, GroupHierarchyType context, Field searchField, String searchExpression, boolean caseSensitive)
 specifier|public
 name|RegexKeywordGroup
 parameter_list|(
@@ -85,7 +101,7 @@ parameter_list|,
 name|GroupHierarchyType
 name|context
 parameter_list|,
-name|String
+name|Field
 name|searchField
 parameter_list|,
 name|String

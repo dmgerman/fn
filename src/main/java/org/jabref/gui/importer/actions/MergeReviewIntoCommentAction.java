@@ -157,6 +157,12 @@ operator|new
 name|MergeReviewIntoCommentConfirmationDialog
 argument_list|(
 name|basePanel
+operator|.
+name|frame
+argument_list|()
+operator|.
+name|getDialogService
+argument_list|()
 argument_list|)
 operator|.
 name|askUserForMerge

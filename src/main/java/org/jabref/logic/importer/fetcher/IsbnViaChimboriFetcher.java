@@ -122,6 +122,36 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|mashape
@@ -161,18 +191,6 @@ operator|.
 name|exceptions
 operator|.
 name|UnirestException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jsoup
-operator|.
-name|helper
-operator|.
-name|StringUtil
 import|;
 end_import
 
@@ -439,7 +457,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 name|identifier
 argument_list|)
@@ -471,7 +491,7 @@ parameter_list|)
 block|{
 comment|// We MUST NOT clean the URL. this is the deal with @manastungare - see https://github.com/JabRef/jabref/issues/684#issuecomment-266541507
 comment|// DO NOT add following code:
-comment|// new FieldFormatterCleanup(FieldName.URL, new ClearFormatter()).cleanup(entry);
+comment|// new FieldFormatterCleanup(StandardField.URL, new ClearFormatter()).cleanup(entry);
 block|}
 block|}
 end_class
