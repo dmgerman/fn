@@ -70,7 +70,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
+name|HashSet
 import|;
 end_import
 
@@ -81,16 +81,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -111,6 +101,16 @@ operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -192,7 +192,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|EntryType
+name|BibEntryType
 import|;
 end_import
 
@@ -219,11 +219,9 @@ block|{
 DECL|field|entryTypes
 specifier|private
 specifier|final
-name|Map
+name|Set
 argument_list|<
-name|String
-argument_list|,
-name|EntryType
+name|BibEntryType
 argument_list|>
 name|entryTypes
 decl_stmt|;
@@ -264,10 +262,6 @@ DECL|field|metaData
 specifier|private
 name|MetaData
 name|metaData
-init|=
-operator|new
-name|MetaData
-argument_list|()
 decl_stmt|;
 DECL|field|file
 specifier|private
@@ -349,13 +343,13 @@ name|MetaData
 argument_list|()
 argument_list|,
 operator|new
-name|HashMap
+name|HashSet
 argument_list|<>
 argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ParserResult (BibDatabase database, MetaData metaData, Map<String, EntryType> entryTypes)
+DECL|method|ParserResult (BibDatabase database, MetaData metaData, Set<BibEntryType> entryTypes)
 specifier|public
 name|ParserResult
 parameter_list|(
@@ -365,11 +359,9 @@ parameter_list|,
 name|MetaData
 name|metaData
 parameter_list|,
-name|Map
+name|Set
 argument_list|<
-name|String
-argument_list|,
-name|EntryType
+name|BibEntryType
 argument_list|>
 name|entryTypes
 parameter_list|)
@@ -570,11 +562,9 @@ expr_stmt|;
 block|}
 DECL|method|getEntryTypes ()
 specifier|public
-name|Map
+name|Set
 argument_list|<
-name|String
-argument_list|,
-name|EntryType
+name|BibEntryType
 argument_list|>
 name|getEntryTypes
 parameter_list|()

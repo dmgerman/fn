@@ -104,6 +104,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|util
 operator|.
 name|OptionalUtil
@@ -120,10 +136,10 @@ name|AutomaticGroup
 block|{
 DECL|field|field
 specifier|private
-name|String
+name|Field
 name|field
 decl_stmt|;
-DECL|method|AutomaticPersonsGroup (String name, GroupHierarchyType context, String field)
+DECL|method|AutomaticPersonsGroup (String name, GroupHierarchyType context, Field field)
 specifier|public
 name|AutomaticPersonsGroup
 parameter_list|(
@@ -133,7 +149,7 @@ parameter_list|,
 name|GroupHierarchyType
 name|context
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|)
 block|{
@@ -380,7 +396,7 @@ return|;
 block|}
 DECL|method|getField ()
 specifier|public
-name|String
+name|Field
 name|getField
 parameter_list|()
 block|{

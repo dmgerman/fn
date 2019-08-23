@@ -130,7 +130,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|EntryType
+name|BibEntryType
 import|;
 end_import
 
@@ -183,15 +183,14 @@ argument_list|<
 name|Void
 argument_list|>
 block|{
-DECL|field|unknownEntryTypesCheckList
-annotation|@
-name|FXML
+DECL|field|customEntryTypes
 specifier|private
-name|CheckListView
+specifier|final
+name|List
 argument_list|<
-name|EntryType
+name|BibEntryType
 argument_list|>
-name|unknownEntryTypesCheckList
+name|customEntryTypes
 decl_stmt|;
 DECL|field|boxDifferentCustomization
 annotation|@
@@ -200,15 +199,15 @@ specifier|private
 name|VBox
 name|boxDifferentCustomization
 decl_stmt|;
-DECL|field|differentCustomizationCheckList
+DECL|field|unknownEntryTypesCheckList
 annotation|@
 name|FXML
 specifier|private
 name|CheckListView
 argument_list|<
-name|EntryType
+name|BibEntryType
 argument_list|>
-name|differentCustomizationCheckList
+name|unknownEntryTypesCheckList
 decl_stmt|;
 DECL|field|preferencesService
 annotation|@
@@ -217,10 +216,15 @@ specifier|private
 name|PreferencesService
 name|preferencesService
 decl_stmt|;
-DECL|field|viewModel
+DECL|field|differentCustomizationCheckList
+annotation|@
+name|FXML
 specifier|private
-name|ImportCustomEntryTypesDialogViewModel
-name|viewModel
+name|CheckListView
+argument_list|<
+name|BibEntryType
+argument_list|>
+name|differentCustomizationCheckList
 decl_stmt|;
 DECL|field|mode
 specifier|private
@@ -228,16 +232,12 @@ specifier|final
 name|BibDatabaseMode
 name|mode
 decl_stmt|;
-DECL|field|customEntryTypes
+DECL|field|viewModel
 specifier|private
-specifier|final
-name|List
-argument_list|<
-name|EntryType
-argument_list|>
-name|customEntryTypes
+name|ImportCustomEntryTypesDialogViewModel
+name|viewModel
 decl_stmt|;
-DECL|method|ImportCustomEntryTypesDialog (BibDatabaseMode mode, List<EntryType> customEntryTypes)
+DECL|method|ImportCustomEntryTypesDialog (BibDatabaseMode mode, List<BibEntryType> customEntryTypes)
 specifier|public
 name|ImportCustomEntryTypesDialog
 parameter_list|(
@@ -246,7 +246,7 @@ name|mode
 parameter_list|,
 name|List
 argument_list|<
-name|EntryType
+name|BibEntryType
 argument_list|>
 name|customEntryTypes
 parameter_list|)
@@ -294,7 +294,7 @@ condition|)
 block|{
 name|viewModel
 operator|.
-name|importCustomEntryTypes
+name|importBibEntryTypes
 argument_list|(
 name|unknownEntryTypesCheckList
 operator|.

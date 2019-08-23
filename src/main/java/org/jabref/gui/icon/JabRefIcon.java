@@ -14,16 +14,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|Icon
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|scene
@@ -66,24 +56,16 @@ name|JabRefIcon
 extends|extends
 name|GlyphIcons
 block|{
-DECL|method|getIcon ()
-name|Icon
-name|getIcon
-parameter_list|()
-function_decl|;
-DECL|method|getSmallIcon ()
-name|Icon
-name|getSmallIcon
-parameter_list|()
-function_decl|;
 DECL|method|getGraphicNode ()
 name|Node
 name|getGraphicNode
 parameter_list|()
 function_decl|;
-DECL|method|disabled ()
-name|JabRefIcon
-name|disabled
+annotation|@
+name|Override
+DECL|method|name ()
+name|String
+name|name
 parameter_list|()
 function_decl|;
 DECL|method|withColor (Color color)
@@ -94,9 +76,9 @@ name|Color
 name|color
 parameter_list|)
 function_decl|;
-DECL|method|name ()
-name|String
-name|name
+DECL|method|disabled ()
+name|JabRefIcon
+name|disabled
 parameter_list|()
 function_decl|;
 block|}

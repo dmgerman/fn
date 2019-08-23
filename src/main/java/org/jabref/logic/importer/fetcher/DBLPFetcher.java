@@ -218,7 +218,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|InternalField
 import|;
 end_import
 
@@ -444,7 +446,7 @@ init|=
 operator|new
 name|FieldFormatterCleanup
 argument_list|(
-name|FieldName
+name|InternalField
 operator|.
 name|TIMESTAMP
 argument_list|,

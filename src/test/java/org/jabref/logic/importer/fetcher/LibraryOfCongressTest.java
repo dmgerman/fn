@@ -58,6 +58,38 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|testutils
 operator|.
 name|category
@@ -208,7 +240,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"address"
+name|StandardField
+operator|.
+name|ADDRESS
 argument_list|,
 literal|"Burlington, MA"
 argument_list|)
@@ -217,7 +251,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"West, Matthew"
 argument_list|)
@@ -226,7 +262,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"isbn"
+name|StandardField
+operator|.
+name|ISBN
 argument_list|,
 literal|"0123751063 (pbk.)"
 argument_list|)
@@ -235,7 +273,11 @@ name|expected
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"issuance"
+argument_list|)
 argument_list|,
 literal|"monographic"
 argument_list|)
@@ -244,7 +286,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"Database design, Data structures (Computer science)"
 argument_list|)
@@ -253,7 +297,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"language"
+name|StandardField
+operator|.
+name|LANGUAGE
 argument_list|,
 literal|"eng"
 argument_list|)
@@ -262,7 +308,11 @@ name|expected
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"lccn"
+argument_list|)
 argument_list|,
 literal|"2010045158"
 argument_list|)
@@ -271,7 +321,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"note"
+name|StandardField
+operator|.
+name|NOTE
 argument_list|,
 literal|"Matthew West., Includes index."
 argument_list|)
@@ -280,7 +332,11 @@ name|expected
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"oclc"
+argument_list|)
 argument_list|,
 literal|"ocn665135773"
 argument_list|)
@@ -289,7 +345,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"Morgan Kaufmann"
 argument_list|)
@@ -298,7 +356,11 @@ name|expected
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"source"
+argument_list|)
 argument_list|,
 literal|"DLC"
 argument_list|)
@@ -307,7 +369,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Developing high quality data models"
 argument_list|)
@@ -316,7 +380,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2011"
 argument_list|)

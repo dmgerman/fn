@@ -227,7 +227,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Preferences dialog. Contains a TabbedPane, and tabs will be defined in separate classes. Tabs MUST implement the  * PrefsTab interface, since this dialog will call the storeSettings() method of all tabs when the user presses ok.  */
+comment|/**  * Preferences dialog. Contains a TabbedPane, and tabs will be defined in separate classes. Tabs MUST implement the  * PreferencesTab interface, since this dialog will call the storeSettings() method of all tabs when the user presses ok.  */
 end_comment
 
 begin_class
@@ -254,7 +254,7 @@ name|FXML
 specifier|private
 name|ListView
 argument_list|<
-name|PrefsTab
+name|PreferencesTab
 argument_list|>
 name|preferenceTabList
 decl_stmt|;
@@ -565,13 +565,13 @@ expr_stmt|;
 operator|new
 name|ViewModelListCellFactory
 argument_list|<
-name|PrefsTab
+name|PreferencesTab
 argument_list|>
 argument_list|()
 operator|.
 name|withText
 argument_list|(
-name|PrefsTab
+name|PreferencesTab
 operator|::
 name|getTabName
 argument_list|)

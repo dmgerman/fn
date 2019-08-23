@@ -24,16 +24,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringJoiner
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|beans
@@ -80,6 +70,7 @@ end_import
 
 begin_class
 DECL|class|ReferenceViewModel
+specifier|public
 class|class
 name|ReferenceViewModel
 block|{
@@ -185,41 +176,20 @@ name|toString
 parameter_list|()
 block|{
 return|return
-operator|new
-name|StringJoiner
+name|String
+operator|.
+name|format
 argument_list|(
-literal|", "
+literal|"ReferenceViewModel{entry='%s', citationList=%s}"
 argument_list|,
-name|ReferenceViewModel
+name|this
 operator|.
-name|class
-operator|.
-name|getSimpleName
-argument_list|()
-operator|+
-literal|"["
-argument_list|,
-literal|"]"
-argument_list|)
-operator|.
-name|add
-argument_list|(
-literal|"entry='"
-operator|+
 name|entry
-operator|+
-literal|"'"
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"citationList="
-operator|+
 name|citationList
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 block|}

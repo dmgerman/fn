@@ -750,7 +750,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|new
 name|DuplicateCheck
+argument_list|(
+name|Globals
+operator|.
+name|entryTypesManager
+argument_list|)
 operator|.
 name|isDuplicate
 argument_list|(

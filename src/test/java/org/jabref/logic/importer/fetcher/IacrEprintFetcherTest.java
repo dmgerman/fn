@@ -128,7 +128,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BiblatexEntryTypes
+name|StandardEntryType
 import|;
 end_import
 
@@ -142,7 +142,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -411,17 +413,15 @@ name|abram2017
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|MISC
+name|Misc
 argument_list|)
 expr_stmt|;
 name|abram2017
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"cryptoeprint:2017:1118"
 argument_list|)
 expr_stmt|;
@@ -429,7 +429,7 @@ name|abram2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|,
@@ -440,7 +440,7 @@ name|abram2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -451,7 +451,7 @@ name|abram2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DATE
 argument_list|,
@@ -462,7 +462,7 @@ name|abram2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|HOWPUBLISHED
 argument_list|,
@@ -473,7 +473,7 @@ name|abram2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|NOTE
 argument_list|,
@@ -484,7 +484,7 @@ name|abram2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -495,7 +495,7 @@ name|abram2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 argument_list|,
@@ -506,7 +506,7 @@ name|abram2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|VERSION
 argument_list|,
@@ -517,7 +517,7 @@ name|abram2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -534,17 +534,15 @@ name|beierle2016
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|MISC
+name|Misc
 argument_list|)
 expr_stmt|;
 name|beierle2016
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"cryptoeprint:2016:119"
 argument_list|)
 expr_stmt|;
@@ -552,7 +550,7 @@ name|beierle2016
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|,
@@ -563,7 +561,7 @@ name|beierle2016
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -574,7 +572,7 @@ name|beierle2016
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DATE
 argument_list|,
@@ -585,7 +583,7 @@ name|beierle2016
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|HOWPUBLISHED
 argument_list|,
@@ -596,7 +594,7 @@ name|beierle2016
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|NOTE
 argument_list|,
@@ -607,7 +605,7 @@ name|beierle2016
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -618,7 +616,7 @@ name|beierle2016
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 argument_list|,
@@ -629,7 +627,7 @@ name|beierle2016
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|VERSION
 argument_list|,
@@ -640,7 +638,7 @@ name|beierle2016
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -657,17 +655,15 @@ name|delgado2017
 operator|.
 name|setType
 argument_list|(
-name|BiblatexEntryTypes
+name|StandardEntryType
 operator|.
-name|MISC
+name|Misc
 argument_list|)
 expr_stmt|;
 name|delgado2017
 operator|.
-name|setField
+name|setCiteKey
 argument_list|(
-literal|"bibtexkey"
-argument_list|,
 literal|"cryptoeprint:2017:1095"
 argument_list|)
 expr_stmt|;
@@ -675,7 +671,7 @@ name|delgado2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|,
@@ -686,7 +682,7 @@ name|delgado2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -697,7 +693,7 @@ name|delgado2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DATE
 argument_list|,
@@ -708,7 +704,7 @@ name|delgado2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|HOWPUBLISHED
 argument_list|,
@@ -719,7 +715,7 @@ name|delgado2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|NOTE
 argument_list|,
@@ -730,7 +726,7 @@ name|delgado2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -741,7 +737,7 @@ name|delgado2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 argument_list|,
@@ -752,7 +748,7 @@ name|delgado2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|VERSION
 argument_list|,
@@ -763,7 +759,7 @@ name|delgado2017
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -803,7 +799,7 @@ argument_list|()
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|)
@@ -822,7 +818,7 @@ argument_list|()
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|,
@@ -874,7 +870,7 @@ argument_list|()
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|)
@@ -893,7 +889,7 @@ argument_list|()
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|,
@@ -945,7 +941,7 @@ argument_list|()
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|)
@@ -964,7 +960,7 @@ argument_list|()
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|,
@@ -1194,7 +1190,7 @@ argument_list|()
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DATE
 argument_list|)
@@ -1273,7 +1269,7 @@ argument_list|()
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DATE
 argument_list|)
@@ -1295,7 +1291,7 @@ argument_list|()
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DATE
 argument_list|)
@@ -1330,7 +1326,7 @@ argument_list|()
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|)

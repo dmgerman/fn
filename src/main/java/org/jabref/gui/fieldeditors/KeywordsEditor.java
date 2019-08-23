@@ -46,6 +46,22 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -62,12 +78,12 @@ name|SimpleEditor
 implements|implements
 name|FieldEditorFX
 block|{
-DECL|method|KeywordsEditor (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers, JabRefPreferences preferences)
+DECL|method|KeywordsEditor (Field field, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers, JabRefPreferences preferences)
 specifier|public
 name|KeywordsEditor
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|AutoCompleteSuggestionProvider
 argument_list|<
@@ -84,7 +100,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|suggestionProvider
 argument_list|,

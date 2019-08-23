@@ -160,6 +160,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|jupiter
@@ -416,7 +432,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Someone, Van Something"
 argument_list|)
@@ -519,7 +537,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"von Neumann, John and Smith, John and Black Brown, Peter"
 argument_list|)
@@ -630,7 +650,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"editor"
+name|StandardField
+operator|.
+name|EDITOR
 argument_list|,
 literal|"Someone, Van Something"
 argument_list|)
@@ -747,7 +769,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"editor"
+name|StandardField
+operator|.
+name|EDITOR
 argument_list|,
 literal|"von Neumann, John and Smith, John and Black Brown, Peter"
 argument_list|)

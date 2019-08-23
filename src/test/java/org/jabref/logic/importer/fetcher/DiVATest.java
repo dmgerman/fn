@@ -72,6 +72,36 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|testutils
 operator|.
 name|category
@@ -277,25 +307,9 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-literal|"article"
-argument_list|)
-expr_stmt|;
-name|entry
+name|StandardEntryType
 operator|.
-name|setField
-argument_list|(
-literal|"author"
-argument_list|,
-literal|"Gustafsson, Oscar"
-argument_list|)
-expr_stmt|;
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"institution"
-argument_list|,
-literal|"LinkÃ¶ping University, The Institute of Technology"
+name|Article
 argument_list|)
 expr_stmt|;
 name|entry
@@ -309,7 +323,31 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|AUTHOR
+argument_list|,
+literal|"Gustafsson, Oscar"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+name|StandardField
+operator|.
+name|INSTITUTION
+argument_list|,
+literal|"LinkÃ¶ping University, The Institute of Technology"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"IEEE transactions on circuits and systems. 2, Analog and digital signal processing (Print)"
 argument_list|)
@@ -318,7 +356,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"number"
+name|StandardField
+operator|.
+name|NUMBER
 argument_list|,
 literal|"11"
 argument_list|)
@@ -327,7 +367,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"974--978"
 argument_list|)
@@ -336,7 +378,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Lower bounds for constant multiplication problems"
 argument_list|)
@@ -345,7 +389,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"54"
 argument_list|)
@@ -354,7 +400,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2007"
 argument_list|)
@@ -363,7 +411,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"abstract"
+name|StandardField
+operator|.
+name|ABSTRACT
 argument_list|,
 literal|"Lower bounds for problems related to realizing multiplication by constants with shifts, adders, and subtracters are presented. These lower bounds are straightforwardly calculated and have applications in proving the optimality of solutions obtained by heuristics. "
 argument_list|)
@@ -372,7 +422,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"10.1109/TCSII.2007.903212"
 argument_list|)

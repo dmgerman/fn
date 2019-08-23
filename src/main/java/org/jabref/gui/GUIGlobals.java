@@ -12,9 +12,11 @@ end_package
 
 begin_import
 import|import
-name|java
+name|javafx
 operator|.
-name|awt
+name|scene
+operator|.
+name|paint
 operator|.
 name|Color
 import|;
@@ -22,9 +24,11 @@ end_import
 
 begin_import
 import|import
-name|java
+name|javafx
 operator|.
-name|awt
+name|scene
+operator|.
+name|text
 operator|.
 name|Font
 import|;
@@ -51,20 +55,6 @@ operator|.
 name|icon
 operator|.
 name|IconTheme
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|keyboard
-operator|.
-name|EmacsKeyBindings
 import|;
 end_import
 
@@ -281,26 +271,6 @@ name|void
 name|init
 parameter_list|()
 block|{
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|EDITOR_EMACS_KEYBINDINGS
-argument_list|)
-condition|)
-block|{
-name|EmacsKeyBindings
-operator|.
-name|load
-argument_list|()
-expr_stmt|;
-block|}
 comment|// Set up entry editor colors, first time:
 name|GUIGlobals
 operator|.
@@ -323,29 +293,14 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|FONT_FAMILY
-argument_list|)
+name|getFontFamily
+argument_list|()
 argument_list|,
 name|Globals
 operator|.
 name|prefs
 operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|FONT_STYLE
-argument_list|)
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getInt
+name|getDouble
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -354,13 +309,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setFont (int size)
+DECL|method|setFont (double size)
 specifier|public
 specifier|static
 name|void
 name|setFont
 parameter_list|(
-name|int
+name|double
 name|size
 parameter_list|)
 block|{
@@ -372,11 +327,6 @@ argument_list|(
 name|currentFont
 operator|.
 name|getFamily
-argument_list|()
-argument_list|,
-name|currentFont
-operator|.
-name|getStyle
 argument_list|()
 argument_list|,
 name|size

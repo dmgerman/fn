@@ -160,7 +160,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|EntryType
 import|;
 end_import
 
@@ -174,7 +174,39 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -281,7 +313,7 @@ name|line
 decl_stmt|;
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -434,7 +466,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -516,7 +548,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -548,7 +580,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|VOLUME
 argument_list|,
@@ -580,7 +612,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|NUMBER
 argument_list|,
@@ -668,7 +700,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|,
@@ -782,7 +814,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|NOTE
 argument_list|,
@@ -814,7 +846,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PUBLISHER
 argument_list|,
@@ -900,7 +932,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|EDITION
 argument_list|,
@@ -1014,7 +1046,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ISBN
 argument_list|,
@@ -1046,7 +1078,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|,
@@ -1103,7 +1135,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|LANGUAGE
 argument_list|,
@@ -1198,11 +1230,11 @@ argument_list|(
 literal|"ftp://"
 argument_list|)
 condition|?
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 else|:
-name|FieldName
+name|StandardField
 operator|.
 name|PDF
 argument_list|,
@@ -1396,7 +1428,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ANNOTE
 argument_list|,
@@ -1482,7 +1514,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CHAPTER
 argument_list|,
@@ -1501,7 +1533,7 @@ comment|//else if (entry.getKey().equals("LP"))
 comment|// hm.put("",entry.getValue().toString());
 block|}
 block|}
-name|String
+name|EntryType
 name|bibtexType
 init|=
 name|BibEntry
@@ -1579,7 +1611,9 @@ condition|)
 block|{
 name|bibtexType
 operator|=
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 expr_stmt|;
 block|}
 elseif|else
@@ -1598,7 +1632,9 @@ condition|)
 block|{
 name|bibtexType
 operator|=
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 expr_stmt|;
 block|}
 elseif|else
@@ -1617,7 +1653,9 @@ condition|)
 block|{
 name|bibtexType
 operator|=
-literal|"inbook"
+name|StandardEntryType
+operator|.
+name|InBook
 expr_stmt|;
 block|}
 elseif|else
@@ -1636,7 +1674,9 @@ condition|)
 block|{
 name|bibtexType
 operator|=
-literal|"book"
+name|StandardEntryType
+operator|.
+name|Book
 expr_stmt|;
 block|}
 elseif|else
@@ -1655,7 +1695,9 @@ condition|)
 block|{
 name|bibtexType
 operator|=
-literal|"inproceedings"
+name|StandardEntryType
+operator|.
+name|InProceedings
 expr_stmt|;
 block|}
 elseif|else
@@ -1674,7 +1716,9 @@ condition|)
 block|{
 name|bibtexType
 operator|=
-literal|"inproceedings"
+name|StandardEntryType
+operator|.
+name|InProceedings
 expr_stmt|;
 block|}
 elseif|else
@@ -1693,7 +1737,9 @@ condition|)
 block|{
 name|bibtexType
 operator|=
-literal|"techreport"
+name|StandardEntryType
+operator|.
+name|TechReport
 expr_stmt|;
 block|}
 elseif|else
@@ -1722,7 +1768,9 @@ condition|)
 block|{
 name|bibtexType
 operator|=
-literal|"mastersthesis"
+name|StandardEntryType
+operator|.
+name|MastersThesis
 expr_stmt|;
 block|}
 elseif|else
@@ -1741,7 +1789,9 @@ condition|)
 block|{
 name|bibtexType
 operator|=
-literal|"phdthesis"
+name|StandardEntryType
+operator|.
+name|PhdThesis
 expr_stmt|;
 block|}
 block|}
@@ -1749,11 +1799,13 @@ comment|// depending on bibtexType, decide where to place the titleRT and
 comment|// titleTI
 if|if
 condition|(
-literal|"article"
+name|bibtexType
 operator|.
 name|equals
 argument_list|(
-name|bibtexType
+name|StandardEntryType
+operator|.
+name|Article
 argument_list|)
 condition|)
 block|{
@@ -1768,7 +1820,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNAL
 argument_list|,
@@ -1787,7 +1839,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -1799,11 +1851,13 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"inbook"
+name|bibtexType
 operator|.
 name|equals
 argument_list|(
-name|bibtexType
+name|StandardEntryType
+operator|.
+name|InBook
 argument_list|)
 condition|)
 block|{
@@ -1818,7 +1872,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|BOOKTITLE
 argument_list|,
@@ -1837,7 +1891,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -1859,17 +1913,14 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|BOOKTITLE
 argument_list|,
 name|titleST
 argument_list|)
 expr_stmt|;
-comment|// should not
 block|}
-comment|// happen, I
-comment|// think
 if|if
 condition|(
 name|titleTI
@@ -1881,7 +1932,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -1916,7 +1967,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|,
@@ -1968,7 +2019,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ADDRESS
 argument_list|,
@@ -2002,7 +2053,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|COMMENT
 argument_list|,
@@ -2023,12 +2074,7 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
-operator|.
-name|getTypeOrDefault
-argument_list|(
 name|bibtexType
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|b

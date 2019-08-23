@@ -182,6 +182,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|airhacks
@@ -247,13 +263,13 @@ name|removeKeywordButton
 decl_stmt|;
 annotation|@
 name|FXML
-DECL|field|fieldNamesListView
+DECL|field|fieldsListView
 specifier|private
 name|ListView
 argument_list|<
-name|String
+name|Field
 argument_list|>
-name|fieldNamesListView
+name|fieldsListView
 decl_stmt|;
 annotation|@
 name|FXML
@@ -392,7 +408,7 @@ parameter_list|()
 block|{
 name|initListView
 argument_list|(
-name|fieldNamesListView
+name|fieldsListView
 argument_list|,
 name|viewModel
 operator|::
@@ -401,12 +417,12 @@ argument_list|)
 expr_stmt|;
 name|viewModel
 operator|.
-name|selectedFieldNameProperty
+name|selectedFieldProperty
 argument_list|()
 operator|.
 name|bind
 argument_list|(
-name|fieldNamesListView
+name|fieldsListView
 operator|.
 name|getSelectionModel
 argument_list|()
@@ -434,7 +450,7 @@ name|subscribe
 argument_list|(
 name|viewModel
 operator|.
-name|selectedFieldNameProperty
+name|selectedFieldProperty
 argument_list|()
 argument_list|,
 name|viewModel
@@ -523,7 +539,7 @@ name|void
 name|removeFieldName
 parameter_list|()
 block|{
-name|getSelectedFieldName
+name|getSelectedField
 argument_list|()
 operator|.
 name|ifPresent
@@ -542,7 +558,7 @@ name|void
 name|addNewKeyword
 parameter_list|()
 block|{
-name|getSelectedFieldName
+name|getSelectedField
 argument_list|()
 operator|.
 name|ifPresent
@@ -563,11 +579,11 @@ parameter_list|()
 block|{
 name|Optional
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|fieldName
 init|=
-name|getSelectedFieldName
+name|getSelectedField
 argument_list|()
 decl_stmt|;
 name|Optional
@@ -609,14 +625,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|initListView (ListView<String> listViewToInit, Supplier<ListProperty<String>> backingList)
+DECL|method|initListView (ListView<T> listViewToInit, Supplier<ListProperty<T>> backingList)
 specifier|private
+parameter_list|<
+name|T
+parameter_list|>
 name|void
 name|initListView
 parameter_list|(
 name|ListView
 argument_list|<
-name|String
+name|T
 argument_list|>
 name|listViewToInit
 parameter_list|,
@@ -624,7 +643,7 @@ name|Supplier
 argument_list|<
 name|ListProperty
 argument_list|<
-name|String
+name|T
 argument_list|>
 argument_list|>
 name|backingList
@@ -652,13 +671,13 @@ name|selectFirst
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getSelectedFieldName ()
+DECL|method|getSelectedField ()
 specifier|private
 name|Optional
 argument_list|<
-name|String
+name|Field
 argument_list|>
-name|getSelectedFieldName
+name|getSelectedField
 parameter_list|()
 block|{
 return|return
@@ -666,7 +685,7 @@ name|Optional
 operator|.
 name|of
 argument_list|(
-name|fieldNamesListView
+name|fieldsListView
 operator|.
 name|getSelectionModel
 argument_list|()

@@ -130,7 +130,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
 import|;
 end_import
 
@@ -144,7 +144,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -329,7 +331,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Towards Application Portability in Platform as a Service"
 argument_list|)
@@ -376,7 +380,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Pro WF: Windows Workflow in NET 3.5"
 argument_list|)
@@ -415,12 +421,9 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|INPROCEEDINGS
-operator|.
-name|getName
-argument_list|()
+name|InProceedings
 argument_list|)
 expr_stmt|;
 name|entry
@@ -434,7 +437,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -445,7 +448,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -456,7 +459,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|BOOKTITLE
 argument_list|,
@@ -467,7 +470,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -478,7 +481,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|,

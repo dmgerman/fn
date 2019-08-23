@@ -82,7 +82,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibEntry
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -96,7 +98,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|FieldFactory
 import|;
 end_import
 
@@ -110,7 +114,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|field
+operator|.
+name|InternalField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -167,7 +189,7 @@ specifier|private
 specifier|final
 name|Multimap
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|ValueChecker
 argument_list|>
@@ -214,7 +236,7 @@ specifier|private
 specifier|static
 name|Multimap
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|ValueChecker
 argument_list|>
@@ -238,7 +260,7 @@ parameter_list|)
 block|{
 name|ArrayListMultimap
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|ValueChecker
 argument_list|>
@@ -255,10 +277,10 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
-name|InternalBibtexFields
+name|FieldFactory
 operator|.
 name|getJournalNameFields
 argument_list|()
@@ -280,10 +302,10 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
-name|InternalBibtexFields
+name|FieldFactory
 operator|.
 name|getBookNameFields
 argument_list|()
@@ -305,10 +327,10 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
-name|InternalBibtexFields
+name|FieldFactory
 operator|.
 name|getPersonNameFields
 argument_list|()
@@ -332,7 +354,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|BOOKTITLE
 argument_list|,
@@ -345,7 +367,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -358,7 +380,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -373,7 +395,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|,
@@ -386,7 +408,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|EDITION
 argument_list|,
@@ -403,7 +425,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 argument_list|,
@@ -420,7 +442,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|HOWPUBLISHED
 argument_list|,
@@ -435,7 +457,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ISBN
 argument_list|,
@@ -448,7 +470,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ISSN
 argument_list|,
@@ -461,7 +483,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|MONTH
 argument_list|,
@@ -476,7 +498,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|MONTHFILED
 argument_list|,
@@ -491,7 +513,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|NOTE
 argument_list|,
@@ -506,7 +528,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|,
@@ -521,7 +543,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|URL
 argument_list|,
@@ -534,7 +556,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -547,7 +569,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEY
 argument_list|,
@@ -562,7 +584,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|BibEntry
+name|InternalField
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -585,7 +607,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DATE
 argument_list|,
@@ -598,7 +620,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|URLDATE
 argument_list|,
@@ -611,7 +633,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|EVENTDATE
 argument_list|,
@@ -624,7 +646,7 @@ name|fieldCheckers
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ORIGDATE
 argument_list|,
@@ -684,7 +706,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|getForField (String field)
+DECL|method|getForField (Field field)
 specifier|public
 name|Collection
 argument_list|<
@@ -692,7 +714,7 @@ name|ValueChecker
 argument_list|>
 name|getForField
 parameter_list|(
-name|String
+name|Field
 name|field
 parameter_list|)
 block|{

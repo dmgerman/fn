@@ -14,6 +14,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|beans
@@ -1038,6 +1058,24 @@ parameter_list|()
 block|{
 return|return
 literal|true
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getRestartWarnings ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getRestartWarnings
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 return|;
 block|}
 DECL|method|pushToApplicationSettings ()

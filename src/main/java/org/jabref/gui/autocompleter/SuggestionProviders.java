@@ -28,16 +28,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
 import|;
 end_import
@@ -49,6 +39,16 @@ operator|.
 name|util
 operator|.
 name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -104,7 +104,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -117,6 +119,8 @@ operator|.
 name|model
 operator|.
 name|entry
+operator|.
+name|field
 operator|.
 name|FieldProperty
 import|;
@@ -132,7 +136,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|InternalBibtexFields
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -148,7 +154,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|AutoCompleteSuggestionProvider
 argument_list|<
@@ -186,9 +192,9 @@ argument_list|(
 name|preferences
 argument_list|)
 expr_stmt|;
-name|List
+name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|completeFields
 init|=
@@ -199,7 +205,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|String
+name|Field
 name|field
 range|:
 name|completeFields
@@ -231,7 +237,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getForField (String fieldName)
+DECL|method|getForField (Field field)
 specifier|public
 name|AutoCompleteSuggestionProvider
 argument_list|<
@@ -239,8 +245,8 @@ name|?
 argument_list|>
 name|getForField
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|)
 block|{
 return|return
@@ -248,7 +254,7 @@ name|providers
 operator|.
 name|get
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 return|;
 block|}
@@ -312,7 +318,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|initalizeSuggestionProvider (String fieldName, AutoCompletePreferences preferences, JournalAbbreviationLoader abbreviationLoader)
+DECL|method|initalizeSuggestionProvider (Field field, AutoCompletePreferences preferences, JournalAbbreviationLoader abbreviationLoader)
 specifier|private
 name|AutoCompleteSuggestionProvider
 argument_list|<
@@ -320,8 +326,8 @@ name|?
 argument_list|>
 name|initalizeSuggestionProvider
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|AutoCompletePreferences
 name|preferences
@@ -330,14 +336,20 @@ name|JournalAbbreviationLoader
 name|abbreviationLoader
 parameter_list|)
 block|{
+name|Set
+argument_list|<
+name|FieldProperty
+argument_list|>
+name|fieldProperties
+init|=
+name|field
+operator|.
+name|getProperties
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
-name|InternalBibtexFields
-operator|.
-name|getFieldProperties
-argument_list|(
-name|fieldName
-argument_list|)
+name|fieldProperties
 operator|.
 name|contains
 argument_list|(
@@ -351,19 +363,14 @@ return|return
 operator|new
 name|PersonNameSuggestionProvider
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 return|;
 block|}
 elseif|else
 if|if
 condition|(
-name|InternalBibtexFields
-operator|.
-name|getFieldProperties
-argument_list|(
-name|fieldName
-argument_list|)
+name|fieldProperties
 operator|.
 name|contains
 argument_list|(
@@ -382,12 +389,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|InternalBibtexFields
-operator|.
-name|getFieldProperties
-argument_list|(
-name|fieldName
-argument_list|)
+name|fieldProperties
 operator|.
 name|contains
 argument_list|(
@@ -396,13 +398,13 @@ operator|.
 name|JOURNAL_NAME
 argument_list|)
 operator|||
-name|FieldName
+name|StandardField
 operator|.
 name|PUBLISHER
 operator|.
 name|equals
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 condition|)
 block|{
@@ -410,7 +412,7 @@ return|return
 operator|new
 name|JournalsSuggestionProvider
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|preferences
 argument_list|,
@@ -424,7 +426,7 @@ return|return
 operator|new
 name|WordSuggestionProvider
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 return|;
 block|}

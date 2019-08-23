@@ -60,6 +60,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|strings
 operator|.
 name|StringUtil
@@ -123,7 +139,7 @@ decl_stmt|;
 DECL|field|field
 specifier|private
 specifier|final
-name|String
+name|Field
 name|field
 decl_stmt|;
 DECL|field|oldValue
@@ -138,14 +154,14 @@ specifier|final
 name|String
 name|newValue
 decl_stmt|;
-DECL|method|UndoableFieldChange (BibEntry entry, String field, String oldValue, String newValue)
+DECL|method|UndoableFieldChange (BibEntry entry, Field field, String oldValue, String newValue)
 specifier|public
 name|UndoableFieldChange
 parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|,
 name|String
@@ -232,6 +248,9 @@ operator|.
 name|boldHTML
 argument_list|(
 name|field
+operator|.
+name|getDisplayName
+argument_list|()
 argument_list|)
 argument_list|,
 name|StringUtil

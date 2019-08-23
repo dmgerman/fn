@@ -108,6 +108,16 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|undo
@@ -166,18 +176,6 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|EntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|database
 operator|.
 name|BibDatabaseContext
@@ -209,6 +207,20 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntryType
 import|;
 end_import
 
@@ -289,7 +301,7 @@ name|MenuItem
 argument_list|(
 name|type
 operator|.
-name|getName
+name|getDisplayName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -477,9 +489,11 @@ name|populate
 argument_list|(
 name|items
 argument_list|,
-name|EntryTypes
+name|Globals
 operator|.
-name|getAllValues
+name|entryTypesManager
+operator|.
+name|getAllTypes
 argument_list|(
 name|BibDatabaseMode
 operator|.
@@ -503,7 +517,9 @@ argument_list|(
 literal|"Custom"
 argument_list|)
 argument_list|,
-name|EntryTypes
+name|Globals
+operator|.
+name|entryTypesManager
 operator|.
 name|getAllCustomTypes
 argument_list|(
@@ -577,7 +593,9 @@ argument_list|(
 literal|"Custom"
 argument_list|)
 argument_list|,
-name|EntryTypes
+name|Globals
+operator|.
+name|entryTypesManager
 operator|.
 name|getAllCustomTypes
 argument_list|(
@@ -593,7 +611,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|populateSubMenu (ObservableList<MenuItem> items, String text, List<EntryType> entryTypes, BibEntry entry, CountingUndoManager undoManager)
+DECL|method|populateSubMenu (ObservableList<MenuItem> items, String text, List<BibEntryType> entryTypes, BibEntry entry, CountingUndoManager undoManager)
 specifier|private
 name|void
 name|populateSubMenu
@@ -609,7 +627,7 @@ name|text
 parameter_list|,
 name|List
 argument_list|<
-name|EntryType
+name|BibEntryType
 argument_list|>
 name|entryTypes
 parameter_list|,
@@ -667,7 +685,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|populate (ObservableList<MenuItem> items, Collection<EntryType> types, BibEntry entry, UndoManager undoManager)
+DECL|method|populate (ObservableList<MenuItem> items, Collection<BibEntryType> types, BibEntry entry, UndoManager undoManager)
 specifier|private
 name|void
 name|populate
@@ -680,7 +698,7 @@ name|items
 parameter_list|,
 name|Collection
 argument_list|<
-name|EntryType
+name|BibEntryType
 argument_list|>
 name|types
 parameter_list|,
@@ -693,7 +711,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|EntryType
+name|BibEntryType
 name|type
 range|:
 name|types
@@ -706,6 +724,9 @@ argument_list|(
 name|createMenuItem
 argument_list|(
 name|type
+operator|.
+name|getType
+argument_list|()
 argument_list|,
 name|entry
 argument_list|,
@@ -715,7 +736,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|populate (Menu menu, Collection<EntryType> types, BibEntry entry, UndoManager undoManager)
+DECL|method|populate (Menu menu, Collection<BibEntryType> types, BibEntry entry, UndoManager undoManager)
 specifier|private
 name|void
 name|populate
@@ -725,7 +746,7 @@ name|menu
 parameter_list|,
 name|Collection
 argument_list|<
-name|EntryType
+name|BibEntryType
 argument_list|>
 name|types
 parameter_list|,

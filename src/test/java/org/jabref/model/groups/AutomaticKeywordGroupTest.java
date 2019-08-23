@@ -50,6 +50,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|jupiter
@@ -104,7 +120,9 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|','
 argument_list|,
@@ -120,7 +138,9 @@ argument_list|()
 operator|.
 name|withField
 argument_list|(
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A, B"
 argument_list|)
@@ -153,7 +173,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"A"
 argument_list|,
@@ -183,7 +205,9 @@ name|GroupHierarchyType
 operator|.
 name|INCLUDING
 argument_list|,
-literal|"keywords"
+name|StandardField
+operator|.
+name|KEYWORDS
 argument_list|,
 literal|"B"
 argument_list|,

@@ -360,7 +360,7 @@ argument_list|()
 argument_list|,
 name|message
 operator|.
-name|getFieldName
+name|getField
 argument_list|()
 argument_list|)
 argument_list|)
@@ -459,7 +459,10 @@ operator|.
 name|getValue
 argument_list|()
 operator|.
-name|getFieldName
+name|getField
+argument_list|()
+operator|.
+name|getDisplayName
 argument_list|()
 argument_list|)
 argument_list|)

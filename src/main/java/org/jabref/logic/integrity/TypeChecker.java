@@ -96,7 +96,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -132,7 +148,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|)
@@ -155,9 +171,11 @@ return|;
 block|}
 if|if
 condition|(
-literal|"proceedings"
+name|StandardEntryType
 operator|.
-name|equalsIgnoreCase
+name|Proceedings
+operator|.
+name|equals
 argument_list|(
 name|entry
 operator|.
@@ -183,7 +201,7 @@ argument_list|)
 argument_list|,
 name|entry
 argument_list|,
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|)

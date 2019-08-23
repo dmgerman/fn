@@ -50,6 +50,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -76,11 +86,15 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|jabref
 operator|.
-name|StringJoiner
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -260,6 +274,41 @@ name|key
 argument_list|)
 return|;
 block|}
+comment|/**      * Return a collection of citations using a BibEntry as reference.      */
+DECL|method|getCitationsByKey (BibEntry entry)
+specifier|public
+name|Collection
+argument_list|<
+name|Citation
+argument_list|>
+name|getCitationsByKey
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|entry
+operator|.
+name|getCiteKeyOptional
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|this
+operator|::
+name|getCitationsByKey
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/**      * Add a list of files to fileList or nestedFiles, depending on whether this is the first list.      */
 DECL|method|addFiles (List<Path> texFiles)
 specifier|public
@@ -361,63 +410,42 @@ name|toString
 parameter_list|()
 block|{
 return|return
-operator|new
-name|StringJoiner
-argument_list|(
-literal|", "
-argument_list|,
-name|getClass
-argument_list|()
+name|String
 operator|.
-name|getSimpleName
-argument_list|()
-operator|+
-literal|"["
-argument_list|,
-literal|"]"
-argument_list|)
-operator|.
-name|add
+name|format
 argument_list|(
-literal|"fileList = "
-operator|+
+literal|"TexParserResult{fileList=%s, nestedFiles=%s, citations=%s}"
+argument_list|,
+name|this
+operator|.
 name|fileList
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"nestedFiles = "
-operator|+
 name|nestedFiles
-argument_list|)
+argument_list|,
+name|this
 operator|.
-name|add
-argument_list|(
-literal|"citations = "
-operator|+
 name|citations
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 annotation|@
 name|Override
-DECL|method|equals (Object o)
+DECL|method|equals (Object obj)
 specifier|public
 name|boolean
 name|equals
 parameter_list|(
 name|Object
-name|o
+name|obj
 parameter_list|)
 block|{
 if|if
 condition|(
 name|this
 operator|==
-name|o
+name|obj
 condition|)
 block|{
 return|return
@@ -426,14 +454,14 @@ return|;
 block|}
 if|if
 condition|(
-name|o
+name|obj
 operator|==
 literal|null
 operator|||
 name|getClass
 argument_list|()
 operator|!=
-name|o
+name|obj
 operator|.
 name|getClass
 argument_list|()
@@ -449,7 +477,7 @@ init|=
 operator|(
 name|TexParserResult
 operator|)
-name|o
+name|obj
 decl_stmt|;
 return|return
 name|Objects

@@ -323,10 +323,10 @@ specifier|private
 name|Path
 name|exportedFile
 decl_stmt|;
-DECL|field|msBibExportFormat
+DECL|field|exporter
 specifier|private
 name|MSBibExporter
-name|msBibExportFormat
+name|exporter
 decl_stmt|;
 DECL|field|testImporter
 specifier|private
@@ -346,7 +346,7 @@ name|IOException
 throws|,
 name|URISyntaxException
 block|{
-comment|//we have to point it to one existing file, otherwise it will return the default class path
+comment|// we have to point it to one existing file, otherwise it will return the default class path
 name|resourceDir
 operator|=
 name|Paths
@@ -464,7 +464,7 @@ name|StandardCharsets
 operator|.
 name|UTF_8
 expr_stmt|;
-name|msBibExportFormat
+name|exporter
 operator|=
 operator|new
 name|MSBibExporter
@@ -590,7 +590,7 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|msBibExportFormat
+name|exporter
 operator|.
 name|export
 argument_list|(

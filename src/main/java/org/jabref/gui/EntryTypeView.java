@@ -32,6 +32,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|application
@@ -138,6 +148,16 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|util
@@ -210,7 +230,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|EntryTypes
+name|database
+operator|.
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -222,9 +244,9 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|database
+name|entry
 operator|.
-name|BibDatabaseMode
+name|BibEntryType
 import|;
 end_import
 
@@ -621,7 +643,10 @@ condition|)
 block|{
 name|setEntryTypeForReturnAndClose
 argument_list|(
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -629,7 +654,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addEntriesToPane (FlowPane pane, Collection<? extends EntryType> entries)
+DECL|method|addEntriesToPane (FlowPane pane, Collection<? extends BibEntryType> entries)
 specifier|private
 name|void
 name|addEntriesToPane
@@ -641,14 +666,14 @@ name|Collection
 argument_list|<
 name|?
 extends|extends
-name|EntryType
+name|BibEntryType
 argument_list|>
 name|entries
 parameter_list|)
 block|{
 for|for
 control|(
-name|EntryType
+name|BibEntryType
 name|entryType
 range|:
 name|entries
@@ -662,7 +687,10 @@ name|Button
 argument_list|(
 name|entryType
 operator|.
-name|getName
+name|getType
+argument_list|()
+operator|.
+name|getDisplayName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -681,7 +709,12 @@ name|event
 lambda|->
 name|setEntryTypeForReturnAndClose
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|entryType
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -899,11 +932,13 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|EntryType
+name|BibEntryType
 argument_list|>
 name|customTypes
 init|=
-name|EntryTypes
+name|Globals
+operator|.
+name|entryTypesManager
 operator|.
 name|getAllCustomTypes
 argument_list|(
@@ -968,11 +1003,13 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|EntryType
+name|BibEntryType
 argument_list|>
 name|customTypes
 init|=
-name|EntryTypes
+name|Globals
+operator|.
+name|entryTypesManager
 operator|.
 name|getAllCustomTypes
 argument_list|(
@@ -1070,18 +1107,33 @@ name|selectAll
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setEntryTypeForReturnAndClose (EntryType entryType)
+DECL|method|setEntryTypeForReturnAndClose (Optional<BibEntryType> entryType)
 specifier|private
 name|void
 name|setEntryTypeForReturnAndClose
 parameter_list|(
-name|EntryType
+name|Optional
+argument_list|<
+name|BibEntryType
+argument_list|>
 name|entryType
 parameter_list|)
 block|{
 name|type
 operator|=
 name|entryType
+operator|.
+name|map
+argument_list|(
+name|BibEntryType
+operator|::
+name|getType
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 name|viewModel
 operator|.

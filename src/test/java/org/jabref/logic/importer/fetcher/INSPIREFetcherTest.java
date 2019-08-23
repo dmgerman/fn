@@ -86,7 +86,39 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -243,9 +275,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|MASTERSTHESIS
+name|MastersThesis
 argument_list|)
 decl_stmt|;
 name|expected
@@ -259,7 +291,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Diez, Tobias"
 argument_list|)
@@ -268,7 +302,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Slice theorem for Fr\\'echet group actions and covariant symplectic field theory"
 argument_list|)
@@ -277,7 +313,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"school"
+name|StandardField
+operator|.
+name|SCHOOL
 argument_list|,
 literal|"Leipzig U."
 argument_list|)
@@ -286,7 +324,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2013"
 argument_list|)
@@ -295,7 +335,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|StandardField
+operator|.
+name|URL
 argument_list|,
 literal|"https://inspirehep.net/record/1295621/files/arXiv:1405.2249.pdf"
 argument_list|)
@@ -304,7 +346,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"eprint"
+name|StandardField
+operator|.
+name|EPRINT
 argument_list|,
 literal|"1405.2249"
 argument_list|)
@@ -313,7 +357,9 @@ name|expected
 operator|.
 name|setField
 argument_list|(
-literal|"archivePrefix"
+name|StandardField
+operator|.
+name|ARCHIVEPREFIX
 argument_list|,
 literal|"arXiv"
 argument_list|)
@@ -322,7 +368,11 @@ name|expected
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"primaryClass"
+argument_list|)
 argument_list|,
 literal|"math-ph"
 argument_list|)

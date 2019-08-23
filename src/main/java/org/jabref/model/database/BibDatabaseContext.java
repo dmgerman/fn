@@ -194,7 +194,25 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -906,7 +924,7 @@ block|{
 return|return
 name|getFileDirectories
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|FILE
 argument_list|,
@@ -947,8 +965,8 @@ name|findFirst
 argument_list|()
 return|;
 block|}
-comment|/**      * Look up the directories set up for the given field type for this database. If no directory is set up, return that      * defined in global preferences. There can be up to three directory definitions for these files: the database's      * metadata can specify a general directory and/or a user-specific directory or the preferences can specify one.<p>      * The settings are prioritized in the following order and the first defined setting is used:      *<ol>      *<li>metadata</li>      *<li>user-specific directory</li>      *<li>preferences directory</li>      *<li>BIB file directory</li>      *</ol>      *      * @param fieldName   The field type      * @param preferences The fileDirectory preferences      * @return The default directory for this field type.      */
-DECL|method|getFileDirectories (String fieldName, FilePreferences preferences)
+comment|/**      * Look up the directories set up for the given field type for this database. If no directory is set up, return that      * defined in global preferences. There can be up to three directory definitions for these files: the database's      * metadata can specify a general directory and/or a user-specific directory or the preferences can specify one.<p>      * The settings are prioritized in the following order and the first defined setting is used:      *<ol>      *<li>metadata</li>      *<li>user-specific directory</li>      *<li>preferences directory</li>      *<li>BIB file directory</li>      *</ol>      *      * @param field   The field      * @param preferences The fileDirectory preferences      * @return The default directory for this field type.      */
+DECL|method|getFileDirectories (Field field, FilePreferences preferences)
 specifier|public
 name|List
 argument_list|<
@@ -956,8 +974,8 @@ name|String
 argument_list|>
 name|getFileDirectories
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|FilePreferences
 name|preferences
@@ -1026,7 +1044,7 @@ name|preferences
 operator|.
 name|getFileDirectory
 argument_list|(
-name|fieldName
+name|field
 argument_list|)
 operator|.
 name|ifPresent

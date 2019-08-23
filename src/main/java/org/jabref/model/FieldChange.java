@@ -34,6 +34,22 @@ name|BibEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class is used in the instance of a field being modified, removed or added.  */
 end_comment
@@ -53,7 +69,7 @@ decl_stmt|;
 DECL|field|field
 specifier|private
 specifier|final
-name|String
+name|Field
 name|field
 decl_stmt|;
 DECL|field|oldValue
@@ -68,14 +84,14 @@ specifier|final
 name|String
 name|newValue
 decl_stmt|;
-DECL|method|FieldChange (BibEntry entry, String field, String oldValue, String newValue)
+DECL|method|FieldChange (BibEntry entry, Field field, String oldValue, String newValue)
 specifier|public
 name|FieldChange
 parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|,
-name|String
+name|Field
 name|field
 parameter_list|,
 name|String
@@ -124,7 +140,7 @@ return|;
 block|}
 DECL|method|getField ()
 specifier|public
-name|String
+name|Field
 name|getField
 parameter_list|()
 block|{
@@ -342,24 +358,17 @@ operator|==
 literal|null
 condition|)
 block|{
-if|if
-condition|(
+return|return
 name|other
 operator|.
 name|oldValue
-operator|!=
+operator|==
 literal|null
-condition|)
-block|{
-return|return
-literal|false
 return|;
 block|}
-block|}
-elseif|else
-if|if
-condition|(
-operator|!
+else|else
+block|{
+return|return
 name|oldValue
 operator|.
 name|equals
@@ -368,15 +377,8 @@ name|other
 operator|.
 name|oldValue
 argument_list|)
-condition|)
-block|{
-return|return
-literal|false
 return|;
 block|}
-return|return
-literal|true
-return|;
 block|}
 return|return
 literal|false

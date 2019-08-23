@@ -136,6 +136,22 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -180,12 +196,12 @@ specifier|private
 name|EditorTextField
 name|textField
 decl_stmt|;
-DECL|method|JournalEditor (String fieldName, JournalAbbreviationRepository journalAbbreviationRepository, JabRefPreferences preferences, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
+DECL|method|JournalEditor (Field field, JournalAbbreviationRepository journalAbbreviationRepository, JabRefPreferences preferences, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
 specifier|public
 name|JournalEditor
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|JournalAbbreviationRepository
 name|journalAbbreviationRepository
@@ -210,7 +226,7 @@ operator|=
 operator|new
 name|JournalEditorViewModel
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|suggestionProvider
 argument_list|,

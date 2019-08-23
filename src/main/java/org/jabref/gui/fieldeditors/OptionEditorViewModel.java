@@ -60,6 +60,22 @@ name|FieldCheckers
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_class
 DECL|class|OptionEditorViewModel
 specifier|public
@@ -72,12 +88,12 @@ parameter_list|>
 extends|extends
 name|AbstractEditorViewModel
 block|{
-DECL|method|OptionEditorViewModel (String fieldName, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
+DECL|method|OptionEditorViewModel (Field field, AutoCompleteSuggestionProvider<?> suggestionProvider, FieldCheckers fieldCheckers)
 specifier|public
 name|OptionEditorViewModel
 parameter_list|(
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 name|AutoCompleteSuggestionProvider
 argument_list|<
@@ -91,7 +107,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|suggestionProvider
 argument_list|,

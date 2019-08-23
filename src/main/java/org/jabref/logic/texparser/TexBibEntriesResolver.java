@@ -70,7 +70,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -169,10 +171,9 @@ control|)
 block|{
 if|if
 condition|(
-operator|!
 name|result
 operator|.
-name|checkEntryNewDatabase
+name|isNotKeyIntoNewEntries
 argument_list|(
 name|key
 argument_list|)
@@ -253,7 +254,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CROSSREF
 argument_list|)
@@ -265,10 +266,9 @@ lambda|->
 block|{
 if|if
 condition|(
-operator|!
 name|result
 operator|.
-name|checkEntryNewDatabase
+name|isNotKeyIntoNewEntries
 argument_list|(
 name|crossRef
 argument_list|)

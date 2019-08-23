@@ -176,7 +176,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|EntryType
 import|;
 end_import
 
@@ -190,7 +190,53 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|EntryTypeFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -451,14 +497,16 @@ argument_list|(
 literal|"__::__"
 argument_list|)
 decl_stmt|;
-name|String
+name|EntryType
 name|type
 init|=
-literal|""
+name|StandardEntryType
+operator|.
+name|Misc
 decl_stmt|;
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -564,7 +612,7 @@ name|h
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -624,7 +672,7 @@ name|h
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|EDITOR
 argument_list|,
@@ -657,7 +705,7 @@ name|h
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -700,7 +748,7 @@ name|h
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|,
@@ -742,7 +790,7 @@ name|h
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 argument_list|,
@@ -806,7 +854,7 @@ name|h
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNAL
 argument_list|,
@@ -866,7 +914,7 @@ name|h
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -937,7 +985,7 @@ name|h
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PAGES
 argument_list|,
@@ -948,7 +996,7 @@ name|h
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|VOLUME
 argument_list|,
@@ -969,7 +1017,7 @@ name|h
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ISSUE
 argument_list|,
@@ -1036,7 +1084,7 @@ name|h
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PUBLISHER
 argument_list|,
@@ -1113,7 +1161,7 @@ name|h
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -1148,7 +1196,7 @@ name|h
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|SCHOOL
 argument_list|,
@@ -1189,7 +1237,9 @@ condition|)
 block|{
 name|type
 operator|=
-literal|"book"
+name|StandardEntryType
+operator|.
+name|Book
 expr_stmt|;
 block|}
 elseif|else
@@ -1205,7 +1255,9 @@ condition|)
 block|{
 name|type
 operator|=
-literal|"phdthesis"
+name|StandardEntryType
+operator|.
+name|PhdThesis
 expr_stmt|;
 block|}
 elseif|else
@@ -1222,15 +1274,20 @@ argument_list|)
 operator|.
 name|contains
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|JOURNAL
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 condition|)
 block|{
 name|type
 operator|=
-literal|"article"
+name|StandardEntryType
+operator|.
+name|Article
 expr_stmt|;
 block|}
 elseif|else
@@ -1253,7 +1310,9 @@ condition|)
 block|{
 name|type
 operator|=
-literal|"incollection"
+name|StandardEntryType
+operator|.
+name|InCollection
 expr_stmt|;
 comment|// This entry type contains page numbers and booktitle in the
 comment|// title field.
@@ -1266,6 +1325,10 @@ else|else
 block|{
 name|type
 operator|=
+name|EntryTypeFactory
+operator|.
+name|parse
+argument_list|(
 name|frest
 operator|.
 name|replace
@@ -1273,6 +1336,7 @@ argument_list|(
 literal|" "
 argument_list|,
 literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1290,7 +1354,7 @@ name|h
 operator|.
 name|get
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|)
@@ -1331,7 +1395,7 @@ name|h
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -1354,12 +1418,7 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
-operator|.
-name|getTypeOrDefault
-argument_list|(
 name|type
-argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// create one here

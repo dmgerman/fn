@@ -34,6 +34,22 @@ name|Optional
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_interface
 DECL|interface|Identifier
 specifier|public
@@ -41,7 +57,7 @@ interface|interface
 name|Identifier
 block|{
 DECL|method|getDefaultField ()
-name|String
+name|Field
 name|getDefaultField
 parameter_list|()
 function_decl|;

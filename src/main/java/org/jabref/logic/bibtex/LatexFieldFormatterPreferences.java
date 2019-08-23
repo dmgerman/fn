@@ -32,6 +32,22 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_class
 DECL|class|LatexFieldFormatterPreferences
 specifier|public
@@ -49,7 +65,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|doNotResolveStringsFor
 decl_stmt|;
@@ -68,7 +84,7 @@ specifier|final
 name|FieldContentParserPreferences
 name|fieldContentParserPreferences
 decl_stmt|;
-DECL|method|LatexFieldFormatterPreferences (boolean resolveStringsAllFields, List<String> doNotResolveStringsFor, FieldContentParserPreferences fieldContentParserPreferences)
+DECL|method|LatexFieldFormatterPreferences (boolean resolveStringsAllFields, List<Field> doNotResolveStringsFor, FieldContentParserPreferences fieldContentParserPreferences)
 specifier|public
 name|LatexFieldFormatterPreferences
 parameter_list|(
@@ -77,7 +93,7 @@ name|resolveStringsAllFields
 parameter_list|,
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|doNotResolveStringsFor
 parameter_list|,
@@ -139,7 +155,7 @@ DECL|method|getDoNotResolveStringsFor ()
 specifier|public
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|getDoNotResolveStringsFor
 parameter_list|()

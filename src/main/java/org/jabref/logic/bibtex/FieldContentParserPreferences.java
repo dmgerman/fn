@@ -32,6 +32,22 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
 begin_class
 DECL|class|FieldContentParserPreferences
 specifier|public
@@ -43,7 +59,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|nonWrappableFields
 decl_stmt|;
@@ -63,13 +79,13 @@ name|emptyList
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|FieldContentParserPreferences (List<String> nonWrappableFields)
+DECL|method|FieldContentParserPreferences (List<Field> nonWrappableFields)
 specifier|public
 name|FieldContentParserPreferences
 parameter_list|(
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|nonWrappableFields
 parameter_list|)
@@ -85,7 +101,7 @@ DECL|method|getNonWrappableFields ()
 specifier|public
 name|List
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|getNonWrappableFields
 parameter_list|()

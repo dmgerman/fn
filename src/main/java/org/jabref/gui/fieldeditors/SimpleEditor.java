@@ -150,6 +150,22 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -178,13 +194,13 @@ specifier|final
 name|TextInputControl
 name|textInput
 decl_stmt|;
-DECL|method|SimpleEditor (final String fieldName, final AutoCompleteSuggestionProvider<?> suggestionProvider, final FieldCheckers fieldCheckers, final JabRefPreferences preferences, final boolean isSingleLine)
+DECL|method|SimpleEditor (final Field field, final AutoCompleteSuggestionProvider<?> suggestionProvider, final FieldCheckers fieldCheckers, final JabRefPreferences preferences, final boolean isSingleLine)
 specifier|public
 name|SimpleEditor
 parameter_list|(
 specifier|final
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 specifier|final
 name|AutoCompleteSuggestionProvider
@@ -213,7 +229,7 @@ operator|=
 operator|new
 name|SimpleEditorViewModel
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|suggestionProvider
 argument_list|,
@@ -341,13 +357,13 @@ name|textInput
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SimpleEditor (final String fieldName, final AutoCompleteSuggestionProvider<?> suggestionProvider, final FieldCheckers fieldCheckers, final JabRefPreferences preferences)
+DECL|method|SimpleEditor (final Field field, final AutoCompleteSuggestionProvider<?> suggestionProvider, final FieldCheckers fieldCheckers, final JabRefPreferences preferences)
 specifier|public
 name|SimpleEditor
 parameter_list|(
 specifier|final
-name|String
-name|fieldName
+name|Field
+name|field
 parameter_list|,
 specifier|final
 name|AutoCompleteSuggestionProvider
@@ -367,7 +383,7 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|fieldName
+name|field
 argument_list|,
 name|suggestionProvider
 argument_list|,

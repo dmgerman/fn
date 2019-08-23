@@ -151,7 +151,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"com.mysql.jdbc.Driver"
+literal|"org.mariadb.jdbc.Driver"
 argument_list|,
 name|DBMSType
 operator|.
@@ -269,7 +269,7 @@ parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"jdbc:mysql://localhost:3306/xe"
+literal|"jdbc:mariadb://localhost:3306/xe"
 argument_list|,
 name|DBMSType
 operator|.

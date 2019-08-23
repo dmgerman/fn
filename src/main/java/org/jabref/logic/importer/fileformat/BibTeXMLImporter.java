@@ -338,7 +338,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
 import|;
 end_import
 
@@ -352,7 +352,41 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|FieldFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -613,7 +647,7 @@ argument_list|()
 decl_stmt|;
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -653,9 +687,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 expr_stmt|;
 name|parse
@@ -684,9 +718,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|BOOK
+name|Book
 argument_list|)
 expr_stmt|;
 name|parse
@@ -715,9 +749,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|BOOKLET
+name|Booklet
 argument_list|)
 expr_stmt|;
 name|parse
@@ -746,9 +780,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|CONFERENCE
+name|Conference
 argument_list|)
 expr_stmt|;
 name|parse
@@ -777,9 +811,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|INBOOK
+name|InBook
 argument_list|)
 expr_stmt|;
 name|parseInbook
@@ -808,9 +842,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|INCOLLECTION
+name|InCollection
 argument_list|)
 expr_stmt|;
 name|Incollection
@@ -835,7 +869,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CHAPTER
 argument_list|,
@@ -874,9 +908,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|INPROCEEDINGS
+name|InProceedings
 argument_list|)
 expr_stmt|;
 name|parse
@@ -905,9 +939,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|MANUAL
+name|Manual
 argument_list|)
 expr_stmt|;
 name|parse
@@ -936,9 +970,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|MASTERSTHESIS
+name|MastersThesis
 argument_list|)
 expr_stmt|;
 name|parse
@@ -967,9 +1001,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|MISC
+name|Misc
 argument_list|)
 expr_stmt|;
 name|parse
@@ -998,9 +1032,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|PHDTHESIS
+name|PhdThesis
 argument_list|)
 expr_stmt|;
 name|parse
@@ -1029,9 +1063,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|PROCEEDINGS
+name|Proceedings
 argument_list|)
 expr_stmt|;
 name|parse
@@ -1060,9 +1094,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|TECHREPORT
+name|TechReport
 argument_list|)
 expr_stmt|;
 name|parse
@@ -1091,9 +1125,9 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|UNPUBLISHED
+name|Unpublished
 argument_list|)
 expr_stmt|;
 name|parse
@@ -1177,7 +1211,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * We use a generic method and not work on the real classes, because they all have the same behaviour. They call all get methods      * that are needed and use the return value. So this will prevent writing similar methods for every type.      *<p>      * In this method, all<Code>get</Code> methods that entryType has will be used and their value will be put to fields,      * if it is not null. So for example if entryType has the method<Code>getAbstract</Code>, then      * "abstract" will be put as key to fields and the value of<Code>getAbstract</Code> will be put as value to fields.      * Some<Code>get</Code> methods shouldn't be mapped to fields, so<Code>getClass</Code> for example will be skipped.      *      * @param entryType This can be all possible BibTeX types. It contains all fields of the entry and their values.      * @param fields A map where the name and the value of all fields that the entry contains will be put.      */
-DECL|method|parse (T entryType, Map<String, String> fields)
+DECL|method|parse (T entryType, Map<Field, String> fields)
 specifier|private
 parameter_list|<
 name|T
@@ -1190,7 +1224,7 @@ name|entryType
 parameter_list|,
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -1312,6 +1346,10 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|method
 operator|.
 name|getName
@@ -1322,6 +1360,7 @@ argument_list|(
 literal|"get"
 argument_list|,
 literal|""
+argument_list|)
 argument_list|)
 argument_list|,
 operator|(
@@ -1379,7 +1418,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Inbook needs a special Treatment, because<Code>inbook.getContent()</Code> returns a list of<Code>JAXBElements</Code>.      * The other types have just<Code>get</Code> methods, which return the values as Strings.      */
-DECL|method|parseInbook (Inbook inbook, Map<String, String> fields)
+DECL|method|parseInbook (Inbook inbook, Map<Field, String> fields)
 specifier|private
 name|void
 name|parseInbook
@@ -1389,7 +1428,7 @@ name|inbook
 parameter_list|,
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -1421,9 +1460,13 @@ range|:
 name|content
 control|)
 block|{
-name|String
-name|localName
+name|Field
+name|field
 init|=
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|element
 operator|.
 name|getName
@@ -1431,6 +1474,7 @@ argument_list|()
 operator|.
 name|getLocalPart
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|Object
 name|elementValue
@@ -1459,7 +1503,7 @@ name|putIfValueNotNull
 argument_list|(
 name|fields
 argument_list|,
-name|localName
+name|field
 argument_list|,
 name|value
 argument_list|)
@@ -1483,13 +1527,13 @@ name|elementValue
 decl_stmt|;
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|NUMBER
 operator|.
 name|equals
 argument_list|(
-name|localName
+name|field
 argument_list|)
 condition|)
 block|{
@@ -1497,7 +1541,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|NUMBER
 argument_list|,
@@ -1513,13 +1557,13 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|CHAPTER
 operator|.
 name|equals
 argument_list|(
-name|localName
+name|field
 argument_list|)
 condition|)
 block|{
@@ -1527,7 +1571,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|CHAPTER
 argument_list|,
@@ -1559,13 +1603,13 @@ name|elementValue
 decl_stmt|;
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 operator|.
 name|equals
 argument_list|(
-name|localName
+name|field
 argument_list|)
 condition|)
 block|{
@@ -1600,14 +1644,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|putYear (Map<String, String> fields, XMLGregorianCalendar year)
+DECL|method|putYear (Map<Field, String> fields, XMLGregorianCalendar year)
 specifier|private
 name|void
 name|putYear
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -1628,7 +1672,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -1642,14 +1686,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|putNumber (Map<String, String> fields, BigInteger number)
+DECL|method|putNumber (Map<Field, String> fields, BigInteger number)
 specifier|private
 name|void
 name|putNumber
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
@@ -1670,7 +1714,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|NUMBER
 argument_list|,
@@ -1684,21 +1728,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|putIfValueNotNull (Map<String, String> fields, String key, String value)
+DECL|method|putIfValueNotNull (Map<Field, String> fields, Field field, String value)
 specifier|private
 name|void
 name|putIfValueNotNull
 parameter_list|(
 name|Map
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
 name|fields
 parameter_list|,
-name|String
-name|key
+name|Field
+name|field
 parameter_list|,
 name|String
 name|value
@@ -1715,7 +1759,7 @@ name|fields
 operator|.
 name|put
 argument_list|(
-name|key
+name|field
 argument_list|,
 name|value
 argument_list|)

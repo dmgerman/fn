@@ -96,7 +96,23 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -203,9 +219,9 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 expr_stmt|;
 name|entry
@@ -219,7 +235,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"Eric von Hippel and Georg von Krogh"
 argument_list|)
@@ -228,7 +246,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+name|StandardField
+operator|.
+name|TITLE
 argument_list|,
 literal|"Open Source Software and the \"Private-Collective\" Innovation Model: Issues for Organization Science"
 argument_list|)
@@ -237,7 +257,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"journal"
+name|StandardField
+operator|.
+name|JOURNAL
 argument_list|,
 literal|"Organization Science"
 argument_list|)
@@ -246,7 +268,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2003"
 argument_list|)
@@ -255,7 +279,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"volume"
+name|StandardField
+operator|.
+name|VOLUME
 argument_list|,
 literal|"14"
 argument_list|)
@@ -264,7 +290,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"209--223"
 argument_list|)
@@ -273,7 +301,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"number"
+name|StandardField
+operator|.
+name|NUMBER
 argument_list|,
 literal|"2"
 argument_list|)
@@ -282,7 +312,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"address"
+name|StandardField
+operator|.
+name|ADDRESS
 argument_list|,
 literal|"Institute for Operations Research and the Management Sciences (INFORMS), Linthicum, Maryland, USA"
 argument_list|)
@@ -291,7 +323,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+name|StandardField
+operator|.
+name|DOI
 argument_list|,
 literal|"http://dx.doi.org/10.1287/orsc.14.2.209.14992"
 argument_list|)
@@ -300,7 +334,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"issn"
+name|StandardField
+operator|.
+name|ISSN
 argument_list|,
 literal|"1526-5455"
 argument_list|)
@@ -309,7 +345,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"publisher"
+name|StandardField
+operator|.
+name|PUBLISHER
 argument_list|,
 literal|"INFORMS"
 argument_list|)
@@ -345,9 +383,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|localEntry
@@ -361,7 +399,9 @@ name|localEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2001"
 argument_list|)
@@ -552,9 +592,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|localEntry
@@ -568,7 +608,9 @@ name|localEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2017"
 argument_list|)
@@ -577,7 +619,9 @@ name|localEntry
 operator|.
 name|setField
 argument_list|(
-literal|"author"
+name|StandardField
+operator|.
+name|AUTHOR
 argument_list|,
 literal|"GraÅ¾ulis, Saulius and O. Kitsune"
 argument_list|)
@@ -586,7 +630,9 @@ name|localEntry
 operator|.
 name|setField
 argument_list|(
-literal|"pages"
+name|StandardField
+operator|.
+name|PAGES
 argument_list|,
 literal|"726--729"
 argument_list|)
@@ -687,9 +733,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|localEntry
@@ -703,7 +749,9 @@ name|localEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2017"
 argument_list|)
@@ -804,9 +852,9 @@ init|=
 operator|new
 name|BibEntry
 argument_list|(
-name|BibtexEntryTypes
+name|StandardEntryType
 operator|.
-name|ARTICLE
+name|Article
 argument_list|)
 decl_stmt|;
 name|localEntry
@@ -820,7 +868,9 @@ name|localEntry
 operator|.
 name|setField
 argument_list|(
-literal|"year"
+name|StandardField
+operator|.
+name|YEAR
 argument_list|,
 literal|"2017"
 argument_list|)

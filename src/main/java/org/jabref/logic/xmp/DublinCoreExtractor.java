@@ -38,6 +38,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -186,7 +196,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|FieldName
+name|EntryTypeFactory
 import|;
 end_import
 
@@ -201,6 +211,70 @@ operator|.
 name|entry
 operator|.
 name|Month
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|FieldFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|field
+operator|.
+name|UnknownField
 import|;
 end_import
 
@@ -268,6 +342,7 @@ specifier|final
 name|BibEntry
 name|bibEntry
 decl_stmt|;
+comment|/**      * @param dcSchema      Metadata in DublinCore format.      * @param resolvedEntry The BibEntry object, which is filled during metadata extraction.      */
 DECL|method|DublinCoreExtractor (DublinCoreSchema dcSchema, XmpPreferences xmpPreferences, BibEntry resolvedEntry)
 specifier|public
 name|DublinCoreExtractor
@@ -301,7 +376,7 @@ operator|=
 name|resolvedEntry
 expr_stmt|;
 block|}
-comment|/**      * Editor in BibTex - Contributor in DublinCore      *      * @param bibEntry The BibEntry object, which is filled during metadata extraction.      * @param dcSchema Metadata in DublinCore format.      */
+comment|/**      * Editor in BibTex - Contributor in DublinCore      */
 DECL|method|extractEditor ()
 specifier|private
 name|void
@@ -338,7 +413,7 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|EDITOR
 argument_list|,
@@ -354,7 +429,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Author in BibTex - Creator in DublinCore      *      * @param bibEntry The BibEntry object, which is filled during metadata extraction.      * @param dcSchema Metadata in DublinCore format.      */
+comment|/**      * Author in BibTex - Creator in DublinCore      */
 DECL|method|extractAuthor ()
 specifier|private
 name|void
@@ -391,7 +466,7 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 argument_list|,
@@ -407,7 +482,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Year in BibTex - Date in DublinCore is only the year information, because dc interprets empty months as January.      * Tries to extract the month as well.      * In JabRef the bibtex/month/value is prioritized.      *<br/>      * The problem is the default value of the calendar, which is always January, also if there is no month information in      * the xmp metdata. The idea is, to reject all information with YYYY-01-01. In cases, where xmp is written with JabRef      * the month property filled with jan will override this behavior and no data is lost. In the cases, where xmp      * is written by another service, the assumption is, that the 1st January is not a publication date at all.      *      * @param bibEntry The BibEntry object, which is filled during metadata extraction.      * @param dcSchema Metadata in DublinCore format.      */
+comment|/**      * Year in BibTex - Date in DublinCore is only the year information, because dc interprets empty months as January.      * Tries to extract the month as well.      * In JabRef the bibtex/month/value is prioritized.      *<br/>      * The problem is the default value of the calendar, which is always January, also if there is no month information in      * the xmp metdata. The idea is, to reject all information with YYYY-01-01. In cases, where xmp is written with JabRef      * the month property filled with jan will override this behavior and no data is lost. In the cases, where xmp      * is written by another service, the assumption is, that the 1st January is not a publication date at all.      */
 DECL|method|extractYearAndMonth ()
 specifier|private
 name|void
@@ -491,7 +566,7 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 argument_list|,
@@ -577,7 +652,7 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|MONTH
 argument_list|,
@@ -595,7 +670,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Abstract in BibTex - Description in DublinCore      *      * @param bibEntry The BibEntry object, which is filled during metadata extraction.      * @param dcSchema Metadata in DublinCore format.      */
+comment|/**      * Abstract in BibTex - Description in DublinCore      */
 DECL|method|extractAbstract ()
 specifier|private
 name|void
@@ -625,7 +700,7 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 argument_list|,
@@ -634,7 +709,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * DOI in BibTex - Identifier in DublinCore      *      * @param bibEntry The BibEntry object, which is filled during metadata extraction.      * @param dcSchema Metadata in DublinCore format.      */
+comment|/**      * DOI in BibTex - Identifier in DublinCore      */
 DECL|method|extractDOI ()
 specifier|private
 name|void
@@ -664,7 +739,7 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 argument_list|,
@@ -673,7 +748,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Publisher are equivalent in both formats (BibTex and DublinCore)      *      * @param bibEntry The BibEntry object, which is filled during metadata extraction.      * @param dcSchema Metadata in DublinCore format.      */
+comment|/**      * Publisher are equivalent in both formats (BibTex and DublinCore)      */
 DECL|method|extractPublisher ()
 specifier|private
 name|void
@@ -710,7 +785,7 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|PUBLISHER
 argument_list|,
@@ -726,7 +801,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This method sets all fields, which are custom in bibtext and therefore supported by jabref, but which are not included in the DublinCore format.      *<p/>      * The relation attribute of DublinCore is abused to insert these custom fields.      *      * @param bibEntry The BibEntry object, which is filled during metadata extraction.      * @param dcSchema Metadata in DublinCore format.      */
+comment|/**      * This method sets all fields, which are custom in bibtext and therefore supported by jabref, but which are not included in the DublinCore format.      *<p/>      * The relation attribute of DublinCore is abused to insert these custom fields.      */
 DECL|method|extractBibTexFields ()
 specifier|private
 name|void
@@ -802,9 +877,13 @@ operator|-
 literal|1
 condition|)
 block|{
-name|String
+name|Field
 name|key
 init|=
+name|FieldFactory
+operator|.
+name|parseField
+argument_list|(
 name|temp
 operator|.
 name|substring
@@ -812,6 +891,7 @@ argument_list|(
 literal|0
 argument_list|,
 name|i
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|String
@@ -840,7 +920,9 @@ comment|// workaround, because the date value of the xmp component of pdf box is
 comment|// see also DublinCoreExtractor#extractYearAndMonth
 if|if
 condition|(
-literal|"month"
+name|StandardField
+operator|.
+name|MONTH
 operator|.
 name|equals
 argument_list|(
@@ -861,30 +943,25 @@ argument_list|(
 name|value
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
 name|parsedMonth
 operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
+name|ifPresent
+argument_list|(
+name|month
+lambda|->
 name|bibEntry
 operator|.
 name|setField
 argument_list|(
 name|key
 argument_list|,
-name|parsedMonth
-operator|.
-name|get
-argument_list|()
+name|month
 operator|.
 name|getShortName
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -913,7 +990,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Rights are equivalent in both formats (BibTex and DublinCore)      *      * @param bibEntry The BibEntry object, which is filled during metadata extraction.      * @param dcSchema Metadata in DublinCore format.      */
+comment|/**      * Rights are equivalent in both formats (BibTex and DublinCore)      */
 DECL|method|extractRights ()
 specifier|private
 name|void
@@ -943,14 +1020,18 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"rights"
+argument_list|)
 argument_list|,
 name|rights
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Source is equivalent in both formats (BibTex and DublinCore)      *      * @param bibEntry The BibEntry object, which is filled during metadata extraction.      * @param dcSchema Metadata in DublinCore format.      */
+comment|/**      * Source is equivalent in both formats (BibTex and DublinCore)      */
 DECL|method|extractSource ()
 specifier|private
 name|void
@@ -980,14 +1061,18 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
+operator|new
+name|UnknownField
+argument_list|(
 literal|"source"
+argument_list|)
 argument_list|,
 name|source
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Keywords in BibTex - Subjects in DublinCore      * @param bibEntry The BibEntry object, which is filled during metadata extraction.      * @param dcSchema Metadata in DublinCore format.      */
+comment|/**      * Keywords in BibTex - Subjects in DublinCore      */
 DECL|method|extractSubject ()
 specifier|private
 name|void
@@ -1034,7 +1119,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Title is equivalent in both formats (BibTex and DublinCore)      *      * @param bibEntry The BibEntry object, which is filled during metadata extraction.      * @param dcSchema Metadata in DublinCore format.      */
+comment|/**      * Title is equivalent in both formats (BibTex and DublinCore)      */
 DECL|method|extractTitle ()
 specifier|private
 name|void
@@ -1064,7 +1149,7 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 argument_list|,
@@ -1073,7 +1158,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Type is equivalent in both formats (BibTex and DublinCore)      *      * @param bibEntry The BibEntry object, which is filled during metadata extraction.      * @param dcSchema Metadata in DublinCore format.      */
+comment|/**      * Type is equivalent in both formats (BibTex and DublinCore)      */
 DECL|method|extractType ()
 specifier|private
 name|void
@@ -1131,13 +1216,18 @@ name|bibEntry
 operator|.
 name|setType
 argument_list|(
+name|EntryTypeFactory
+operator|.
+name|parse
+argument_list|(
 name|type
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Helper function for retrieving a BibEntry from the DublinCore metadata      * in a PDF file.      *      * To understand how to get hold of a DublinCore have a look in the      * test cases for XMPUtil.      *      * The BibEntry is build by mapping individual fields in the dublin core      * (like creator, title, subject) to fields in a bibtex bibEntry.      *      * @param dcSchema The document information from which to build a BibEntry.      * @return The bibtex bibEntry found in the document information.      */
+comment|/**      * Helper function for retrieving a BibEntry from the DublinCore metadata      * in a PDF file.      *      * To understand how to get hold of a DublinCore have a look in the      * test cases for XMPUtil.      *      * The BibEntry is build by mapping individual fields in the dublin core      * (like creator, title, subject) to fields in a bibtex bibEntry.      *      * @return The bibtex bibEntry found in the document information.      */
 DECL|method|extractBibtexEntry ()
 specifier|public
 name|Optional
@@ -1337,7 +1427,7 @@ name|bibEntry
 operator|.
 name|getFieldOrAlias
 argument_list|(
-name|FieldName
+name|StandardField
 operator|.
 name|DATE
 argument_list|)
@@ -1470,14 +1560,14 @@ name|title
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * All others (+ bibtex key) get packaged in the relation attribute      *      * @param key Key of the metadata attribute      * @param value Value of the metadata attribute      */
-DECL|method|fillCustomField (String key, String value)
+comment|/**      * All others (+ bibtex key) get packaged in the relation attribute      *      * @param field Key of the metadata attribute      * @param value Value of the metadata attribute      */
+DECL|method|fillCustomField (Field field, String value)
 specifier|private
 name|void
 name|fillCustomField
 parameter_list|(
-name|String
-name|key
+name|Field
+name|field
 parameter_list|,
 name|String
 name|value
@@ -1489,7 +1579,10 @@ name|addRelation
 argument_list|(
 literal|"bibtex/"
 operator|+
-name|key
+name|field
+operator|.
+name|getName
+argument_list|()
 operator|+
 literal|'/'
 operator|+
@@ -1515,7 +1608,7 @@ decl_stmt|;
 comment|// Fields for which not to write XMP data later on:
 name|Set
 argument_list|<
-name|String
+name|Field
 argument_list|>
 name|filters
 init|=
@@ -1529,16 +1622,41 @@ name|getXmpPrivacyFilter
 argument_list|()
 argument_list|)
 decl_stmt|;
-for|for
-control|(
+name|Set
+argument_list|<
 name|Entry
 argument_list|<
-name|String
+name|Field
 argument_list|,
 name|String
 argument_list|>
-name|field
-range|:
+argument_list|>
+name|fieldValues
+init|=
+operator|new
+name|TreeSet
+argument_list|<>
+argument_list|(
+name|Comparator
+operator|.
+name|comparing
+argument_list|(
+name|fieldStringEntry
+lambda|->
+name|fieldStringEntry
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|fieldValues
+operator|.
+name|addAll
+argument_list|(
 name|bibEntry
 operator|.
 name|getFieldMap
@@ -1546,6 +1664,19 @@ argument_list|()
 operator|.
 name|entrySet
 argument_list|()
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|Entry
+argument_list|<
+name|Field
+argument_list|,
+name|String
+argument_list|>
+name|field
+range|:
+name|fieldValues
 control|)
 block|{
 if|if
@@ -1567,7 +1698,7 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|EDITOR
 operator|.
@@ -1594,7 +1725,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|AUTHOR
 operator|.
@@ -1621,7 +1752,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|YEAR
 operator|.
@@ -1643,7 +1774,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|ABSTRACT
 operator|.
@@ -1670,7 +1801,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|DOI
 operator|.
@@ -1697,7 +1828,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|PUBLISHER
 operator|.
@@ -1724,7 +1855,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|KEYWORDS
 operator|.
@@ -1751,7 +1882,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|FieldName
+name|StandardField
 operator|.
 name|TITLE
 operator|.

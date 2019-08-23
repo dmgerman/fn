@@ -506,7 +506,7 @@ name|addAll
 argument_list|(
 name|check
 operator|.
-name|checkBibtexEntry
+name|checkEntry
 argument_list|(
 name|entry
 argument_list|)
