@@ -164,6 +164,22 @@ name|StandardField
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|types
+operator|.
+name|EntryType
+import|;
+end_import
+
 begin_class
 DECL|class|BibEntryType
 specifier|public
@@ -418,6 +434,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getSecondaryOptionalFields ()
+specifier|public
 name|SortedSet
 argument_list|<
 name|Field

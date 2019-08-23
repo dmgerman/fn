@@ -274,6 +274,8 @@ name|model
 operator|.
 name|entry
 operator|.
+name|types
+operator|.
 name|EntryType
 import|;
 end_import

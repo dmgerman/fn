@@ -192,7 +192,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|EntryType
+name|field
+operator|.
+name|Field
 import|;
 end_import
 
@@ -206,9 +208,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|field
+name|types
 operator|.
-name|Field
+name|EntryType
 import|;
 end_import
 
