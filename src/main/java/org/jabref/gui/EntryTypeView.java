@@ -32,6 +32,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|application
@@ -633,7 +643,10 @@ condition|)
 block|{
 name|setEntryTypeForReturnAndClose
 argument_list|(
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -696,7 +709,12 @@ name|event
 lambda|->
 name|setEntryTypeForReturnAndClose
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|entryType
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1089,12 +1107,15 @@ name|selectAll
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setEntryTypeForReturnAndClose (BibEntryType entryType)
+DECL|method|setEntryTypeForReturnAndClose (Optional<BibEntryType> entryType)
 specifier|private
 name|void
 name|setEntryTypeForReturnAndClose
 parameter_list|(
+name|Optional
+argument_list|<
 name|BibEntryType
+argument_list|>
 name|entryType
 parameter_list|)
 block|{
@@ -1102,8 +1123,17 @@ name|type
 operator|=
 name|entryType
 operator|.
+name|map
+argument_list|(
+name|BibEntryType
+operator|::
 name|getType
-argument_list|()
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 name|viewModel
 operator|.
