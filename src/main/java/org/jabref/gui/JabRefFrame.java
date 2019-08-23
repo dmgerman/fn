@@ -584,9 +584,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|bibtexextractor
+name|auximport
 operator|.
-name|ExtractBibtexAction
+name|NewSubLibraryAction
 import|;
 end_import
 
@@ -598,9 +598,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|auximport
+name|bibtexextractor
 operator|.
-name|NewSubLibraryAction
+name|ExtractBibtexAction
 import|;
 end_import
 
