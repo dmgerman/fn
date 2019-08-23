@@ -260,7 +260,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BiblatexEntryTypes
+name|types
+operator|.
+name|BiblatexEntryTypeDefinitions
 import|;
 end_import
 
@@ -274,7 +276,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|types
+operator|.
+name|BibtexEntryTypeDefinitions
 import|;
 end_import
 
@@ -287,6 +291,8 @@ operator|.
 name|model
 operator|.
 name|entry
+operator|.
+name|types
 operator|.
 name|EntryType
 import|;
@@ -302,7 +308,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|IEEETranEntryTypes
+name|types
+operator|.
+name|IEEETranEntryTypeDefinitions
 import|;
 end_import
 
@@ -911,7 +919,7 @@ name|addEntriesToPane
 argument_list|(
 name|biblatexPane
 argument_list|,
-name|BiblatexEntryTypes
+name|BiblatexEntryTypeDefinitions
 operator|.
 name|ALL
 argument_list|)
@@ -987,7 +995,7 @@ name|addEntriesToPane
 argument_list|(
 name|bibTexPane
 argument_list|,
-name|BibtexEntryTypes
+name|BibtexEntryTypeDefinitions
 operator|.
 name|ALL
 argument_list|)
@@ -996,7 +1004,7 @@ name|addEntriesToPane
 argument_list|(
 name|ieeetranPane
 argument_list|,
-name|IEEETranEntryTypes
+name|IEEETranEntryTypeDefinitions
 operator|.
 name|ALL
 argument_list|)

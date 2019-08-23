@@ -100,6 +100,8 @@ name|model
 operator|.
 name|entry
 operator|.
+name|types
+operator|.
 name|EntryTypeFactory
 import|;
 end_import

@@ -86,7 +86,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|EntryTypeFactory
+name|field
+operator|.
+name|InternalField
 import|;
 end_import
 
@@ -100,9 +102,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|field
+name|types
 operator|.
-name|InternalField
+name|EntryTypeFactory
 import|;
 end_import
 

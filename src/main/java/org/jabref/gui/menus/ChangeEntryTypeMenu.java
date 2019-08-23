@@ -234,7 +234,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|types
+operator|.
+name|BibtexEntryTypeDefinitions
 import|;
 end_import
 
@@ -247,6 +249,8 @@ operator|.
 name|model
 operator|.
 name|entry
+operator|.
+name|types
 operator|.
 name|EntryType
 import|;
@@ -262,7 +266,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|IEEETranEntryTypes
+name|types
+operator|.
+name|IEEETranEntryTypeDefinitions
 import|;
 end_import
 
@@ -548,7 +554,7 @@ operator|.
 name|getFormattedName
 argument_list|()
 argument_list|,
-name|BibtexEntryTypes
+name|BibtexEntryTypeDefinitions
 operator|.
 name|ALL
 argument_list|,
@@ -572,7 +578,7 @@ name|items
 argument_list|,
 literal|"IEEETran"
 argument_list|,
-name|IEEETranEntryTypes
+name|IEEETranEntryTypeDefinitions
 operator|.
 name|ALL
 argument_list|,

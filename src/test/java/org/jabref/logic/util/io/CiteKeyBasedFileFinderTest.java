@@ -102,6 +102,8 @@ name|model
 operator|.
 name|entry
 operator|.
+name|types
+operator|.
 name|StandardEntryType
 import|;
 end_import

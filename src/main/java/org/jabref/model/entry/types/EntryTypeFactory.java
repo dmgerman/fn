@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.model.entry
+DECL|package|org.jabref.model.entry.types
 package|package
 name|org
 operator|.
@@ -9,8 +9,24 @@ operator|.
 name|model
 operator|.
 name|entry
+operator|.
+name|types
 package|;
 end_package
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntryType
+import|;
+end_import
 
 begin_import
 import|import
@@ -181,7 +197,7 @@ name|type
 parameter_list|)
 block|{
 return|return
-name|BibtexEntryTypes
+name|BibtexEntryTypeDefinitions
 operator|.
 name|ALL
 operator|.
@@ -215,7 +231,7 @@ name|type
 parameter_list|)
 block|{
 return|return
-name|BiblatexEntryTypes
+name|BiblatexEntryTypeDefinitions
 operator|.
 name|ALL
 operator|.
