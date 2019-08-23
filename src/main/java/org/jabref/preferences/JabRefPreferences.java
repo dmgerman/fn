@@ -14,26 +14,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
-operator|.
-name|Color
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Font
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|io
 operator|.
 name|File
@@ -381,6 +361,18 @@ operator|.
 name|TableColumn
 operator|.
 name|SortType
+import|;
+end_import
+
+begin_import
+import|import
+name|javafx
+operator|.
+name|scene
+operator|.
+name|paint
+operator|.
+name|Color
 import|;
 end_import
 
@@ -4993,11 +4985,10 @@ name|put
 argument_list|(
 name|FONT_STYLE
 argument_list|,
-name|Font
-operator|.
-name|PLAIN
+literal|0
 argument_list|)
 expr_stmt|;
+comment|//for backwards compatibility, is equal to java.awt.Font.PLAIN
 name|defaults
 operator|.
 name|put
@@ -8186,8 +8177,9 @@ name|value
 argument_list|)
 decl_stmt|;
 return|return
-operator|new
 name|Color
+operator|.
+name|rgb
 argument_list|(
 name|rgb
 index|[
@@ -8238,8 +8230,9 @@ name|value
 argument_list|)
 decl_stmt|;
 return|return
-operator|new
 name|Color
+operator|.
+name|rgb
 argument_list|(
 name|rgb
 index|[
@@ -12870,6 +12863,19 @@ name|empty
 argument_list|()
 return|;
 block|}
+block|}
+DECL|method|getFontFamily ()
+specifier|public
+name|String
+name|getFontFamily
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|(
+name|FONT_FAMILY
+argument_list|)
+return|;
 block|}
 DECL|method|setLastPreferencesExportPath ()
 specifier|public

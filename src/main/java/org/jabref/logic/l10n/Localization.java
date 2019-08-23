@@ -370,17 +370,6 @@ argument_list|(
 name|locale
 argument_list|)
 expr_stmt|;
-name|javax
-operator|.
-name|swing
-operator|.
-name|JComponent
-operator|.
-name|setDefaultLocale
-argument_list|(
-name|locale
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|createResourceBundles

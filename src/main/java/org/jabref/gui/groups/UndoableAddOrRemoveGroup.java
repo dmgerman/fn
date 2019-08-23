@@ -166,7 +166,10 @@ name|m_subtreeRootChildCount
 operator|=
 name|editedNode
 operator|.
-name|getChildCount
+name|getChildren
+argument_list|()
+operator|.
+name|size
 argument_list|()
 expr_stmt|;
 comment|// storing a backup of the whole subtree is not required when children
