@@ -49,9 +49,9 @@ name|MYSQL
 argument_list|(
 literal|"MySQL"
 argument_list|,
-literal|"com.mysql.cj.jdbc.Driver"
+literal|"org.mariadb.jdbc.Driver"
 argument_list|,
-literal|"jdbc:mysql://%s:%d/%s"
+literal|"jdbc:mariadb://%s:%d/%s"
 argument_list|,
 literal|3306
 argument_list|)
