@@ -5692,7 +5692,7 @@ argument_list|,
 operator|new
 name|ExtractBibtexAction
 argument_list|(
-name|this
+name|stateManager
 argument_list|)
 argument_list|)
 argument_list|,

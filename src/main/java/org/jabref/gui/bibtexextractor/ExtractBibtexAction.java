@@ -20,7 +20,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|StateManager
 import|;
 end_import
 
@@ -38,6 +38,22 @@ name|SimpleCommand
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|ActionHelper
+operator|.
+name|needsDatabase
+import|;
+end_import
+
 begin_class
 DECL|class|ExtractBibtexAction
 specifier|public
@@ -46,25 +62,25 @@ name|ExtractBibtexAction
 extends|extends
 name|SimpleCommand
 block|{
-DECL|field|jabRefFrame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|jabRefFrame
-decl_stmt|;
-DECL|method|ExtractBibtexAction (JabRefFrame jabRefFrame)
+DECL|method|ExtractBibtexAction (StateManager stateManager)
 specifier|public
 name|ExtractBibtexAction
 parameter_list|(
-name|JabRefFrame
-name|jabRefFrame
+name|StateManager
+name|stateManager
 parameter_list|)
 block|{
 name|this
 operator|.
-name|jabRefFrame
-operator|=
-name|jabRefFrame
+name|executable
+operator|.
+name|bind
+argument_list|(
+name|needsDatabase
+argument_list|(
+name|stateManager
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -80,9 +96,7 @@ name|dlg
 init|=
 operator|new
 name|ExtractBibtexDialog
-argument_list|(
-name|jabRefFrame
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|dlg
 operator|.
