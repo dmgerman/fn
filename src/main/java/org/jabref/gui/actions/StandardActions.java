@@ -2420,6 +2420,18 @@ operator|.
 name|AUTOMATICALLY_LINK_FILES
 argument_list|)
 block|,
+DECL|enumConstant|EXTRACT_BIBTEX
+DECL|enumConstant|Localization.lang
+name|EXTRACT_BIBTEX
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Extract BibTeX from plain text"
+argument_list|)
+argument_list|)
+block|,
 DECL|enumConstant|HELP
 DECL|enumConstant|Localization.lang
 DECL|enumConstant|IconTheme.JabRefIcons.HELP
