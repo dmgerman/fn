@@ -458,6 +458,10 @@ argument_list|,
 name|command
 argument_list|,
 name|keyBindingRepository
+argument_list|,
+name|Sources
+operator|.
+name|FromMenu
 argument_list|)
 argument_list|,
 name|menuItem
@@ -620,6 +624,10 @@ argument_list|,
 name|command
 argument_list|,
 name|keyBindingRepository
+argument_list|,
+name|Sources
+operator|.
+name|FromMenu
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -740,6 +748,10 @@ argument_list|,
 name|command
 argument_list|,
 name|keyBindingRepository
+argument_list|,
+name|Sources
+operator|.
+name|FromButton
 argument_list|)
 argument_list|,
 name|ActionUtils
@@ -819,6 +831,10 @@ argument_list|,
 name|command
 argument_list|,
 name|keyBindingRepository
+argument_list|,
+name|Sources
+operator|.
+name|FromButton
 argument_list|)
 argument_list|,
 name|button

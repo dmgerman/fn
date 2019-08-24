@@ -598,6 +598,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|bibtexextractor
+operator|.
+name|ExtractBibtexAction
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|bibtexkeypattern
 operator|.
 name|BibtexKeyPatternAction
@@ -5642,6 +5656,21 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
+name|factory
+operator|.
+name|createMenuItem
+argument_list|(
+name|StandardActions
+operator|.
+name|EXTRACT_BIBTEX
+argument_list|,
+operator|new
+name|ExtractBibtexAction
+argument_list|(
+name|stateManager
+argument_list|)
+argument_list|)
+argument_list|,
 operator|new
 name|SeparatorMenuItem
 argument_list|()
@@ -8260,6 +8289,23 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|command
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|execute ()
 specifier|public
 name|void
@@ -8326,11 +8372,7 @@ break|break;
 case|case
 name|PASTE
 case|:
-name|textInput
-operator|.
-name|paste
-argument_list|()
-expr_stmt|;
+comment|// handled by FX in TextInputControl#paste
 break|break;
 default|default:
 throw|throw
@@ -8375,12 +8417,7 @@ break|break;
 case|case
 name|PASTE
 case|:
-name|getCurrentBasePanel
-argument_list|()
-operator|.
-name|paste
-argument_list|()
-expr_stmt|;
+comment|// handled by FX in TextInputControl#paste
 break|break;
 default|default:
 throw|throw

@@ -781,7 +781,7 @@ name|setValue
 argument_list|(
 name|BibDatabaseMode
 operator|.
-name|BIBLATEX
+name|BIBTEX
 argument_list|)
 expr_stmt|;
 block|}

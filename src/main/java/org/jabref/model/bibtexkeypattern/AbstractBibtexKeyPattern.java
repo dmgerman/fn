@@ -331,24 +331,6 @@ name|data
 argument_list|)
 return|;
 block|}
-comment|/**      * Remove a Bibtex key pattern from the BibtexKeyPattern.      *      * @param type a<code>String</code>      */
-DECL|method|removeBibtexKeyPattern (String type)
-specifier|public
-name|void
-name|removeBibtexKeyPattern
-parameter_list|(
-name|String
-name|type
-parameter_list|)
-block|{
-name|data
-operator|.
-name|remove
-argument_list|(
-name|type
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * Gets an object for a desired key from this BibtexKeyPattern or one of it's      * parents (in the case of DatabaseBibtexKeyPattern). This method first tries to obtain the object from this      * BibtexKeyPattern via the<code>get</code> method of<code>Hashtable</code>.      * If this fails, we try the default.<br />      * If that fails, we try the parent.<br />      * If that fails, we return the DEFAULT_LABELPATTERN<br />      *      * @param entryType a<code>String</code>      * @return the list of Strings for the given key. First entry: the complete key      */
 DECL|method|getValue (EntryType entryType)
 specifier|public
