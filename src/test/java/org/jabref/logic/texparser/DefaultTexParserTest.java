@@ -606,6 +606,7 @@ argument_list|(
 name|texFile
 argument_list|)
 expr_stmt|;
+comment|// The character ï¿½ is on purpose - we cannot use Apache Tika's CharsetDetector - see ADR-0005
 name|expectedParserResult
 operator|.
 name|addKey
@@ -620,7 +621,7 @@ literal|32
 argument_list|,
 literal|45
 argument_list|,
-literal|"Danach wir anschlieÃend mittels \\cite{anykey}."
+literal|"Danach wir anschlieï¿½end mittels \\cite{anykey}."
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -690,6 +691,7 @@ argument_list|(
 name|texFile
 argument_list|)
 expr_stmt|;
+comment|// The character ï¿½ is on purpose - we cannot use Apache Tika's CharsetDetector - see ADR-0005
 name|expectedParserResult
 operator|.
 name|addKey
@@ -704,7 +706,7 @@ literal|32
 argument_list|,
 literal|45
 argument_list|,
-literal|"Danach wir anschlieÃend mittels \\cite{anykey}."
+literal|"Danach wir anschlieï¿½end mittels \\cite{anykey}."
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -863,7 +865,7 @@ literal|32
 argument_list|,
 literal|45
 argument_list|,
-literal|"Danach wir anschlieÃend mittels \\cite{anykey}."
+literal|"Danach wir anschlieï¿½end mittels \\cite{anykey}."
 argument_list|)
 expr_stmt|;
 name|expectedParserResult
@@ -880,7 +882,7 @@ literal|32
 argument_list|,
 literal|45
 argument_list|,
-literal|"Danach wir anschlieÃend mittels \\cite{anykey}."
+literal|"Danach wir anschlieï¿½end mittels \\cite{anykey}."
 argument_list|)
 expr_stmt|;
 name|assertEquals
