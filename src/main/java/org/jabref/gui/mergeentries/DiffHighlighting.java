@@ -203,9 +203,14 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|DiffHighlighting
-operator|::
+name|text
+lambda|->
 name|forUnchanged
+argument_list|(
+name|text
+operator|+
+name|separator
+argument_list|)
 argument_list|)
 operator|.
 name|collect
