@@ -38,6 +38,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|Reader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|UncheckedIOException
 import|;
 end_import
@@ -251,7 +261,7 @@ name|TEX_EXT
 init|=
 literal|".tex"
 decl_stmt|;
-comment|/**      * It is allowed to add new cite commands for pattern matching.      * Some valid examples: "citep", "[cC]ite", and "[cC]ite(author|title|year|t|p)?".      */
+comment|/**      * It is allowed to add new cite commands for pattern matching. Some valid examples: "citep", "[cC]ite", and      * "[cC]ite(author|title|year|t|p)?".      */
 DECL|field|CITE_COMMANDS
 specifier|private
 specifier|static
@@ -491,12 +501,9 @@ continue|continue;
 block|}
 try|try
 init|(
-name|LineNumberReader
-name|lineNumberReader
+name|Reader
+name|reader
 init|=
-operator|new
-name|LineNumberReader
-argument_list|(
 operator|new
 name|CharsetDetector
 argument_list|()
@@ -516,6 +523,14 @@ argument_list|()
 operator|.
 name|getReader
 argument_list|()
+init|;
+name|LineNumberReader
+name|lineNumberReader
+operator|=
+operator|new
+name|LineNumberReader
+argument_list|(
+name|reader
 argument_list|)
 init|)
 block|{
@@ -598,16 +613,15 @@ name|ClosedChannelException
 name|e
 parameter_list|)
 block|{
+comment|// User changed the underlying LaTeX file
+comment|// We ignore this error and just continue with parsing
 name|LOGGER
 operator|.
-name|error
+name|info
 argument_list|(
 literal|"Parsing has been interrupted"
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
 block|}
 catch|catch
 parameter_list|(
@@ -617,9 +631,11 @@ name|UncheckedIOException
 name|e
 parameter_list|)
 block|{
+comment|// Some weired error during reading
+comment|// We ignore this error and just continue with parsing
 name|LOGGER
 operator|.
-name|error
+name|info
 argument_list|(
 literal|"Error while parsing file {}"
 argument_list|,
@@ -640,6 +656,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+comment|// modifies class variable texParserResult
 name|parse
 argument_list|(
 name|referencedFiles
