@@ -657,7 +657,7 @@ name|LinkedFileViewModel
 argument_list|>
 argument_list|()
 operator|.
-name|withTooltip
+name|withStringTooltip
 argument_list|(
 name|LinkedFileViewModel
 operator|::

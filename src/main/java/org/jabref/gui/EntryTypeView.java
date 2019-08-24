@@ -32,6 +32,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|application
@@ -250,7 +260,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BiblatexEntryTypes
+name|types
+operator|.
+name|BiblatexEntryTypeDefinitions
 import|;
 end_import
 
@@ -264,7 +276,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|types
+operator|.
+name|BibtexEntryTypeDefinitions
 import|;
 end_import
 
@@ -277,6 +291,8 @@ operator|.
 name|model
 operator|.
 name|entry
+operator|.
+name|types
 operator|.
 name|EntryType
 import|;
@@ -292,7 +308,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|IEEETranEntryTypes
+name|types
+operator|.
+name|IEEETranEntryTypeDefinitions
 import|;
 end_import
 
@@ -633,7 +651,10 @@ condition|)
 block|{
 name|setEntryTypeForReturnAndClose
 argument_list|(
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -696,7 +717,12 @@ name|event
 lambda|->
 name|setEntryTypeForReturnAndClose
 argument_list|(
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|entryType
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -893,7 +919,7 @@ name|addEntriesToPane
 argument_list|(
 name|biblatexPane
 argument_list|,
-name|BiblatexEntryTypes
+name|BiblatexEntryTypeDefinitions
 operator|.
 name|ALL
 argument_list|)
@@ -969,7 +995,7 @@ name|addEntriesToPane
 argument_list|(
 name|bibTexPane
 argument_list|,
-name|BibtexEntryTypes
+name|BibtexEntryTypeDefinitions
 operator|.
 name|ALL
 argument_list|)
@@ -978,7 +1004,7 @@ name|addEntriesToPane
 argument_list|(
 name|ieeetranPane
 argument_list|,
-name|IEEETranEntryTypes
+name|IEEETranEntryTypeDefinitions
 operator|.
 name|ALL
 argument_list|)
@@ -1089,12 +1115,15 @@ name|selectAll
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setEntryTypeForReturnAndClose (BibEntryType entryType)
+DECL|method|setEntryTypeForReturnAndClose (Optional<BibEntryType> entryType)
 specifier|private
 name|void
 name|setEntryTypeForReturnAndClose
 parameter_list|(
+name|Optional
+argument_list|<
 name|BibEntryType
+argument_list|>
 name|entryType
 parameter_list|)
 block|{
@@ -1102,8 +1131,17 @@ name|type
 operator|=
 name|entryType
 operator|.
+name|map
+argument_list|(
+name|BibEntryType
+operator|::
 name|getType
-argument_list|()
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 name|viewModel
 operator|.

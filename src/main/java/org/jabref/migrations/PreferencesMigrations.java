@@ -150,7 +150,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|EntryTypeFactory
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -164,9 +166,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|field
+name|types
 operator|.
-name|StandardField
+name|EntryTypeFactory
 import|;
 end_import
 

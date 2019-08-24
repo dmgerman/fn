@@ -58,7 +58,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|StandardEntryType
+name|field
+operator|.
+name|StandardField
 import|;
 end_import
 
@@ -72,9 +74,9 @@ name|model
 operator|.
 name|entry
 operator|.
-name|field
+name|types
 operator|.
-name|StandardField
+name|StandardEntryType
 import|;
 end_import
 
@@ -850,7 +852,7 @@ argument_list|(
 operator|new
 name|SearchQuery
 argument_list|(
-literal|"qwer"
+literal|"BiblatexEntryType"
 argument_list|,
 literal|true
 argument_list|,

@@ -41,7 +41,7 @@ name|isUseProxy
 argument_list|()
 condition|)
 block|{
-comment|// NetworkTab.java ensures that proxyHostname and proxyPort are not null
+comment|// NetworkTabView.java ensures that proxyHostname and proxyPort are not null
 name|System
 operator|.
 name|setProperty
@@ -90,7 +90,7 @@ name|getPort
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// NetworkTab.java ensures that proxyUsername and proxyPassword are neither null nor empty
+comment|// NetworkTabView.java ensures that proxyUsername and proxyPassword are neither null nor empty
 if|if
 condition|(
 name|proxyPrefs

@@ -2061,7 +2061,7 @@ argument_list|)
 block|,
 DECL|enumConstant|NEW_ARTICLE
 DECL|enumConstant|Localization.lang
-DECL|enumConstant|IconTheme.JabRefIcons.ADD_ENTRY
+DECL|enumConstant|IconTheme.JabRefIcons.ADD_ARTICLE
 name|NEW_ARTICLE
 argument_list|(
 name|Localization
@@ -2075,7 +2075,7 @@ name|IconTheme
 operator|.
 name|JabRefIcons
 operator|.
-name|ADD_ENTRY
+name|ADD_ARTICLE
 argument_list|)
 block|,
 DECL|enumConstant|NEW_ENTRY_FROM_PLAINTEX

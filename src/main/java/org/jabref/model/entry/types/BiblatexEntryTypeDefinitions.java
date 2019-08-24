@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.model.entry
+DECL|package|org.jabref.model.entry.types
 package|package
 name|org
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|model
 operator|.
 name|entry
+operator|.
+name|types
 package|;
 end_package
 
@@ -29,6 +31,34 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntryTypeBuilder
 import|;
 end_import
 
@@ -69,10 +99,10 @@ comment|/**  * This class defines entry types for biblatex support.  *  * @see<a
 end_comment
 
 begin_class
-DECL|class|BiblatexEntryTypes
+DECL|class|BiblatexEntryTypeDefinitions
 specifier|public
 class|class
-name|BiblatexEntryTypes
+name|BiblatexEntryTypeDefinitions
 block|{
 DECL|field|ARTICLE
 specifier|private
@@ -2620,7 +2650,7 @@ argument_list|()
 operator|.
 name|withType
 argument_list|(
-name|StandardEntryType
+name|IEEETranEntryType
 operator|.
 name|Patent
 argument_list|)
@@ -2762,7 +2792,7 @@ argument_list|()
 operator|.
 name|withType
 argument_list|(
-name|StandardEntryType
+name|IEEETranEntryType
 operator|.
 name|Periodical
 argument_list|)
@@ -4333,7 +4363,7 @@ argument_list|()
 operator|.
 name|withType
 argument_list|(
-name|StandardEntryType
+name|IEEETranEntryType
 operator|.
 name|Electronic
 argument_list|)

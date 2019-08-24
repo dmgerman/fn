@@ -193,7 +193,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Fetcher for ISBN trying ebook.de first and then chimbori.com  */
+comment|/**  * Fetcher for ISBN trying ebook.de first, chimbori.com and then ottobib  */
 end_comment
 
 begin_class
@@ -361,6 +361,42 @@ decl_stmt|;
 name|bibEntry
 operator|=
 name|isbnViaChimboriFetcher
+operator|.
+name|performSearchById
+argument_list|(
+name|identifier
+argument_list|)
+expr_stmt|;
+block|}
+comment|//nothing found at ebook.de and chimbori.com, try ottobib
+if|if
+condition|(
+operator|!
+name|bibEntry
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"No entry found at ebook.de and chimbori.com try ottobib"
+argument_list|)
+expr_stmt|;
+name|IsbnViaOttoBibFetcher
+name|isbnViaOttoBibFetcher
+init|=
+operator|new
+name|IsbnViaOttoBibFetcher
+argument_list|(
+name|importFormatPreferences
+argument_list|)
+decl_stmt|;
+name|bibEntry
+operator|=
+name|isbnViaOttoBibFetcher
 operator|.
 name|performSearchById
 argument_list|(

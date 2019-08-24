@@ -76,20 +76,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|StandardEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
 name|field
 operator|.
 name|StandardField
@@ -109,6 +95,22 @@ operator|.
 name|field
 operator|.
 name|UnknownField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|types
+operator|.
+name|StandardEntryType
 import|;
 end_import
 
@@ -284,7 +286,7 @@ name|StandardField
 operator|.
 name|DATE
 argument_list|,
-literal|"2018-01-11"
+literal|"2018-01-01"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -496,7 +498,7 @@ name|bibEntry
 operator|.
 name|setCiteKey
 argument_list|(
-literal|"9783662565094"
+literal|"9783662585856"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -529,7 +531,7 @@ name|StandardField
 operator|.
 name|YEAR
 argument_list|,
-literal|"2018"
+literal|"2019"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -551,7 +553,18 @@ name|StandardField
 operator|.
 name|DATE
 argument_list|,
-literal|"2018-03-23"
+literal|"2019-02-01"
+argument_list|)
+expr_stmt|;
+name|bibEntry
+operator|.
+name|setField
+argument_list|(
+name|StandardField
+operator|.
+name|PAGETOTAL
+argument_list|,
+literal|"560"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -564,7 +577,18 @@ argument_list|(
 literal|"ean"
 argument_list|)
 argument_list|,
-literal|"9783662565094"
+literal|"9783662585856"
+argument_list|)
+expr_stmt|;
+name|bibEntry
+operator|.
+name|setField
+argument_list|(
+name|StandardField
+operator|.
+name|ISBN
+argument_list|,
+literal|"3662585855"
 argument_list|)
 expr_stmt|;
 name|bibEntry
@@ -575,7 +599,7 @@ name|StandardField
 operator|.
 name|URL
 argument_list|,
-literal|"https://www.ebook.de/de/product/33399253/marlon_dumas_marcello_la_rosa_jan_mendling_hajo_a_reijers_fundamentals_of_business_process_management.html"
+literal|"https://www.ebook.de/de/product/35805105/marlon_dumas_marcello_la_rosa_jan_mendling_hajo_a_reijers_fundamentals_of_business_process_management.html"
 argument_list|)
 expr_stmt|;
 name|Optional
@@ -588,7 +612,7 @@ name|fetcher
 operator|.
 name|performSearchById
 argument_list|(
-literal|"978-3-662-56509-4"
+literal|"3662585855"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -604,7 +628,7 @@ name|fetchedEntry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This test searches for a valid ISBN. See https://www.amazon.de/dp/3728128155/?tag=jabref-21 However, this ISBN is      * not available on ebook.de. The fetcher should return nothing rather than throwing an exeption.      */
+comment|/**      * This test searches for a valid ISBN. See https://www.amazon.de/dp/3728128155/?tag=jabref-21 However, this ISBN is      * not available on ebook.de. The fetcher should return nothing rather than throwing an exception.      */
 annotation|@
 name|Test
 DECL|method|searchForValidButNotFoundISBN ()

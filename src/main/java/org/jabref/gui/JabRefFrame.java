@@ -148,26 +148,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingUtilities
-import|;
-end_import
-
-begin_import
-import|import
 name|javafx
 operator|.
 name|application
@@ -1552,20 +1532,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|StandardEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
 name|field
 operator|.
 name|SpecialField
@@ -1585,6 +1551,22 @@ operator|.
 name|field
 operator|.
 name|StandardField
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|types
+operator|.
+name|StandardEntryType
 import|;
 end_import
 
@@ -2467,13 +2449,6 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
-block|{
 name|DefaultTaskExecutor
 operator|.
 name|runInJavaFXThread
@@ -2483,9 +2458,6 @@ operator|.
 name|this
 operator|::
 name|showTrackingNotification
-argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -2901,6 +2873,8 @@ name|flush
 argument_list|()
 expr_stmt|;
 comment|// dispose all windows, even if they are not displayed anymore
+comment|// TODO: javafx variant only avaiable in java 9 and updwards
+comment|// https://docs.oracle.com/javase/9/docs/api/javafx/stage/Window.html#getWindows--
 for|for
 control|(
 name|Window
@@ -3634,6 +3608,29 @@ argument_list|,
 name|StandardEntryType
 operator|.
 name|Article
+argument_list|,
+name|dialogService
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+argument_list|,
+name|stateManager
+argument_list|)
+argument_list|)
+argument_list|,
+name|factory
+operator|.
+name|createIconButton
+argument_list|(
+name|StandardActions
+operator|.
+name|NEW_ENTRY
+argument_list|,
+operator|new
+name|NewEntryAction
+argument_list|(
+name|this
 argument_list|,
 name|dialogService
 argument_list|,
@@ -7600,7 +7597,7 @@ name|visible
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the indeterminate status of the progress bar.      *<p>      * If not called on the event dispatch thread, this method uses SwingUtilities.invokeLater() to do the actual      * operation on the EDT.      */
+comment|/**      * Sets the indeterminate status of the progress bar.      *<p>      */
 DECL|method|setProgressBarIndeterminate (final boolean value)
 specifier|public
 name|void
@@ -7611,8 +7608,15 @@ name|boolean
 name|value
 parameter_list|)
 block|{
-comment|// TODO: Reimplement
-comment|/*         if (SwingUtilities.isEventDispatchThread()) {             progressBar.setIndeterminate(value);         } else {             SwingUtilities.invokeLater(() -> progressBar.setIndeterminate(value));         }         */
+name|progressBar
+operator|.
+name|setProgress
+argument_list|(
+name|ProgressBar
+operator|.
+name|INDETERMINATE_PROGRESS
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Return a boolean, if the selected entry have file      *      * @param selectEntryList A selected entries list of the current base pane      * @return true, if the selected entry contains file. false, if multiple entries are selected or the selected entry      * doesn't contains file      */
 DECL|method|isExistFile (List<BibEntry> selectEntryList)
@@ -7729,25 +7733,6 @@ block|}
 return|return
 literal|false
 return|;
-block|}
-DECL|method|showMessage (String message)
-specifier|public
-name|void
-name|showMessage
-parameter_list|(
-name|String
-name|message
-parameter_list|)
-block|{
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-literal|null
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      * Ask if the user really wants to close the given database      *      * @return true if the user choose to close the database      */
 DECL|method|confirmClose (BasePanel panel)
@@ -8391,11 +8376,7 @@ break|break;
 case|case
 name|PASTE
 case|:
-name|textInput
-operator|.
-name|paste
-argument_list|()
-expr_stmt|;
+comment|// handled by FX in TextInputControl#paste
 break|break;
 default|default:
 throw|throw
@@ -8440,12 +8421,7 @@ break|break;
 case|case
 name|PASTE
 case|:
-name|getCurrentBasePanel
-argument_list|()
-operator|.
-name|paste
-argument_list|()
-expr_stmt|;
+comment|// handled by FX in TextInputControl#paste
 break|break;
 default|default:
 throw|throw
@@ -8590,7 +8566,7 @@ name|void
 name|decreaseTableFontSize
 parameter_list|()
 block|{
-name|int
+name|double
 name|currentSize
 init|=
 name|GUIGlobals

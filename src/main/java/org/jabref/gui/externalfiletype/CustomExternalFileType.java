@@ -24,16 +24,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JLabel
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -72,16 +62,6 @@ name|CustomExternalFileType
 implements|implements
 name|ExternalFileType
 block|{
-DECL|field|label
-specifier|private
-specifier|final
-name|JLabel
-name|label
-init|=
-operator|new
-name|JLabel
-argument_list|()
-decl_stmt|;
 DECL|field|name
 specifier|private
 name|String
@@ -135,27 +115,11 @@ name|JabRefIcon
 name|icon
 parameter_list|)
 block|{
-name|label
-operator|.
-name|setText
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|name
 operator|=
 name|name
-expr_stmt|;
-name|label
-operator|.
-name|setToolTipText
-argument_list|(
-name|this
-operator|.
-name|name
-argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -439,15 +403,6 @@ name|name
 operator|=
 name|name
 expr_stmt|;
-name|label
-operator|.
-name|setToolTipText
-argument_list|(
-name|this
-operator|.
-name|name
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -566,17 +521,6 @@ operator|=
 name|openWith
 expr_stmt|;
 block|}
-comment|/**      * Obtain a JLabel instance set with this file type's icon. The same JLabel      * is returned from each call of this method.      *      * @return the label.      */
-DECL|method|getIconLabel ()
-specifier|public
-name|JLabel
-name|getIconLabel
-parameter_list|()
-block|{
-return|return
-name|label
-return|;
-block|}
 comment|/**      * Get the string associated with this file type's icon.      *      * @return The icon name.      */
 DECL|method|getIconName ()
 specifier|public
@@ -638,18 +582,6 @@ operator|.
 name|icon
 operator|=
 name|icon
-expr_stmt|;
-name|label
-operator|.
-name|setIcon
-argument_list|(
-name|this
-operator|.
-name|icon
-operator|.
-name|getSmallIcon
-argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
