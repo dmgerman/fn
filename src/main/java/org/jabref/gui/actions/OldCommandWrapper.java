@@ -239,6 +239,23 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|command
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
