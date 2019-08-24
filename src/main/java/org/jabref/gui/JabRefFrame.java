@@ -8376,11 +8376,7 @@ break|break;
 case|case
 name|PASTE
 case|:
-name|textInput
-operator|.
-name|paste
-argument_list|()
-expr_stmt|;
+comment|// handled by FX in TextInputControl#paste
 break|break;
 default|default:
 throw|throw
@@ -8425,12 +8421,7 @@ break|break;
 case|case
 name|PASTE
 case|:
-name|getCurrentBasePanel
-argument_list|()
-operator|.
-name|paste
-argument_list|()
-expr_stmt|;
+comment|// handled by FX in TextInputControl#paste
 break|break;
 default|default:
 throw|throw
