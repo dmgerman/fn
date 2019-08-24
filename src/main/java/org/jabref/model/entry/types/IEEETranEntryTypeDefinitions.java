@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.model.entry
+DECL|package|org.jabref.model.entry.types
 package|package
 name|org
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|model
 operator|.
 name|entry
+operator|.
+name|types
 package|;
 end_package
 
@@ -29,6 +31,34 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntryTypeBuilder
 import|;
 end_import
 
@@ -81,14 +111,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class represents all supported IEEETran entry types.  *  * @see http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/IEEEtran/bibtex/IEEEtran_bst_HOWTO.pdf  *<p>  *         Electronic, IEEETranBSTCTL, Periodical, Patent, Standard  */
+comment|/**  * This class represents all supported IEEETran entry types.  *  * @see http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/IEEEtran/bibtex/IEEEtran_bst_HOWTO.pdf  *<p>  * Electronic, IEEETranBSTCTL, Periodical, Patent, Standard  */
 end_comment
 
 begin_class
-DECL|class|IEEETranEntryTypes
+DECL|class|IEEETranEntryTypeDefinitions
 specifier|public
 class|class
-name|IEEETranEntryTypes
+name|IEEETranEntryTypeDefinitions
 block|{
 comment|/**      * Electronic entry type for internet references      *<p>      * Required fields:      * Optional fields: author, month, year, title, language, howpublished, organization, address, note, url      */
 DECL|field|ELECTRONIC
@@ -104,7 +134,7 @@ argument_list|()
 operator|.
 name|withType
 argument_list|(
-name|StandardEntryType
+name|IEEETranEntryType
 operator|.
 name|Electronic
 argument_list|)
@@ -169,7 +199,7 @@ argument_list|()
 operator|.
 name|withType
 argument_list|(
-name|StandardEntryType
+name|IEEETranEntryType
 operator|.
 name|IEEEtranBSTCTL
 argument_list|)
@@ -242,7 +272,7 @@ argument_list|()
 operator|.
 name|withType
 argument_list|(
-name|StandardEntryType
+name|IEEETranEntryType
 operator|.
 name|Periodical
 argument_list|)
@@ -314,7 +344,7 @@ argument_list|()
 operator|.
 name|withType
 argument_list|(
-name|StandardEntryType
+name|IEEETranEntryType
 operator|.
 name|Patent
 argument_list|)
@@ -414,7 +444,7 @@ argument_list|()
 operator|.
 name|withType
 argument_list|(
-name|StandardEntryType
+name|IEEETranEntryType
 operator|.
 name|Standard
 argument_list|)
@@ -513,9 +543,9 @@ argument_list|,
 name|STANDARD
 argument_list|)
 decl_stmt|;
-DECL|method|IEEETranEntryTypes ()
+DECL|method|IEEETranEntryTypeDefinitions ()
 specifier|private
-name|IEEETranEntryTypes
+name|IEEETranEntryTypeDefinitions
 parameter_list|()
 block|{     }
 block|}

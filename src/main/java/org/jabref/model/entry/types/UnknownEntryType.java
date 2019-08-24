@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|org.jabref.model.entry
+DECL|package|org.jabref.model.entry.types
 package|package
 name|org
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|model
 operator|.
 name|entry
+operator|.
+name|types
 package|;
 end_package
 
@@ -160,10 +162,13 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|o
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|getClass
 argument_list|()
 operator|!=
@@ -171,6 +176,7 @@ name|o
 operator|.
 name|getClass
 argument_list|()
+operator|)
 condition|)
 block|{
 return|return

@@ -140,6 +140,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|types
+operator|.
+name|StandardEntryType
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
