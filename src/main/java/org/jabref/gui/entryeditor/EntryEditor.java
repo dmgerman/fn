@@ -600,6 +600,18 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jabref
+operator|.
+name|preferences
+operator|.
+name|PreviewPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|airhacks
@@ -802,6 +814,20 @@ name|Inject
 specifier|private
 name|CountingUndoManager
 name|undoManager
+decl_stmt|;
+DECL|field|entryEditorTabs
+specifier|public
+specifier|final
+name|List
+argument_list|<
+name|EntryEditorTab
+argument_list|>
+name|entryEditorTabs
+init|=
+operator|new
+name|LinkedList
+argument_list|<>
+argument_list|()
 decl_stmt|;
 DECL|method|EntryEditor (BasePanel panel, ExternalFileTypes externalFileTypes)
 specifier|public
@@ -1559,11 +1585,7 @@ block|{
 name|panel
 operator|.
 name|entryEditorClosing
-argument_list|(
-name|EntryEditor
-operator|.
-name|this
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -1650,19 +1672,8 @@ argument_list|>
 name|createTabs
 parameter_list|()
 block|{
-name|List
-argument_list|<
-name|EntryEditorTab
-argument_list|>
-name|tabs
-init|=
-operator|new
-name|LinkedList
-argument_list|<>
-argument_list|()
-decl_stmt|;
 comment|// Required fields
-name|tabs
+name|entryEditorTabs
 operator|.
 name|add
 argument_list|(
@@ -1683,7 +1694,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Optional fields
-name|tabs
+name|entryEditorTabs
 operator|.
 name|add
 argument_list|(
@@ -1703,7 +1714,7 @@ name|dialogService
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|tabs
+name|entryEditorTabs
 operator|.
 name|add
 argument_list|(
@@ -1723,7 +1734,7 @@ name|dialogService
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|tabs
+name|entryEditorTabs
 operator|.
 name|add
 argument_list|(
@@ -1744,7 +1755,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Other fields
-name|tabs
+name|entryEditorTabs
 operator|.
 name|add
 argument_list|(
@@ -1794,7 +1805,7 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|tabs
+name|entryEditorTabs
 operator|.
 name|add
 argument_list|(
@@ -1826,7 +1837,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Special tabs
-name|tabs
+name|entryEditorTabs
 operator|.
 name|add
 argument_list|(
@@ -1835,7 +1846,7 @@ name|MathSciNetTab
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|tabs
+name|entryEditorTabs
 operator|.
 name|add
 argument_list|(
@@ -1849,7 +1860,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|tabs
+name|entryEditorTabs
 operator|.
 name|add
 argument_list|(
@@ -1891,7 +1902,7 @@ argument_list|,
 name|stateManager
 argument_list|)
 expr_stmt|;
-name|tabs
+name|entryEditorTabs
 operator|.
 name|add
 argument_list|(
@@ -1899,7 +1910,7 @@ name|sourceTab
 argument_list|)
 expr_stmt|;
 comment|// LaTeX citations tab
-name|tabs
+name|entryEditorTabs
 operator|.
 name|add
 argument_list|(
@@ -1917,7 +1928,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-name|tabs
+name|entryEditorTabs
 return|;
 block|}
 DECL|method|recalculateVisibleTabs ()
@@ -2523,6 +2534,49 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|updatePreviewInTabs (PreviewPreferences previewPreferences)
+specifier|public
+name|void
+name|updatePreviewInTabs
+parameter_list|(
+name|PreviewPreferences
+name|previewPreferences
+parameter_list|)
+block|{
+for|for
+control|(
+name|Tab
+name|tab
+range|:
+name|this
+operator|.
+name|entryEditorTabs
+control|)
+block|{
+if|if
+condition|(
+name|tab
+operator|instanceof
+name|FieldsEditorTab
+condition|)
+block|{
+operator|(
+operator|(
+name|FieldsEditorTab
+operator|)
+name|tab
+operator|)
+operator|.
+name|previewPanel
+operator|.
+name|updateLayout
+argument_list|(
+name|previewPreferences
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 end_class

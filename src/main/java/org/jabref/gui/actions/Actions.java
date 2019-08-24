@@ -153,9 +153,6 @@ block|,
 DECL|enumConstant|TOGGLE_GROUPS
 name|TOGGLE_GROUPS
 block|,
-DECL|enumConstant|TOGGLE_PREVIEW
-name|TOGGLE_PREVIEW
-block|,
 DECL|enumConstant|UNABBREVIATE
 name|UNABBREVIATE
 block|,
