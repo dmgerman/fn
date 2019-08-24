@@ -163,6 +163,12 @@ argument_list|<
 name|Void
 argument_list|>
 block|{
+DECL|field|buttonExtract
+specifier|private
+specifier|final
+name|Button
+name|buttonExtract
+decl_stmt|;
 DECL|field|input
 annotation|@
 name|FXML
@@ -176,12 +182,6 @@ name|FXML
 specifier|private
 name|ButtonType
 name|extractButtonType
-decl_stmt|;
-DECL|field|buttonExtract
-specifier|private
-specifier|final
-name|Button
-name|buttonExtract
 decl_stmt|;
 DECL|field|viewModel
 specifier|private
