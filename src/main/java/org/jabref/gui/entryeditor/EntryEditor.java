@@ -816,7 +816,7 @@ name|CountingUndoManager
 name|undoManager
 decl_stmt|;
 DECL|field|entryEditorTabs
-specifier|public
+specifier|private
 specifier|final
 name|List
 argument_list|<

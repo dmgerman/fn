@@ -404,6 +404,11 @@ name|FieldsEditorTab
 extends|extends
 name|EntryEditorTab
 block|{
+DECL|field|previewPanel
+specifier|public
+name|PreviewPanel
+name|previewPanel
+decl_stmt|;
 DECL|field|databaseContext
 specifier|protected
 specifier|final
@@ -471,11 +476,6 @@ DECL|field|gridPane
 specifier|private
 name|GridPane
 name|gridPane
-decl_stmt|;
-DECL|field|previewPanel
-specifier|public
-name|PreviewPanel
-name|previewPanel
 decl_stmt|;
 DECL|method|FieldsEditorTab (boolean compressed, BibDatabaseContext databaseContext, SuggestionProviders suggestionProviders, UndoManager undoManager, DialogService dialogService)
 specifier|public
