@@ -728,7 +728,7 @@ name|end
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Integer
+name|int
 name|intYearCandidate
 init|=
 name|Integer
