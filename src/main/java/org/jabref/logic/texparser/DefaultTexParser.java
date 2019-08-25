@@ -28,7 +28,37 @@ name|java
 operator|.
 name|io
 operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStreamReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|LineNumberReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Reader
 import|;
 end_import
 
@@ -51,6 +81,18 @@ operator|.
 name|channels
 operator|.
 name|ClosedChannelException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
 import|;
 end_import
 
@@ -179,22 +221,6 @@ operator|.
 name|texparser
 operator|.
 name|TexParserResult
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|txt
-operator|.
-name|CharsetDetector
 import|;
 end_import
 
@@ -530,31 +556,36 @@ continue|continue;
 block|}
 try|try
 init|(
-name|LineNumberReader
-name|lineNumberReader
+name|InputStream
+name|inputStream
 init|=
-operator|new
-name|LineNumberReader
-argument_list|(
-operator|new
-name|CharsetDetector
-argument_list|()
-operator|.
-name|setText
-argument_list|(
 name|Files
 operator|.
-name|readAllBytes
+name|newInputStream
 argument_list|(
 name|file
 argument_list|)
+init|;
+name|Reader
+name|reader
+operator|=
+operator|new
+name|InputStreamReader
+argument_list|(
+name|inputStream
+argument_list|,
+name|StandardCharsets
+operator|.
+name|UTF_8
 argument_list|)
-operator|.
-name|detect
-argument_list|()
-operator|.
-name|getReader
-argument_list|()
+init|;
+name|LineNumberReader
+name|lineNumberReader
+operator|=
+operator|new
+name|LineNumberReader
+argument_list|(
+name|reader
 argument_list|)
 init|)
 block|{
@@ -644,16 +675,15 @@ name|ClosedChannelException
 name|e
 parameter_list|)
 block|{
+comment|// User changed the underlying LaTeX file
+comment|// We ignore this error and just continue with parsing
 name|LOGGER
 operator|.
-name|error
+name|info
 argument_list|(
 literal|"Parsing has been interrupted"
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
 block|}
 catch|catch
 parameter_list|(
@@ -663,9 +693,11 @@ name|UncheckedIOException
 name|e
 parameter_list|)
 block|{
+comment|// Some weired error during reading
+comment|// We ignore this error and just continue with parsing
 name|LOGGER
 operator|.
-name|error
+name|info
 argument_list|(
 literal|"Error while parsing file {}"
 argument_list|,
@@ -686,6 +718,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+comment|// modifies class variable texParserResult
 name|parse
 argument_list|(
 name|referencedFiles

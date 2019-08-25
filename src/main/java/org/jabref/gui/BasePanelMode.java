@@ -23,9 +23,6 @@ block|{
 DECL|enumConstant|SHOWING_NOTHING
 name|SHOWING_NOTHING
 block|,
-DECL|enumConstant|SHOWING_PREVIEW
-name|SHOWING_PREVIEW
-block|,
 DECL|enumConstant|SHOWING_EDITOR
 name|SHOWING_EDITOR
 block|,

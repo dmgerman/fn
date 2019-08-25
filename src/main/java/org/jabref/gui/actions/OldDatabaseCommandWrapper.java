@@ -281,6 +281,23 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|command
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|progressProperty ()
 specifier|public
 name|ReadOnlyDoubleProperty

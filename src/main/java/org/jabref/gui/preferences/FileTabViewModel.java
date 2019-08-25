@@ -649,6 +649,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -787,6 +789,9 @@ argument_list|(
 name|StandardField
 operator|.
 name|FILE
+operator|.
+name|getName
+argument_list|()
 operator|+
 name|FilePreferences
 operator|.
@@ -922,6 +927,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -1094,6 +1101,9 @@ argument_list|(
 name|StandardField
 operator|.
 name|FILE
+operator|.
+name|getName
+argument_list|()
 operator|+
 name|FilePreferences
 operator|.
@@ -1202,6 +1212,8 @@ name|getValidationStatus
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|validateSettings ()
 specifier|public
 name|boolean
