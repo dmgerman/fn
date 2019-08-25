@@ -80,10 +80,6 @@ DECL|enumConstant|ABSTRACT
 name|ABSTRACT
 argument_list|(
 literal|"abstract"
-argument_list|,
-name|FieldProperty
-operator|.
-name|MULTILINE_TEXT
 argument_list|)
 block|,
 DECL|enumConstant|ADDENDUM
@@ -222,10 +218,6 @@ DECL|enumConstant|COMMENT
 name|COMMENT
 argument_list|(
 literal|"comment"
-argument_list|,
-name|FieldProperty
-operator|.
-name|MULTILINE_TEXT
 argument_list|)
 block|,
 DECL|enumConstant|CROSSREF

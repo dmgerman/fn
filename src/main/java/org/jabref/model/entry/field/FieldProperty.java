@@ -56,9 +56,6 @@ block|,
 DECL|enumConstant|MONTH
 name|MONTH
 block|,
-DECL|enumConstant|MULTILINE_TEXT
-name|MULTILINE_TEXT
-block|,
 DECL|enumConstant|MULTIPLE_ENTRY_LINK
 name|MULTIPLE_ENTRY_LINK
 block|,
