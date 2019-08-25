@@ -150,6 +150,17 @@ name|Path
 argument_list|>
 name|nestedFiles
 decl_stmt|;
+DECL|field|bibFiles
+specifier|private
+specifier|final
+name|Multimap
+argument_list|<
+name|Path
+argument_list|,
+name|Path
+argument_list|>
+name|bibFiles
+decl_stmt|;
 comment|// BibTeXKey --> set of citations
 DECL|field|citations
 specifier|private
@@ -187,6 +198,15 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
+name|bibFiles
+operator|=
+name|HashMultimap
+operator|.
+name|create
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
 name|citations
 operator|=
 name|HashMultimap
@@ -219,6 +239,21 @@ parameter_list|()
 block|{
 return|return
 name|nestedFiles
+return|;
+block|}
+DECL|method|getBibFiles ()
+specifier|public
+name|Multimap
+argument_list|<
+name|Path
+argument_list|,
+name|Path
+argument_list|>
+name|getBibFiles
+parameter_list|()
+block|{
+return|return
+name|bibFiles
 return|;
 block|}
 DECL|method|getCitations ()
@@ -350,6 +385,29 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Add a bibliography file to the BIB files set.      */
+DECL|method|addBibFile (Path file, Path bibFile)
+specifier|public
+name|void
+name|addBibFile
+parameter_list|(
+name|Path
+name|file
+parameter_list|,
+name|Path
+name|bibFile
+parameter_list|)
+block|{
+name|bibFiles
+operator|.
+name|put
+argument_list|(
+name|file
+argument_list|,
+name|bibFile
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Add a citation to the citations multimap.      */
 DECL|method|addKey (String key, Path file, int lineNumber, int start, int end, String line)
 specifier|public
@@ -415,7 +473,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"TexParserResult{fileList=%s, nestedFiles=%s, citations=%s}"
+literal|"TexParserResult{fileList=%s, nestedFiles=%s, bibFiles=%s, citations=%s}"
 argument_list|,
 name|this
 operator|.
@@ -424,6 +482,10 @@ argument_list|,
 name|this
 operator|.
 name|nestedFiles
+argument_list|,
+name|this
+operator|.
+name|bibFiles
 argument_list|,
 name|this
 operator|.
@@ -507,6 +569,17 @@ name|Objects
 operator|.
 name|equals
 argument_list|(
+name|bibFiles
+argument_list|,
+name|that
+operator|.
+name|bibFiles
+argument_list|)
+operator|&&
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|citations
 argument_list|,
 name|that
@@ -531,6 +604,8 @@ argument_list|(
 name|fileList
 argument_list|,
 name|nestedFiles
+argument_list|,
+name|bibFiles
 argument_list|,
 name|citations
 argument_list|)
