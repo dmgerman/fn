@@ -156,16 +156,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -528,7 +518,7 @@ specifier|final
 name|BibEntryTypesManager
 name|entryTypesManager
 decl_stmt|;
-DECL|method|SaveDatabaseAction (BasePanel panel, JabRefPreferences prefs)
+DECL|method|SaveDatabaseAction (BasePanel panel, JabRefPreferences prefs, BibEntryTypesManager entryTypesManager)
 specifier|public
 name|SaveDatabaseAction
 parameter_list|(
@@ -537,6 +527,9 @@ name|panel
 parameter_list|,
 name|JabRefPreferences
 name|prefs
+parameter_list|,
+name|BibEntryTypesManager
+name|entryTypesManager
 parameter_list|)
 block|{
 name|this
@@ -569,10 +562,10 @@ name|prefs
 operator|=
 name|prefs
 expr_stmt|;
+name|this
+operator|.
 name|entryTypesManager
 operator|=
-name|Globals
-operator|.
 name|entryTypesManager
 expr_stmt|;
 block|}
