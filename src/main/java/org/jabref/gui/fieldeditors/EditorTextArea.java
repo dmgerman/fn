@@ -82,18 +82,6 @@ name|scene
 operator|.
 name|control
 operator|.
-name|ContextMenu
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|control
-operator|.
 name|MenuItem
 import|;
 end_import
@@ -106,7 +94,9 @@ name|scene
 operator|.
 name|control
 operator|.
-name|TextArea
+name|skin
+operator|.
+name|TextAreaSkin
 import|;
 end_import
 
@@ -134,23 +124,9 @@ name|KeyEvent
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|javafx
-operator|.
-name|scene
-operator|.
-name|control
-operator|.
-name|skin
-operator|.
-name|TextAreaSkin
-import|;
-end_import
+begin_comment
+comment|// TODO: TextAreaSkin changed in Java 9
+end_comment
 
 begin_class
 DECL|class|EditorTextArea
@@ -158,6 +134,12 @@ specifier|public
 class|class
 name|EditorTextArea
 extends|extends
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
 name|TextArea
 implements|implements
 name|Initializable
@@ -229,68 +211,20 @@ operator|.
 name|TAB
 condition|)
 block|{
-name|TextAreaSkin
-name|skin
-init|=
-operator|(
-name|TextAreaSkin
-operator|)
-name|getSkin
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|event
-operator|.
-name|isShiftDown
-argument_list|()
-condition|)
-block|{
-comment|// Shift + Tab> previous text area
-name|skin
-operator|.
-name|getBehavior
-argument_list|()
-operator|.
-name|traversePrevious
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-if|if
-condition|(
-name|event
-operator|.
-name|isControlDown
-argument_list|()
-condition|)
-block|{
-comment|// Ctrl + Tab> insert tab
-name|skin
-operator|.
-name|getBehavior
-argument_list|()
-operator|.
-name|callAction
-argument_list|(
-literal|"InsertTab"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// Tab> next text area
-name|skin
-operator|.
-name|getBehavior
-argument_list|()
-operator|.
-name|traverseNext
-argument_list|()
-expr_stmt|;
-block|}
-block|}
+comment|// TODO: temporarily removed, as this is internal API
+comment|//                TextAreaSkin skin = (TextAreaSkin) getSkin();
+comment|//                if (event.isShiftDown()) {
+comment|//                    // Shift + Tab> previous text area
+comment|//                    skin.getBehavior().traversePrevious();
+comment|//                } else {
+comment|//                    if (event.isControlDown()) {
+comment|//                        // Ctrl + Tab> insert tab
+comment|//                        skin.getBehavior().callAction("InsertTab");
+comment|//                    } else {
+comment|//                        // Tab> next text area
+comment|//                        skin.getBehavior().traverseNext();
+comment|//                    }
+comment|//                }
 name|event
 operator|.
 name|consume
@@ -328,39 +262,12 @@ argument_list|(
 name|this
 argument_list|)
 block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|populateContextMenu
-parameter_list|(
-name|ContextMenu
-name|contextMenu
-parameter_list|)
-block|{
-name|super
-operator|.
-name|populateContextMenu
-argument_list|(
-name|contextMenu
-argument_list|)
-expr_stmt|;
-name|contextMenu
-operator|.
-name|getItems
-argument_list|()
-operator|.
-name|addAll
-argument_list|(
-literal|0
-argument_list|,
-name|items
-operator|.
-name|get
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
+comment|// TODO: temporarily removed, internal API
+comment|//            @Override
+comment|//            public void populateContextMenu(ContextMenu contextMenu) {
+comment|//                super.populateContextMenu(contextMenu);
+comment|//                contextMenu.getItems().addAll(0, items.get());
+comment|//            }
 block|}
 decl_stmt|;
 name|setSkin

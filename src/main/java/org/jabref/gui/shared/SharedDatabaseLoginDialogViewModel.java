@@ -1530,6 +1530,10 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+argument_list|,
+name|Globals
+operator|.
+name|entryTypesManager
 argument_list|)
 operator|.
 name|saveAs

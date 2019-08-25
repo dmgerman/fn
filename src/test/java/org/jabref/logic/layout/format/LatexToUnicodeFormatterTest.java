@@ -60,12 +60,10 @@ end_import
 
 begin_class
 DECL|class|LatexToUnicodeFormatterTest
-specifier|public
 class|class
 name|LatexToUnicodeFormatterTest
 block|{
 DECL|field|formatter
-specifier|public
 specifier|final
 name|LatexToUnicodeFormatter
 name|formatter
@@ -77,7 +75,6 @@ decl_stmt|;
 annotation|@
 name|Test
 DECL|method|testPlainFormat ()
-specifier|public
 name|void
 name|testPlainFormat
 parameter_list|()
@@ -98,7 +95,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testFormatUmlaut ()
-specifier|public
 name|void
 name|testFormatUmlaut
 parameter_list|()
@@ -130,15 +126,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFormatStripLatexCommands ()
-specifier|public
+DECL|method|preserveUnknownCommand ()
 name|void
-name|testFormatStripLatexCommands
+name|preserveUnknownCommand
 parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"-"
+literal|"\\mbox{-}"
 argument_list|,
 name|formatter
 operator|.
@@ -152,7 +147,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testFormatTextit ()
-specifier|public
 name|void
 name|testFormatTextit
 parameter_list|()
@@ -174,7 +168,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEscapedDollarSign ()
-specifier|public
 name|void
 name|testEscapedDollarSign
 parameter_list|()
@@ -195,7 +188,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEquationsSingleSymbol ()
-specifier|public
 name|void
 name|testEquationsSingleSymbol
 parameter_list|()
@@ -216,7 +208,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEquationsMoreComplicatedFormatting ()
-specifier|public
 name|void
 name|testEquationsMoreComplicatedFormatting
 parameter_list|()
@@ -237,7 +228,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|formatExample ()
-specifier|public
 name|void
 name|formatExample
 parameter_list|()
@@ -261,7 +251,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testChi ()
-specifier|public
 name|void
 name|testChi
 parameter_list|()
@@ -283,7 +272,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testSWithCaron ()
-specifier|public
 name|void
 name|testSWithCaron
 parameter_list|()
@@ -305,7 +293,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIWithDiaresis ()
-specifier|public
 name|void
 name|testIWithDiaresis
 parameter_list|()
@@ -326,7 +313,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIWithDiaresisAndEscapedI ()
-specifier|public
 name|void
 name|testIWithDiaresisAndEscapedI
 parameter_list|()
@@ -348,7 +334,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testIWithDiaresisAndUnnecessaryBraces ()
-specifier|public
 name|void
 name|testIWithDiaresisAndUnnecessaryBraces
 parameter_list|()
@@ -369,7 +354,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testUpperCaseIWithDiaresis ()
-specifier|public
 name|void
 name|testUpperCaseIWithDiaresis
 parameter_list|()
@@ -390,7 +374,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testPolishName ()
-specifier|public
 name|void
 name|testPolishName
 parameter_list|()
@@ -411,7 +394,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testDoubleCombiningAccents ()
-specifier|public
 name|void
 name|testDoubleCombiningAccents
 parameter_list|()
@@ -432,7 +414,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCombiningAccentsCase1 ()
-specifier|public
 name|void
 name|testCombiningAccentsCase1
 parameter_list|()
@@ -458,7 +439,6 @@ argument_list|)
 annotation|@
 name|Test
 DECL|method|testCombiningAccentsCase2 ()
-specifier|public
 name|void
 name|testCombiningAccentsCase2
 parameter_list|()
@@ -478,15 +458,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|unknownCommandIsIgnored ()
-specifier|public
+DECL|method|keepUnknownCommandWithoutArgument ()
 name|void
-name|unknownCommandIsIgnored
+name|keepUnknownCommandWithoutArgument
 parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|""
+literal|"\\aaaa"
 argument_list|,
 name|formatter
 operator|.
@@ -499,15 +478,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|unknownCommandKeepsArgument ()
-specifier|public
+DECL|method|keepUnknownCommandWithArgument ()
 name|void
-name|unknownCommandKeepsArgument
+name|keepUnknownCommandWithArgument
 parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"bbbb"
+literal|"\\aaaa{bbbb}"
 argument_list|,
 name|formatter
 operator|.
@@ -520,15 +498,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|unknownCommandWithEmptyArgumentIsIgnored ()
-specifier|public
+DECL|method|keepUnknownCommandWithEmptyArgument ()
 name|void
-name|unknownCommandWithEmptyArgumentIsIgnored
+name|keepUnknownCommandWithEmptyArgument
 parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|""
+literal|"\\aaaa{}"
 argument_list|,
 name|formatter
 operator|.
@@ -542,7 +519,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testTildeN ()
-specifier|public
 name|void
 name|testTildeN
 parameter_list|()
@@ -563,7 +539,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testAcuteNLongVersion ()
-specifier|public
 name|void
 name|testAcuteNLongVersion
 parameter_list|()
@@ -596,7 +571,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testAcuteNShortVersion ()
-specifier|public
 name|void
 name|testAcuteNShortVersion
 parameter_list|()
@@ -629,7 +603,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testApostrophN ()
-specifier|public
 name|void
 name|testApostrophN
 parameter_list|()
@@ -662,7 +635,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testApostrophO ()
-specifier|public
 name|void
 name|testApostrophO
 parameter_list|()
@@ -683,7 +655,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testApostrophC ()
-specifier|public
 name|void
 name|testApostrophC
 parameter_list|()
@@ -704,7 +675,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testPreservationOfSingleUnderscore ()
-specifier|public
 name|void
 name|testPreservationOfSingleUnderscore
 parameter_list|()
@@ -725,7 +695,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testConversionOfUnderscoreWithBraces ()
-specifier|public
 name|void
 name|testConversionOfUnderscoreWithBraces
 parameter_list|()
@@ -746,7 +715,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testConversionOfOrdinal1st ()
-specifier|public
 name|void
 name|testConversionOfOrdinal1st
 parameter_list|()
@@ -767,7 +735,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testConversionOfOrdinal2nd ()
-specifier|public
 name|void
 name|testConversionOfOrdinal2nd
 parameter_list|()
@@ -788,7 +755,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testConversionOfOrdinal3rd ()
-specifier|public
 name|void
 name|testConversionOfOrdinal3rd
 parameter_list|()
@@ -809,7 +775,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testConversionOfOrdinal4th ()
-specifier|public
 name|void
 name|testConversionOfOrdinal4th
 parameter_list|()
@@ -830,7 +795,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testConversionOfOrdinal9th ()
-specifier|public
 name|void
 name|testConversionOfOrdinal9th
 parameter_list|()

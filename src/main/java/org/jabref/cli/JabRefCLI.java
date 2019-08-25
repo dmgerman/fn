@@ -202,6 +202,8 @@ name|String
 index|[]
 name|args
 parameter_list|)
+throws|throws
+name|ParseException
 block|{
 name|Options
 name|options
@@ -209,8 +211,6 @@ init|=
 name|getOptions
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|this
 operator|.
 name|cl
@@ -224,6 +224,8 @@ argument_list|(
 name|options
 argument_list|,
 name|args
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|this
@@ -235,33 +237,6 @@ operator|.
 name|getArgList
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ParseException
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Problem parsing arguments"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|printUsage
-argument_list|()
-expr_stmt|;
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|()
-throw|;
-block|}
 block|}
 DECL|method|getExportMatchesSyntax ()
 specifier|public
@@ -726,6 +701,7 @@ return|;
 block|}
 DECL|method|getOptions ()
 specifier|private
+specifier|static
 name|Options
 name|getOptions
 parameter_list|()
@@ -1365,6 +1341,7 @@ expr_stmt|;
 block|}
 DECL|method|printUsage ()
 specifier|public
+specifier|static
 name|void
 name|printUsage
 parameter_list|()

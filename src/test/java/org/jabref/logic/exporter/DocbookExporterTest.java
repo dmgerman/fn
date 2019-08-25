@@ -395,7 +395,7 @@ name|StandardField
 operator|.
 name|TITLE
 argument_list|,
-literal|"Peptidomics of the larval {\\protect{{D}rosophila melanogaster}} central nervous system."
+literal|"Peptidomics of the larval {{{D}rosophila melanogaster}} central nervous system."
 argument_list|)
 expr_stmt|;
 name|List

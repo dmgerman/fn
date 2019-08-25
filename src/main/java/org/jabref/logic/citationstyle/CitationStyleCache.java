@@ -24,16 +24,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|ParametersAreNonnullByDefault
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|jabref
@@ -216,8 +206,6 @@ argument_list|()
 block|{
 annotation|@
 name|Override
-annotation|@
-name|ParametersAreNonnullByDefault
 specifier|public
 name|String
 name|load

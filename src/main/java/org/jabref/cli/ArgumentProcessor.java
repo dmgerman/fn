@@ -747,6 +747,16 @@ parameter_list|,
 name|Mode
 name|startupMode
 parameter_list|)
+throws|throws
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|cli
+operator|.
+name|ParseException
 block|{
 name|cli
 operator|=
@@ -1419,7 +1429,7 @@ name|isHelp
 argument_list|()
 condition|)
 block|{
-name|cli
+name|JabRefCLI
 operator|.
 name|printUsage
 argument_list|()

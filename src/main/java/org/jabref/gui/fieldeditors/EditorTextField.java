@@ -72,43 +72,7 @@ name|scene
 operator|.
 name|control
 operator|.
-name|ContextMenu
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|control
-operator|.
 name|MenuItem
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|control
-operator|.
-name|TextField
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|input
-operator|.
-name|KeyCode
 import|;
 end_import
 
@@ -148,23 +112,13 @@ name|Priority
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|javafx
-operator|.
-name|scene
-operator|.
-name|control
-operator|.
-name|skin
-operator|.
-name|TextFieldSkin
-import|;
-end_import
+begin_comment
+comment|//import com.sun.javafx.scene.control.skin.TextFieldSkin;
+end_comment
+
+begin_comment
+comment|// TODO: TextFieldSkin changed in Java 9
+end_comment
 
 begin_class
 DECL|class|EditorTextField
@@ -172,6 +126,12 @@ specifier|public
 class|class
 name|EditorTextField
 extends|extends
+name|javafx
+operator|.
+name|scene
+operator|.
+name|control
+operator|.
 name|TextField
 implements|implements
 name|Initializable
@@ -232,86 +192,22 @@ argument_list|,
 name|event
 lambda|->
 block|{
-if|if
-condition|(
-name|event
-operator|.
-name|getCode
-argument_list|()
-operator|==
-name|KeyCode
-operator|.
-name|TAB
-condition|)
-block|{
-name|TextFieldSkin
-name|skin
-init|=
-operator|(
-name|TextFieldSkin
-operator|)
-name|getSkin
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|event
-operator|.
-name|isShiftDown
-argument_list|()
-condition|)
-block|{
-comment|// Shift + Tab> previous text area
-name|skin
-operator|.
-name|getBehavior
-argument_list|()
-operator|.
-name|traversePrevious
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-if|if
-condition|(
-name|event
-operator|.
-name|isControlDown
-argument_list|()
-condition|)
-block|{
-comment|// Ctrl + Tab> insert tab
-name|skin
-operator|.
-name|getBehavior
-argument_list|()
-operator|.
-name|callAction
-argument_list|(
-literal|"InsertTab"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// Tab> next text area
-name|skin
-operator|.
-name|getBehavior
-argument_list|()
-operator|.
-name|traverseNext
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-name|event
-operator|.
-name|consume
-argument_list|()
-expr_stmt|;
-block|}
+comment|//            if (event.getCode() == KeyCode.TAB) {
+comment|//                TextFieldSkin skin = (TextFieldSkin) getSkin();
+comment|//                if (event.isShiftDown()) {
+comment|//                    // Shift + Tab> previous text area
+comment|//                    skin.getBehavior().traversePrevious();
+comment|//                } else {
+comment|//                    if (event.isControlDown()) {
+comment|//                        // Ctrl + Tab> insert tab
+comment|//                        skin.getBehavior().callAction("InsertTab");
+comment|//                    } else {
+comment|//                        // Tab> next text area
+comment|//                        skin.getBehavior().traverseNext();
+comment|//                    }
+comment|//                }
+comment|//                event.consume();
+comment|//            }
 block|}
 argument_list|)
 expr_stmt|;
@@ -334,55 +230,14 @@ argument_list|>
 name|items
 parameter_list|)
 block|{
-name|TextFieldSkin
-name|customContextSkin
-init|=
-operator|new
-name|TextFieldSkin
-argument_list|(
-name|this
-argument_list|)
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|populateContextMenu
-parameter_list|(
-name|ContextMenu
-name|contextMenu
-parameter_list|)
-block|{
-name|super
-operator|.
-name|populateContextMenu
-argument_list|(
-name|contextMenu
-argument_list|)
-expr_stmt|;
-name|contextMenu
-operator|.
-name|getItems
-argument_list|()
-operator|.
-name|addAll
-argument_list|(
-literal|0
-argument_list|,
-name|items
-operator|.
-name|get
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-decl_stmt|;
-name|setSkin
-argument_list|(
-name|customContextSkin
-argument_list|)
-expr_stmt|;
+comment|//        TextFieldSkin customContextSkin = new TextFieldSkin(this) {
+comment|//            @Override
+comment|//            public void populateContextMenu(ContextMenu contextMenu) {
+comment|//                super.populateContextMenu(contextMenu);
+comment|//                contextMenu.getItems().addAll(0, items.get());
+comment|//            }
+comment|//        };
+comment|//        setSkin(customContextSkin);
 block|}
 annotation|@
 name|Override

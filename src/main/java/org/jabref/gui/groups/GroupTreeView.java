@@ -2693,6 +2693,7 @@ parameter_list|)
 block|{
 try|try
 block|{
+comment|// TODO: reflective access, should be removed
 name|Method
 name|m
 init|=

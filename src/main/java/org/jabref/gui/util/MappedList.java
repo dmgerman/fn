@@ -582,6 +582,21 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getViewIndex (int index)
+specifier|public
+name|int
+name|getViewIndex
+parameter_list|(
+name|int
+name|index
+parameter_list|)
+block|{
+return|return
+name|index
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|get (int index)
 specifier|public
 name|A

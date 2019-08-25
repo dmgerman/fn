@@ -148,6 +148,20 @@ name|jupiter
 operator|.
 name|api
 operator|.
+name|Disabled
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
+operator|.
 name|Test
 import|;
 end_import
@@ -190,12 +204,19 @@ name|mock
 import|;
 end_import
 
+begin_comment
+comment|// TODO: Reenable as soon as https://github.com/ronmamo/reflections/issues/202 is fixed
+end_comment
+
 begin_class
+annotation|@
+name|Disabled
 DECL|class|WebFetchersTest
 class|class
 name|WebFetchersTest
 block|{
 DECL|field|reflections
+specifier|private
 name|Reflections
 name|reflections
 init|=
@@ -206,6 +227,7 @@ literal|"org.jabref"
 argument_list|)
 decl_stmt|;
 DECL|field|importFormatPreferences
+specifier|private
 name|ImportFormatPreferences
 name|importFormatPreferences
 decl_stmt|;

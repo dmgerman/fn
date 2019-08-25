@@ -77,6 +77,8 @@ DECL|method|parsingLongOptions ()
 name|void
 name|parsingLongOptions
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|JabRefCLI
 name|cli
@@ -144,6 +146,8 @@ DECL|method|parsingShortOptions ()
 name|void
 name|parsingShortOptions
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|JabRefCLI
 name|cli
@@ -211,6 +215,8 @@ DECL|method|preferencesExport ()
 name|void
 name|preferencesExport
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|JabRefCLI
 name|cli
@@ -266,6 +272,8 @@ DECL|method|recognizesImportBibtex ()
 name|void
 name|recognizesImportBibtex
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|String
 name|bibtex
@@ -326,6 +334,8 @@ DECL|method|recognizesImportBibtexLong ()
 name|void
 name|recognizesImportBibtexLong
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|String
 name|bibtex

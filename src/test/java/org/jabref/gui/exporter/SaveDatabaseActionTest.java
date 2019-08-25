@@ -130,6 +130,20 @@ name|org
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntryTypesManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jabref
+operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -142,7 +156,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|jupiter
+operator|.
+name|api
+operator|.
+name|BeforeEach
 import|;
 end_import
 
@@ -151,6 +169,10 @@ import|import
 name|org
 operator|.
 name|junit
+operator|.
+name|jupiter
+operator|.
+name|api
 operator|.
 name|Test
 import|;
@@ -162,7 +184,11 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|jupiter
+operator|.
+name|api
+operator|.
+name|Assertions
 operator|.
 name|assertFalse
 import|;
@@ -362,7 +388,7 @@ name|SaveDatabaseAction
 name|saveDatabaseAction
 decl_stmt|;
 annotation|@
-name|Before
+name|BeforeEach
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -418,6 +444,13 @@ argument_list|(
 name|basePanel
 argument_list|,
 name|preferences
+argument_list|,
+name|mock
+argument_list|(
+name|BibEntryTypesManager
+operator|.
+name|class
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

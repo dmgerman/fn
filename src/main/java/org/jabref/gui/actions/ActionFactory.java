@@ -170,8 +170,6 @@ name|scene
 operator|.
 name|control
 operator|.
-name|skin
-operator|.
 name|ContextMenuContent
 import|;
 end_import
@@ -356,7 +354,7 @@ name|MenuItemContainer
 operator|)
 name|menuItem
 operator|.
-name|impl_styleableGetNode
+name|getStyleableNode
 argument_list|()
 decl_stmt|;
 if|if

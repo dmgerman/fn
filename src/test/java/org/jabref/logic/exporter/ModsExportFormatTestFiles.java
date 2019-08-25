@@ -338,10 +338,10 @@ specifier|private
 name|BibDatabaseContext
 name|databaseContext
 decl_stmt|;
-DECL|field|tempFile
+DECL|field|exportedFile
 specifier|private
 name|Path
-name|tempFile
+name|exportedFile
 decl_stmt|;
 DECL|field|exporter
 specifier|private
@@ -526,7 +526,7 @@ argument_list|(
 name|path
 argument_list|)
 expr_stmt|;
-name|tempFile
+name|exportedFile
 operator|=
 name|path
 operator|.
@@ -655,7 +655,7 @@ name|getEntries
 argument_list|()
 decl_stmt|;
 name|Path
-name|xmlFile
+name|expectedFile
 init|=
 name|Paths
 operator|.
@@ -680,7 +680,7 @@ name|export
 argument_list|(
 name|databaseContext
 argument_list|,
-name|tempFile
+name|exportedFile
 argument_list|,
 name|charset
 argument_list|,
@@ -699,7 +699,7 @@ name|Files
 operator|.
 name|readAllLines
 argument_list|(
-name|xmlFile
+name|expectedFile
 argument_list|)
 argument_list|)
 argument_list|,
@@ -713,7 +713,7 @@ name|Files
 operator|.
 name|readAllLines
 argument_list|(
-name|tempFile
+name|exportedFile
 argument_list|)
 argument_list|)
 argument_list|)
@@ -784,7 +784,7 @@ name|export
 argument_list|(
 name|databaseContext
 argument_list|,
-name|tempFile
+name|exportedFile
 argument_list|,
 name|charset
 argument_list|,
@@ -797,7 +797,7 @@ name|assertEquals
 argument_list|(
 name|entries
 argument_list|,
-name|tempFile
+name|exportedFile
 argument_list|,
 name|modsImporter
 argument_list|)
@@ -900,7 +900,7 @@ name|export
 argument_list|(
 name|databaseContext
 argument_list|,
-name|tempFile
+name|exportedFile
 argument_list|,
 name|charset
 argument_list|,
@@ -933,7 +933,7 @@ name|Files
 operator|.
 name|readAllLines
 argument_list|(
-name|tempFile
+name|exportedFile
 argument_list|)
 argument_list|)
 argument_list|)

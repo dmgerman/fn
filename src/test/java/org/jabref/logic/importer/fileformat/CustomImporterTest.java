@@ -80,13 +80,17 @@ end_import
 
 begin_import
 import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|jupiter
 operator|.
-name|TestCase
+name|api
 operator|.
-name|assertTrue
+name|Assertions
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -102,7 +106,7 @@ name|api
 operator|.
 name|Assertions
 operator|.
-name|assertEquals
+name|assertTrue
 import|;
 end_import
 
