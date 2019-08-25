@@ -6957,6 +6957,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getEntryEditorPreferences ()
 specifier|public
 name|EntryEditorPreferences
@@ -10493,6 +10495,9 @@ argument_list|(
 name|StandardField
 operator|.
 name|FILE
+operator|.
+name|getName
+argument_list|()
 operator|+
 name|FilePreferences
 operator|.
@@ -13205,6 +13210,8 @@ return|return
 name|map
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getEntryEditorFileLinkPreference ()
 specifier|public
 name|FileDragDropPreferenceType

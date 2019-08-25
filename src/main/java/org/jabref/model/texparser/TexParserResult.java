@@ -161,6 +161,7 @@ name|Path
 argument_list|>
 name|bibFiles
 decl_stmt|;
+comment|// BibTeXKey --> set of citations
 DECL|field|citations
 specifier|private
 specifier|final

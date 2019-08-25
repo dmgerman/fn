@@ -1534,25 +1534,6 @@ operator|.
 name|QUALITY
 argument_list|)
 block|,
-DECL|enumConstant|TOGGLE_ENTRY_PREVIEW
-name|TOGGLE_ENTRY_PREVIEW
-argument_list|(
-literal|"Toggle entry preview"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Toggle entry preview"
-argument_list|)
-argument_list|,
-literal|"alt+2"
-argument_list|,
-name|KeyBindingCategory
-operator|.
-name|VIEW
-argument_list|)
-block|,
 DECL|enumConstant|TOGGLE_GROUPS_INTERFACE
 name|TOGGLE_GROUPS_INTERFACE
 argument_list|(
