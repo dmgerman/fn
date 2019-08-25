@@ -228,7 +228,6 @@ name|prefs
 operator|=
 name|prefs
 expr_stmt|;
-comment|/**          * Added Bibtexkey to combobox.          *          * [ 1540646 ] default sort order: bibtexkey          *          * http://sourceforge.net/tracker/index.php?func=detail&aid=1540646&group_id=92314&atid=600306          */
 name|autoResizeMode
 operator|=
 operator|new
