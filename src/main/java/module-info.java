@@ -295,7 +295,7 @@ name|requires
 name|easybind
 decl_stmt|;
 name|requires
-name|javax
+name|jakarta
 operator|.
 name|inject
 decl_stmt|;
@@ -339,6 +339,9 @@ name|requires
 name|commons
 operator|.
 name|lang3
+decl_stmt|;
+name|requires
+name|xmpbox
 decl_stmt|;
 block|}
 end_decl_stmt

@@ -281,10 +281,9 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|knownLanguage
 operator|.
-name|isPresent
+name|isEmpty
 argument_list|()
 condition|)
 block|{
