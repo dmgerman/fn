@@ -1964,6 +1964,15 @@ operator|.
 name|CHECK_CIRCLE
 argument_list|)
 operator|,
+DECL|enumConstant|CHECK
+name|CHECK
+argument_list|(
+name|MaterialDesignIcon
+operator|.
+name|CHECK
+argument_list|)
+comment|/*css: check */
+operator|,
 DECL|enumConstant|WARNING
 name|WARNING
 argument_list|(
@@ -2308,6 +2317,14 @@ argument_list|(
 name|MaterialDesignIcon
 operator|.
 name|EYE
+argument_list|)
+operator|,
+DECL|enumConstant|ALL_ENTRIES_GROUP_DEFAULT_ICON
+name|ALL_ENTRIES_GROUP_DEFAULT_ICON
+argument_list|(
+name|MaterialDesignIcon
+operator|.
+name|DATABASE
 argument_list|)
 expr_stmt|;
 end_class
