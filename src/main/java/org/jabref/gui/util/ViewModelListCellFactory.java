@@ -168,19 +168,7 @@ name|scene
 operator|.
 name|paint
 operator|.
-name|Paint
-import|;
-end_import
-
-begin_import
-import|import
-name|javafx
-operator|.
-name|scene
-operator|.
-name|text
-operator|.
-name|Text
+name|Color
 import|;
 end_import
 
@@ -204,7 +192,7 @@ name|gui
 operator|.
 name|icon
 operator|.
-name|JabRefMaterialDesignIconFactory
+name|JabRefIcon
 import|;
 end_import
 
@@ -219,20 +207,6 @@ operator|.
 name|strings
 operator|.
 name|StringUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|de
-operator|.
-name|jensd
-operator|.
-name|fx
-operator|.
-name|glyphs
-operator|.
-name|GlyphIcons
 import|;
 end_import
 
@@ -461,7 +435,7 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|withIcon (Callback<T, GlyphIcons> toIcon)
+DECL|method|withIcon (Callback<T, JabRefIcon> toIcon)
 specifier|public
 name|ViewModelListCellFactory
 argument_list|<
@@ -473,7 +447,7 @@ name|Callback
 argument_list|<
 name|T
 argument_list|,
-name|GlyphIcons
+name|JabRefIcon
 argument_list|>
 name|toIcon
 parameter_list|)
@@ -485,7 +459,7 @@ operator|=
 name|viewModel
 lambda|->
 block|{
-name|GlyphIcons
+name|JabRefIcon
 name|icon
 init|=
 name|toIcon
@@ -503,15 +477,10 @@ literal|null
 condition|)
 block|{
 return|return
-name|JabRefMaterialDesignIconFactory
-operator|.
-name|get
-argument_list|()
-operator|.
-name|createIcon
-argument_list|(
 name|icon
-argument_list|)
+operator|.
+name|getGraphicNode
+argument_list|()
 return|;
 block|}
 return|return
@@ -523,7 +492,7 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|withIcon (Callback<T, GlyphIcons> toIcon, Callback<T, Paint> toColor)
+DECL|method|withIcon (Callback<T, JabRefIcon> toIcon, Callback<T, Color> toColor)
 specifier|public
 name|ViewModelListCellFactory
 argument_list|<
@@ -535,7 +504,7 @@ name|Callback
 argument_list|<
 name|T
 argument_list|,
-name|GlyphIcons
+name|JabRefIcon
 argument_list|>
 name|toIcon
 parameter_list|,
@@ -543,7 +512,7 @@ name|Callback
 argument_list|<
 name|T
 argument_list|,
-name|Paint
+name|Color
 argument_list|>
 name|toColor
 parameter_list|)
@@ -555,27 +524,15 @@ operator|=
 name|viewModel
 lambda|->
 block|{
-name|Text
-name|graphic
-init|=
-name|JabRefMaterialDesignIconFactory
-operator|.
-name|get
-argument_list|()
-operator|.
-name|createIcon
-argument_list|(
+return|return
 name|toIcon
 operator|.
 name|call
 argument_list|(
 name|viewModel
 argument_list|)
-argument_list|)
-decl_stmt|;
-name|graphic
 operator|.
-name|setFill
+name|withColor
 argument_list|(
 name|toColor
 operator|.
@@ -584,9 +541,9 @@ argument_list|(
 name|viewModel
 argument_list|)
 argument_list|)
-expr_stmt|;
-return|return
-name|graphic
+operator|.
+name|getGraphicNode
+argument_list|()
 return|;
 block|}
 expr_stmt|;
