@@ -213,6 +213,12 @@ name|WWW
 argument_list|(
 literal|"WWW"
 argument_list|)
+block|,
+DECL|enumConstant|Software
+name|Software
+argument_list|(
+literal|"Software"
+argument_list|)
 block|;
 DECL|field|displayName
 specifier|private
