@@ -40,22 +40,6 @@ name|AllEntriesGroup
 import|;
 end_import
 
-begin_import
-import|import
-name|de
-operator|.
-name|jensd
-operator|.
-name|fx
-operator|.
-name|glyphs
-operator|.
-name|materialdesignicons
-operator|.
-name|MaterialDesignIcon
-import|;
-end_import
-
 begin_class
 DECL|class|DefaultGroupsFactory
 specifier|public
@@ -63,14 +47,12 @@ class|class
 name|DefaultGroupsFactory
 block|{
 DECL|field|ALL_ENTRIES_GROUP_DEFAULT_ICON
-specifier|public
+specifier|private
 specifier|static
-name|MaterialDesignIcon
+name|String
 name|ALL_ENTRIES_GROUP_DEFAULT_ICON
 init|=
-name|MaterialDesignIcon
-operator|.
-name|DATABASE
+literal|"ALL_ENTRIES_GROUP_ICON"
 decl_stmt|;
 DECL|method|DefaultGroupsFactory ()
 specifier|private
@@ -103,9 +85,6 @@ operator|.
 name|setIconName
 argument_list|(
 name|ALL_ENTRIES_GROUP_DEFAULT_ICON
-operator|.
-name|name
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

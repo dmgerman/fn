@@ -444,22 +444,6 @@ end_import
 
 begin_import
 import|import
-name|de
-operator|.
-name|jensd
-operator|.
-name|fx
-operator|.
-name|glyphs
-operator|.
-name|materialdesignicons
-operator|.
-name|MaterialDesignIcon
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|fxmisc
@@ -1370,7 +1354,9 @@ name|Enums
 operator|.
 name|getIfPresent
 argument_list|(
-name|MaterialDesignIcon
+name|IconTheme
+operator|.
+name|JabRefIcons
 operator|.
 name|class
 argument_list|,

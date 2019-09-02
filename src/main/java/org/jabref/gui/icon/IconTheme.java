@@ -188,20 +188,6 @@ name|org
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|groups
-operator|.
-name|DefaultGroupsFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
 name|preferences
 operator|.
 name|JabRefPreferences
@@ -1562,6 +1548,15 @@ name|FILE_FIND
 argument_list|)
 comment|/*css: file-find */
 operator|,
+DECL|enumConstant|AUTO_LINKED_FILE
+name|AUTO_LINKED_FILE
+argument_list|(
+name|MaterialDesignIcon
+operator|.
+name|BRIEFCASE_CHECK
+argument_list|)
+comment|/*css: briefcase-check */
+operator|,
 DECL|enumConstant|QUALITY_ASSURED
 name|QUALITY_ASSURED
 argument_list|(
@@ -1955,6 +1950,15 @@ operator|.
 name|CHECK_CIRCLE
 argument_list|)
 operator|,
+DECL|enumConstant|CHECK
+name|CHECK
+argument_list|(
+name|MaterialDesignIcon
+operator|.
+name|CHECK
+argument_list|)
+comment|/*css: check */
+operator|,
 DECL|enumConstant|WARNING
 name|WARNING
 argument_list|(
@@ -2062,9 +2066,9 @@ operator|,
 DECL|enumConstant|ALL_ENTRIES_GROUP_ICON
 name|ALL_ENTRIES_GROUP_ICON
 argument_list|(
-name|DefaultGroupsFactory
+name|MaterialDesignIcon
 operator|.
-name|ALL_ENTRIES_GROUP_DEFAULT_ICON
+name|DATABASE
 argument_list|)
 operator|,
 DECL|enumConstant|IMPORT
