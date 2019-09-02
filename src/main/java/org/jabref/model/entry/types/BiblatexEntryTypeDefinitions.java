@@ -5224,6 +5224,10 @@ name|LANGUAGE
 argument_list|,
 name|StandardField
 operator|.
+name|EDITION
+argument_list|,
+name|StandardField
+operator|.
 name|HOWPUBLISHED
 argument_list|,
 name|StandardField
