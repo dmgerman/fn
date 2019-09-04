@@ -410,9 +410,7 @@ block|{
 try|try
 block|{
 comment|// Fail on unsupported Java versions
-name|ensureCorrectJavaVersion
-argument_list|()
-expr_stmt|;
+comment|// ensureCorrectJavaVersion();
 name|FallbackExceptionHandler
 operator|.
 name|installExceptionHandler
