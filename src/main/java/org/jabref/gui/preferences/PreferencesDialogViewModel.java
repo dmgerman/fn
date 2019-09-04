@@ -493,13 +493,13 @@ name|prefs
 argument_list|)
 argument_list|,
 operator|new
-name|NameFormatterTab
+name|NameFormatterTabView
 argument_list|(
 name|prefs
 argument_list|)
 argument_list|,
 operator|new
-name|XmpPrefsTab
+name|XmpPrivacyTabView
 argument_list|(
 name|prefs
 argument_list|)
