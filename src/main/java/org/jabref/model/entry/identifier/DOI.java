@@ -131,7 +131,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class for working with Digital object identifiers (DOIs)  *  * @see https://en.wikipedia.org/wiki/Digital_object_identifier  */
+comment|/**  * Class for working with Digital object identifiers (DOIs) and Short DOIs  *  * @see https://en.wikipedia.org/wiki/Digital_object_identifier  * @see http://shortdoi.org  */
 end_comment
 
 begin_class
@@ -158,7 +158,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// DOI resolver
+comment|// DOI/Short DOI resolver
 DECL|field|RESOLVER
 specifier|private
 specifier|static
@@ -241,6 +241,68 @@ operator|+
 literal|")"
 decl_stmt|;
 comment|// end group \1
+comment|// Regex (Short DOI)
+DECL|field|SHORT_DOI_EXP
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SHORT_DOI_EXP
+init|=
+literal|""
+operator|+
+literal|"(?:urn:)?"
+comment|// optional urn
+operator|+
+literal|"(?:doi:)?"
+comment|// optional doi
+operator|+
+literal|"("
+comment|// begin group \1
+operator|+
+literal|"10"
+comment|// directory indicator
+operator|+
+literal|"[/:%]"
+comment|// divider
+operator|+
+literal|"[a-zA-Z0-9]+"
+operator|+
+literal|")"
+decl_stmt|;
+comment|// end group \1
+DECL|field|FIND_SHORT_DOI_EXP
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|FIND_SHORT_DOI_EXP
+init|=
+literal|""
+operator|+
+literal|"(?:urn:)?"
+comment|// optional urn
+operator|+
+literal|"(?:doi:)?"
+comment|// optional doi
+operator|+
+literal|"("
+comment|// begin group \1
+operator|+
+literal|"10"
+comment|// directory indicator
+operator|+
+literal|"[/:]"
+comment|// divider
+operator|+
+literal|"[a-zA-Z0-9]+"
+operator|+
+literal|"(?:[^\\s]+)"
+comment|// suffix alphanumeric without space
+operator|+
+literal|")"
+decl_stmt|;
+comment|// end group \1
 DECL|field|HTTP_EXP
 specifier|private
 specifier|static
@@ -251,6 +313,17 @@ init|=
 literal|"https?://[^\\s]+?"
 operator|+
 name|DOI_EXP
+decl_stmt|;
+DECL|field|SHORT_DOI_HTTP_EXP
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SHORT_DOI_HTTP_EXP
+init|=
+literal|"https?://[^\\s]+?"
+operator|+
+name|SHORT_DOI_EXP
 decl_stmt|;
 comment|// Pattern
 DECL|field|EXACT_DOI_PATT
@@ -295,6 +368,47 @@ operator|.
 name|CASE_INSENSITIVE
 argument_list|)
 decl_stmt|;
+comment|// Pattern (short DOI)
+DECL|field|EXACT_SHORT_DOI_PATT
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|EXACT_SHORT_DOI_PATT
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"^(?:https?://[^\\s]+?)?"
+operator|+
+name|SHORT_DOI_EXP
+argument_list|,
+name|Pattern
+operator|.
+name|CASE_INSENSITIVE
+argument_list|)
+decl_stmt|;
+DECL|field|SHORT_DOI_PATT
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|SHORT_DOI_PATT
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"(?:https?://[^\\s]+?)?"
+operator|+
+name|FIND_SHORT_DOI_EXP
+argument_list|,
+name|Pattern
+operator|.
+name|CASE_INSENSITIVE
+argument_list|)
+decl_stmt|;
 comment|// DOI
 DECL|field|doi
 specifier|private
@@ -302,7 +416,13 @@ specifier|final
 name|String
 name|doi
 decl_stmt|;
-comment|/**      * Creates a DOI from various schemes including URL, URN, and plain DOIs.      *      * @param doi the DOI string      * @throws NullPointerException if DOI is null      * @throws IllegalArgumentException if doi does not include a valid DOI      * @return an instance of the DOI class      */
+comment|// Short DOI
+DECL|field|isShortDoi
+specifier|private
+name|boolean
+name|isShortDoi
+decl_stmt|;
+comment|/**      * Creates a DOI from various schemes including URL, URN, and plain DOIs/Short DOIs.      *      * @param doi the DOI/Short DOI string      * @return an instance of the DOI class      * @throws NullPointerException     if DOI/Short DOI is null      * @throws IllegalArgumentException if doi does not include a valid DOI/Short DOI      */
 DECL|method|DOI (String doi)
 specifier|public
 name|DOI
@@ -335,6 +455,13 @@ operator|.
 name|matches
 argument_list|(
 name|HTTP_EXP
+argument_list|)
+operator|||
+name|doi
+operator|.
+name|matches
+argument_list|(
+name|SHORT_DOI_HTTP_EXP
 argument_list|)
 condition|)
 block|{
@@ -382,12 +509,12 @@ name|IllegalArgumentException
 argument_list|(
 name|doi
 operator|+
-literal|" is not a valid HTTP DOI."
+literal|" is not a valid HTTP DOI/Short DOI."
 argument_list|)
 throw|;
 block|}
 block|}
-comment|// Extract DOI
+comment|// Extract DOI/Short DOI
 name|Matcher
 name|matcher
 init|=
@@ -421,18 +548,56 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// Short DOI
+name|Matcher
+name|shortDoiMatcher
+init|=
+name|EXACT_SHORT_DOI_PATT
+operator|.
+name|matcher
+argument_list|(
+name|trimmedDoi
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|shortDoiMatcher
+operator|.
+name|find
+argument_list|()
+condition|)
+block|{
+name|this
+operator|.
+name|doi
+operator|=
+name|shortDoiMatcher
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|isShortDoi
+operator|=
+literal|true
+expr_stmt|;
+block|}
+else|else
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
 name|trimmedDoi
 operator|+
-literal|" is not a valid DOI."
+literal|" is not a valid DOI/Short DOI."
 argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates an Optional<DOI> from various schemes including URL, URN, and plain DOIs.      *      * Useful for suppressing the<c>IllegalArgumentException</c> of the Constructor      * and checking for Optional.isPresent() instead.      *      * @param doi the DOI string      * @return an Optional containing the DOI or an empty Optional      */
+block|}
+comment|/**      * Creates an Optional<DOI> from various schemes including URL, URN, and plain DOIs.      *      * Useful for suppressing the<c>IllegalArgumentException</c> of the Constructor and checking for      * Optional.isPresent() instead.      *      * @param doi the DOI/Short DOI string      * @return an Optional containing the DOI or an empty Optional      */
 DECL|method|parse (String doi)
 specifier|public
 specifier|static
@@ -496,7 +661,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Determines whether a DOI is valid or not      *      * @param doi the DOI string      * @return true if DOI is valid, false otherwise      */
+comment|/**      * Determines whether a DOI/Short DOI is valid or not      *      * @param doi the DOI/Short DOI string      * @return true if DOI is valid, false otherwise      */
 DECL|method|isValid (String doi)
 specifier|public
 specifier|static
@@ -517,7 +682,7 @@ name|isPresent
 argument_list|()
 return|;
 block|}
-comment|/**      * Tries to find a DOI inside the given text.      *      * @param text the Text which might contain a DOI      * @return an Optional containing the DOI or an empty Optional      */
+comment|/**      * Tries to find a DOI/Short DOI inside the given text.      *      * @param text the Text which might contain a DOI/Short DOI      * @return an Optional containing the DOI or an empty Optional      */
 DECL|method|findInText (String text)
 specifier|public
 specifier|static
@@ -580,6 +745,42 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|matcher
+operator|=
+name|SHORT_DOI_PATT
+operator|.
+name|matcher
+argument_list|(
+name|text
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|matcher
+operator|.
+name|find
+argument_list|()
+condition|)
+block|{
+name|result
+operator|=
+name|Optional
+operator|.
+name|of
+argument_list|(
+operator|new
+name|DOI
+argument_list|(
+name|matcher
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|result
 return|;
@@ -604,7 +805,7 @@ operator|+
 literal|'}'
 return|;
 block|}
-comment|/**      * Return the plain DOI      *      * @return the plain DOI value.      */
+comment|/**      * Return the plain DOI/Short DOI      *      * @return the plain DOI/Short DOI value.      */
 DECL|method|getDOI ()
 specifier|public
 name|String
@@ -615,7 +816,18 @@ return|return
 name|doi
 return|;
 block|}
-comment|/**      * Return a URI presentation for the DOI      *      * @return an encoded URI representation of the DOI      */
+comment|/**      * Determines whether DOI is short DOI or not      *      * @return true if DOI is short DOI, false otherwise      */
+DECL|method|isShortDoi ()
+specifier|public
+name|boolean
+name|isShortDoi
+parameter_list|()
+block|{
+return|return
+name|isShortDoi
+return|;
+block|}
+comment|/**      * Return a URI presentation for the DOI/Short DOI      *      * @return an encoded URI representation of the DOI/Short DOI      */
 annotation|@
 name|Override
 DECL|method|getExternalURI ()
@@ -687,7 +899,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Return an ASCII URL presentation for the DOI      *      * @return an encoded URL representation of the DOI      */
+comment|/**      * Return an ASCII URL presentation for the DOI/Short DOI      *      * @return an encoded URL representation of the DOI/Short DOI      */
 DECL|method|getURIAsASCIIString ()
 specifier|public
 name|String
