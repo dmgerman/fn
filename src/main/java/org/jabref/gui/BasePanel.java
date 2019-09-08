@@ -1426,12 +1426,6 @@ specifier|final
 name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;
-DECL|field|preferences
-specifier|private
-specifier|final
-name|BasePanelPreferences
-name|preferences
-decl_stmt|;
 DECL|field|externalFileTypes
 specifier|private
 specifier|final
@@ -1454,6 +1448,11 @@ DECL|field|mainTable
 specifier|private
 name|MainTable
 name|mainTable
+decl_stmt|;
+DECL|field|preferences
+specifier|private
+name|BasePanelPreferences
+name|preferences
 decl_stmt|;
 comment|// To contain instantiated entry editors. This is to save time
 comment|// As most enums, this must not be null
@@ -4997,6 +4996,17 @@ name|void
 name|setupMainPanel
 parameter_list|()
 block|{
+name|preferences
+operator|=
+name|BasePanelPreferences
+operator|.
+name|from
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+expr_stmt|;
 name|splitPane
 operator|=
 operator|new

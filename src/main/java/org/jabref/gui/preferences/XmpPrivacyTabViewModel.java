@@ -384,7 +384,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"xmp-metadata"
+literal|"XMP-metadata"
 argument_list|)
 argument_list|,
 name|Localization
