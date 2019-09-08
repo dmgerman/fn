@@ -41,7 +41,7 @@ specifier|final
 name|int
 name|i
 decl_stmt|;
-comment|/**      *  Constructor for the StringInt object      *      * @param  _s  Description of the Parameter      * @param  _i  Description of the Parameter      */
+comment|/**      *  Constructor for the StringInt object      *      */
 DECL|method|StringInt (final String s, final int i)
 specifier|public
 name|StringInt

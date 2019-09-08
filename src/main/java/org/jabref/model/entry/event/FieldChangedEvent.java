@@ -93,7 +93,7 @@ name|delta
 init|=
 literal|0
 decl_stmt|;
-comment|/**      * @param bibEntry  Affected BibEntry object      * @param field Name of field which has been changed      * @param newValue  new field value      * @param newValue  old field value      * @param location  location Location affected by this event      */
+comment|/**      * @param bibEntry  Affected BibEntry object      * @param field Name of field which has been changed      * @param oldValue  old field value      * @param newValue  new field value      * @param location  location Location affected by this event      */
 DECL|method|FieldChangedEvent (BibEntry bibEntry, Field field, String newValue, String oldValue, EntryEventSource location)
 specifier|public
 name|FieldChangedEvent
@@ -200,7 +200,7 @@ name|newValue
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param bibEntry  Affected BibEntry object      * @param fieldName Name of field which has been changed      * @param newValue  new field value      * @param location  location Location affected by this event      */
+comment|/**      * @param location  location Location affected by this event      */
 DECL|method|FieldChangedEvent (FieldChange fieldChange, EntryEventSource location)
 specifier|public
 name|FieldChangedEvent

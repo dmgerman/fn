@@ -468,7 +468,7 @@ literal|50
 operator|)
 condition|)
 block|{
-comment|/**              * The following line gives false positives for RIS files, so it              * should not be uncommented. The hypen is a characteristic of the              * RIS format.              *              * str = str.replace(" - ", "")              */
+comment|/*              * The following line gives false positives for RIS files, so it              * should not be uncommented. The hypen is a characteristic of the              * RIS format.              *              * str = str.replace(" - ", "")              */
 if|if
 condition|(
 name|IsiImporter

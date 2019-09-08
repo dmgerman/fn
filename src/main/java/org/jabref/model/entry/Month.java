@@ -490,7 +490,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Parses a month having the string in German standard form such as      * "Oktober" or in German short form such as "Okt"      *      * @param value,      *            a String that represents a month in German form      * @return the corresponding month instance, empty if input is not in German      *         form      */
+comment|/**      * Parses a month having the string in German standard form such as      * "Oktober" or in German short form such as "Okt"      *      * @param value a String that represents a month in German form      * @return the corresponding month instance, empty if input is not in German      *         form      */
 DECL|method|parseGermanShortMonth (String value)
 specifier|private
 specifier|static

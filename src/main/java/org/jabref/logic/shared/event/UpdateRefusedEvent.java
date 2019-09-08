@@ -70,7 +70,7 @@ specifier|final
 name|BibEntry
 name|sharedBibEntry
 decl_stmt|;
-comment|/**      * @param bibDatabaseContext Affected {@link BibDatabaseContext}      * @param bibEntry Affected {@link BibEntry}      */
+comment|/**      * @param bibDatabaseContext Affected {@link BibDatabaseContext}      * @param localBibEntry Affected {@link BibEntry}      */
 DECL|method|UpdateRefusedEvent (BibDatabaseContext bibDatabaseContext, BibEntry localBibEntry, BibEntry sharedBibEntry)
 specifier|public
 name|UpdateRefusedEvent
