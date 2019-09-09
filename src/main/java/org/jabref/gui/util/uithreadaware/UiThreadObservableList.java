@@ -85,10 +85,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|UiThreadListDecorator
+DECL|class|UiThreadObservableList
 specifier|public
 class|class
-name|UiThreadListDecorator
+name|UiThreadObservableList
 parameter_list|<
 name|E
 parameter_list|>
@@ -107,9 +107,9 @@ name|E
 argument_list|>
 name|delegate
 decl_stmt|;
-DECL|method|UiThreadListDecorator (ObservableList<E> delegate)
+DECL|method|UiThreadObservableList (ObservableList<E> delegate)
 specifier|public
-name|UiThreadListDecorator
+name|UiThreadObservableList
 parameter_list|(
 name|ObservableList
 argument_list|<

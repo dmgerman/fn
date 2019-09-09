@@ -406,7 +406,7 @@ name|util
 operator|.
 name|uithreadaware
 operator|.
-name|UiThreadListDecorator
+name|UiThreadObservableList
 import|;
 end_import
 
@@ -565,7 +565,7 @@ decl_stmt|;
 DECL|field|decoratedModelList
 specifier|private
 specifier|final
-name|UiThreadListDecorator
+name|UiThreadObservableList
 argument_list|<
 name|LinkedFileViewModel
 argument_list|>
@@ -721,7 +721,7 @@ expr_stmt|;
 name|decoratedModelList
 operator|=
 operator|new
-name|UiThreadListDecorator
+name|UiThreadObservableList
 argument_list|<>
 argument_list|(
 name|viewModel
