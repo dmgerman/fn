@@ -1392,7 +1392,7 @@ name|map
 argument_list|(
 name|Style
 operator|::
-name|getvalue
+name|getContent
 argument_list|)
 operator|.
 name|ifPresent
@@ -1442,7 +1442,7 @@ name|map
 argument_list|(
 name|Style
 operator|::
-name|getvalue
+name|getContent
 argument_list|)
 operator|.
 name|ifPresent
@@ -1485,7 +1485,7 @@ name|map
 argument_list|(
 name|Style
 operator|::
-name|getvalue
+name|getContent
 argument_list|)
 operator|.
 name|ifPresent
@@ -1525,7 +1525,7 @@ name|map
 argument_list|(
 name|Style
 operator|::
-name|getvalue
+name|getContent
 argument_list|)
 operator|.
 name|ifPresent
@@ -1565,7 +1565,7 @@ name|map
 argument_list|(
 name|Style
 operator|::
-name|getvalue
+name|getContent
 argument_list|)
 operator|.
 name|ifPresent
@@ -1612,7 +1612,7 @@ name|map
 argument_list|(
 name|Style
 operator|::
-name|getvalue
+name|getContent
 argument_list|)
 operator|.
 name|ifPresent
@@ -1652,7 +1652,7 @@ name|map
 argument_list|(
 name|Style
 operator|::
-name|getvalue
+name|getContent
 argument_list|)
 operator|.
 name|ifPresent
@@ -1731,7 +1731,7 @@ name|map
 argument_list|(
 name|Style
 operator|::
-name|getvalue
+name|getContent
 argument_list|)
 operator|.
 name|ifPresent
@@ -1784,7 +1784,7 @@ name|map
 argument_list|(
 name|Style
 operator|::
-name|getvalue
+name|getContent
 argument_list|)
 operator|.
 name|ifPresent
@@ -1827,7 +1827,7 @@ name|map
 argument_list|(
 name|Style
 operator|::
-name|getvalue
+name|getContent
 argument_list|)
 operator|.
 name|ifPresent
@@ -2096,7 +2096,7 @@ name|map
 argument_list|(
 name|Style
 operator|::
-name|getvalue
+name|getContent
 argument_list|)
 operator|.
 name|map
@@ -2152,7 +2152,7 @@ operator|.
 name|getStyle
 argument_list|()
 operator|.
-name|getvalue
+name|getContent
 argument_list|()
 argument_list|)
 operator|.
@@ -2237,7 +2237,7 @@ operator|.
 name|getStyle
 argument_list|()
 operator|.
-name|getvalue
+name|getContent
 argument_list|()
 argument_list|)
 operator|.
