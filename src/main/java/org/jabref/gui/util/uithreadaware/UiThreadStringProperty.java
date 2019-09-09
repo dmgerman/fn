@@ -60,6 +60,10 @@ name|ObservableValue
 import|;
 end_import
 
+begin_comment
+comment|/**  * This class can be used to wrap a @see StringProperty inside it. When wrapped, any Listener listening for updates to the wrapped StringProperty (for example because of a binding to it) is ensured to be notified on the JavaFX Application Thread. It should be used to implement bindings where updates come in from a background thread but should be reflected in the UI where it is necessary that changes to the UI are performed on the JavaFX Application thread.  *  */
+end_comment
+
 begin_class
 DECL|class|UiThreadStringProperty
 specifier|public
@@ -198,18 +202,11 @@ name|String
 name|value
 parameter_list|)
 block|{
-name|UiThreadHelper
-operator|.
-name|ensureUiThreadExecution
-argument_list|(
-parameter_list|()
-lambda|->
 name|delegate
 operator|.
 name|set
 argument_list|(
 name|value
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
