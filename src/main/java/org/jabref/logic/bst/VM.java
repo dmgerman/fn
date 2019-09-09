@@ -683,7 +683,7 @@ argument_list|(
 literal|37
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top two (integer) literals, compares them, and pushes          * the integer 1 if the second is greater than the first, 0          * otherwise.          */
+comment|/*          * Pops the top two (integer) literals, compares them, and pushes          * the integer 1 if the second is greater than the first, 0          * otherwise.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -786,7 +786,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/** Analogous. */
+comment|/* Analogous. */
 name|buildInFunctions
 operator|.
 name|put
@@ -889,7 +889,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top two (both integer or both string) literals, compares          * them, and pushes the integer 1 if they're equal, 0 otherwise.          */
+comment|/*          * Pops the top two (both integer or both string) literals, compares          * them, and pushes the integer 1 if they're equal, 0 otherwise.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -1008,7 +1008,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/** Pops the top two (integer) literals and pushes their sum. */
+comment|/* Pops the top two (integer) literals and pushes their sum. */
 name|buildInFunctions
 operator|.
 name|put
@@ -1096,7 +1096,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top two (integer) literals and pushes their difference          * (the first subtracted from the second).          */
+comment|/*          * Pops the top two (integer) literals and pushes their difference          * (the first subtracted from the second).          */
 name|buildInFunctions
 operator|.
 name|put
@@ -1184,7 +1184,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top two (string) literals, concatenates them (in reverse          * order, that is, the order in which pushed), and pushes the          * resulting string.          */
+comment|/*          * Pops the top two (string) literals, concatenates them (in reverse          * order, that is, the order in which pushed), and pushes the          * resulting string.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -1269,7 +1269,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top two literals and assigns to the first (which must be          * a global or entry variable) the value of the second.          */
+comment|/*          * Pops the top two literals and assigns to the first (which must be          * a global or entry variable) the value of the second.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -1325,7 +1325,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top (string) literal, adds a `.' to it if the last non          * '}' character isn't a `.', `?', or `!', and pushes this resulting          * string.          */
+comment|/*          * Pops the top (string) literal, adds a `.' to it if the last non          * '}' character isn't a `.', `?', or `!', and pushes this resulting          * string.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -1338,7 +1338,7 @@ name|addPeriodFunction
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/**          * Executes the function whose name is the entry type of an entry.          * For example if an entry is of type book, this function executes          * the book function. When given as an argument to the ITERATE          * command, call.type$ actually produces the output for the entries.          * For an entry with an unknown type, it executes the function          * default.type. Thus you should define (before the READ command)          * one function for each standard entry type as well as a          * default.type function.          */
+comment|/*          * Executes the function whose name is the entry type of an entry.          * For example if an entry is of type book, this function executes          * the book function. When given as an argument to the ITERATE          * command, call.type$ actually produces the output for the entries.          * For an entry with an unknown type, it executes the function          * default.type. Thus you should define (before the READ command)          * one function for each standard entry type as well as a          * default.type function.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -1399,7 +1399,7 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top (string) literal, makes sure it's a single          * character, converts it to the corresponding ASCII integer, and          * pushes this integer.          */
+comment|/*          * Pops the top (string) literal, makes sure it's a single          * character, converts it to the corresponding ASCII integer, and          * pushes this integer.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -1493,7 +1493,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pushes the string that was the \cite-command argument for this          * entry.          */
+comment|/*          * Pushes the string that was the \cite-command argument for this          * entry.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -1539,7 +1539,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top literal from the stack and pushes two copies of it.          */
+comment|/*          * Pops the top literal from the stack and pushes two copies of it.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -1590,7 +1590,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top literal and pushes the integer 1 if it's a missing          * field or a string having no non-white-space characters, 0          * otherwise.          */
+comment|/*          * Pops the top literal and pushes the integer 1 if it's a missing          * field or a string having no non-white-space characters, 0          * otherwise.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -1707,7 +1707,7 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top three literals (they are two function literals and          * an integer literal, in that order); if the integer is greater          * than 0, it executes the second literal, else it executes the          * first.          */
+comment|/*          * Pops the top three literals (they are two function literals and          * an integer literal, in that order); if the integer is greater          * than 0, it executes the second literal, else it executes the          * first.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -1844,7 +1844,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top (integer) literal, interpreted as the ASCII integer          * value of a single character, converts it to the corresponding          * single-character string, and pushes this string.          */
+comment|/*          * Pops the top (integer) literal, interpreted as the ASCII integer          * value of a single character, converts it to the corresponding          * single-character string, and pushes this string.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -1925,7 +1925,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top (integer) literal, converts it to its (unique)          * string equivalent, and pushes this string.          */
+comment|/*          * Pops the top (integer) literal, converts it to its (unique)          * string equivalent, and pushes this string.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -1990,7 +1990,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top literal and pushes the integer 1 if it's a missing          * field, 0 otherwise.          */
+comment|/*          * Pops the top literal and pushes the integer 1 if it's a missing          * field, 0 otherwise.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2080,7 +2080,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Writes onto the bbl file what is accumulated in the output buffer.          * It writes a blank line if and only if the output buffer is empty.          * Since write$ does reasonable line breaking, you should use this          * function only when you want a blank line or an explicit line          * break.          */
+comment|/*          * Writes onto the bbl file what is accumulated in the output buffer.          * It writes a blank line if and only if the output buffer is empty.          * Since write$ does reasonable line breaking, you should use this          * function only when you want a blank line or an explicit line          * break.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2101,7 +2101,7 @@ literal|'\n'
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top (string) literal and pushes the number of names the          * string represents one plus the number of occurrences of the          * substring "and" (ignoring case differences) surrounded by          * non-null white-space at the top brace level.          */
+comment|/*          * Pops the top (string) literal and pushes the number of names the          * string represents one plus the number of occurrences of the          * substring "and" (ignoring case differences) surrounded by          * non-null white-space at the top brace level.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2179,7 +2179,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top of the stack but doesn't print it; this gets rid of          * an unwanted stack literal.          */
+comment|/*          * Pops the top of the stack but doesn't print it; this gets rid of          * an unwanted stack literal.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2194,7 +2194,7 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/**          * The |built_in| function {\.{preamble\$}} pushes onto the stack          * the concatenation of all the \.{preamble} strings read from the          * database files. (or the empty string if there where none)          *          * @PREAMBLE strings read from the database files.          */
+comment|/*          * The |built_in| function {\.{preamble\$}} pushes onto the stack          * the concatenation of all the \.{preamble} strings read from the          * database files. (or the empty string if there where none)          *          * @PREAMBLE strings read from the database files.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2214,7 +2214,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top (string) literal, removes nonalphanumeric characters          * except for white-space characters and hyphens and ties (these all get          * converted to a space), removes certain alphabetic characters          * contained in the control sequences associated with a \special          * character", and pushes the resulting string.          */
+comment|/*          * Pops the top (string) literal, removes nonalphanumeric characters          * except for white-space characters and hyphens and ties (these all get          * converted to a space), removes certain alphabetic characters          * contained in the control sequences associated with a \special          * character", and pushes the resulting string.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2228,7 +2228,7 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/**          * Pushes the string consisting of the double-quote character.          */
+comment|/*          * Pushes the string consisting of the double-quote character.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2245,7 +2245,7 @@ literal|"\""
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/**          * Is a no-op.          */
+comment|/*          * Is a no-op.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2259,7 +2259,7 @@ comment|// Nothing to do! Yeah!
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops and prints the whole stack; it's meant to be used for style          * designers while debugging.          */
+comment|/*          * Pops and prints the whole stack; it's meant to be used for style          * designers while debugging.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2294,7 +2294,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top three literals (they are the two integers literals          * len and start, and a string literal, in that order). It pushes          * the substring of the (at most) len consecutive characters          * starting at the startth character (assuming 1-based indexing) if          * start is positive, and ending at the start-th character          * (including) from the end if start is negative (where the first          * character from the end is the last character).          */
+comment|/*          * Pops the top three literals (they are the two integers literals          * len and start, and a string literal, in that order). It pushes          * the substring of the (at most) len consecutive characters          * starting at the startth character (assuming 1-based indexing) if          * start is positive, and ending at the start-th character          * (including) from the end if start is negative (where the first          * character from the end is the last character).          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2307,7 +2307,7 @@ name|substringFunction
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/**          * Swaps the top two literals on the stack. text.length$ Pops the          * top (string) literal, and pushes the number of text characters          * it contains, where an accented character (more precisely, a          * \special character", defined in Section 4) counts as a single          * text character, even if it's missing its matching right brace,          * and where braces don't count as text characters.          */
+comment|/*          * Swaps the top two literals on the stack. text.length$ Pops the          * top (string) literal, and pushes the number of text characters          * it contains, where an accented character (more precisely, a          * \special character", defined in Section 4) counts as a single          * text character, even if it's missing its matching right brace,          * and where braces don't count as text characters.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2368,7 +2368,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * text.length$ Pops the top (string) literal, and pushes the number          * of text characters it contains, where an accented character (more          * precisely, a "special character", defined in Section 4) counts as          * a single text character, even if it's missing its matching right          * brace, and where braces don't count as text characters.          *          * From BibTeXing: For the purposes of counting letters in labels,          * BibTEX considers everything contained inside the braces as a          * single letter.          */
+comment|/*          * text.length$ Pops the top (string) literal, and pushes the number          * of text characters it contains, where an accented character (more          * precisely, a "special character", defined in Section 4) counts as          * a single text character, even if it's missing its matching right          * brace, and where braces don't count as text characters.          *          * From BibTeXing: For the purposes of counting letters in labels,          * BibTEX considers everything contained inside the braces as a          * single letter.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2381,7 +2381,7 @@ name|textLengthFunction
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top two literals (the integer literal len and a string          * literal, in that order). It pushes the substring of the (at most) len          * consecutive text characters starting from the beginning of the          * string. This function is similar to substring$, but this one          * considers a \special character", even if it's missing its matching          * right brace, to be a single text character (rather than however many          * ASCII characters it actually comprises), and this function doesn't          * consider braces to be text characters; furthermore, this function          * appends any needed matching right braces.          */
+comment|/*          * Pops the top two literals (the integer literal len and a string          * literal, in that order). It pushes the substring of the (at most) len          * consecutive text characters starting from the beginning of the          * string. This function is similar to substring$, but this one          * considers a \special character", even if it's missing its matching          * right brace, to be a single text character (rather than however many          * ASCII characters it actually comprises), and this function doesn't          * consider braces to be text characters; furthermore, this function          * appends any needed matching right braces.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2395,7 +2395,7 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops and prints the top of the stack to the log file. It's useful for debugging.          */
+comment|/*          * Pops and prints the top of the stack to the log file. It's useful for debugging.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2417,7 +2417,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/**          * Pushes the current entry's type (book, article, etc.), but pushes          * the null string if the type is either unknown or undefined.          */
+comment|/*          * Pushes the current entry's type (book, article, etc.), but pushes          * the null string if the type is either unknown or undefined.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2461,7 +2461,7 @@ expr_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top (string) literal and prints it following a warning          * message. This also increments a count of the number of warning          * messages issued.          */
+comment|/*          * Pops the top (string) literal and prints it following a warning          * message. This also increments a count of the number of warning          * messages issued.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2510,7 +2510,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top two (function) literals, and keeps executing the          * second as long as the (integer) literal left on the stack by          * executing the first is greater than 0.          */
+comment|/*          * Pops the top two (function) literals, and keeps executing the          * second as long as the (integer) literal left on the stack by          * executing the first is greater than 0.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2535,7 +2535,7 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/**          * Pops the top (string) literal and writes it on the output buffer          * (which will result in stuff being written onto the bbl file when          * the buffer fills up).          */
+comment|/*          * Pops the top (string) literal and writes it on the output buffer          * (which will result in stuff being written onto the bbl file when          * the buffer fills up).          */
 name|buildInFunctions
 operator|.
 name|put
@@ -5144,7 +5144,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Declares global integer variables. It has one argument, a list of      * variable names. There are two such automatically-declared variables,      * entry.max$ and global.max$, used for limiting the lengths of string vari-      * ables. You may have any number of these commands, but a variable's      * declaration must precede its use.      *      * @param child      */
+comment|/**      * Declares global integer variables. It has one argument, a list of      * variable names. There are two such automatically-declared variables,      * entry.max$ and global.max$, used for limiting the lengths of string vari-      * ables. You may have any number of these commands, but a variable's      * declaration must precede its use.      *      */
 DECL|method|integers (Tree child)
 specifier|private
 name|void

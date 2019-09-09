@@ -149,11 +149,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Taken from https://gist.github.com/lestard/011e9ed4433f9eb791a8  */
-end_comment
-
-begin_comment
-comment|/**  * @implNote As CheckBoxTreeItem extends TreeItem, this class will work for both.  */
+comment|/**  * @implNote Taken from https://gist.github.com/lestard/011e9ed4433f9eb791a8  * @implNote As CheckBoxTreeItem extends TreeItem, this class will work for both.  */
 end_comment
 
 begin_class

@@ -1328,7 +1328,6 @@ name|String
 name|type
 parameter_list|)
 block|{
-comment|/**          * Morten Alver 13 Aug 2006: Trying to make the parser more          * robust. If an exception is thrown when parsing an entry,          * drop the entry and try to resume parsing. Add a warning          * for the user.          */
 try|try
 block|{
 comment|// collect all comments and the entry type definition in front of the actual entry
@@ -1411,6 +1410,8 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
+comment|// Trying to make the parser more robust.
+comment|// If an exception is thrown when parsing an entry, drop the entry and try to resume parsing.
 name|LOGGER
 operator|.
 name|debug

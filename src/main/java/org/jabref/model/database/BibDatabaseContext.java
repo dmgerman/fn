@@ -706,7 +706,7 @@ name|toFile
 argument_list|)
 return|;
 block|}
-comment|/**      *      * @param Set the database file      * @deprecated use {@link #setDatabaseFile(Path)}      */
+comment|/**      *      * @param file the database file      * @deprecated use {@link #setDatabaseFile(Path)}      */
 annotation|@
 name|Deprecated
 DECL|method|setDatabaseFile (File file)
