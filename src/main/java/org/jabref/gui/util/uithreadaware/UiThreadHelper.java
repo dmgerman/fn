@@ -26,7 +26,6 @@ end_import
 
 begin_class
 DECL|class|UiThreadHelper
-specifier|public
 class|class
 name|UiThreadHelper
 block|{
