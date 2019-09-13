@@ -1190,7 +1190,6 @@ literal|0
 return|;
 block|}
 block|}
-comment|/**      *      * @param toMeasure      * @param warn      *            may-be-null      * @return      */
 DECL|method|width (String toMeasure)
 specifier|public
 specifier|static

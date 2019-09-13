@@ -600,7 +600,7 @@ return|return
 name|description
 return|;
 block|}
-comment|/**      * Contact the server with the title of the selected item      *      * @param queryByTitle: The query holds the title of the selected entry. Used to make a query to the MDL Server      * @return Returns the server response. This is an XML document as a String.      */
+comment|/**      * Contact the server with the title of the selected item      *      * @param queryByTitle the query holds the title of the selected entry. Used to make a query to the MDL Server      * @return Returns the server response. This is an XML document as a String.      */
 DECL|method|makeServerRequest (String queryByTitle)
 specifier|private
 name|String
@@ -683,7 +683,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Constructs the query based on title of the BibEntry. Adds statistical stuff to the url.      *      * @param queryWithTitle: the title of the bib entry.      * @return the string used to make the query at mdl server      */
+comment|/**      * Constructs the query based on title of the BibEntry. Adds statistical stuff to the url.      *      * @param queryWithTitle the title of the bib entry.      * @return the string used to make the query at mdl server      */
 DECL|method|constructQuery (String queryWithTitle)
 specifier|private
 name|String

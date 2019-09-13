@@ -213,7 +213,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Will try to read XMP metadata from the given file, returning whether      * metadata was found.      *      * Caution: This method is as expensive as it is reading the actual metadata      * itself from the PDF.      *      * @param inputStream The inputStream to read the PDF from.      * @return whether a BibEntry was found in the given PDF.      */
+comment|/**      * Will try to read XMP metadata from the given file, returning whether      * metadata was found.      *      * Caution: This method is as expensive as it is reading the actual metadata      * itself from the PDF.      *      * @param path the path to the PDF.      * @return whether a BibEntry was found in the given PDF.      */
 DECL|method|hasMetadata (Path path, XmpPreferences xmpPreferences)
 specifier|public
 specifier|static

@@ -260,7 +260,7 @@ specifier|final
 name|String
 name|eprint
 decl_stmt|;
-comment|/**      * Creates a Eprint from various schemes including URL.      *      * @param eprint the Eprint identifier string      * @throws NullPointerException if eprint is null      * @throws IllegalArgumentException if eprint does not include a valid Eprint identifier      * @return an instance of the Eprint class      */
+comment|/**      * Creates a Eprint from various schemes including URL.      *      * @param eprint the Eprint identifier string      * @throws NullPointerException if eprint is null      * @throws IllegalArgumentException if eprint does not include a valid Eprint identifier      */
 DECL|method|Eprint (String eprint)
 specifier|public
 name|Eprint
