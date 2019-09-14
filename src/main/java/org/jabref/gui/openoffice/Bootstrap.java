@@ -362,7 +362,18 @@ specifier|public
 class|class
 name|Bootstrap
 block|{
-DECL|method|insertBasicFactories ( XSet xSet, XImplementationLoader xImpLoader )
+DECL|field|RANDOM_PIPE_NAME
+specifier|private
+specifier|static
+specifier|final
+name|Random
+name|RANDOM_PIPE_NAME
+init|=
+operator|new
+name|Random
+argument_list|()
+decl_stmt|;
+DECL|method|insertBasicFactories (XSet xSet, XImplementationLoader xImpLoader)
 specifier|private
 specifier|static
 name|void
@@ -499,7 +510,7 @@ block|}
 return|;
 block|}
 comment|/**        backwards compatibility stub.         @param context_entries the hash table contains mappings of entry names (type string) to         context entries (type class ComponentContextEntry).         @throws Exception if things go awry.         @return a new context.      */
-DECL|method|createInitialComponentContext ( Hashtable<String, Object> context_entries )
+DECL|method|createInitialComponentContext (Hashtable<String, Object> context_entries)
 specifier|public
 specifier|static
 name|XComponentContext
@@ -532,7 +543,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Bootstraps an initial component context with service manager and basic         jurt components inserted.         @param context_entries the hash table contains mappings of entry names (type string) to         context entries (type class ComponentContextEntry).         @throws Exception if things go awry.         @return a new context.     */
-DECL|method|createInitialComponentContext ( Map<String, Object> context_entries )
+DECL|method|createInitialComponentContext (Map<String, Object> context_entries)
 specifier|public
 specifier|static
 name|XComponentContext
@@ -722,7 +733,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/** Bootstraps the initial component context from a native UNO installation.          @throws Exception if things go awry.         @return a freshly bootstrapped component context.          See also<code>cppuhelper/defaultBootstrap_InitialComponentContext()</code>.     */
+comment|/** Bootstraps the initial component context from a native UNO installation.              @throws Exception if things go awry.         @return a freshly bootstrapped component context.              See also<code>cppuhelper/defaultBootstrap_InitialComponentContext()</code>.     */
 DECL|method|defaultBootstrap_InitialComponentContext ()
 specifier|public
 specifier|static
@@ -754,7 +765,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Backwards compatibility stub.      *      * @param ini_file      *        ini_file (may be null: uno.rc besides cppuhelper lib)      * @param bootstrap_parameters      *        bootstrap parameters (maybe null)      *      * @throws Exception if things go awry.      * @return a freshly bootstrapped component context.      */
-DECL|method|defaultBootstrap_InitialComponentContext ( String ini_file, Hashtable<String,String> bootstrap_parameters )
+DECL|method|defaultBootstrap_InitialComponentContext (String ini_file, Hashtable<String, String> bootstrap_parameters)
 specifier|public
 specifier|static
 specifier|final
@@ -792,8 +803,8 @@ name|bootstrap_parameters
 argument_list|)
 return|;
 block|}
-comment|/** Bootstraps the initial component context from a native UNO installation.          See also<code>cppuhelper/defaultBootstrap_InitialComponentContext()</code>.          @param ini_file                ini_file (may be null: uno.rc besides cppuhelper lib)         @param bootstrap_parameters                bootstrap parameters (maybe null)          @throws Exception if things go awry.         @return a freshly bootstrapped component context.     */
-DECL|method|defaultBootstrap_InitialComponentContext ( String ini_file, Map<String,String> bootstrap_parameters )
+comment|/** Bootstraps the initial component context from a native UNO installation.              See also<code>cppuhelper/defaultBootstrap_InitialComponentContext()</code>.              @param ini_file                ini_file (may be null: uno.rc besides cppuhelper lib)         @param bootstrap_parameters                bootstrap parameters (maybe null)              @throws Exception if things go awry.         @return a freshly bootstrapped component context.     */
+DECL|method|defaultBootstrap_InitialComponentContext (String ini_file, Map<String, String> bootstrap_parameters)
 specifier|public
 specifier|static
 specifier|final
@@ -1020,7 +1031,7 @@ name|m_loaded_juh
 init|=
 literal|false
 decl_stmt|;
-DECL|method|cppuhelper_bootstrap ( String ini_file, String bootstrap_parameters [], ClassLoader loader )
+DECL|method|cppuhelper_bootstrap (String ini_file, String bootstrap_parameters[], ClassLoader loader)
 specifier|private
 specifier|static
 specifier|native
@@ -1071,7 +1082,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Bootstraps the component context from a UNO installation.      *      * @param argArray      *        an array of strings - commandline options to start instance of      *        soffice with      * @see #getDefaultOptions()      *      * @throws BootstrapException if things go awry.      *      * @return a bootstrapped component context.      *      * @since LibreOffice 5.1      */
-DECL|method|bootstrap ( String[] argArray, URLClassLoader loader )
+DECL|method|bootstrap (String[] argArray, URLClassLoader loader)
 specifier|public
 specifier|static
 specifier|final
@@ -1448,18 +1459,7 @@ return|return
 name|xContext
 return|;
 block|}
-DECL|field|randomPipeName
-specifier|private
-specifier|static
-specifier|final
-name|Random
-name|randomPipeName
-init|=
-operator|new
-name|Random
-argument_list|()
-decl_stmt|;
-DECL|method|pipe ( final InputStream in, final PrintStream out, final String prefix )
+DECL|method|pipe (final InputStream in, final PrintStream out, final String prefix)
 specifier|private
 specifier|static
 name|void
