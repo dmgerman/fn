@@ -373,6 +373,14 @@ operator|new
 name|Random
 argument_list|()
 decl_stmt|;
+DECL|field|M_LOADED_JUH
+specifier|private
+specifier|static
+name|boolean
+name|M_LOADED_JUH
+init|=
+literal|false
+decl_stmt|;
 DECL|method|insertBasicFactories (XSet xSet, XImplementationLoader xImpLoader)
 specifier|private
 specifier|static
@@ -900,7 +908,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|m_loaded_juh
+name|M_LOADED_JUH
 condition|)
 block|{
 if|if
@@ -991,7 +999,7 @@ literal|"juh"
 argument_list|)
 expr_stmt|;
 block|}
-name|m_loaded_juh
+name|M_LOADED_JUH
 operator|=
 literal|true
 expr_stmt|;
@@ -1021,14 +1029,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|field|m_loaded_juh
-specifier|private
-specifier|static
-name|boolean
-name|m_loaded_juh
-init|=
-literal|false
-decl_stmt|;
 DECL|method|cppuhelper_bootstrap (String ini_file, String bootstrap_parameters[], ClassLoader loader)
 specifier|private
 specifier|static
