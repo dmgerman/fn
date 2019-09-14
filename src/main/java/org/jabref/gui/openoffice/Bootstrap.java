@@ -84,23 +84,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
+name|net
 operator|.
-name|file
-operator|.
-name|Path
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Paths
+name|URLClassLoader
 import|;
 end_import
 
@@ -1055,15 +1041,15 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Bootstraps the component context from a UNO installation.      *      * @throws BootstrapException if things go awry.      *      * @return a bootstrapped component context.      *      * @since UDK 3.1.0      */
-DECL|method|bootstrap (String path)
+DECL|method|bootstrap (URLClassLoader loader)
 specifier|public
 specifier|static
 specifier|final
 name|XComponentContext
 name|bootstrap
 parameter_list|(
-name|String
-name|path
+name|URLClassLoader
+name|loader
 parameter_list|)
 throws|throws
 name|BootstrapException
@@ -1080,12 +1066,12 @@ name|bootstrap
 argument_list|(
 name|defaultArgArray
 argument_list|,
-name|path
+name|loader
 argument_list|)
 return|;
 block|}
 comment|/**      * Bootstraps the component context from a UNO installation.      *      * @param argArray      *        an array of strings - commandline options to start instance of      *        soffice with      * @see #getDefaultOptions()      *      * @throws BootstrapException if things go awry.      *      * @return a bootstrapped component context.      *      * @since LibreOffice 5.1      */
-DECL|method|bootstrap ( String[] argArray, String path )
+DECL|method|bootstrap ( String[] argArray, URLClassLoader loader )
 specifier|public
 specifier|static
 specifier|final
@@ -1096,8 +1082,8 @@ name|String
 index|[]
 name|argArray
 parameter_list|,
-name|String
-name|path
+name|URLClassLoader
+name|loader
 parameter_list|)
 throws|throws
 name|BootstrapException
@@ -1159,25 +1145,18 @@ literal|"soffice.exe"
 else|:
 literal|"soffice"
 decl_stmt|;
-name|Path
+name|File
 name|fOffice
 init|=
-name|Paths
+name|NativeLibraryLoader
 operator|.
-name|get
+name|getResource
 argument_list|(
-name|path
-argument_list|)
-operator|.
-name|resolve
-argument_list|(
+name|loader
+argument_list|,
 name|sOffice
 argument_list|)
-operator|.
-name|toAbsolutePath
-argument_list|()
 decl_stmt|;
-comment|/*File fOffice = NativeLibraryLoader.getResource(                 Bootstrap.class.getClassLoader(), sOffice );*/
 if|if
 condition|(
 name|fOffice
@@ -1191,25 +1170,8 @@ argument_list|(
 literal|"no office executable found!"
 argument_list|)
 throw|;
-comment|// create random pipe name
-name|String
-name|sPipeName
-init|=
-literal|"uno"
-operator|+
-name|Long
-operator|.
-name|toString
-argument_list|(
-name|randomPipeName
-operator|.
-name|nextLong
-argument_list|()
-operator|&
-literal|0x7fffffffffffffffL
-argument_list|)
-decl_stmt|;
 comment|// create call with arguments
+comment|//We need a socket, pipe does not work. https://api.libreoffice.org/examples/examples.html
 name|String
 index|[]
 name|cmdArray
@@ -1231,7 +1193,7 @@ index|]
 operator|=
 name|fOffice
 operator|.
-name|toString
+name|getPath
 argument_list|()
 expr_stmt|;
 name|cmdArray
@@ -1240,9 +1202,7 @@ literal|1
 index|]
 operator|=
 operator|(
-literal|"--accept=pipe,name="
-operator|+
-name|sPipeName
+literal|"--accept=socket,host=localhost,port=2083"
 operator|+
 literal|";urp;"
 operator|)
@@ -1343,9 +1303,7 @@ comment|// connection string
 name|String
 name|sConnect
 init|=
-literal|"uno:pipe,name="
-operator|+
-name|sPipeName
+literal|"uno:socket,host=localhost,port=2083"
 operator|+
 literal|";urp;StarOffice.ComponentContext"
 decl_stmt|;
