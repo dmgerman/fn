@@ -622,19 +622,17 @@ name|context_entries
 operator|==
 literal|null
 condition|)
+block|{
 name|context_entries
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 comment|// add smgr
 name|context_entries
 operator|.
@@ -733,7 +731,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/** Bootstraps the initial component context from a native UNO installation.              @throws Exception if things go awry.         @return a freshly bootstrapped component context.              See also<code>cppuhelper/defaultBootstrap_InitialComponentContext()</code>.     */
+comment|/** Bootstraps the initial component context from a native UNO installation.          @throws Exception if things go awry.         @return a freshly bootstrapped component context.          See also<code>cppuhelper/defaultBootstrap_InitialComponentContext()</code>.     */
 DECL|method|defaultBootstrap_InitialComponentContext ()
 specifier|public
 specifier|static
@@ -803,7 +801,7 @@ name|bootstrap_parameters
 argument_list|)
 return|;
 block|}
-comment|/** Bootstraps the initial component context from a native UNO installation.              See also<code>cppuhelper/defaultBootstrap_InitialComponentContext()</code>.              @param ini_file                ini_file (may be null: uno.rc besides cppuhelper lib)         @param bootstrap_parameters                bootstrap parameters (maybe null)              @throws Exception if things go awry.         @return a freshly bootstrapped component context.     */
+comment|/** Bootstraps the initial component context from a native UNO installation.          See also<code>cppuhelper/defaultBootstrap_InitialComponentContext()</code>.          @param ini_file                ini_file (may be null: uno.rc besides cppuhelper lib)         @param bootstrap_parameters                bootstrap parameters (maybe null)          @throws Exception if things go awry.         @return a freshly bootstrapped component context.     */
 DECL|method|defaultBootstrap_InitialComponentContext (String ini_file, Map<String, String> bootstrap_parameters)
 specifier|public
 specifier|static
@@ -1129,6 +1127,7 @@ name|xLocalContext
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|BootstrapException
@@ -1136,6 +1135,7 @@ argument_list|(
 literal|"no local component context!"
 argument_list|)
 throw|;
+block|}
 comment|// find office executable relative to this class's class loader
 name|String
 name|sOffice
@@ -1174,6 +1174,7 @@ name|fOffice
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|BootstrapException
@@ -1181,6 +1182,7 @@ argument_list|(
 literal|"no office executable found!"
 argument_list|)
 throw|;
+block|}
 comment|// create call with arguments
 comment|//We need a socket, pipe does not work. https://api.libreoffice.org/examples/examples.html
 name|String
@@ -1292,6 +1294,7 @@ name|xLocalServiceManager
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|BootstrapException
@@ -1299,6 +1302,7 @@ argument_list|(
 literal|"no initial service manager!"
 argument_list|)
 throw|;
+block|}
 comment|// create a URL resolver
 name|XUnoUrlResolver
 name|xUrlResolver
@@ -1363,6 +1367,7 @@ name|xContext
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|BootstrapException
@@ -1370,6 +1375,7 @@ argument_list|(
 literal|"no component context!"
 argument_list|)
 throw|;
+block|}
 break|break;
 block|}
 catch|catch
