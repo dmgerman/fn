@@ -230,6 +230,17 @@ operator|.
 name|core
 decl_stmt|;
 name|requires
+name|org
+operator|.
+name|apache
+operator|.
+name|logging
+operator|.
+name|log4j
+operator|.
+name|plugins
+decl_stmt|;
+name|requires
 name|applicationinsights
 operator|.
 name|logging
