@@ -1341,25 +1341,6 @@ name|initPanel
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|addURL (List<URL> jarList)
-specifier|private
-specifier|static
-name|void
-name|addURL
-parameter_list|(
-name|List
-argument_list|<
-name|URL
-argument_list|>
-name|jarList
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|ClassNotFoundException
-block|{
-comment|// Class<?> clazz = Class.forName("com.sun.star.comp.helper.Bootstrap", true, new ChildFirstClassLoader( jarList.toArray(new URL[0]),null ));
-block|}
 DECL|method|getContent ()
 specifier|public
 name|Node
@@ -2842,9 +2823,7 @@ name|connectTask
 init|=
 operator|new
 name|Task
-argument_list|<
-name|OOBibBase
-argument_list|>
+argument_list|<>
 argument_list|()
 block|{
 annotation|@
@@ -2873,7 +2852,7 @@ name|URL
 argument_list|>
 name|jarUrls
 init|=
-name|loadOpenOfficeJars
+name|findOpenOfficeJars
 argument_list|(
 name|Paths
 operator|.
@@ -3207,13 +3186,13 @@ name|connectTask
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|loadOpenOfficeJars (Path configurationPath)
+DECL|method|findOpenOfficeJars (Path configurationPath)
 specifier|private
 name|List
 argument_list|<
 name|URL
 argument_list|>
-name|loadOpenOfficeJars
+name|findOpenOfficeJars
 parameter_list|(
 name|Path
 name|configurationPath
@@ -3367,7 +3346,6 @@ name|CreationException
 throws|,
 name|ClassNotFoundException
 block|{
-comment|// Connect
 return|return
 operator|new
 name|OOBibBase
