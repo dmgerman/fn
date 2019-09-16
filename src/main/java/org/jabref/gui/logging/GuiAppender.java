@@ -231,7 +231,7 @@ specifier|static
 parameter_list|<
 name|B
 extends|extends
-name|ApplicationInsightsAppender
+name|GuiAppender
 operator|.
 name|Builder
 argument_list|<
@@ -244,7 +244,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|ApplicationInsightsAppender
+name|GuiAppender
 operator|.
 name|Builder
 argument_list|<
