@@ -553,9 +553,6 @@ name|frame
 operator|=
 name|frame
 expr_stmt|;
-name|setValues
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|setValues ()
 specifier|public

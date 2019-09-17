@@ -108,8 +108,6 @@ operator|new
 name|PreferencesDialogView
 argument_list|(
 name|jabRefFrame
-argument_list|,
-name|taskExecutor
 argument_list|)
 operator|.
 name|show

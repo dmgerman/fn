@@ -531,9 +531,6 @@ operator|.
 name|getProxyPreferences
 argument_list|()
 expr_stmt|;
-name|setValues
-argument_list|()
-expr_stmt|;
 name|remotePortValidator
 operator|=
 operator|new

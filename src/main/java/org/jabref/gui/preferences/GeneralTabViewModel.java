@@ -596,9 +596,6 @@ name|preferences
 operator|=
 name|preferences
 expr_stmt|;
-name|setValues
-argument_list|()
-expr_stmt|;
 name|markTimeStampFormatValidator
 operator|=
 operator|new

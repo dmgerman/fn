@@ -277,6 +277,9 @@ class|class
 name|GeneralTabView
 extends|extends
 name|AbstractPreferenceTabView
+argument_list|<
+name|GeneralTabViewModel
+argument_list|>
 implements|implements
 name|PreferencesTab
 block|{
@@ -506,9 +509,10 @@ name|void
 name|initialize
 parameter_list|()
 block|{
-name|GeneralTabViewModel
-name|generalTabViewModel
-init|=
+name|this
+operator|.
+name|viewModel
+operator|=
 operator|new
 name|GeneralTabViewModel
 argument_list|(
@@ -516,12 +520,6 @@ name|dialogService
 argument_list|,
 name|preferences
 argument_list|)
-decl_stmt|;
-name|this
-operator|.
-name|viewModel
-operator|=
-name|generalTabViewModel
 expr_stmt|;
 name|language
 operator|.
@@ -530,7 +528,7 @@ argument_list|()
 operator|.
 name|bind
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|languagesListProperty
 argument_list|()
@@ -543,7 +541,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|selectedLanguageProperty
 argument_list|()
@@ -556,7 +554,7 @@ argument_list|()
 operator|.
 name|bind
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|encodingsListProperty
 argument_list|()
@@ -569,7 +567,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|selectedEncodingProperty
 argument_list|()
@@ -582,7 +580,7 @@ argument_list|()
 operator|.
 name|bind
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|biblatexModeListProperty
 argument_list|()
@@ -595,7 +593,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|selectedBiblatexModeProperty
 argument_list|()
@@ -608,7 +606,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|inspectionWarningDuplicateProperty
 argument_list|()
@@ -621,7 +619,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|confirmDeleteProperty
 argument_list|()
@@ -634,7 +632,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|enforceLegalKeysProperty
 argument_list|()
@@ -647,7 +645,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|allowIntegerEditionProperty
 argument_list|()
@@ -660,7 +658,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|memoryStickModeProperty
 argument_list|()
@@ -673,7 +671,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|collectTelemetryProperty
 argument_list|()
@@ -686,7 +684,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|showAdvancedHintsProperty
 argument_list|()
@@ -699,7 +697,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|markOwnerProperty
 argument_list|()
@@ -712,7 +710,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|markOwnerNameProperty
 argument_list|()
@@ -741,7 +739,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|markOwnerOverwriteProperty
 argument_list|()
@@ -770,7 +768,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|markTimestampProperty
 argument_list|()
@@ -799,7 +797,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|markTimeStampFormatProperty
 argument_list|()
@@ -828,7 +826,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|markTimeStampOverwriteProperty
 argument_list|()
@@ -873,7 +871,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|markTimeStampFieldNameProperty
 argument_list|()
@@ -902,7 +900,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|updateTimeStampProperty
 argument_list|()
@@ -977,7 +975,7 @@ name|validationVisualizer
 operator|.
 name|initVisualization
 argument_list|(
-name|generalTabViewModel
+name|viewModel
 operator|.
 name|markTimeStampFormatValidationStatus
 argument_list|()

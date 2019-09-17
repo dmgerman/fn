@@ -582,7 +582,7 @@ name|gui
 operator|.
 name|preferences
 operator|.
-name|ImportSettingsTab
+name|ImportTabViewModel
 import|;
 end_import
 
@@ -5884,9 +5884,9 @@ name|put
 argument_list|(
 name|IMPORT_FILENAMEPATTERN
 argument_list|,
-name|ImportSettingsTab
+name|ImportTabViewModel
 operator|.
-name|DEFAULT_FILENAMEPATTERNS
+name|DEFAULT_FILENAME_PATTERNS
 index|[
 literal|1
 index|]

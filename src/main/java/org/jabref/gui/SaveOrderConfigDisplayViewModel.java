@@ -363,13 +363,10 @@ specifier|final
 name|PreferencesService
 name|prefs
 decl_stmt|;
-DECL|method|SaveOrderConfigDisplayViewModel (SaveOrderConfig config, PreferencesService prefs)
+DECL|method|SaveOrderConfigDisplayViewModel (PreferencesService prefs)
 specifier|public
 name|SaveOrderConfigDisplayViewModel
 parameter_list|(
-name|SaveOrderConfig
-name|config
-parameter_list|,
 name|PreferencesService
 name|prefs
 parameter_list|)
@@ -410,11 +407,6 @@ operator|.
 name|addAll
 argument_list|(
 name|fieldNames
-argument_list|)
-expr_stmt|;
-name|setSaveOrderConfig
-argument_list|(
-name|config
 argument_list|)
 expr_stmt|;
 block|}

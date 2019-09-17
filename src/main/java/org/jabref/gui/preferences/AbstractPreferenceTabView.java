@@ -98,6 +98,11 @@ specifier|public
 specifier|abstract
 class|class
 name|AbstractPreferenceTabView
+parameter_list|<
+name|T
+extends|extends
+name|PreferenceTabViewModel
+parameter_list|>
 extends|extends
 name|VBox
 implements|implements
@@ -119,7 +124,7 @@ name|dialogService
 decl_stmt|;
 DECL|field|viewModel
 specifier|protected
-name|PreferenceTabViewModel
+name|T
 name|viewModel
 decl_stmt|;
 DECL|field|preferences

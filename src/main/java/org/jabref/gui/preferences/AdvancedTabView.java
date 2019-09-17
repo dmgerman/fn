@@ -277,6 +277,9 @@ class|class
 name|AdvancedTabView
 extends|extends
 name|AbstractPreferenceTabView
+argument_list|<
+name|AdvancedTabViewModel
+argument_list|>
 implements|implements
 name|PreferencesTab
 block|{
@@ -483,9 +486,10 @@ name|void
 name|initialize
 parameter_list|()
 block|{
-name|AdvancedTabViewModel
-name|advancedTabViewModel
-init|=
+name|this
+operator|.
+name|viewModel
+operator|=
 operator|new
 name|AdvancedTabViewModel
 argument_list|(
@@ -493,12 +497,6 @@ name|dialogService
 argument_list|,
 name|preferences
 argument_list|)
-decl_stmt|;
-name|this
-operator|.
-name|viewModel
-operator|=
-name|advancedTabViewModel
 expr_stmt|;
 name|remoteLabel
 operator|.
@@ -521,7 +519,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|remoteServerProperty
 argument_list|()
@@ -534,7 +532,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|remotePortProperty
 argument_list|()
@@ -563,7 +561,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|useIEEELatexAbbreviationsProperty
 argument_list|()
@@ -576,7 +574,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|useCaseKeeperProperty
 argument_list|()
@@ -589,7 +587,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|useUnitFormatterProperty
 argument_list|()
@@ -602,7 +600,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|proxyUseProperty
 argument_list|()
@@ -631,7 +629,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|proxyHostnameProperty
 argument_list|()
@@ -676,7 +674,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|proxyPortProperty
 argument_list|()
@@ -705,7 +703,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|proxyUseAuthenticationProperty
 argument_list|()
@@ -763,7 +761,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|proxyUsernameProperty
 argument_list|()
@@ -802,7 +800,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|proxyPasswordProperty
 argument_list|()
@@ -947,7 +945,7 @@ name|validationVisualizer
 operator|.
 name|initVisualization
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|remotePortValidationStatus
 argument_list|()
@@ -959,7 +957,7 @@ name|validationVisualizer
 operator|.
 name|initVisualization
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|proxyHostnameValidationStatus
 argument_list|()
@@ -971,7 +969,7 @@ name|validationVisualizer
 operator|.
 name|initVisualization
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|proxyPortValidationStatus
 argument_list|()
@@ -983,7 +981,7 @@ name|validationVisualizer
 operator|.
 name|initVisualization
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|proxyUsernameValidationStatus
 argument_list|()
@@ -995,7 +993,7 @@ name|validationVisualizer
 operator|.
 name|initVisualization
 argument_list|(
-name|advancedTabViewModel
+name|viewModel
 operator|.
 name|proxyPasswordValidationStatus
 argument_list|()

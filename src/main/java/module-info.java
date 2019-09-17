@@ -308,6 +308,23 @@ decl_stmt|;
 name|requires
 name|xmpbox
 decl_stmt|;
+name|requires
+name|de
+operator|.
+name|saxsys
+operator|.
+name|mvvmfx
+operator|.
+name|validation
+decl_stmt|;
+name|requires
+name|richtextfx
+decl_stmt|;
+name|requires
+name|unirest
+operator|.
+name|java
+decl_stmt|;
 block|}
 end_decl_stmt
 

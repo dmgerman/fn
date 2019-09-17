@@ -788,9 +788,6 @@ operator|.
 name|getPreviewPreferences
 argument_list|()
 expr_stmt|;
-name|setValues
-argument_list|()
-expr_stmt|;
 name|sourceTextProperty
 operator|.
 name|addListener

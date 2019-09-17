@@ -249,6 +249,9 @@ class|class
 name|FileTabView
 extends|extends
 name|AbstractPreferenceTabView
+argument_list|<
+name|FileTabViewModel
+argument_list|>
 implements|implements
 name|PreferencesTab
 block|{
@@ -450,9 +453,10 @@ name|void
 name|initialize
 parameter_list|()
 block|{
-name|FileTabViewModel
-name|fileTabViewModel
-init|=
+name|this
+operator|.
+name|viewModel
+operator|=
 operator|new
 name|FileTabViewModel
 argument_list|(
@@ -460,12 +464,6 @@ name|dialogService
 argument_list|,
 name|preferences
 argument_list|)
-decl_stmt|;
-name|this
-operator|.
-name|viewModel
-operator|=
-name|fileTabViewModel
 expr_stmt|;
 name|openLastStartup
 operator|.
@@ -474,7 +472,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|openLastStartupProperty
 argument_list|()
@@ -487,7 +485,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|backupOldFileProperty
 argument_list|()
@@ -500,7 +498,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|noWrapFilesProperty
 argument_list|()
@@ -513,7 +511,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|resolveStringsBibTexProperty
 argument_list|()
@@ -526,7 +524,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|resolveStringsAllProperty
 argument_list|()
@@ -539,7 +537,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|resolvStringsExceptProperty
 argument_list|()
@@ -568,7 +566,7 @@ argument_list|()
 operator|.
 name|bind
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|newLineSeparatorListProperty
 argument_list|()
@@ -581,7 +579,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|selectedNewLineSeparatorProperty
 argument_list|()
@@ -594,7 +592,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|alwaysReformatBibProperty
 argument_list|()
@@ -607,7 +605,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|mainFileDirProperty
 argument_list|()
@@ -620,7 +618,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|useBibLocationAsPrimaryProperty
 argument_list|()
@@ -633,7 +631,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|autolinkFileStartsBibtexProperty
 argument_list|()
@@ -646,7 +644,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|autolinkFileExactBibtexProperty
 argument_list|()
@@ -659,7 +657,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|autolinkUseRegexProperty
 argument_list|()
@@ -672,7 +670,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|autolinkRegexKeyProperty
 argument_list|()
@@ -701,7 +699,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|searchFilesOnOpenProperty
 argument_list|()
@@ -714,7 +712,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|openBrowseOnCreateProperty
 argument_list|()
@@ -727,7 +725,7 @@ argument_list|()
 operator|.
 name|bindBidirectional
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|autosaveLocalLibrariesProperty
 argument_list|()
@@ -802,7 +800,7 @@ name|validationVisualizer
 operator|.
 name|initVisualization
 argument_list|(
-name|fileTabViewModel
+name|viewModel
 operator|.
 name|mainFileDirValidationStatus
 argument_list|()
@@ -818,12 +816,7 @@ name|void
 name|mainFileDirBrowse
 parameter_list|()
 block|{
-operator|(
-operator|(
-name|FileTabViewModel
-operator|)
 name|viewModel
-operator|)
 operator|.
 name|mainFileDirBrowse
 argument_list|()

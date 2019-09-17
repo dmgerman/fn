@@ -279,30 +279,29 @@ specifier|private
 name|DialogService
 name|dialogService
 decl_stmt|;
+DECL|field|taskExecutor
+annotation|@
+name|Inject
+specifier|private
+name|TaskExecutor
+name|taskExecutor
+decl_stmt|;
 DECL|field|frame
 specifier|private
 name|JabRefFrame
 name|frame
-decl_stmt|;
-DECL|field|taskExecutor
-specifier|private
-name|TaskExecutor
-name|taskExecutor
 decl_stmt|;
 DECL|field|viewModel
 specifier|private
 name|PreferencesDialogViewModel
 name|viewModel
 decl_stmt|;
-DECL|method|PreferencesDialogView (JabRefFrame frame, TaskExecutor taskExecutor)
+DECL|method|PreferencesDialogView (JabRefFrame frame)
 specifier|public
 name|PreferencesDialogView
 parameter_list|(
 name|JabRefFrame
 name|frame
-parameter_list|,
-name|TaskExecutor
-name|taskExecutor
 parameter_list|)
 block|{
 name|this
@@ -310,12 +309,6 @@ operator|.
 name|frame
 operator|=
 name|frame
-expr_stmt|;
-name|this
-operator|.
-name|taskExecutor
-operator|=
-name|taskExecutor
 expr_stmt|;
 name|this
 operator|.
@@ -387,8 +380,6 @@ operator|new
 name|PreferencesDialogViewModel
 argument_list|(
 name|dialogService
-argument_list|,
-name|taskExecutor
 argument_list|,
 name|frame
 argument_list|)
@@ -526,7 +517,7 @@ block|{
 if|if
 condition|(
 name|tab
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
@@ -534,10 +525,7 @@ name|preferencePaneContainer
 operator|.
 name|setContent
 argument_list|(
-name|tab
-operator|.
-name|getBuilder
-argument_list|()
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -547,7 +535,10 @@ name|preferencePaneContainer
 operator|.
 name|setContent
 argument_list|(
-literal|null
+name|tab
+operator|.
+name|getBuilder
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -586,7 +577,6 @@ operator|.
 name|setValues
 argument_list|()
 expr_stmt|;
-comment|// ToDo: Remove this after conversion of all tabs
 block|}
 annotation|@
 name|FXML
