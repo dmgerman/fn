@@ -305,7 +305,7 @@ name|TreeTableColumn
 argument_list|<
 name|KeyBindingViewModel
 argument_list|,
-name|String
+name|KeyBindingViewModel
 argument_list|>
 name|resetColumn
 decl_stmt|;
@@ -555,16 +555,10 @@ name|shownBindingProperty
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|resetColumn
-operator|.
-name|setCellFactory
-argument_list|(
 operator|new
 name|ViewModelTreeTableCellFactory
 argument_list|<
 name|KeyBindingViewModel
-argument_list|,
-name|String
 argument_list|>
 argument_list|()
 operator|.
@@ -601,6 +595,10 @@ operator|.
 name|resetToDefault
 argument_list|()
 argument_list|)
+operator|.
+name|install
+argument_list|(
+name|resetColumn
 argument_list|)
 expr_stmt|;
 block|}

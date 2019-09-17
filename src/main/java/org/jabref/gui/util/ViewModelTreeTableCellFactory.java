@@ -119,7 +119,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Constructs a {@link TreeTableCell} based on the view model of the row and a bunch of specified converter methods.  *  * @param<S> view model  * @param<T> cell value  */
+comment|/**  * Constructs a {@link TreeTableCell} based on the view model of the row and a bunch of specified converter methods.  *  * @param<S> view model  */
 end_comment
 
 begin_class
@@ -129,8 +129,6 @@ class|class
 name|ViewModelTreeTableCellFactory
 parameter_list|<
 name|S
-parameter_list|,
-name|T
 parameter_list|>
 implements|implements
 name|Callback
@@ -139,14 +137,14 @@ name|TreeTableColumn
 argument_list|<
 name|S
 argument_list|,
-name|T
+name|S
 argument_list|>
 argument_list|,
 name|TreeTableCell
 argument_list|<
 name|S
 argument_list|,
-name|T
+name|S
 argument_list|>
 argument_list|>
 block|{
@@ -200,8 +198,6 @@ specifier|public
 name|ViewModelTreeTableCellFactory
 argument_list|<
 name|S
-argument_list|,
-name|T
 argument_list|>
 name|withText
 parameter_list|(
@@ -229,8 +225,6 @@ specifier|public
 name|ViewModelTreeTableCellFactory
 argument_list|<
 name|S
-argument_list|,
-name|T
 argument_list|>
 name|withGraphic
 parameter_list|(
@@ -258,8 +252,6 @@ specifier|public
 name|ViewModelTreeTableCellFactory
 argument_list|<
 name|S
-argument_list|,
-name|T
 argument_list|>
 name|withIcon
 parameter_list|(
@@ -297,8 +289,6 @@ specifier|public
 name|ViewModelTreeTableCellFactory
 argument_list|<
 name|S
-argument_list|,
-name|T
 argument_list|>
 name|withTooltip
 parameter_list|(
@@ -326,8 +316,6 @@ specifier|public
 name|ViewModelTreeTableCellFactory
 argument_list|<
 name|S
-argument_list|,
-name|T
 argument_list|>
 name|withOnMouseClickedEvent
 parameter_list|(
@@ -357,13 +345,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|call (TreeTableColumn<S, T> param)
+DECL|method|call (TreeTableColumn<S, S> param)
 specifier|public
 name|TreeTableCell
 argument_list|<
 name|S
 argument_list|,
-name|T
+name|S
 argument_list|>
 name|call
 parameter_list|(
@@ -371,7 +359,7 @@ name|TreeTableColumn
 argument_list|<
 name|S
 argument_list|,
-name|T
+name|S
 argument_list|>
 name|param
 parameter_list|)
@@ -382,7 +370,7 @@ name|TreeTableCell
 argument_list|<
 name|S
 argument_list|,
-name|T
+name|S
 argument_list|>
 argument_list|()
 block|{
@@ -392,8 +380,8 @@ specifier|protected
 name|void
 name|updateItem
 parameter_list|(
-name|T
-name|item
+name|S
+name|viewModel
 parameter_list|,
 name|boolean
 name|empty
@@ -403,7 +391,7 @@ name|super
 operator|.
 name|updateItem
 argument_list|(
-name|item
+name|viewModel
 argument_list|,
 name|empty
 argument_list|)
@@ -412,16 +400,7 @@ if|if
 condition|(
 name|empty
 operator|||
-name|getTreeTableRow
-argument_list|()
-operator|==
-literal|null
-operator|||
-name|getTreeTableRow
-argument_list|()
-operator|.
-name|getItem
-argument_list|()
+name|viewModel
 operator|==
 literal|null
 condition|)
@@ -444,15 +423,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|S
-name|viewModel
-init|=
-name|getTreeTableRow
-argument_list|()
-operator|.
-name|getItem
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|toText
@@ -550,7 +520,7 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|install (TreeTableColumn<S, T> column)
+DECL|method|install (TreeTableColumn<S, S> column)
 specifier|public
 name|void
 name|install
@@ -559,11 +529,26 @@ name|TreeTableColumn
 argument_list|<
 name|S
 argument_list|,
-name|T
+name|S
 argument_list|>
 name|column
 parameter_list|)
 block|{
+name|column
+operator|.
+name|setCellValueFactory
+argument_list|(
+name|cellData
+lambda|->
+name|cellData
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|valueProperty
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|column
 operator|.
 name|setCellFactory
