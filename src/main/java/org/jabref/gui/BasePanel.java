@@ -6511,16 +6511,19 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Set the query the user currently searches while this basepanel is active      *      * @param currentSearchQuery can be null      */
+comment|/**      * Set the query the user currently searches while this basepanel is active      */
 end_comment
 
 begin_function
-DECL|method|setCurrentSearchQuery (SearchQuery currentSearchQuery)
+DECL|method|setCurrentSearchQuery (Optional<SearchQuery> currentSearchQuery)
 specifier|public
 name|void
 name|setCurrentSearchQuery
 parameter_list|(
+name|Optional
+argument_list|<
 name|SearchQuery
+argument_list|>
 name|currentSearchQuery
 parameter_list|)
 block|{
@@ -6528,12 +6531,7 @@ name|this
 operator|.
 name|currentSearchQuery
 operator|=
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
 name|currentSearchQuery
-argument_list|)
 expr_stmt|;
 block|}
 end_function
