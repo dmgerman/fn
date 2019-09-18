@@ -1019,13 +1019,29 @@ comment|//if (!WarnAssignmentSideEffects.warnAssignmentSideEffects(group, groupS
 comment|//{
 comment|//    return; // user aborted operation
 comment|//}
-return|return
+name|var
+name|changes
+init|=
 name|groupNode
 operator|.
 name|addEntriesToGroup
 argument_list|(
 name|entries
 argument_list|)
+decl_stmt|;
+comment|// Update appearance of group
+name|anySelectedEntriesMatched
+operator|.
+name|invalidate
+argument_list|()
+expr_stmt|;
+name|allSelectedEntriesMatched
+operator|.
+name|invalidate
+argument_list|()
+expr_stmt|;
+return|return
+name|changes
 return|;
 comment|// TODO: Store undo
 comment|// if (!undo.isEmpty()) {
