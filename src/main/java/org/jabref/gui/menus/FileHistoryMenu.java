@@ -80,7 +80,11 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
+name|importer
+operator|.
+name|actions
+operator|.
+name|OpenDatabaseAction
 import|;
 end_import
 
@@ -140,12 +144,6 @@ specifier|final
 name|FileHistory
 name|history
 decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
-decl_stmt|;
 DECL|field|preferences
 specifier|private
 specifier|final
@@ -158,15 +156,24 @@ specifier|final
 name|DialogService
 name|dialogService
 decl_stmt|;
-DECL|method|FileHistoryMenu (JabRefPreferences preferences, JabRefFrame frame)
+DECL|field|openDatabaseAction
+specifier|private
+specifier|final
+name|OpenDatabaseAction
+name|openDatabaseAction
+decl_stmt|;
+DECL|method|FileHistoryMenu (JabRefPreferences preferences, DialogService dialogService, OpenDatabaseAction openDatabaseAction)
 specifier|public
 name|FileHistoryMenu
 parameter_list|(
 name|JabRefPreferences
 name|preferences
 parameter_list|,
-name|JabRefFrame
-name|frame
+name|DialogService
+name|dialogService
+parameter_list|,
+name|OpenDatabaseAction
+name|openDatabaseAction
 parameter_list|)
 block|{
 name|setText
@@ -181,12 +188,6 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|frame
-operator|=
-name|frame
-expr_stmt|;
-name|this
-operator|.
 name|preferences
 operator|=
 name|preferences
@@ -195,10 +196,13 @@ name|this
 operator|.
 name|dialogService
 operator|=
-name|frame
+name|dialogService
+expr_stmt|;
+name|this
 operator|.
-name|getDialogService
-argument_list|()
+name|openDatabaseAction
+operator|=
+name|openDatabaseAction
 expr_stmt|;
 name|history
 operator|=
@@ -390,6 +394,8 @@ name|file
 argument_list|)
 condition|)
 block|{
+name|this
+operator|.
 name|dialogService
 operator|.
 name|showErrorDialogAndWait
@@ -425,10 +431,7 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
-name|frame
-operator|.
-name|getOpenDatabaseAction
-argument_list|()
+name|openDatabaseAction
 operator|.
 name|openFile
 argument_list|(

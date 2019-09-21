@@ -1719,14 +1719,6 @@ specifier|private
 specifier|final
 name|FileHistoryMenu
 name|fileHistory
-init|=
-operator|new
-name|FileHistoryMenu
-argument_list|(
-name|prefs
-argument_list|,
-name|this
-argument_list|)
 decl_stmt|;
 DECL|field|mainStage
 specifier|private
@@ -1826,6 +1818,21 @@ operator|=
 name|Globals
 operator|.
 name|undoManager
+expr_stmt|;
+name|this
+operator|.
+name|fileHistory
+operator|=
+operator|new
+name|FileHistoryMenu
+argument_list|(
+name|prefs
+argument_list|,
+name|dialogService
+argument_list|,
+name|getOpenDatabaseAction
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getBasePanel (Tab tab)
