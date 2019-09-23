@@ -265,6 +265,10 @@ operator|.
 name|inject
 decl_stmt|;
 name|requires
+name|org
+operator|.
+name|apache
+operator|.
 name|pdfbox
 decl_stmt|;
 name|requires
@@ -306,6 +310,10 @@ operator|.
 name|lang3
 decl_stmt|;
 name|requires
+name|org
+operator|.
+name|apache
+operator|.
 name|xmpbox
 decl_stmt|;
 name|requires
