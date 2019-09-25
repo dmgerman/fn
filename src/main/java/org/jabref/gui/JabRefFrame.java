@@ -14,16 +14,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
-operator|.
-name|Window
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|io
 operator|.
 name|File
@@ -2768,26 +2758,6 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-comment|// dispose all windows, even if they are not displayed anymore
-comment|// TODO: javafx variant only avaiable in java 9 and updwards
-comment|// https://docs.oracle.com/javase/9/docs/api/javafx/stage/Window.html#getWindows--
-for|for
-control|(
-name|Window
-name|window
-range|:
-name|Window
-operator|.
-name|getWindows
-argument_list|()
-control|)
-block|{
-name|window
-operator|.
-name|dispose
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/**      * General info dialog.  The MacAdapter calls this method when "Quit" is selected from the application menu, Cmd-Q      * is pressed, or "Quit" is selected from the Dock. The function returns a boolean indicating if quitting is ok or      * not.      *<p>      * Non-OSX JabRef calls this when choosing "Quit" from the menu      *<p>      * SIDE EFFECT: tears down JabRef      *      * @return true if the user chose to quit; false otherwise      */
 DECL|method|quit ()
