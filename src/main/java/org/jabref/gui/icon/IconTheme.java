@@ -250,26 +250,6 @@ specifier|public
 class|class
 name|IconTheme
 block|{
-comment|/**      * JabRef's default color      */
-DECL|field|DEFAULT_COLOR
-specifier|public
-specifier|static
-specifier|final
-name|Color
-name|DEFAULT_COLOR
-init|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getColor
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|ICON_ENABLED_COLOR
-argument_list|)
-decl_stmt|;
 DECL|field|DEFAULT_DISABLED_COLOR
 specifier|public
 specifier|static
@@ -497,15 +477,20 @@ name|openStream
 argument_list|()
 return|;
 block|}
-DECL|method|getDefaultColor ()
+DECL|method|getDefaultGroupColor ()
 specifier|public
 specifier|static
 name|Color
-name|getDefaultColor
+name|getDefaultGroupColor
 parameter_list|()
 block|{
 return|return
-name|DEFAULT_COLOR
+name|Color
+operator|.
+name|web
+argument_list|(
+literal|"#8a8a8a"
+argument_list|)
 return|;
 block|}
 DECL|method|getJabRefImageFX ()
