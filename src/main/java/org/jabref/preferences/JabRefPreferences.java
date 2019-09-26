@@ -2244,15 +2244,6 @@ name|VALID_FIELD_BACKGROUND_COLOR
 init|=
 literal|"validFieldBackgroundColor"
 decl_stmt|;
-DECL|field|ICON_ENABLED_COLOR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ICON_ENABLED_COLOR
-init|=
-literal|"iconEnabledColor"
-decl_stmt|;
 DECL|field|ICON_DISABLED_COLOR
 specifier|public
 specifier|static
@@ -4960,15 +4951,6 @@ literal|"0:0:0"
 argument_list|)
 expr_stmt|;
 comment|// default icon colors
-name|defaults
-operator|.
-name|put
-argument_list|(
-name|ICON_ENABLED_COLOR
-argument_list|,
-literal|"0:0:0"
-argument_list|)
-expr_stmt|;
 name|defaults
 operator|.
 name|put
