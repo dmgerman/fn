@@ -62,18 +62,6 @@ name|nio
 operator|.
 name|file
 operator|.
-name|Path
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
 name|Paths
 import|;
 end_import
@@ -95,6 +83,16 @@ operator|.
 name|util
 operator|.
 name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
 import|;
 end_import
 
@@ -135,64 +133,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|ImportFormatPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|Importer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|ParserResult
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|importer
-operator|.
-name|fileformat
-operator|.
-name|BibtexParser
 import|;
 end_import
 
@@ -297,20 +237,6 @@ operator|.
 name|types
 operator|.
 name|UnknownEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|util
-operator|.
-name|DummyFileUpdateMonitor
 import|;
 end_import
 
@@ -430,7 +356,6 @@ end_import
 
 begin_class
 DECL|class|OOBibStyleTest
-specifier|public
 class|class
 name|OOBibStyleTest
 block|{
@@ -439,15 +364,9 @@ specifier|private
 name|LayoutFormatterPreferences
 name|layoutFormatterPreferences
 decl_stmt|;
-DECL|field|importFormatPreferences
-specifier|private
-name|ImportFormatPreferences
-name|importFormatPreferences
-decl_stmt|;
 annotation|@
 name|BeforeEach
 DECL|method|setUp ()
-specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -465,24 +384,10 @@ operator|.
 name|RETURNS_DEEP_STUBS
 argument_list|)
 expr_stmt|;
-name|importFormatPreferences
-operator|=
-name|mock
-argument_list|(
-name|ImportFormatPreferences
-operator|.
-name|class
-argument_list|,
-name|Answers
-operator|.
-name|RETURNS_DEEP_STUBS
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
 DECL|method|testAuthorYear ()
-specifier|public
 name|void
 name|testAuthorYear
 parameter_list|()
@@ -570,7 +475,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testAuthorYearAsFile ()
-specifier|public
 name|void
 name|testAuthorYearAsFile
 parameter_list|()
@@ -687,7 +591,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testNumerical ()
-specifier|public
 name|void
 name|testNumerical
 parameter_list|()
@@ -767,7 +670,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetNumCitationMarker ()
-specifier|public
 name|void
 name|testGetNumCitationMarker
 parameter_list|()
@@ -1024,7 +926,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetNumCitationMarkerUndefined ()
-specifier|public
 name|void
 name|testGetNumCitationMarkerUndefined
 parameter_list|()
@@ -1184,7 +1085,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetCitProperty ()
-specifier|public
 name|void
 name|testGetCitProperty
 parameter_list|()
@@ -1282,54 +1182,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * In IntelliJ: When running this test, ensure that the working directory is<code>%MODULE_WORKING_DIR%"</code>      */
 annotation|@
 name|Test
 DECL|method|testGetCitationMarker ()
-specifier|public
 name|void
 name|testGetCitationMarker
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|Path
-name|testBibtexFile
-init|=
-name|Paths
-operator|.
-name|get
-argument_list|(
-literal|"src/test/resources/testbib/complex.bib"
-argument_list|)
-decl_stmt|;
-name|ParserResult
-name|result
-init|=
-operator|new
-name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|,
-operator|new
-name|DummyFileUpdateMonitor
-argument_list|()
-argument_list|)
-operator|.
-name|parse
-argument_list|(
-name|Importer
-operator|.
-name|getReader
-argument_list|(
-name|testBibtexFile
-argument_list|,
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
-argument_list|)
-decl_stmt|;
 name|OOBibStyle
 name|style
 init|=
@@ -1343,6 +1204,81 @@ argument_list|,
 name|layoutFormatterPreferences
 argument_list|)
 decl_stmt|;
+name|BibEntry
+name|entry
+init|=
+operator|new
+name|BibEntry
+argument_list|()
+operator|.
+name|withField
+argument_list|(
+name|StandardField
+operator|.
+name|AUTHOR
+argument_list|,
+literal|"Gustav Bostr\\\"{o}m and Jaana W\\\"{a}yrynen and Marine Bod\\'{e}n and Konstantin Beznosov and Philippe Kruchten"
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+name|StandardField
+operator|.
+name|YEAR
+argument_list|,
+literal|"2006"
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+name|StandardField
+operator|.
+name|BOOKTITLE
+argument_list|,
+literal|"SESS '06: Proceedings of the 2006 international workshop on Software engineering for secure systems"
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+name|StandardField
+operator|.
+name|PUBLISHER
+argument_list|,
+literal|"ACM"
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+name|StandardField
+operator|.
+name|TITLE
+argument_list|,
+literal|"Extending XP practices to support security requirements engineering"
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+name|StandardField
+operator|.
+name|PAGES
+argument_list|,
+literal|"11--18"
+argument_list|)
+decl_stmt|;
+name|BibDatabase
+name|database
+init|=
+operator|new
+name|BibDatabase
+argument_list|()
+decl_stmt|;
+name|database
+operator|.
+name|insertEntry
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
 name|Map
 argument_list|<
 name|BibEntry
@@ -1356,48 +1292,15 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|BibDatabase
-name|db
-init|=
-name|result
-operator|.
-name|getDatabase
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|BibEntry
-name|entry
-range|:
-name|db
-operator|.
-name|getEntries
-argument_list|()
-control|)
-block|{
 name|entryDBMap
 operator|.
 name|put
 argument_list|(
 name|entry
 argument_list|,
-name|db
+name|database
 argument_list|)
 expr_stmt|;
-block|}
-name|BibEntry
-name|entry
-init|=
-name|db
-operator|.
-name|getEntryByKey
-argument_list|(
-literal|"1137631"
-argument_list|)
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"[BostrÃ¶m et al., 2006]"
@@ -1406,9 +1309,9 @@ name|style
 operator|.
 name|getCitationMarker
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|entry
 argument_list|)
@@ -1431,9 +1334,9 @@ name|style
 operator|.
 name|getCitationMarker
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|entry
 argument_list|)
@@ -1461,9 +1364,9 @@ name|style
 operator|.
 name|getCitationMarker
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|entry
 argument_list|)
@@ -1484,54 +1387,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * In IntelliJ: When running this test, ensure that the working directory is<code>%MODULE_WORKING_DIR%"</code>      */
 annotation|@
 name|Test
 DECL|method|testLayout ()
-specifier|public
 name|void
 name|testLayout
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|Path
-name|testBibtexFile
-init|=
-name|Paths
-operator|.
-name|get
-argument_list|(
-literal|"src/test/resources/testbib/complex.bib"
-argument_list|)
-decl_stmt|;
-name|ParserResult
-name|result
-init|=
-operator|new
-name|BibtexParser
-argument_list|(
-name|importFormatPreferences
-argument_list|,
-operator|new
-name|DummyFileUpdateMonitor
-argument_list|()
-argument_list|)
-operator|.
-name|parse
-argument_list|(
-name|Importer
-operator|.
-name|getReader
-argument_list|(
-name|testBibtexFile
-argument_list|,
-name|StandardCharsets
-operator|.
-name|UTF_8
-argument_list|)
-argument_list|)
-decl_stmt|;
 name|OOBibStyle
 name|style
 init|=
@@ -1545,14 +1409,81 @@ argument_list|,
 name|layoutFormatterPreferences
 argument_list|)
 decl_stmt|;
-name|BibDatabase
-name|db
+name|BibEntry
+name|entry
 init|=
-name|result
+operator|new
+name|BibEntry
+argument_list|()
 operator|.
-name|getDatabase
+name|withField
+argument_list|(
+name|StandardField
+operator|.
+name|AUTHOR
+argument_list|,
+literal|"Gustav Bostr\\\"{o}m and Jaana W\\\"{a}yrynen and Marine Bod\\'{e}n and Konstantin Beznosov and Philippe Kruchten"
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+name|StandardField
+operator|.
+name|YEAR
+argument_list|,
+literal|"2006"
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+name|StandardField
+operator|.
+name|BOOKTITLE
+argument_list|,
+literal|"SESS '06: Proceedings of the 2006 international workshop on Software engineering for secure systems"
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+name|StandardField
+operator|.
+name|PUBLISHER
+argument_list|,
+literal|"ACM"
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+name|StandardField
+operator|.
+name|TITLE
+argument_list|,
+literal|"Extending XP practices to support security requirements engineering"
+argument_list|)
+operator|.
+name|withField
+argument_list|(
+name|StandardField
+operator|.
+name|PAGES
+argument_list|,
+literal|"11--18"
+argument_list|)
+decl_stmt|;
+name|BibDatabase
+name|database
+init|=
+operator|new
+name|BibDatabase
 argument_list|()
 decl_stmt|;
+name|database
+operator|.
+name|insertEntry
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
 name|Layout
 name|l
 init|=
@@ -1576,19 +1507,6 @@ name|OOPreFormatter
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibEntry
-name|entry
-init|=
-name|db
-operator|.
-name|getEntryByKey
-argument_list|(
-literal|"1137631"
-argument_list|)
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"BostrÃ¶m, G.; WÃ¤yrynen, J.; BodÃ©n, M.; Beznosov, K. and Kruchten, P. (<b>2006</b>).<i>Extending XP practices to support security requirements engineering</i>,   : 11-18."
@@ -1599,7 +1517,7 @@ name|doLayout
 argument_list|(
 name|entry
 argument_list|,
-name|db
+name|database
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1633,7 +1551,7 @@ name|doLayout
 argument_list|(
 name|entry
 argument_list|,
-name|db
+name|database
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1641,7 +1559,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testInstitutionAuthor ()
-specifier|public
 name|void
 name|testInstitutionAuthor
 parameter_list|()
@@ -1763,7 +1680,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testVonAuthor ()
-specifier|public
 name|void
 name|testVonAuthor
 parameter_list|()
@@ -1885,7 +1801,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testInstitutionAuthorMarker ()
-specifier|public
 name|void
 name|testInstitutionAuthorMarker
 parameter_list|()
@@ -2032,7 +1947,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testVonAuthorMarker ()
-specifier|public
 name|void
 name|testVonAuthorMarker
 parameter_list|()
@@ -2179,7 +2093,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testNullAuthorMarker ()
-specifier|public
 name|void
 name|testNullAuthorMarker
 parameter_list|()
@@ -2304,7 +2217,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testNullYearMarker ()
-specifier|public
 name|void
 name|testNullYearMarker
 parameter_list|()
@@ -2429,7 +2341,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEmptyEntryMarker ()
-specifier|public
 name|void
 name|testEmptyEntryMarker
 parameter_list|()
@@ -2543,7 +2454,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetCitationMarkerInParenthesisUniquefiers ()
-specifier|public
 name|void
 name|testGetCitationMarkerInParenthesisUniquefiers
 parameter_list|()
@@ -2828,7 +2738,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetCitationMarkerInTextUniquefiers ()
-specifier|public
 name|void
 name|testGetCitationMarkerInTextUniquefiers
 parameter_list|()
@@ -3113,7 +3022,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetCitationMarkerInParenthesisUniquefiersThreeSameAuthor ()
-specifier|public
 name|void
 name|testGetCitationMarkerInParenthesisUniquefiersThreeSameAuthor
 parameter_list|()
@@ -3389,7 +3297,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testGetCitationMarkerInTextUniquefiersThreeSameAuthor ()
-specifier|public
 name|void
 name|testGetCitationMarkerInTextUniquefiersThreeSameAuthor
 parameter_list|()
@@ -3666,7 +3573,6 @@ annotation|@
 name|Test
 comment|// TODO: equals only work when initialized from file, not from reader
 DECL|method|testEquals ()
-specifier|public
 name|void
 name|testEquals
 parameter_list|()
@@ -3711,7 +3617,6 @@ annotation|@
 name|Test
 comment|// TODO: equals only work when initialized from file, not from reader
 DECL|method|testNotEquals ()
-specifier|public
 name|void
 name|testNotEquals
 parameter_list|()
@@ -3755,7 +3660,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCompareToEqual ()
-specifier|public
 name|void
 name|testCompareToEqual
 parameter_list|()
@@ -3804,7 +3708,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testCompareToNotEqual ()
-specifier|public
 name|void
 name|testCompareToNotEqual
 parameter_list|()
@@ -3865,7 +3768,6 @@ block|}
 annotation|@
 name|Test
 DECL|method|testEmptyStringPropertyAndOxfordComma ()
-specifier|public
 name|void
 name|testEmptyStringPropertyAndOxfordComma
 parameter_list|()
