@@ -538,10 +538,8 @@ operator|.
 name|TASK_EXECUTOR
 argument_list|)
 operator|.
-name|checkForNewVersionAsync
-argument_list|(
-literal|false
-argument_list|)
+name|checkForNewVersionDelayed
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|openWindow (Stage mainStage)
