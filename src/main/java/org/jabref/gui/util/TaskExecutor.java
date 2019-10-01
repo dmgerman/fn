@@ -26,6 +26,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|javafx
 operator|.
 name|concurrent
@@ -78,6 +90,30 @@ argument_list|<
 name|V
 argument_list|>
 name|task
+parameter_list|)
+function_decl|;
+comment|/**      * Submits a one-shot task that becomes enabled after the given delay.      *      * @param task  the task to execute      * @param delay the time from now to delay execution      * @param unit  the time unit of the delay parameter      * @return a ScheduledFuture representing pending completion of      *         the task and whose {@code get()} method will return      *         {@code null} upon completion      */
+DECL|method|schedule (BackgroundTask<V> task, long delay, TimeUnit unit)
+parameter_list|<
+name|V
+parameter_list|>
+name|Future
+argument_list|<
+name|?
+argument_list|>
+name|schedule
+parameter_list|(
+name|BackgroundTask
+argument_list|<
+name|V
+argument_list|>
+name|task
+parameter_list|,
+name|long
+name|delay
+parameter_list|,
+name|TimeUnit
+name|unit
 parameter_list|)
 function_decl|;
 comment|/**      * Shutdown the task executor.      */
