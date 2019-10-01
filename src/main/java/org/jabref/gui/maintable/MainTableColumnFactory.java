@@ -1276,7 +1276,7 @@ name|setAlignment
 argument_list|(
 name|Pos
 operator|.
-name|CENTER_RIGHT
+name|CENTER_LEFT
 argument_list|)
 expr_stmt|;
 name|container
